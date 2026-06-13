@@ -1,0 +1,3014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TrueFix Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f1117;
+color:white;
+overflow:hidden;
+}
+
+:root{
+--primary:#0a84ff;
+--card:#171b24;
+--sidebar:#11151d;
+--border:#222836;
+}
+
+.login-screen{
+position:fixed;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#0f1117;
+z-index:9999;
+}
+
+.login-card{
+width:430px;
+max-width:95%;
+background:var(--card);
+border:1px solid var(--border);
+border-radius:25px;
+padding:35px;
+box-shadow:0 0 30px rgba(0,0,0,.4);
+}
+
+.logo-area{
+display:flex;
+align-items:center;
+justify-content:center;
+margin-bottom:20px;
+}
+
+.logo-circle{
+width:90px;
+height:90px;
+border-radius:50%;
+background:linear-gradient(135deg,#0a84ff,#45b3ff);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:36px;
+font-weight:700;
+}
+
+.login-title{
+text-align:center;
+font-size:28px;
+font-weight:700;
+margin-bottom:10px;
+}
+
+.login-sub{
+text-align:center;
+opacity:.7;
+margin-bottom:25px;
+}
+
+.input{
+width:100%;
+padding:14px;
+background:#0d1117;
+border:1px solid var(--border);
+border-radius:12px;
+color:white;
+margin-bottom:12px;
+outline:none;
+}
+
+.btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+background:var(--primary);
+color:white;
+font-weight:600;
+cursor:pointer;
+margin-bottom:10px;
+}
+
+.btn-secondary{
+background:#232937;
+}
+
+.sidebar{
+position:fixed;
+left:0;
+top:0;
+width:260px;
+height:100%;
+background:var(--sidebar);
+border-right:1px solid var(--border);
+display:none;
+}
+
+.sidebar-header{
+padding:25px;
+border-bottom:1px solid var(--border);
+}
+
+.sidebar-title{
+font-size:24px;
+font-weight:700;
+color:var(--primary);
+}
+
+.menu{
+padding:15px;
+}
+
+.menu-item{
+padding:14px;
+border-radius:12px;
+cursor:pointer;
+margin-bottom:6px;
+transition:.2s;
+}
+
+.menu-item:hover{
+background:#1b2230;
+}
+
+.topbar{
+position:fixed;
+left:260px;
+right:0;
+top:0;
+height:70px;
+background:var(--sidebar);
+border-bottom:1px solid var(--border);
+display:none;
+align-items:center;
+justify-content:space-between;
+padding:0 25px;
+}
+
+.dashboard{
+position:fixed;
+left:260px;
+right:0;
+top:70px;
+bottom:0;
+overflow:auto;
+padding:25px;
+display:none;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+}
+
+.card{
+background:var(--card);
+border:1px solid var(--border);
+padding:25px;
+border-radius:20px;
+}
+
+.card-title{
+opacity:.7;
+font-size:14px;
+}
+
+.card-value{
+font-size:40px;
+font-weight:700;
+margin-top:8px;
+color:var(--primary);
+}
+
+.settings-menu{
+position:absolute;
+top:70px;
+right:20px;
+width:220px;
+background:var(--card);
+border:1px solid var(--border);
+border-radius:15px;
+display:none;
+overflow:hidden;
+}
+
+.settings-item{
+padding:15px;
+cursor:pointer;
+border-bottom:1px solid var(--border);
+}
+
+.settings-item:hover{
+background:#1d2431;
+}
+
+.page{
+display:none;
+margin-top:25px;
+}
+
+.page-title{
+font-size:32px;
+font-weight:700;
+margin-bottom:20px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="login-screen" id="loginScreen">
+
+<div class="login-card">
+
+<div class="logo-area">
+<div class="logo-circle">TF</div>
+</div>
+
+<div class="login-title">
+TrueFix Dashboard
+</div>
+
+<div class="login-sub">
+Business Management System
+</div>
+
+<input
+class="input"
+id="email"
+type="email"
+placeholder="Email">
+
+<input
+class="input"
+id="password"
+type="password"
+placeholder="Password">
+
+<button
+class="btn"
+onclick="loginUser()">
+Login
+</button>
+
+<button
+class="btn btn-secondary"
+onclick="registerUser()">
+Create Account
+</button>
+
+</div>
+
+</div>
+
+<div class="sidebar" id="sidebar">
+
+<div class="sidebar-header">
+<div class="sidebar-title">
+TrueFix
+</div>
+</div>
+
+<div class="menu">
+
+<div class="menu-item" onclick="showPage('dashboardPage')">
+📊 Dashboard
+</div>
+
+<div class="menu-item" onclick="showPage('earningsPage')">
+💰 Earnings
+</div>
+
+<div class="menu-item" onclick="showPage('devicesPage')">
+📱 Devices Fixed
+</div>
+
+<div class="menu-item" onclick="showPage('inventoryPage')">
+📦 Inventory
+</div>
+
+<div class="menu-item" onclick="showPage('tasksPage')">
+📋 Tasks
+</div>
+
+<div class="menu-item" onclick="showPage('notesPage')">
+📝 Notes
+</div>
+
+<div class="menu-item" onclick="showPage('goalsPage')">
+🎯 Goals
+</div>
+
+<div class="menu-item" onclick="showPage('statsPage')">
+📈 Statistics
+</div>
+
+<div class="menu-item" onclick="showPage('settingsPage')">
+⚙️ Settings
+</div>
+
+</div>
+
+</div>
+
+<div class="topbar" id="topbar">
+
+<h2>Owner Dashboard</h2>
+
+<div
+style="font-size:28px;cursor:pointer;"
+onclick="toggleSettings()">
+⋮
+</div>
+
+<div
+class="settings-menu"
+id="settingsMenu">
+
+<div class="settings-item">
+Edit Business Name
+</div>
+
+<div class="settings-item">
+Change Theme
+</div>
+
+<div class="settings-item"
+onclick="logoutUser()">
+Logout
+</div>
+
+</div>
+
+</div>
+
+<div class="dashboard" id="dashboard">
+
+<div id="dashboardPage" class="page" style="display:block;">
+
+<h1 class="page-title">
+Dashboard
+</h1>
+
+<div class="cards">
+
+<div class="card">
+<div class="card-title">Total Earnings</div>
+<div class="card-value" id="totalEarnings">$0</div>
+</div>
+
+<div class="card">
+<div class="card-title">Devices Fixed</div>
+<div class="card-value" id="devicesFixed">0</div>
+</div>
+
+<div class="card">
+<div class="card-title">Inventory Items</div>
+<div class="card-value" id="inventoryCount">0</div>
+</div>
+
+<div class="card">
+<div class="card-title">Tasks</div>
+<div class="card-value" id="taskCount">0</div>
+</div>
+
+</div>
+
+</div>
+
+<div id="earningsPage" class="page">
+
+<h1 class="page-title">
+Earnings
+</h1>
+
+<div class="card">
+
+<h3>Add Earnings</h3>
+
+<br>
+
+<input
+class="input"
+id="earningAmount"
+type="number"
+placeholder="Amount">
+
+<input
+class="input"
+id="earningNote"
+placeholder="Description">
+
+<button
+class="btn"
+onclick="addEarning()">
+Add Earning
+</button>
+
+</div>
+
+<br>
+
+<div id="earningsList"></div>
+
+</div>
+
+<div id="devicesPage" class="page">
+
+<h1 class="page-title">
+Devices Fixed
+</h1>
+
+<div class="card">
+
+<input
+class="input"
+id="deviceName"
+placeholder="Device">
+
+<input
+class="input"
+id="repairType"
+placeholder="Repair Type">
+
+<button
+class="btn"
+onclick="addDevice()">
+Add Device
+</button>
+
+</div>
+
+<br>
+
+<div id="devicesList"></div>
+
+</div>
+
+<div id="inventoryPage" class="page">
+
+<h1 class="page-title">
+Inventory
+</h1>
+
+<div class="card">
+
+<input
+class="input"
+id="inventoryName"
+placeholder="Item Name">
+
+<input
+class="input"
+id="inventoryQuantity"
+placeholder="Quantity">
+
+<button
+class="btn"
+onclick="addInventory()">
+Add Item
+</button>
+
+</div>
+
+<br>
+
+<div id="inventoryList"></div>
+
+</div>
+
+<div id="tasksPage" class="page">
+
+<h1 class="page-title">
+Tasks
+</h1>
+
+<div class="card">
+
+<input
+class="input"
+id="taskText"
+placeholder="Task">
+
+<button
+class="btn"
+onclick="addTask()">
+Add Task
+</button>
+
+</div>
+
+<br>
+
+<div id="tasksList"></div>
+
+</div>
+
+<div id="notesPage" class="page">
+
+<h1 class="page-title">
+Notes
+</h1>
+
+<textarea
+id="notesBox"
+style="
+width:100%;
+height:400px;
+background:#171b24;
+border:1px solid #222836;
+border-radius:15px;
+padding:20px;
+color:white;
+resize:none;
+">
+</textarea>
+
+</div>
+
+<div id="goalsPage" class="page">
+
+<h1 class="page-title">
+Goals
+</h1>
+
+<div class="card">
+
+<input
+class="input"
+id="goalText"
+placeholder="Goal">
+
+<button
+class="btn"
+onclick="addGoal()">
+Add Goal
+</button>
+
+</div>
+
+<br>
+
+<div id="goalsList"></div>
+
+</div>
+
+<div id="statsPage" class="page">
+
+<div id="statsPage" class="page">
+
+<h1 class="page-title">
+Statistics
+</h1>
+
+<div class="cards">
+
+<div class="card">
+<div class="card-title">
+Lifetime Earnings
+</div>
+
+<div
+class="card-value"
+id="statsEarnings">
+$0
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-title">
+Lifetime Repairs
+</div>
+
+<div
+class="card-value"
+id="statsRepairs">
+0
+</div>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="card">
+
+<h2>Revenue Overview</h2>
+
+<br>
+
+<div id="revenueVisual">
+
+Loading...
+
+</div>
+
+</div>
+
+</div>
+
+<div id="settingsPage" class="page">
+
+<h1 class="page-title">
+Settings
+</h1>
+
+<div class="card">
+
+<h3>Total Lifetime Earnings</h3>
+
+<input
+class="input"
+id="settingTotalEarnings"
+type="number">
+
+<h3>Devices Fixed</h3>
+
+<input
+class="input"
+id="settingDevicesFixed"
+type="number">
+
+<h3>Repairs This Year</h3>
+
+<input
+class="input"
+id="settingRepairsYear"
+type="number">
+
+<h3>Earnings This Year</h3>
+
+<input
+class="input"
+id="settingEarningsYear"
+type="number">
+
+<h3>Earnings This Month</h3>
+
+<input
+class="input"
+id="settingEarningsMonth"
+type="number">
+
+<button
+class="btn"
+onclick="saveSettings()">
+
+Save Settings
+
+</button>
+
+</div>
+
+</div>
+
+<div
+class="card-value"
+id="statsEarnings">
+$0
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-title">
+Lifetime Repairs
+</div>
+
+<div
+class="card-value"
+id="statsRepairs">
+0
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script type="module">
+
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+import {
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+onAuthStateChanged,
+signOut
+}
+from
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+import {
+getDatabase,
+ref,
+set,
+push,
+get,
+remove,
+update
+}
+from
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyDnlNyHtqiR6n1RtLErbpBs55snGK_Z3Yk",
+
+authDomain:
+"truefix-dashboard.firebaseapp.com",
+
+databaseURL:
+"https://truefix-dashboard-default-rtdb.firebaseio.com",
+
+projectId:
+"truefix-dashboard",
+
+storageBucket:
+"truefix-dashboard.firebasestorage.app",
+
+messagingSenderId:
+"999290275627",
+
+appId:
+"1:999290275627:web:ef443cf92f75b0117fa76e",
+
+measurementId:
+"G-LK0QQW9PZC"
+
+};
+
+const app =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+const db =
+getDatabase(app);
+
+window.currentUser = null;
+
+window.showPage = function(page){
+
+document
+.querySelectorAll(".page")
+.forEach(p=>{
+
+p.style.display="none";
+
+});
+
+document
+.getElementById(page)
+.style.display="block";
+
+};
+
+window.toggleSettings =
+function(){
+
+const menu =
+document.getElementById(
+"settingsMenu"
+);
+
+if(menu.style.display==="block"){
+
+menu.style.display="none";
+
+}else{
+
+menu.style.display="block";
+
+}
+
+};
+
+window.registerUser =
+async function(){
+
+const email =
+document.getElementById(
+"email"
+).value;
+
+const password =
+document.getElementById(
+"password"
+).value;
+
+try{
+
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+alert(
+"Account Created!"
+);
+
+}catch(error){
+
+alert(error.message);
+
+}
+
+};
+
+window.loginUser =
+async function(){
+
+const email =
+document.getElementById(
+"email"
+).value;
+
+const password =
+document.getElementById(
+"password"
+).value;
+
+try{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+}catch(error){
+
+alert(error.message);
+
+}
+
+};
+
+window.logoutUser =
+function(){
+
+signOut(auth);
+
+};
+
+onAuthStateChanged(
+auth,
+(user)=>{
+
+if(user){
+
+window.currentUser=user;
+
+document
+.getElementById(
+"loginScreen"
+)
+.style.display="none";
+
+document
+.getElementById(
+"sidebar"
+)
+.style.display="block";
+
+document
+.getElementById(
+"topbar"
+)
+.style.display="flex";
+
+document
+.getElementById(
+"dashboard"
+)
+.style.display="block";
+
+loadData();
+
+}else{
+
+document
+.getElementById(
+"loginScreen"
+)
+.style.display="flex";
+
+}
+
+}
+);
+
+async function loadData(){
+
+if(!currentUser) return;
+
+const uid =
+currentUser.uid;
+
+loadEarnings(uid);
+loadDevices(uid);
+loadInventory(uid);
+loadTasks(uid);
+loadGoals(uid);
+loadNotes(uid);
+
+}
+
+window.addEarning =
+async function(){
+
+const amount =
+document.getElementById(
+"earningAmount"
+).value;
+
+const note =
+document.getElementById(
+"earningNote"
+).value;
+
+if(!amount) return;
+
+await push(
+
+ref(
+db,
+"users/"+currentUser.uid+"/earnings"
+),
+
+{
+amount:Number(amount),
+note:note,
+date:Date.now()
+}
+
+);
+
+document.getElementById(
+"earningAmount"
+).value="";
+
+document.getElementById(
+"earningNote"
+).value="";
+
+loadEarnings(
+currentUser.uid
+);
+
+};
+
+async function loadEarnings(uid){
+
+const snapshot =
+await get(
+ref(
+db,
+"users/"+uid+"/earnings"
+)
+);
+
+const list =
+document.getElementById(
+"earningsList"
+);
+
+list.innerHTML="";
+
+let total = 0;
+
+if(snapshot.exists()){
+
+const data =
+snapshot.val();
+
+Object.entries(data)
+.forEach(([id,item])=>{
+
+total +=
+Number(item.amount);
+
+list.innerHTML += `
+
+<div class="card">
+
+<h3>$${item.amount}</h3>
+
+<p>${item.note||""}</p>
+
+<br>
+
+<button
+class="btn"
+onclick="deleteEarning('${id}')">
+Delete
+</button>
+
+</div>
+
+<br>
+
+`;
+
+});
+
+}
+
+document.getElementById(
+"totalEarnings"
+).innerText=
+"$"+total;
+
+document.getElementById(
+"statsEarnings"
+).innerText=
+"$"+total;
+
+}
+
+window.deleteEarning =
+async function(id){
+
+await remove(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/earnings/"+id
+)
+
+);
+
+loadEarnings(
+currentUser.uid
+);
+
+};
+
+window.addDevice =
+async function(){
+
+const name =
+document.getElementById(
+"deviceName"
+).value;
+
+const repair =
+document.getElementById(
+"repairType"
+).value;
+
+if(!name) return;
+
+await push(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/devices"
+),
+
+{
+name,
+repair
+}
+
+);
+
+document.getElementById(
+"deviceName"
+).value="";
+
+document.getElementById(
+"repairType"
+).value="";
+
+loadDevices(
+currentUser.uid
+);
+
+};
+
+async function loadDevices(uid){
+
+const snapshot =
+await get(
+ref(
+db,
+"users/"+uid+
+"/devices"
+)
+);
+
+const list =
+document.getElementById(
+"devicesList"
+);
+
+list.innerHTML="";
+
+let count=0;
+
+if(snapshot.exists()){
+
+const data =
+snapshot.val();
+
+Object.entries(data)
+.forEach(([id,item])=>{
+
+count++;
+
+list.innerHTML += `
+
+<div class="card">
+
+<h3>${item.name}</h3>
+
+<p>${item.repair}</p>
+
+<br>
+
+<button
+class="btn"
+onclick="deleteDevice('${id}')">
+Delete
+</button>
+
+</div>
+
+<br>
+
+`;
+
+});
+
+}
+
+document.getElementById(
+"devicesFixed"
+).innerText=
+count;
+
+document.getElementById(
+"statsRepairs"
+).innerText=
+count;
+
+}
+
+window.deleteDevice =
+async function(id){
+
+await remove(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/devices/"+id
+)
+
+);
+
+loadDevices(
+currentUser.uid
+);
+
+};
+
+window.addInventory =
+async function(){
+
+const item =
+document.getElementById(
+"inventoryName"
+).value;
+
+const qty =
+document.getElementById(
+"inventoryQuantity"
+).value;
+
+if(!item) return;
+
+await push(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/inventory"
+),
+
+{
+item,
+qty
+}
+
+);
+
+document.getElementById(
+"inventoryName"
+).value="";
+
+document.getElementById(
+"inventoryQuantity"
+).value="";
+
+loadInventory(
+currentUser.uid
+);
+
+};
+
+async function loadInventory(uid){
+
+const snapshot =
+await get(
+ref(
+db,
+"users/"+uid+
+"/inventory"
+)
+);
+
+const list =
+document.getElementById(
+"inventoryList"
+);
+
+list.innerHTML="";
+
+let count=0;
+
+if(snapshot.exists()){
+
+const data =
+snapshot.val();
+
+Object.entries(data)
+.forEach(([id,item])=>{
+
+count++;
+
+list.innerHTML += `
+
+<div class="card">
+
+<h3>${item.item}</h3>
+
+<p>Quantity: ${item.qty}</p>
+
+<br>
+
+<button
+class="btn"
+onclick="deleteInventory('${id}')">
+Delete
+</button>
+
+</div>
+
+<br>
+
+`;
+
+});
+
+}
+
+document.getElementById(
+"inventoryCount"
+).innerText=
+count;
+
+}
+
+window.deleteInventory =
+async function(id){
+
+await remove(
+ref(
+db,
+"users/"+currentUser.uid+
+"/inventory/"+id
+)
+);
+
+loadInventory(
+currentUser.uid
+);
+
+};
+
+window.addTask =
+async function(){
+
+const task =
+document.getElementById(
+"taskText"
+).value;
+
+if(!task) return;
+
+await push(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/tasks"
+),
+
+{
+text:task,
+completed:false
+}
+
+);
+
+document.getElementById(
+"taskText"
+).value="";
+
+loadTasks(
+currentUser.uid
+);
+
+};
+
+async function loadTasks(uid){
+
+const snapshot =
+await get(
+ref(
+db,
+"users/"+uid+
+"/tasks"
+)
+);
+
+const list =
+document.getElementById(
+"tasksList"
+);
+
+list.innerHTML="";
+
+let count=0;
+
+if(snapshot.exists()){
+
+const data =
+snapshot.val();
+
+Object.entries(data)
+.forEach(([id,item])=>{
+
+count++;
+
+list.innerHTML += `
+
+<div class="card">
+
+<label>
+
+<input
+type="checkbox"
+${item.completed ? "checked" : ""}
+onclick="toggleTask('${id}',this.checked)">
+
+${item.text}
+
+</label>
+
+<br><br>
+
+<button
+class="btn"
+onclick="deleteTask('${id}')">
+Delete
+</button>
+
+</div>
+
+<br>
+
+`;
+
+});
+
+}
+
+document.getElementById(
+"taskCount"
+).innerText=
+count;
+
+}
+
+window.toggleTask =
+async function(id,state){
+
+await update(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/tasks/"+id
+),
+
+{
+completed:state
+}
+
+);
+
+};
+
+window.deleteTask =
+async function(id){
+
+await remove(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/tasks/"+id
+)
+
+);
+
+loadTasks(
+currentUser.uid
+);
+
+};
+
+window.addGoal =
+async function(){
+
+const goal =
+document.getElementById(
+"goalText"
+).value;
+
+if(!goal) return;
+
+await push(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/goals"
+),
+
+{
+goal:goal
+}
+
+);
+
+document.getElementById(
+"goalText"
+).value="";
+
+loadGoals(
+currentUser.uid
+);
+
+};
+
+async function loadGoals(uid){
+
+const snapshot =
+await get(
+ref(
+db,
+"users/"+uid+
+"/goals"
+)
+);
+
+const list =
+document.getElementById(
+"goalsList"
+);
+
+list.innerHTML="";
+
+if(snapshot.exists()){
+
+const data =
+snapshot.val();
+
+Object.entries(data)
+.forEach(([id,item])=>{
+
+list.innerHTML += `
+
+<div class="card">
+
+<h3>${item.goal}</h3>
+
+<br>
+
+<button
+class="btn"
+onclick="deleteGoal('${id}')">
+Delete
+</button>
+
+</div>
+
+<br>
+
+`;
+
+});
+
+}
+
+}
+
+window.deleteGoal =
+async function(id){
+
+await remove(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/goals/"+id
+)
+
+);
+
+loadGoals(
+currentUser.uid
+);
+
+};
+
+async function loadNotes(uid){
+
+const snapshot =
+await get(
+ref(
+db,
+"users/"+uid+
+"/notes")
+);
+
+if(snapshot.exists()){
+
+document.getElementById(
+"notesBox"
+).value =
+snapshot.val();
+
+}
+
+}
+
+document.addEventListener(
+"input",
+async function(e){
+
+if(
+e.target &&
+e.target.id==="notesBox" &&
+currentUser
+){
+
+await set(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/notes"
+),
+
+e.target.value
+
+);
+
+}
+
+});
+
+window.saveSettings =
+async function(){
+
+const settings = {
+
+totalEarnings:Number(
+document.getElementById(
+"settingTotalEarnings"
+).value || 0
+),
+
+devicesFixed:Number(
+document.getElementById(
+"settingDevicesFixed"
+).value || 0
+),
+
+repairsYear:Number(
+document.getElementById(
+"settingRepairsYear"
+).value || 0
+),
+
+earningsYear:Number(
+document.getElementById(
+"settingEarningsYear"
+).value || 0
+),
+
+earningsMonth:Number(
+document.getElementById(
+"settingEarningsMonth"
+).value || 0
+)
+
+};
+
+await set(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/settings"
+),
+
+settings
+
+);
+
+alert(
+"Settings Saved"
+);
+
+loadSettings();
+
+};
+
+async function loadSettings(){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/settings"
+)
+
+);
+
+if(!snapshot.exists())
+return;
+
+const data =
+snapshot.val();
+
+document.getElementById(
+"settingTotalEarnings"
+).value =
+data.totalEarnings || 0;
+
+document.getElementById(
+"settingDevicesFixed"
+).value =
+data.devicesFixed || 0;
+
+document.getElementById(
+"settingRepairsYear"
+).value =
+data.repairsYear || 0;
+
+document.getElementById(
+"settingEarningsYear"
+).value =
+data.earningsYear || 0;
+
+document.getElementById(
+"settingEarningsMonth"
+).value =
+data.earningsMonth || 0;
+
+document.getElementById(
+"totalEarnings"
+).innerText =
+"$"+
+(data.totalEarnings||0);
+
+document.getElementById(
+"statsEarnings"
+).innerText =
+"$"+
+(data.totalEarnings||0);
+
+drawRevenueChart(
+data.earningsYear||0
+);
+
+}
+
+function updateDashboardStats(){
+
+if(!currentUser) return;
+
+const earningsText =
+document.getElementById(
+"totalEarnings"
+).innerText;
+
+const repairsText =
+document.getElementById(
+"devicesFixed"
+).innerText;
+
+const inventoryText =
+document.getElementById(
+"inventoryCount"
+).innerText;
+
+const tasksText =
+document.getElementById(
+"taskCount"
+).innerText;
+
+document.getElementById(
+"statsEarnings"
+).innerText =
+earningsText;
+
+document.getElementById(
+"statsRepairs"
+).innerText =
+repairsText;
+
+}
+
+setInterval(
+updateDashboardStats,
+1000
+);
+
+const profileCard =
+document.createElement(
+"div"
+);
+
+profileCard.className =
+"card";
+
+profileCard.innerHTML =
+
+`
+<h3>Account Information</h3>
+
+<br>
+
+<p id="profileEmail">
+Loading...
+</p>
+
+<br>
+
+<p id="profileUID">
+Loading...
+</p>
+`;
+
+document
+.getElementById(
+"dashboardPage"
+)
+.appendChild(
+profileCard
+);
+
+function loadProfile(){
+
+if(!currentUser) return;
+
+document.getElementById(
+"profileEmail"
+).innerText =
+"Email: " +
+currentUser.email;
+
+document.getElementById(
+"profileUID"
+).innerText =
+"User ID: " +
+currentUser.uid;
+
+}
+
+setInterval(
+loadProfile,
+1000
+);
+
+const searchBar =
+document.createElement(
+"input"
+);
+
+searchBar.className =
+"input";
+
+searchBar.placeholder =
+"Search Devices...";
+
+searchBar.id =
+"deviceSearch";
+
+document
+.getElementById(
+"devicesPage"
+)
+.insertBefore(
+searchBar,
+document.getElementById(
+"devicesList"
+)
+);
+
+document.addEventListener(
+"input",
+function(e){
+
+if(
+e.target.id ===
+"deviceSearch"
+){
+
+filterDevices(
+e.target.value
+);
+
+}
+
+}
+);
+
+async function filterDevices(
+query
+){
+
+const snapshot =
+await get(
+ref(
+db,
+"users/"+currentUser.uid+
+"/devices"
+)
+);
+
+const list =
+document.getElementById(
+"devicesList"
+);
+
+list.innerHTML="";
+
+if(!snapshot.exists())
+return;
+
+const data =
+snapshot.val();
+
+Object.entries(data)
+.forEach(([id,item])=>{
+
+if(
+item.name
+.toLowerCase()
+.includes(
+query.toLowerCase()
+)
+){
+
+list.innerHTML +=
+
+`
+
+<div class="card">
+
+<h3>${item.name}</h3>
+
+<p>${item.repair}</p>
+
+<br>
+
+<button
+class="btn"
+onclick="deleteDevice('${id}')">
+Delete
+</button>
+
+</div>
+
+<br>
+
+`;
+
+}
+
+});
+
+}
+
+const settingsContent =
+document.createElement(
+"div"
+);
+
+settingsContent.innerHTML =
+
+`
+
+<div
+class="settings-item"
+onclick="switchTheme()">
+
+Toggle Dark Theme
+
+</div>
+
+`;
+
+document
+.getElementById(
+"settingsMenu"
+)
+.appendChild(
+settingsContent
+);
+
+window.switchTheme =
+function(){
+
+const current =
+document.body.style.filter;
+
+if(
+current ===
+"invert(1)"
+){
+
+document.body.style.filter =
+"invert(0)";
+
+}else{
+
+document.body.style.filter =
+"invert(1)";
+
+}
+
+};
+
+async function saveLastLogin(){
+
+if(!currentUser) return;
+
+await set(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/lastLogin"
+),
+
+Date.now()
+
+);
+
+}
+
+setInterval(
+saveLastLogin,
+10000
+);
+
+const loginCard =
+document.createElement(
+"div"
+);
+
+loginCard.className =
+"card";
+
+loginCard.innerHTML =
+
+`
+
+<div class="card-title">
+Last Login Saved
+</div>
+
+<div
+class="card-value"
+id="lastLoginDisplay">
+
+--
+
+</div>
+
+`;
+
+document
+.getElementById(
+"dashboardPage"
+)
+.appendChild(
+loginCard
+);
+
+async function loadLastLogin(){
+
+if(!currentUser) return;
+
+const snapshot =
+await get(
+ref(
+db,
+"users/"+currentUser.uid+
+"/lastLogin"
+)
+);
+
+if(snapshot.exists()){
+
+const date =
+new Date(
+snapshot.val()
+);
+
+document.getElementById(
+"lastLoginDisplay"
+).innerText =
+date.toLocaleDateString();
+
+}
+
+}
+
+setInterval(
+loadLastLogin,
+5000
+);
+
+window.editDevice =
+async function(id){
+
+const newName =
+prompt(
+"New device name:"
+);
+
+if(!newName) return;
+
+await update(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/devices/"+id
+),
+
+{
+name:newName
+}
+
+);
+
+loadDevices(
+currentUser.uid
+);
+
+};
+
+window.editInventory =
+async function(id){
+
+const newQty =
+prompt(
+"New quantity:"
+);
+
+if(newQty===null)
+return;
+
+await update(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/inventory/"+id
+),
+
+{
+qty:newQty
+}
+
+);
+
+loadInventory(
+currentUser.uid
+);
+
+};
+
+const businessCard =
+document.createElement(
+"div"
+);
+
+businessCard.className =
+"card";
+
+businessCard.innerHTML =
+
+`
+
+<h3>Business Name</h3>
+
+<br>
+
+<input
+class="input"
+id="businessNameInput"
+placeholder="TrueFix Wireless">
+
+<button
+class="btn"
+onclick="saveBusinessName()">
+
+Save Name
+
+</button>
+
+`;
+
+document
+.getElementById(
+"dashboardPage"
+)
+.appendChild(
+businessCard
+);
+
+window.saveBusinessName =
+async function(){
+
+const name =
+document.getElementById(
+"businessNameInput"
+).value;
+
+if(!name) return;
+
+await set(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/businessName"
+),
+
+name
+
+);
+
+alert(
+"Business Name Saved"
+);
+
+};
+
+async function loadBusinessName(){
+
+if(!currentUser)
+return;
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/businessName"
+)
+
+);
+
+if(snapshot.exists()){
+
+document.getElementById(
+"businessNameInput"
+).value =
+snapshot.val();
+
+}
+
+}
+
+setInterval(
+loadBusinessName,
+4000
+);
+
+const goalsProgressCard =
+document.createElement(
+"div"
+);
+
+goalsProgressCard.className =
+"card";
+
+goalsProgressCard.innerHTML =
+
+`
+
+<h3>Goal Progress</h3>
+
+<br>
+
+<div
+style="
+background:#111;
+height:25px;
+border-radius:20px;
+overflow:hidden;
+">
+
+<div
+id="goalProgressBar"
+style="
+width:0%;
+height:100%;
+background:#0a84ff;
+transition:.4s;
+">
+
+</div>
+
+</div>
+
+<br>
+
+<div id="goalProgressText">
+
+0%
+
+</div>
+
+`;
+
+document
+.getElementById(
+"goalsPage"
+)
+.appendChild(
+goalsProgressCard
+);
+
+async function updateGoalProgress(){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/goals"
+)
+
+);
+
+let count = 0;
+
+if(snapshot.exists()){
+
+count =
+Object.keys(
+snapshot.val()
+).length;
+
+}
+
+let progress =
+Math.min(
+count*10,
+100
+);
+
+const bar =
+document.getElementById(
+"goalProgressBar"
+);
+
+const text =
+document.getElementById(
+"goalProgressText"
+);
+
+if(bar){
+
+bar.style.width =
+progress+"%";
+
+}
+
+if(text){
+
+text.innerText =
+progress+"%";
+
+}
+
+}
+
+setInterval(
+updateGoalProgress,
+2000
+);
+
+const revenueChart =
+document.createElement(
+"div"
+);
+
+revenueChart.className =
+"card";
+
+revenueChart.innerHTML =
+
+`
+
+<h3>Revenue Overview</h3>
+
+<br>
+
+<div
+id="revenueVisual"
+style="
+display:flex;
+align-items:flex-end;
+gap:8px;
+height:220px;
+">
+
+Loading Revenue...
+
+</div>
+
+`;
+
+document
+.getElementById(
+"statsPage"
+)
+.appendChild(
+revenueChart
+);
+
+function drawRevenueChart(
+yearRevenue
+){
+
+const container =
+document.getElementById(
+"revenueVisual"
+);
+
+if(!container)
+return;
+
+container.innerHTML="";
+
+for(let i=0;i<12;i++){
+
+const monthly =
+yearRevenue / 12;
+
+const height =
+Math.max(
+20,
+monthly / 50
+);
+
+container.innerHTML +=
+
+`
+
+<div
+title="Month ${i+1}"
+style="
+width:30px;
+height:${height}px;
+background:#0a84ff;
+border-radius:8px;
+display:inline-block;
+margin-right:6px;
+">
+</div>
+
+`;
+
+}
+
+}
+
+const completedTasksCard =
+document.createElement(
+"div"
+);
+
+completedTasksCard.className =
+"card";
+
+completedTasksCard.innerHTML =
+
+`
+
+<div class="card-title">
+Completed Tasks
+</div>
+
+<div
+class="card-value"
+id="completedTasksCount">
+
+0
+
+</div>
+
+`;
+
+document
+.getElementById(
+"statsPage"
+)
+.appendChild(
+completedTasksCard
+);
+
+async function loadCompletedTasks(){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/tasks"
+)
+
+);
+
+let completed=0;
+
+if(snapshot.exists()){
+
+Object.values(
+snapshot.val()
+).forEach(task=>{
+
+if(task.completed){
+
+completed++;
+
+}
+
+});
+
+}
+
+const el =
+document.getElementById(
+"completedTasksCount"
+);
+
+if(el){
+
+el.innerText =
+completed;
+
+}
+
+}
+
+setInterval(
+loadCompletedTasks,
+3000
+);
+
+const goalsPage =
+document.getElementById(
+"goalsPage"
+);
+
+if(goalsPage){
+
+goalsPage.appendChild(
+goalsProgressCard
+);
+
+}
+
+const originalLoadDevices =
+loadDevices;
+
+loadDevices =
+async function(uid){
+
+await originalLoadDevices(uid);
+
+const snapshot =
+await get(
+ref(
+db,
+"users/"+uid+
+"/devices"
+)
+);
+
+const list =
+document.getElementById(
+"devicesList"
+);
+
+list.innerHTML="";
+
+if(snapshot.exists()){
+
+const data =
+snapshot.val();
+
+Object.entries(data)
+.forEach(([id,item])=>{
+
+list.innerHTML +=
+
+`
+
+<div class="card">
+
+<h3>${item.name}</h3>
+
+<p>${item.repair || ""}</p>
+
+<br>
+
+<button
+class="btn"
+onclick="editDevice('${id}')">
+
+Edit
+
+</button>
+
+<br><br>
+
+<button
+class="btn"
+onclick="deleteDevice('${id}')">
+
+Delete
+
+</button>
+
+</div>
+
+<br>
+
+`;
+
+});
+
+}
+
+};
+
+const originalLoadInventory =
+loadInventory;
+
+loadInventory =
+async function(uid){
+
+await originalLoadInventory(uid);
+
+const snapshot =
+await get(
+ref(
+db,
+"users/"+uid+
+"/inventory"
+)
+);
+
+const list =
+document.getElementById(
+"inventoryList"
+);
+
+list.innerHTML="";
+
+if(snapshot.exists()){
+
+const data =
+snapshot.val();
+
+Object.entries(data)
+.forEach(([id,item])=>{
+
+list.innerHTML +=
+
+`
+
+<div class="card">
+
+<h3>${item.item}</h3>
+
+<p>
+Quantity:
+${item.qty}
+</p>
+
+<br>
+
+<button
+class="btn"
+onclick="editInventory('${id}')">
+
+Edit
+
+</button>
+
+<br><br>
+
+<button
+class="btn"
+onclick="deleteInventory('${id}')">
+
+Delete
+
+</button>
+
+</div>
+
+<br>
+
+`;
+
+});
+
+}
+
+};
+
+const accountCard =
+document.createElement(
+"div"
+);
+
+accountCard.className =
+"card";
+
+accountCard.innerHTML =
+
+`
+
+<h3>Account Settings</h3>
+
+<br>
+
+<button
+class="btn"
+onclick="showEmail()">
+
+Show Email
+
+</button>
+
+<br>
+
+<button
+class="btn"
+onclick="copyUID()">
+
+Copy User ID
+
+</button>
+
+`;
+
+document
+.getElementById(
+"dashboardPage"
+)
+.appendChild(
+accountCard
+);
+
+window.showEmail =
+function(){
+
+alert(
+currentUser.email
+);
+
+};
+
+window.copyUID =
+function(){
+
+navigator.clipboard.writeText(
+currentUser.uid
+);
+
+alert(
+"User ID copied!"
+);
+
+};
+
+const welcomeCard =
+document.createElement(
+"div"
+);
+
+welcomeCard.className =
+"card";
+
+welcomeCard.innerHTML =
+
+`
+
+<h3>Welcome Back</h3>
+
+<br>
+
+<div
+id="welcomeMessage">
+
+Loading...
+
+</div>
+
+`;
+
+document
+.getElementById(
+"dashboardPage"
+)
+.appendChild(
+welcomeCard
+);
+
+function updateWelcome(){
+
+if(!currentUser)
+return;
+
+const hour =
+new Date()
+.getHours();
+
+let text =
+"Welcome";
+
+if(hour<12){
+
+text =
+"Good Morning";
+
+}else if(hour<18){
+
+text =
+"Good Afternoon";
+
+}else{
+
+text =
+"Good Evening";
+
+}
+
+document.getElementById(
+"welcomeMessage"
+).innerText =
+
+text +
+", " +
+currentUser.email;
+
+}
+
+setInterval(
+updateWelcome,
+1000
+);
+
+async function refreshEverything(){
+
+if(!currentUser)
+return;
+
+loadEarnings(
+currentUser.uid
+);
+
+loadDevices(
+currentUser.uid
+);
+
+loadInventory(
+currentUser.uid
+);
+
+loadTasks(
+currentUser.uid
+);
+
+loadGoals(
+currentUser.uid
+);
+
+loadLastLogin();
+
+updateGoalProgress();
+
+}
+
+setInterval(
+refreshEverything,
+15000
+);
+
+window.onerror =
+function(msg){
+
+console.log(
+"Dashboard Error:",
+msg
+);
+
+return true;
+
+};
+
+function initializeDashboard(){
+
+if(!currentUser)
+return;
+
+loadProfile();
+
+loadSettings();
+
+loadBusinessName();
+
+loadLastLogin();
+
+loadEarnings(
+currentUser.uid
+);
+
+loadDevices(
+currentUser.uid
+);
+
+loadInventory(
+currentUser.uid
+);
+
+loadTasks(
+currentUser.uid
+);
+
+loadGoals(
+currentUser.uid
+);
+
+loadNotes(
+currentUser.uid
+);
+
+updateGoalProgress();
+
+updateDashboardStats();
+
+updateWelcome();
+
+}
+
+setTimeout(
+initializeDashboard,
+2000
+);
+
+document.addEventListener(
+"keydown",
+function(e){
+
+if(
+e.key==="Escape"
+){
+
+const menu =
+document.getElementById(
+"settingsMenu"
+);
+
+if(menu){
+
+menu.style.display=
+"none";
+
+}
+
+}
+
+}
+);
+
+document.addEventListener(
+"click",
+function(e){
+
+const menu =
+document.getElementById(
+"settingsMenu"
+);
+
+if(
+menu &&
+!menu.contains(
+e.target
+)
+){
+
+if(
+e.target.innerText!=="⋮"
+){
+
+menu.style.display=
+"none";
+
+}
+
+}
+
+}
+);
+
+console.log(
+"TrueFix Dashboard Loaded"
+);
+
+console.log(
+"Firebase Connected"
+);
+
+</script>
+
+</body>
+</html>

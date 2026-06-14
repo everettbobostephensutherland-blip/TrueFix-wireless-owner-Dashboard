@@ -2,31 +2,34 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TrueFix Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TrueFix Owner Dashboard</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
+:root{
+--primary:#0a84ff;
+--bg:#0f1117;
+--card:#171b24;
+--sidebar:#11151d;
+--border:#252c3d;
+--text:#ffffff;
+}
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:Poppins,sans-serif;
 }
 
 body{
-background:#0f1117;
-color:white;
+background:var(--bg);
+color:var(--text);
 overflow:hidden;
-}
-
-:root{
---primary:#0a84ff;
---card:#171b24;
---sidebar:#11151d;
---border:#222836;
 }
 
 .login-screen{
@@ -35,42 +38,36 @@ inset:0;
 display:flex;
 justify-content:center;
 align-items:center;
-background:#0f1117;
-z-index:9999;
+background:var(--bg);
+z-index:999;
 }
 
 .login-card{
-width:430px;
+width:450px;
 max-width:95%;
 background:var(--card);
 border:1px solid var(--border);
-border-radius:25px;
+border-radius:24px;
 padding:35px;
-box-shadow:0 0 30px rgba(0,0,0,.4);
 }
 
-.logo-area{
-display:flex;
-align-items:center;
-justify-content:center;
-margin-bottom:20px;
-}
-
-.logo-circle{
-width:90px;
-height:90px;
+.logo{
+width:110px;
+height:110px;
 border-radius:50%;
-background:linear-gradient(135deg,#0a84ff,#45b3ff);
+background:var(--primary);
+margin:auto;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:36px;
+font-size:40px;
 font-weight:700;
+margin-bottom:20px;
 }
 
 .login-title{
 text-align:center;
-font-size:28px;
+font-size:32px;
 font-weight:700;
 margin-bottom:10px;
 }
@@ -84,9 +81,9 @@ margin-bottom:25px;
 .input{
 width:100%;
 padding:14px;
-background:#0d1117;
+border-radius:14px;
 border:1px solid var(--border);
-border-radius:12px;
+background:#0d1117;
 color:white;
 margin-bottom:12px;
 outline:none;
@@ -96,16 +93,16 @@ outline:none;
 width:100%;
 padding:14px;
 border:none;
-border-radius:12px;
+border-radius:14px;
 background:var(--primary);
 color:white;
 font-weight:600;
 cursor:pointer;
-margin-bottom:10px;
+margin-top:5px;
 }
 
-.btn-secondary{
-background:#232937;
+.btn2{
+background:#222938;
 }
 
 .sidebar{
@@ -121,13 +118,10 @@ display:none;
 
 .sidebar-header{
 padding:25px;
-border-bottom:1px solid var(--border);
-}
-
-.sidebar-title{
-font-size:24px;
+font-size:26px;
 font-weight:700;
 color:var(--primary);
+border-bottom:1px solid var(--border);
 }
 
 .menu{
@@ -136,14 +130,14 @@ padding:15px;
 
 .menu-item{
 padding:14px;
+margin-bottom:8px;
 border-radius:12px;
 cursor:pointer;
-margin-bottom:6px;
 transition:.2s;
 }
 
 .menu-item:hover{
-background:#1b2230;
+background:#1c2231;
 }
 
 .topbar{
@@ -171,17 +165,27 @@ padding:25px;
 display:none;
 }
 
+.page{
+display:none;
+}
+
+.page-title{
+font-size:34px;
+font-weight:700;
+margin-bottom:20px;
+}
+
 .cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 }
 
 .card{
 background:var(--card);
 border:1px solid var(--border);
-padding:25px;
 border-radius:20px;
+padding:25px;
 }
 
 .card-title{
@@ -190,43 +194,10 @@ font-size:14px;
 }
 
 .card-value{
-font-size:40px;
+font-size:38px;
 font-weight:700;
 margin-top:8px;
 color:var(--primary);
-}
-
-.settings-menu{
-position:absolute;
-top:70px;
-right:20px;
-width:220px;
-background:var(--card);
-border:1px solid var(--border);
-border-radius:15px;
-display:none;
-overflow:hidden;
-}
-
-.settings-item{
-padding:15px;
-cursor:pointer;
-border-bottom:1px solid var(--border);
-}
-
-.settings-item:hover{
-background:#1d2431;
-}
-
-.page{
-display:none;
-margin-top:25px;
-}
-
-.page-title{
-font-size:32px;
-font-weight:700;
-margin-bottom:20px;
 }
 
 </style>
@@ -237,8 +208,8 @@ margin-bottom:20px;
 
 <div class="login-card">
 
-<div class="logo-area">
-<div class="logo-circle">TF</div>
+<div class="logo">
+TF
 </div>
 
 <div class="login-title">
@@ -246,7 +217,7 @@ TrueFix Dashboard
 </div>
 
 <div class="login-sub">
-Business Management System
+Owner Control Center
 </div>
 
 <input
@@ -268,7 +239,7 @@ Login
 </button>
 
 <button
-class="btn btn-secondary"
+class="btn btn2"
 onclick="registerUser()">
 Create Account
 </button>
@@ -280,9 +251,7 @@ Create Account
 <div class="sidebar" id="sidebar">
 
 <div class="sidebar-header">
-<div class="sidebar-title">
 TrueFix
-</div>
 </div>
 
 <div class="menu">
@@ -295,8 +264,8 @@ TrueFix
 💰 Earnings
 </div>
 
-<div class="menu-item" onclick="showPage('devicesPage')">
-📱 Devices Fixed
+<div class="menu-item" onclick="showPage('goalsPage')">
+🎯 Goals
 </div>
 
 <div class="menu-item" onclick="showPage('inventoryPage')">
@@ -309,10 +278,6 @@ TrueFix
 
 <div class="menu-item" onclick="showPage('notesPage')">
 📝 Notes
-</div>
-
-<div class="menu-item" onclick="showPage('goalsPage')">
-🎯 Goals
 </div>
 
 <div class="menu-item" onclick="showPage('statsPage')">
@@ -329,36 +294,19 @@ TrueFix
 
 <div class="topbar" id="topbar">
 
-<h2>Owner Dashboard</h2>
+<h2 id="businessNameDisplay">
+TrueFix Dashboard
+</h2>
 
-<div
-style="font-size:28px;cursor:pointer;"
-onclick="toggleSettings()">
-⋮
-</div>
-
-<div
-class="settings-menu"
-id="settingsMenu">
-
-<div class="settings-item">
-Edit Business Name
-</div>
-
-<div class="settings-item">
-Change Theme
-</div>
-
-<div class="settings-item"
-onclick="logoutUser()">
-Logout
-</div>
-
+<div style="font-size:28px;cursor:pointer;" onclick="logoutUser()">
+🚪
 </div>
 
 </div>
 
 <div class="dashboard" id="dashboard">
+
+<!-- DASHBOARD PAGE -->
 
 <div id="dashboardPage" class="page" style="display:block;">
 
@@ -369,28 +317,62 @@ Dashboard
 <div class="cards">
 
 <div class="card">
-<div class="card-title">Total Earnings</div>
-<div class="card-value" id="totalEarnings">$0</div>
+
+<div class="card-title">
+Total Earnings
+</div>
+
+<div class="card-value" id="totalEarnings">
+$0
+</div>
+
 </div>
 
 <div class="card">
-<div class="card-title">Devices Fixed</div>
-<div class="card-value" id="devicesFixed">0</div>
+
+<div class="card-title">
+Devices Fixed
+</div>
+
+<div class="card-value" id="devicesFixed">
+0
+</div>
+
 </div>
 
 <div class="card">
-<div class="card-title">Inventory Items</div>
-<div class="card-value" id="inventoryCount">0</div>
+
+<div class="card-title">
+Inventory Items
+</div>
+
+<div class="card-value" id="inventoryCount">
+0
+</div>
+
 </div>
 
 <div class="card">
-<div class="card-title">Tasks</div>
-<div class="card-value" id="taskCount">0</div>
+
+<div class="card-title">
+Active Goals
+</div>
+
+<div class="card-value" id="goalCount">
+0
 </div>
 
 </div>
 
 </div>
+
+<br><br>
+
+<div id="dashboardGoals"></div>
+
+</div>
+
+<!-- EARNINGS PAGE -->
 
 <div id="earningsPage" class="page">
 
@@ -400,25 +382,23 @@ Earnings
 
 <div class="card">
 
-<h3>Add Earnings</h3>
-
-<br>
-
 <input
 class="input"
 id="earningAmount"
 type="number"
-placeholder="Amount">
+placeholder="Amount Earned">
 
 <input
 class="input"
-id="earningNote"
+id="earningDescription"
 placeholder="Description">
 
 <button
 class="btn"
 onclick="addEarning()">
-Add Earning
+
+Add Earnings
+
 </button>
 
 </div>
@@ -429,118 +409,7 @@ Add Earning
 
 </div>
 
-<div id="devicesPage" class="page">
-
-<h1 class="page-title">
-Devices Fixed
-</h1>
-
-<div class="card">
-
-<input
-class="input"
-id="deviceName"
-placeholder="Device">
-
-<input
-class="input"
-id="repairType"
-placeholder="Repair Type">
-
-<button
-class="btn"
-onclick="addDevice()">
-Add Device
-</button>
-
-</div>
-
-<br>
-
-<div id="devicesList"></div>
-
-</div>
-
-<div id="inventoryPage" class="page">
-
-<h1 class="page-title">
-Inventory
-</h1>
-
-<div class="card">
-
-<input
-class="input"
-id="inventoryName"
-placeholder="Item Name">
-
-<input
-class="input"
-id="inventoryQuantity"
-placeholder="Quantity">
-
-<button
-class="btn"
-onclick="addInventory()">
-Add Item
-</button>
-
-</div>
-
-<br>
-
-<div id="inventoryList"></div>
-
-</div>
-
-<div id="tasksPage" class="page">
-
-<h1 class="page-title">
-Tasks
-</h1>
-
-<div class="card">
-
-<input
-class="input"
-id="taskText"
-placeholder="Task">
-
-<button
-class="btn"
-onclick="addTask()">
-Add Task
-</button>
-
-</div>
-
-<br>
-
-<div id="tasksList"></div>
-
-</div>
-
-<div id="notesPage" class="page">
-
-<h1 class="page-title">
-Notes
-</h1>
-
-<textarea
-id="notesBox"
-style="
-width:100%;
-height:400px;
-background:#171b24;
-border:1px solid #222836;
-border-radius:15px;
-padding:20px;
-color:white;
-resize:none;
-">
-</textarea>
-
-</div>
+<!-- GOALS PAGE -->
 
 <div id="goalsPage" class="page">
 
@@ -552,13 +421,21 @@ Goals
 
 <input
 class="input"
-id="goalText"
-placeholder="Goal">
+id="goalName"
+placeholder="Goal Name">
+
+<input
+class="input"
+id="goalAmount"
+type="number"
+placeholder="Target Amount">
 
 <button
 class="btn"
 onclick="addGoal()">
-Add Goal
+
+Create Goal
+
 </button>
 
 </div>
@@ -569,7 +446,99 @@ Add Goal
 
 </div>
 
-<div id="statsPage" class="page">
+<!-- INVENTORY PAGE -->
+
+<div id="inventoryPage" class="page">
+
+<h1 class="page-title">
+Inventory
+</h1>
+
+<div class="card">
+
+<input
+class="input"
+id="inventoryItem"
+placeholder="Item Name">
+
+<input
+class="input"
+id="inventoryQty"
+type="number"
+placeholder="Quantity">
+
+<button
+class="btn"
+onclick="addInventory()">
+
+Add Item
+
+</button>
+
+</div>
+
+<br>
+
+<div id="inventoryList"></div>
+
+</div>
+
+<!-- TASKS PAGE -->
+
+<div id="tasksPage" class="page">
+
+<h1 class="page-title">
+Tasks
+</h1>
+
+<div class="card">
+
+<input
+class="input"
+id="taskInput"
+placeholder="Task">
+
+<button
+class="btn"
+onclick="addTask()">
+
+Add Task
+
+</button>
+
+</div>
+
+<br>
+
+<div id="tasksList"></div>
+
+</div>
+
+<!-- NOTES PAGE -->
+
+<div id="notesPage" class="page">
+
+<h1 class="page-title">
+Notes
+</h1>
+
+<textarea
+id="notesBox"
+style="
+width:100%;
+height:450px;
+background:var(--card);
+border:1px solid var(--border);
+border-radius:20px;
+padding:20px;
+color:white;
+resize:none;
+">
+</textarea>
+
+</div>
+
+<!-- STATS PAGE -->
 
 <div id="statsPage" class="page">
 
@@ -577,54 +546,30 @@ Add Goal
 Statistics
 </h1>
 
-<div class="cards">
-
-<div class="card">
-<div class="card-title">
-Lifetime Earnings
-</div>
-
-<div
-class="card-value"
-id="statsEarnings">
-$0
-</div>
-
-</div>
-
 <div class="card">
 
-<div class="card-title">
-Lifetime Repairs
-</div>
-
-<div
-class="card-value"
-id="statsRepairs">
-0
-</div>
-
-</div>
-
-</div>
+<h2>
+Revenue Overview
+</h2>
 
 <br>
 
-<div class="card">
-
-<h2>Revenue Overview</h2>
-
-<br>
-
-<div id="revenueVisual">
-
-Loading...
-
-</div>
+<div
+id="revenueChart"
+style="
+display:flex;
+align-items:flex-end;
+gap:6px;
+height:260px;
+">
 
 </div>
 
 </div>
+
+</div>
+
+<!-- SETTINGS PAGE -->
 
 <div id="settingsPage" class="page">
 
@@ -634,74 +579,52 @@ Settings
 
 <div class="card">
 
-<h3>Total Lifetime Earnings</h3>
+<h3>
+Business Name
+</h3>
+
+<br>
 
 <input
 class="input"
-id="settingTotalEarnings"
-type="number">
-
-<h3>Devices Fixed</h3>
-
-<input
-class="input"
-id="settingDevicesFixed"
-type="number">
-
-<h3>Repairs This Year</h3>
-
-<input
-class="input"
-id="settingRepairsYear"
-type="number">
-
-<h3>Earnings This Year</h3>
-
-<input
-class="input"
-id="settingEarningsYear"
-type="number">
-
-<h3>Earnings This Month</h3>
-
-<input
-class="input"
-id="settingEarningsMonth"
-type="number">
+id="businessNameInput"
+placeholder="Business Name">
 
 <button
 class="btn"
-onclick="saveSettings()">
+onclick="saveBusinessName()">
 
-Save Settings
+Save Business Name
 
 </button>
 
-</div>
+<br><br>
 
-</div>
+<h3>
+Theme Color
+</h3>
 
-<div
-class="card-value"
-id="statsEarnings">
-$0
-</div>
+<br>
 
-</div>
+<input
+type="color"
+id="themeColor"
+style="
+width:100%;
+height:70px;
+border:none;
+background:none;
+">
 
-<div class="card">
+<br><br>
 
-<div class="card-title">
-Lifetime Repairs
-</div>
+<button
+class="btn"
+onclick="saveThemeColor()">
 
-<div
-class="card-value"
-id="statsRepairs">
-0
-</div>
+Save Theme Color
 
-</div>
+</button>
 
 </div>
 
@@ -741,7 +664,8 @@ from
 
 const firebaseConfig = {
 
-apiKey: "AIzaSyDnlNyHtqiR6n1RtLErbpBs55snGK_Z3Yk",
+apiKey:
+"AIzaSyDnlNyHtqiR6n1RtLErbpBs55snGK_Z3Yk",
 
 authDomain:
 "truefix-dashboard.firebaseapp.com",
@@ -767,7 +691,9 @@ measurementId:
 };
 
 const app =
-initializeApp(firebaseConfig);
+initializeApp(
+firebaseConfig
+);
 
 const auth =
 getAuth(app);
@@ -775,41 +701,25 @@ getAuth(app);
 const db =
 getDatabase(app);
 
-window.currentUser = null;
+window.currentUser =
+null;
 
-window.showPage = function(page){
+window.showPage =
+function(page){
 
 document
 .querySelectorAll(".page")
-.forEach(p=>{
+.forEach(pageDiv=>{
 
-p.style.display="none";
+pageDiv.style.display=
+"none";
 
 });
 
 document
 .getElementById(page)
-.style.display="block";
-
-};
-
-window.toggleSettings =
-function(){
-
-const menu =
-document.getElementById(
-"settingsMenu"
-);
-
-if(menu.style.display==="block"){
-
-menu.style.display="none";
-
-}else{
-
-menu.style.display="block";
-
-}
+.style.display=
+"block";
 
 };
 
@@ -826,6 +736,16 @@ document.getElementById(
 "password"
 ).value;
 
+if(!email || !password){
+
+alert(
+"Enter email and password"
+);
+
+return;
+
+}
+
 try{
 
 await createUserWithEmailAndPassword(
@@ -840,7 +760,9 @@ alert(
 
 }catch(error){
 
-alert(error.message);
+alert(
+error.message
+);
 
 }
 
@@ -869,7 +791,9 @@ password
 
 }catch(error){
 
-alert(error.message);
+alert(
+error.message
+);
 
 }
 
@@ -883,38 +807,45 @@ signOut(auth);
 };
 
 onAuthStateChanged(
+
 auth,
+
 (user)=>{
 
 if(user){
 
-window.currentUser=user;
+window.currentUser =
+user;
 
 document
 .getElementById(
 "loginScreen"
 )
-.style.display="none";
+.style.display=
+"none";
 
 document
 .getElementById(
 "sidebar"
 )
-.style.display="block";
+.style.display=
+"block";
 
 document
 .getElementById(
 "topbar"
 )
-.style.display="flex";
+.style.display=
+"flex";
 
 document
 .getElementById(
 "dashboard"
 )
-.style.display="block";
+.style.display=
+"block";
 
-loadData();
+loadEverything();
 
 }else{
 
@@ -922,54 +853,104 @@ document
 .getElementById(
 "loginScreen"
 )
-.style.display="flex";
+.style.display=
+"flex";
+
+document
+.getElementById(
+"sidebar"
+)
+.style.display=
+"none";
+
+document
+.getElementById(
+"topbar"
+)
+.style.display=
+"none";
+
+document
+.getElementById(
+"dashboard"
+)
+.style.display=
+"none";
 
 }
 
 }
+
 );
 
-async function loadData(){
+async function loadEverything(){
 
-if(!currentUser) return;
+if(!currentUser)
+return;
 
-const uid =
-currentUser.uid;
+loadBusinessName();
 
-loadEarnings(uid);
-loadDevices(uid);
-loadInventory(uid);
-loadTasks(uid);
-loadGoals(uid);
-loadNotes(uid);
+loadThemeColor();
+
+loadEarnings();
+
+loadGoals();
+
+loadInventory();
+
+loadTasks();
+
+loadNotes();
 
 }
+
+/* =========================
+   EARNINGS SYSTEM
+========================= */
 
 window.addEarning =
 async function(){
 
 const amount =
+Number(
 document.getElementById(
 "earningAmount"
-).value;
+).value
+);
 
-const note =
+const description =
 document.getElementById(
-"earningNote"
+"earningDescription"
 ).value;
 
-if(!amount) return;
+if(!amount){
+
+alert(
+"Enter an amount"
+);
+
+return;
+
+}
+
+const now =
+new Date();
+
+const month =
+now.getMonth();
 
 await push(
 
 ref(
 db,
-"users/"+currentUser.uid+"/earnings"
+"users/"+currentUser.uid+
+"/earnings"
 ),
 
 {
-amount:Number(amount),
-note:note,
+amount:amount,
+description:description,
+month:month,
 date:Date.now()
 }
 
@@ -980,23 +961,24 @@ document.getElementById(
 ).value="";
 
 document.getElementById(
-"earningNote"
+"earningDescription"
 ).value="";
 
-loadEarnings(
-currentUser.uid
-);
+loadEarnings();
 
 };
 
-async function loadEarnings(uid){
+async function loadEarnings(){
 
 const snapshot =
 await get(
+
 ref(
 db,
-"users/"+uid+"/earnings"
+"users/"+currentUser.uid+
+"/earnings"
 )
+
 );
 
 const list =
@@ -1007,6 +989,11 @@ document.getElementById(
 list.innerHTML="";
 
 let total = 0;
+
+let monthlyTotals = [
+0,0,0,0,0,0,
+0,0,0,0,0,0
+];
 
 if(snapshot.exists()){
 
@@ -1019,20 +1006,39 @@ Object.entries(data)
 total +=
 Number(item.amount);
 
-list.innerHTML += `
+monthlyTotals[
+item.month || 0
+] +=
+Number(item.amount);
+
+list.innerHTML +=
+
+`
 
 <div class="card">
 
-<h3>$${item.amount}</h3>
+<h3>
 
-<p>${item.note||""}</p>
+$${Number(
+item.amount
+).toLocaleString()}
+
+</h3>
+
+<p>
+
+${item.description || ""}
+
+</p>
 
 <br>
 
 <button
 class="btn"
 onclick="deleteEarning('${id}')">
+
 Delete
+
 </button>
 
 </div>
@@ -1047,13 +1053,17 @@ Delete
 
 document.getElementById(
 "totalEarnings"
-).innerText=
-"$"+total;
+).innerText =
+"$"+
+total.toLocaleString();
 
-document.getElementById(
-"statsEarnings"
-).innerText=
-"$"+total;
+drawRevenueChart(
+monthlyTotals
+);
+
+updateGoalProgress(
+total
+);
 
 }
 
@@ -1070,419 +1080,124 @@ db,
 
 );
 
-loadEarnings(
-currentUser.uid
-);
+loadEarnings();
 
 };
 
-window.addDevice =
-async function(){
+/* =========================
+   REVENUE CHART
+========================= */
 
-const name =
+function drawRevenueChart(
+monthlyTotals
+){
+
+const chart =
 document.getElementById(
-"deviceName"
-).value;
+"revenueChart"
+);
 
-const repair =
-document.getElementById(
-"repairType"
-).value;
+if(!chart)
+return;
 
-if(!name) return;
+chart.innerHTML="";
 
-await push(
+const monthNames = [
 
-ref(
-db,
-"users/"+currentUser.uid+
-"/devices"
-),
+"J","F","M","A",
+"M","J","J","A",
+"S","O","N","D"
 
-{
-name,
-repair
+];
+
+let max = 1;
+
+monthlyTotals.forEach(v=>{
+
+if(v > max){
+
+max = v;
+
 }
-
-);
-
-document.getElementById(
-"deviceName"
-).value="";
-
-document.getElementById(
-"repairType"
-).value="";
-
-loadDevices(
-currentUser.uid
-);
-
-};
-
-async function loadDevices(uid){
-
-const snapshot =
-await get(
-ref(
-db,
-"users/"+uid+
-"/devices"
-)
-);
-
-const list =
-document.getElementById(
-"devicesList"
-);
-
-list.innerHTML="";
-
-let count=0;
-
-if(snapshot.exists()){
-
-const data =
-snapshot.val();
-
-Object.entries(data)
-.forEach(([id,item])=>{
-
-count++;
-
-list.innerHTML += `
-
-<div class="card">
-
-<h3>${item.name}</h3>
-
-<p>${item.repair}</p>
-
-<br>
-
-<button
-class="btn"
-onclick="deleteDevice('${id}')">
-Delete
-</button>
-
-</div>
-
-<br>
-
-`;
 
 });
 
-}
+for(let i=0;i<12;i++){
 
-document.getElementById(
-"devicesFixed"
-).innerText=
-count;
+const height =
 
-document.getElementById(
-"statsRepairs"
-).innerText=
-count;
-
-}
-
-window.deleteDevice =
-async function(id){
-
-await remove(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/devices/"+id
-)
-
+Math.max(
+20,
+(monthlyTotals[i]/max)
+*220
 );
 
-loadDevices(
-currentUser.uid
-);
+chart.innerHTML +=
 
-};
+`
 
-window.addInventory =
-async function(){
+<div
+style="
+display:flex;
+flex-direction:column;
+align-items:center;
+">
 
-const item =
-document.getElementById(
-"inventoryName"
-).value;
+<div
+style="
+width:35px;
+height:${height}px;
+background:var(--primary);
+border-radius:8px 8px 0 0;
+">
+</div>
 
-const qty =
-document.getElementById(
-"inventoryQuantity"
-).value;
+<div
+style="
+margin-top:8px;
+font-size:12px;
+">
 
-if(!item) return;
-
-await push(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/inventory"
-),
-
-{
-item,
-qty
-}
-
-);
-
-document.getElementById(
-"inventoryName"
-).value="";
-
-document.getElementById(
-"inventoryQuantity"
-).value="";
-
-loadInventory(
-currentUser.uid
-);
-
-};
-
-async function loadInventory(uid){
-
-const snapshot =
-await get(
-ref(
-db,
-"users/"+uid+
-"/inventory"
-)
-);
-
-const list =
-document.getElementById(
-"inventoryList"
-);
-
-list.innerHTML="";
-
-let count=0;
-
-if(snapshot.exists()){
-
-const data =
-snapshot.val();
-
-Object.entries(data)
-.forEach(([id,item])=>{
-
-count++;
-
-list.innerHTML += `
-
-<div class="card">
-
-<h3>${item.item}</h3>
-
-<p>Quantity: ${item.qty}</p>
-
-<br>
-
-<button
-class="btn"
-onclick="deleteInventory('${id}')">
-Delete
-</button>
+${monthNames[i]}
 
 </div>
 
-<br>
-
-`;
-
-});
-
-}
-
-document.getElementById(
-"inventoryCount"
-).innerText=
-count;
-
-}
-
-window.deleteInventory =
-async function(id){
-
-await remove(
-ref(
-db,
-"users/"+currentUser.uid+
-"/inventory/"+id
-)
-);
-
-loadInventory(
-currentUser.uid
-);
-
-};
-
-window.addTask =
-async function(){
-
-const task =
-document.getElementById(
-"taskText"
-).value;
-
-if(!task) return;
-
-await push(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/tasks"
-),
-
-{
-text:task,
-completed:false
-}
-
-);
-
-document.getElementById(
-"taskText"
-).value="";
-
-loadTasks(
-currentUser.uid
-);
-
-};
-
-async function loadTasks(uid){
-
-const snapshot =
-await get(
-ref(
-db,
-"users/"+uid+
-"/tasks"
-)
-);
-
-const list =
-document.getElementById(
-"tasksList"
-);
-
-list.innerHTML="";
-
-let count=0;
-
-if(snapshot.exists()){
-
-const data =
-snapshot.val();
-
-Object.entries(data)
-.forEach(([id,item])=>{
-
-count++;
-
-list.innerHTML += `
-
-<div class="card">
-
-<label>
-
-<input
-type="checkbox"
-${item.completed ? "checked" : ""}
-onclick="toggleTask('${id}',this.checked)">
-
-${item.text}
-
-</label>
-
-<br><br>
-
-<button
-class="btn"
-onclick="deleteTask('${id}')">
-Delete
-</button>
-
 </div>
 
-<br>
-
 `;
 
-});
+}
 
 }
 
-document.getElementById(
-"taskCount"
-).innerText=
-count;
-
-}
-
-window.toggleTask =
-async function(id,state){
-
-await update(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/tasks/"+id
-),
-
-{
-completed:state
-}
-
-);
-
-};
-
-window.deleteTask =
-async function(id){
-
-await remove(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/tasks/"+id
-)
-
-);
-
-loadTasks(
-currentUser.uid
-);
-
-};
+/* =========================
+   GOALS SYSTEM
+========================= */
 
 window.addGoal =
 async function(){
 
-const goal =
+const name =
 document.getElementById(
-"goalText"
+"goalName"
 ).value;
 
-if(!goal) return;
+const amount =
+Number(
+document.getElementById(
+"goalAmount"
+).value
+);
+
+if(!name || !amount){
+
+alert(
+"Enter a goal name and amount"
+);
+
+return;
+
+}
 
 await push(
 
@@ -1493,30 +1208,35 @@ db,
 ),
 
 {
-goal:goal
+name:name,
+target:amount
 }
 
 );
 
 document.getElementById(
-"goalText"
+"goalName"
 ).value="";
 
-loadGoals(
-currentUser.uid
-);
+document.getElementById(
+"goalAmount"
+).value="";
+
+loadGoals();
 
 };
 
-async function loadGoals(uid){
+async function loadGoals(){
 
 const snapshot =
 await get(
+
 ref(
 db,
-"users/"+uid+
+"users/"+currentUser.uid+
 "/goals"
 )
+
 );
 
 const list =
@@ -1524,7 +1244,15 @@ document.getElementById(
 "goalsList"
 );
 
+const dashboardGoals =
+document.getElementById(
+"dashboardGoals"
+);
+
 list.innerHTML="";
+dashboardGoals.innerHTML="";
+
+let goalCount = 0;
 
 if(snapshot.exists()){
 
@@ -1532,21 +1260,124 @@ const data =
 snapshot.val();
 
 Object.entries(data)
-.forEach(([id,item])=>{
+.forEach(([id,goal])=>{
 
-list.innerHTML += `
+goalCount++;
+
+list.innerHTML +=
+
+`
 
 <div class="card">
 
-<h3>${item.goal}</h3>
+<h2>
+${goal.name}
+</h2>
+
+<p>
+
+Target:
+$${Number(
+goal.target
+).toLocaleString()}
+
+</p>
+
+<br>
+
+<div
+id="goalBar_${id}"
+style="
+height:24px;
+background:#111;
+border-radius:20px;
+overflow:hidden;
+">
+
+<div
+id="goalFill_${id}"
+style="
+height:100%;
+width:0%;
+background:var(--primary);
+transition:.4s;
+">
+
+</div>
+
+</div>
+
+<br>
+
+<div
+id="goalText_${id}">
+0%
+</div>
 
 <br>
 
 <button
 class="btn"
 onclick="deleteGoal('${id}')">
-Delete
+
+Delete Goal
+
 </button>
+
+</div>
+
+<br>
+
+`;
+
+dashboardGoals.innerHTML +=
+
+`
+
+<div class="card">
+
+<h3>
+${goal.name}
+</h3>
+
+<p>
+
+Target:
+$${Number(
+goal.target
+).toLocaleString()}
+
+</p>
+
+<br>
+
+<div
+style="
+height:20px;
+background:#111;
+border-radius:20px;
+overflow:hidden;
+">
+
+<div
+id="dashboardGoal_${id}"
+style="
+height:100%;
+width:0%;
+background:var(--primary);
+transition:.4s;
+">
+
+</div>
+
+</div>
+
+<br>
+
+<div
+id="dashboardGoalText_${id}">
+0%
+</div>
 
 </div>
 
@@ -1557,6 +1388,13 @@ Delete
 });
 
 }
+
+document.getElementById(
+"goalCount"
+).innerText =
+goalCount;
+
+updateGoalProgress();
 
 }
 
@@ -1573,745 +1411,47 @@ db,
 
 );
 
-loadGoals(
-currentUser.uid
-);
+loadGoals();
 
 };
 
-async function loadNotes(uid){
-
-const snapshot =
-await get(
-ref(
-db,
-"users/"+uid+
-"/notes")
-);
-
-if(snapshot.exists()){
-
-document.getElementById(
-"notesBox"
-).value =
-snapshot.val();
-
-}
-
-}
-
-document.addEventListener(
-"input",
-async function(e){
-
-if(
-e.target &&
-e.target.id==="notesBox" &&
-currentUser
+async function updateGoalProgress(
+currentTotal
 ){
 
-await set(
+if(currentTotal===undefined){
 
-ref(
-db,
-"users/"+currentUser.uid+
-"/notes"
-),
-
-e.target.value
-
-);
-
-}
-
-});
-
-window.saveSettings =
-async function(){
-
-const settings = {
-
-totalEarnings:Number(
-document.getElementById(
-"settingTotalEarnings"
-).value || 0
-),
-
-devicesFixed:Number(
-document.getElementById(
-"settingDevicesFixed"
-).value || 0
-),
-
-repairsYear:Number(
-document.getElementById(
-"settingRepairsYear"
-).value || 0
-),
-
-earningsYear:Number(
-document.getElementById(
-"settingEarningsYear"
-).value || 0
-),
-
-earningsMonth:Number(
-document.getElementById(
-"settingEarningsMonth"
-).value || 0
-)
-
-};
-
-await set(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/settings"
-),
-
-settings
-
-);
-
-alert(
-"Settings Saved"
-);
-
-loadSettings();
-
-};
-
-async function loadSettings(){
-
-const snapshot =
+const earnings =
 await get(
 
 ref(
 db,
 "users/"+currentUser.uid+
-"/settings"
+"/earnings"
 )
 
 );
 
-if(!snapshot.exists())
-return;
+currentTotal = 0;
 
-const data =
-snapshot.val();
+if(earnings.exists()){
 
-document.getElementById(
-"settingTotalEarnings"
-).value =
-data.totalEarnings || 0;
+Object.values(
+earnings.val()
+).forEach(item=>{
 
-document.getElementById(
-"settingDevicesFixed"
-).value =
-data.devicesFixed || 0;
-
-document.getElementById(
-"settingRepairsYear"
-).value =
-data.repairsYear || 0;
-
-document.getElementById(
-"settingEarningsYear"
-).value =
-data.earningsYear || 0;
-
-document.getElementById(
-"settingEarningsMonth"
-).value =
-data.earningsMonth || 0;
-
-document.getElementById(
-"totalEarnings"
-).innerText =
-"$"+
-(data.totalEarnings||0);
-
-document.getElementById(
-"statsEarnings"
-).innerText =
-"$"+
-(data.totalEarnings||0);
-
-drawRevenueChart(
-data.earningsYear||0
+currentTotal +=
+Number(
+item.amount || 0
 );
-
-}
-
-function updateDashboardStats(){
-
-if(!currentUser) return;
-
-const earningsText =
-document.getElementById(
-"totalEarnings"
-).innerText;
-
-const repairsText =
-document.getElementById(
-"devicesFixed"
-).innerText;
-
-const inventoryText =
-document.getElementById(
-"inventoryCount"
-).innerText;
-
-const tasksText =
-document.getElementById(
-"taskCount"
-).innerText;
-
-document.getElementById(
-"statsEarnings"
-).innerText =
-earningsText;
-
-document.getElementById(
-"statsRepairs"
-).innerText =
-repairsText;
-
-}
-
-setInterval(
-updateDashboardStats,
-1000
-);
-
-const profileCard =
-document.createElement(
-"div"
-);
-
-profileCard.className =
-"card";
-
-profileCard.innerHTML =
-
-`
-<h3>Account Information</h3>
-
-<br>
-
-<p id="profileEmail">
-Loading...
-</p>
-
-<br>
-
-<p id="profileUID">
-Loading...
-</p>
-`;
-
-document
-.getElementById(
-"dashboardPage"
-)
-.appendChild(
-profileCard
-);
-
-function loadProfile(){
-
-if(!currentUser) return;
-
-document.getElementById(
-"profileEmail"
-).innerText =
-"Email: " +
-currentUser.email;
-
-document.getElementById(
-"profileUID"
-).innerText =
-"User ID: " +
-currentUser.uid;
-
-}
-
-setInterval(
-loadProfile,
-1000
-);
-
-const searchBar =
-document.createElement(
-"input"
-);
-
-searchBar.className =
-"input";
-
-searchBar.placeholder =
-"Search Devices...";
-
-searchBar.id =
-"deviceSearch";
-
-document
-.getElementById(
-"devicesPage"
-)
-.insertBefore(
-searchBar,
-document.getElementById(
-"devicesList"
-)
-);
-
-document.addEventListener(
-"input",
-function(e){
-
-if(
-e.target.id ===
-"deviceSearch"
-){
-
-filterDevices(
-e.target.value
-);
-
-}
-
-}
-);
-
-async function filterDevices(
-query
-){
-
-const snapshot =
-await get(
-ref(
-db,
-"users/"+currentUser.uid+
-"/devices"
-)
-);
-
-const list =
-document.getElementById(
-"devicesList"
-);
-
-list.innerHTML="";
-
-if(!snapshot.exists())
-return;
-
-const data =
-snapshot.val();
-
-Object.entries(data)
-.forEach(([id,item])=>{
-
-if(
-item.name
-.toLowerCase()
-.includes(
-query.toLowerCase()
-)
-){
-
-list.innerHTML +=
-
-`
-
-<div class="card">
-
-<h3>${item.name}</h3>
-
-<p>${item.repair}</p>
-
-<br>
-
-<button
-class="btn"
-onclick="deleteDevice('${id}')">
-Delete
-</button>
-
-</div>
-
-<br>
-
-`;
-
-}
 
 });
 
 }
 
-const settingsContent =
-document.createElement(
-"div"
-);
-
-settingsContent.innerHTML =
-
-`
-
-<div
-class="settings-item"
-onclick="switchTheme()">
-
-Toggle Dark Theme
-
-</div>
-
-`;
-
-document
-.getElementById(
-"settingsMenu"
-)
-.appendChild(
-settingsContent
-);
-
-window.switchTheme =
-function(){
-
-const current =
-document.body.style.filter;
-
-if(
-current ===
-"invert(1)"
-){
-
-document.body.style.filter =
-"invert(0)";
-
-}else{
-
-document.body.style.filter =
-"invert(1)";
-
 }
 
-};
-
-async function saveLastLogin(){
-
-if(!currentUser) return;
-
-await set(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/lastLogin"
-),
-
-Date.now()
-
-);
-
-}
-
-setInterval(
-saveLastLogin,
-10000
-);
-
-const loginCard =
-document.createElement(
-"div"
-);
-
-loginCard.className =
-"card";
-
-loginCard.innerHTML =
-
-`
-
-<div class="card-title">
-Last Login Saved
-</div>
-
-<div
-class="card-value"
-id="lastLoginDisplay">
-
---
-
-</div>
-
-`;
-
-document
-.getElementById(
-"dashboardPage"
-)
-.appendChild(
-loginCard
-);
-
-async function loadLastLogin(){
-
-if(!currentUser) return;
-
-const snapshot =
-await get(
-ref(
-db,
-"users/"+currentUser.uid+
-"/lastLogin"
-)
-);
-
-if(snapshot.exists()){
-
-const date =
-new Date(
-snapshot.val()
-);
-
-document.getElementById(
-"lastLoginDisplay"
-).innerText =
-date.toLocaleDateString();
-
-}
-
-}
-
-setInterval(
-loadLastLogin,
-5000
-);
-
-window.editDevice =
-async function(id){
-
-const newName =
-prompt(
-"New device name:"
-);
-
-if(!newName) return;
-
-await update(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/devices/"+id
-),
-
-{
-name:newName
-}
-
-);
-
-loadDevices(
-currentUser.uid
-);
-
-};
-
-window.editInventory =
-async function(id){
-
-const newQty =
-prompt(
-"New quantity:"
-);
-
-if(newQty===null)
-return;
-
-await update(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/inventory/"+id
-),
-
-{
-qty:newQty
-}
-
-);
-
-loadInventory(
-currentUser.uid
-);
-
-};
-
-const businessCard =
-document.createElement(
-"div"
-);
-
-businessCard.className =
-"card";
-
-businessCard.innerHTML =
-
-`
-
-<h3>Business Name</h3>
-
-<br>
-
-<input
-class="input"
-id="businessNameInput"
-placeholder="TrueFix Wireless">
-
-<button
-class="btn"
-onclick="saveBusinessName()">
-
-Save Name
-
-</button>
-
-`;
-
-document
-.getElementById(
-"dashboardPage"
-)
-.appendChild(
-businessCard
-);
-
-window.saveBusinessName =
-async function(){
-
-const name =
-document.getElementById(
-"businessNameInput"
-).value;
-
-if(!name) return;
-
-await set(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/businessName"
-),
-
-name
-
-);
-
-alert(
-"Business Name Saved"
-);
-
-};
-
-async function loadBusinessName(){
-
-if(!currentUser)
-return;
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/businessName"
-)
-
-);
-
-if(snapshot.exists()){
-
-document.getElementById(
-"businessNameInput"
-).value =
-snapshot.val();
-
-}
-
-}
-
-setInterval(
-loadBusinessName,
-4000
-);
-
-const goalsProgressCard =
-document.createElement(
-"div"
-);
-
-goalsProgressCard.className =
-"card";
-
-goalsProgressCard.innerHTML =
-
-`
-
-<h3>Goal Progress</h3>
-
-<br>
-
-<div
-style="
-background:#111;
-height:25px;
-border-radius:20px;
-overflow:hidden;
-">
-
-<div
-id="goalProgressBar"
-style="
-width:0%;
-height:100%;
-background:#0a84ff;
-transition:.4s;
-">
-
-</div>
-
-</div>
-
-<br>
-
-<div id="goalProgressText">
-
-0%
-
-</div>
-
-`;
-
-document
-.getElementById(
-"goalsPage"
-)
-.appendChild(
-goalsProgressCard
-);
-
-async function updateGoalProgress(){
-
-const snapshot =
+const goals =
 await get(
 
 ref(
@@ -2322,175 +1462,153 @@ db,
 
 );
 
-let count = 0;
+if(!goals.exists())
+return;
 
-if(snapshot.exists()){
+Object.entries(
+goals.val()
+).forEach(([id,goal])=>{
 
-count =
-Object.keys(
-snapshot.val()
-).length;
+const percent =
 
-}
-
-let progress =
 Math.min(
-count*10,
-100
+100,
+(currentTotal /
+goal.target) * 100
 );
 
-const bar =
+const fill =
 document.getElementById(
-"goalProgressBar"
+"goalFill_"+id
 );
 
 const text =
 document.getElementById(
-"goalProgressText"
+"goalText_"+id
 );
 
-if(bar){
+const dashFill =
+document.getElementById(
+"dashboardGoal_"+id
+);
 
-bar.style.width =
-progress+"%";
+const dashText =
+document.getElementById(
+"dashboardGoalText_"+id
+);
+
+if(fill){
+
+fill.style.width =
+percent+"%";
 
 }
 
 if(text){
 
 text.innerText =
-progress+"%";
+
+"$"+
+currentTotal.toLocaleString()
+
++
+
+" / $"
+
++
+
+Number(
+goal.target
+).toLocaleString()
+
++
+
+" ("+
+
+percent.toFixed(1)
+
++"%)";
 
 }
 
+if(dashFill){
+
+dashFill.style.width =
+percent+"%";
+
 }
 
-setInterval(
-updateGoalProgress,
-2000
-);
+if(dashText){
 
-const revenueChart =
-document.createElement(
-"div"
-);
+dashText.innerText =
 
-revenueChart.className =
-"card";
+percent.toFixed(1)
 
-revenueChart.innerHTML =
++"%";
 
-`
+}
 
-<h3>Revenue Overview</h3>
+});
 
-<br>
+}
 
-<div
-id="revenueVisual"
-style="
-display:flex;
-align-items:flex-end;
-gap:8px;
-height:220px;
-">
+/* =========================
+   INVENTORY SYSTEM
+========================= */
 
-Loading Revenue...
+window.addInventory =
+async function(){
 
-</div>
-
-`;
-
-document
-.getElementById(
-"statsPage"
-)
-.appendChild(
-revenueChart
-);
-
-function drawRevenueChart(
-yearRevenue
-){
-
-const container =
+const item =
 document.getElementById(
-"revenueVisual"
+"inventoryItem"
+).value;
+
+const qty =
+Number(
+document.getElementById(
+"inventoryQty"
+).value
 );
 
-if(!container)
+if(!item || !qty){
+
+alert(
+"Enter item and quantity"
+);
+
 return;
 
-container.innerHTML="";
-
-for(let i=0;i<12;i++){
-
-const monthly =
-yearRevenue / 12;
-
-const height =
-Math.max(
-20,
-monthly / 50
-);
-
-container.innerHTML +=
-
-`
-
-<div
-title="Month ${i+1}"
-style="
-width:30px;
-height:${height}px;
-background:#0a84ff;
-border-radius:8px;
-display:inline-block;
-margin-right:6px;
-">
-</div>
-
-`;
-
 }
 
+await push(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/inventory"
+),
+
+{
+item:item,
+qty:qty
 }
 
-const completedTasksCard =
-document.createElement(
-"div"
 );
 
-completedTasksCard.className =
-"card";
+document.getElementById(
+"inventoryItem"
+).value="";
 
-completedTasksCard.innerHTML =
+document.getElementById(
+"inventoryQty"
+).value="";
 
-`
+loadInventory();
 
-<div class="card-title">
-Completed Tasks
-</div>
+};
 
-<div
-class="card-value"
-id="completedTasksCount">
-
-0
-
-</div>
-
-`;
-
-document
-.getElementById(
-"statsPage"
-)
-.appendChild(
-completedTasksCard
-);
-
-async function loadCompletedTasks(){
+async function loadInventory(){
 
 const snapshot =
 await get(
@@ -2498,150 +1616,9 @@ await get(
 ref(
 db,
 "users/"+currentUser.uid+
-"/tasks"
-)
-
-);
-
-let completed=0;
-
-if(snapshot.exists()){
-
-Object.values(
-snapshot.val()
-).forEach(task=>{
-
-if(task.completed){
-
-completed++;
-
-}
-
-});
-
-}
-
-const el =
-document.getElementById(
-"completedTasksCount"
-);
-
-if(el){
-
-el.innerText =
-completed;
-
-}
-
-}
-
-setInterval(
-loadCompletedTasks,
-3000
-);
-
-const goalsPage =
-document.getElementById(
-"goalsPage"
-);
-
-if(goalsPage){
-
-goalsPage.appendChild(
-goalsProgressCard
-);
-
-}
-
-const originalLoadDevices =
-loadDevices;
-
-loadDevices =
-async function(uid){
-
-await originalLoadDevices(uid);
-
-const snapshot =
-await get(
-ref(
-db,
-"users/"+uid+
-"/devices"
-)
-);
-
-const list =
-document.getElementById(
-"devicesList"
-);
-
-list.innerHTML="";
-
-if(snapshot.exists()){
-
-const data =
-snapshot.val();
-
-Object.entries(data)
-.forEach(([id,item])=>{
-
-list.innerHTML +=
-
-`
-
-<div class="card">
-
-<h3>${item.name}</h3>
-
-<p>${item.repair || ""}</p>
-
-<br>
-
-<button
-class="btn"
-onclick="editDevice('${id}')">
-
-Edit
-
-</button>
-
-<br><br>
-
-<button
-class="btn"
-onclick="deleteDevice('${id}')">
-
-Delete
-
-</button>
-
-</div>
-
-<br>
-
-`;
-
-});
-
-}
-
-};
-
-const originalLoadInventory =
-loadInventory;
-
-loadInventory =
-async function(uid){
-
-await originalLoadInventory(uid);
-
-const snapshot =
-await get(
-ref(
-db,
-"users/"+uid+
 "/inventory"
 )
+
 );
 
 const list =
@@ -2651,13 +1628,18 @@ document.getElementById(
 
 list.innerHTML="";
 
+let totalItems = 0;
+
 if(snapshot.exists()){
 
-const data =
-snapshot.val();
+Object.entries(
+snapshot.val()
+).forEach(([id,item])=>{
 
-Object.entries(data)
-.forEach(([id,item])=>{
+totalItems +=
+Number(
+item.qty || 0
+);
 
 list.innerHTML +=
 
@@ -2665,24 +1647,18 @@ list.innerHTML +=
 
 <div class="card">
 
-<h3>${item.item}</h3>
+<h3>
+${item.item}
+</h3>
 
 <p>
+
 Quantity:
 ${item.qty}
+
 </p>
 
 <br>
-
-<button
-class="btn"
-onclick="editInventory('${id}')">
-
-Edit
-
-</button>
-
-<br><br>
 
 <button
 class="btn"
@@ -2702,311 +1678,1497 @@ Delete
 
 }
 
-};
+document.getElementById(
+"inventoryCount"
+).innerText =
+totalItems;
 
-const accountCard =
-document.createElement(
-"div"
+}
+
+window.deleteInventory =
+async function(id){
+
+await remove(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/inventory/"+id
+)
+
 );
 
-accountCard.className =
-"card";
+loadInventory();
 
-accountCard.innerHTML =
+};
+
+/* =========================
+   TASK SYSTEM
+========================= */
+
+window.addTask =
+async function(){
+
+const task =
+document.getElementById(
+"taskInput"
+).value;
+
+if(!task){
+
+alert(
+"Enter a task"
+);
+
+return;
+
+}
+
+await push(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/tasks"
+),
+
+{
+task:task,
+completed:false
+}
+
+);
+
+document.getElementById(
+"taskInput"
+).value="";
+
+loadTasks();
+
+};
+
+async function loadTasks(){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/tasks"
+)
+
+);
+
+const list =
+document.getElementById(
+"tasksList"
+);
+
+list.innerHTML="";
+
+if(snapshot.exists()){
+
+Object.entries(
+snapshot.val()
+).forEach(([id,item])=>{
+
+list.innerHTML +=
 
 `
 
-<h3>Account Settings</h3>
+<div class="card">
+
+<h3>
+
+${item.task}
+
+</h3>
+
+<p>
+
+Status:
+${item.completed ? "✅ Completed" : "⏳ Active"}
+
+</p>
 
 <br>
 
 <button
 class="btn"
-onclick="showEmail()">
+onclick="toggleTask('${id}',${item.completed})">
 
-Show Email
+${item.completed ? "Mark Active" : "Mark Complete"}
 
 </button>
 
-<br>
+<br><br>
 
 <button
 class="btn"
-onclick="copyUID()">
+onclick="deleteTask('${id}')">
 
-Copy User ID
+Delete
 
 </button>
+
+</div>
+
+<br>
 
 `;
 
-document
-.getElementById(
-"dashboardPage"
+});
+
+}
+
+}
+
+window.toggleTask =
+async function(
+id,
+current
+){
+
+await update(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/tasks/"+id
+),
+
+{
+completed:!current
+}
+
+);
+
+loadTasks();
+
+};
+
+window.deleteTask =
+async function(id){
+
+await remove(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/tasks/"+id
 )
-.appendChild(
-accountCard
+
 );
 
-window.showEmail =
-function(){
+loadTasks();
+
+};
+
+/* =========================
+   DEVICE COUNTER
+========================= */
+
+async function updateDevicesFixed(){
+
+const earnings =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/earnings"
+)
+
+);
+
+let count = 0;
+
+if(earnings.exists()){
+
+count =
+Object.keys(
+earnings.val()
+).length;
+
+}
+
+document.getElementById(
+"devicesFixed"
+).innerText =
+count;
+
+}
+
+/* =========================
+   DASHBOARD REFRESH
+========================= */
+
+async function refreshDashboard(){
+
+await updateDevicesFixed();
+
+await loadInventory();
+
+await loadGoals();
+
+}
+
+setInterval(
+refreshDashboard,
+10000
+);
+
+/* =========================
+   NOTES SYSTEM
+========================= */
+
+document.getElementById(
+"notesBox"
+).addEventListener(
+"input",
+saveNotes
+);
+
+async function saveNotes(){
+
+if(!currentUser)
+return;
+
+await set(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/notes"
+),
+
+{
+text:
+document.getElementById(
+"notesBox"
+).value
+}
+
+);
+
+}
+
+async function loadNotes(){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/notes"
+)
+
+);
+
+if(snapshot.exists()){
+
+document.getElementById(
+"notesBox"
+).value =
+
+snapshot.val().text || "";
+
+}
+
+}
+
+/* =========================
+   BUSINESS NAME
+========================= */
+
+window.saveBusinessName =
+async function(){
+
+const name =
+document.getElementById(
+"businessNameInput"
+).value;
+
+if(!name)
+return;
+
+await set(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/businessName"
+),
+
+name
+
+);
+
+document.getElementById(
+"businessNameDisplay"
+).innerText =
+name;
 
 alert(
-currentUser.email
+"Business Name Saved"
 );
 
 };
 
-window.copyUID =
-function(){
+async function loadBusinessName(){
 
-navigator.clipboard.writeText(
-currentUser.uid
+const snapshot =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/businessName"
+)
+
 );
 
-alert(
-"User ID copied!"
-);
+if(snapshot.exists()){
 
-};
+const name =
+snapshot.val();
 
-const welcomeCard =
-document.createElement(
-"div"
-);
+document.getElementById(
+"businessNameInput"
+).value =
+name;
 
-welcomeCard.className =
-"card";
+document.getElementById(
+"businessNameDisplay"
+).innerText =
+name;
 
-welcomeCard.innerHTML =
+}
 
-`
+}
 
-<h3>Welcome Back</h3>
+/* =========================
+   DASHBOARD WIDGETS
+========================= */
 
-<br>
+function createDashboardWidget(
+title,
+value,
+id
+){
+
+return `
+
+<div class="card">
+
+<div class="card-title">
+
+${title}
+
+</div>
 
 <div
-id="welcomeMessage">
+class="card-value"
+id="${id}">
 
-Loading...
+${value}
+
+</div>
 
 </div>
 
 `;
 
-document
-.getElementById(
-"dashboardPage"
+}
+
+/* =========================
+   EARNINGS THIS MONTH
+========================= */
+
+async function updateMonthlyStats(){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/earnings"
 )
-.appendChild(
-welcomeCard
+
 );
 
-function updateWelcome(){
+let monthTotal = 0;
 
-if(!currentUser)
+const currentMonth =
+new Date().getMonth();
+
+if(snapshot.exists()){
+
+Object.values(
+snapshot.val()
+).forEach(item=>{
+
+if(
+item.month ===
+currentMonth
+){
+
+monthTotal +=
+Number(
+item.amount || 0
+);
+
+}
+
+});
+
+}
+
+let card =
+document.getElementById(
+"monthlyRevenueCard"
+);
+
+if(!card){
+
+const container =
+document.querySelector(
+"#dashboardPage .cards"
+);
+
+container.innerHTML +=
+
+createDashboardWidget(
+"This Month",
+"$0",
+"monthlyRevenueCard"
+);
+
+card =
+document.getElementById(
+"monthlyRevenueCard"
+);
+
+}
+
+card.innerText =
+"$"+
+monthTotal.toLocaleString();
+
+}
+
+/* =========================
+   ACTIVE TASKS
+========================= */
+
+async function updateTaskStats(){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/tasks"
+)
+
+);
+
+let active = 0;
+
+if(snapshot.exists()){
+
+Object.values(
+snapshot.val()
+).forEach(task=>{
+
+if(!task.completed){
+
+active++;
+
+}
+
+});
+
+}
+
+let card =
+document.getElementById(
+"activeTaskCard"
+);
+
+if(!card){
+
+const container =
+document.querySelector(
+"#dashboardPage .cards"
+);
+
+container.innerHTML +=
+
+createDashboardWidget(
+"Active Tasks",
+"0",
+"activeTaskCard"
+);
+
+card =
+document.getElementById(
+"activeTaskCard"
+);
+
+}
+
+card.innerText =
+active;
+
+}
+
+/* =========================
+   DASHBOARD STATS REFRESH
+========================= */
+
+async function refreshStats(){
+
+await updateMonthlyStats();
+
+await updateTaskStats();
+
+}
+
+setInterval(
+refreshStats,
+5000
+);
+
+/* =========================
+   THEME COLOR SYSTEM
+========================= */
+
+window.saveThemeColor =
+async function(){
+
+const color =
+document.getElementById(
+"themeColor"
+).value;
+
+await set(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/theme"
+),
+
+{
+primary:color
+}
+
+);
+
+applyThemeColor(
+color
+);
+
+alert(
+"Theme Saved!"
+);
+
+};
+
+function applyThemeColor(
+color
+){
+
+document.documentElement
+.style
+.setProperty(
+"--primary",
+color
+);
+
+}
+
+async function loadThemeColor(){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/theme"
+)
+
+);
+
+if(snapshot.exists()){
+
+const color =
+snapshot.val().primary;
+
+document.getElementById(
+"themeColor"
+).value =
+color;
+
+applyThemeColor(
+color
+);
+
+}
+
+}
+
+/* =========================
+   EXPORT BACKUP
+========================= */
+
+window.exportBackup =
+async function(){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid)
+
+);
+
+if(!snapshot.exists()){
+
+alert(
+"No Data Found"
+);
+
 return;
+
+}
+
+const data =
+JSON.stringify(
+snapshot.val(),
+null,
+2
+);
+
+const blob =
+new Blob(
+[data],
+{
+type:
+"application/json"
+}
+);
+
+const url =
+URL.createObjectURL(
+blob
+);
+
+const a =
+document.createElement(
+"a"
+);
+
+a.href = url;
+
+a.download =
+"truefix-backup.json";
+
+a.click();
+
+};
+
+/* =========================
+   IMPORT BACKUP
+========================= */
+
+window.importBackup =
+function(){
+
+document.getElementById(
+"backupFile"
+).click();
+
+};
+
+window.handleBackupImport =
+async function(event){
+
+const file =
+event.target.files[0];
+
+if(!file)
+return;
+
+const text =
+await file.text();
+
+const data =
+JSON.parse(text);
+
+await set(
+
+ref(
+db,
+"users/"+currentUser.uid
+),
+
+data
+
+);
+
+alert(
+"Backup Imported"
+);
+
+loadEverything();
+
+};
+
+/* =========================
+   RESET DASHBOARD
+========================= */
+
+window.resetDashboard =
+async function(){
+
+const sure =
+confirm(
+"Delete ALL dashboard data?"
+);
+
+if(!sure)
+return;
+
+await remove(
+
+ref(
+db,
+"users/"+currentUser.uid)
+
+);
+
+alert(
+"Dashboard Reset"
+);
+
+location.reload();
+
+};
+
+/* =========================
+   SETTINGS BUTTONS
+========================= */
+
+const settingsCard =
+document.querySelector(
+"#settingsPage .card"
+);
+
+settingsCard.innerHTML +=
+
+`
+
+<br><br>
+
+<h3>
+Backup
+</h3>
+
+<br>
+
+<button
+class="btn"
+onclick="exportBackup()">
+
+Export Backup
+
+</button>
+
+<br><br>
+
+<button
+class="btn"
+onclick="importBackup()">
+
+Import Backup
+
+</button>
+
+<br><br>
+
+<button
+class="btn"
+style="
+background:#d63c3c;
+"
+onclick="resetDashboard()">
+
+Reset Dashboard
+
+</button>
+
+<input
+type="file"
+id="backupFile"
+style="display:none"
+onchange="
+handleBackupImport(event)
+">
+
+`;
+
+/* =========================
+   AUTO LOAD THEME
+========================= */
+
+const oldLoadEverything =
+loadEverything;
+
+loadEverything =
+async function(){
+
+await oldLoadEverything();
+
+await loadThemeColor();
+
+await refreshStats();
+
+};
+
+/* =========================
+   TOP RIGHT MENU
+========================= */
+
+const menuButton =
+document.createElement(
+"div"
+);
+
+menuButton.innerHTML = "⋮";
+
+menuButton.style.fontSize =
+"30px";
+
+menuButton.style.cursor =
+"pointer";
+
+menuButton.onclick =
+toggleQuickMenu;
+
+document
+.querySelector(".topbar")
+.appendChild(
+menuButton
+);
+
+const quickMenu =
+document.createElement(
+"div"
+);
+
+quickMenu.id =
+"quickMenu";
+
+quickMenu.style.cssText =
+
+`
+position:fixed;
+top:75px;
+right:20px;
+width:260px;
+background:var(--card);
+border:1px solid var(--border);
+border-radius:18px;
+padding:15px;
+display:none;
+z-index:9999;
+`;
+
+quickMenu.innerHTML =
+
+`
+
+<div
+class="menu-item"
+onclick="showPage('settingsPage')">
+
+⚙️ Settings
+
+</div>
+
+<div
+class="menu-item"
+onclick="showPage('earningsPage')">
+
+💰 Earnings
+
+</div>
+
+<div
+class="menu-item"
+onclick="showPage('goalsPage')">
+
+🎯 Goals
+
+</div>
+
+<div
+class="menu-item"
+onclick="showPage('inventoryPage')">
+
+📦 Inventory
+
+</div>
+
+`;
+
+document.body.appendChild(
+quickMenu
+);
+
+window.toggleQuickMenu =
+function(){
+
+quickMenu.style.display =
+
+quickMenu.style.display ===
+"block"
+
+?
+
+"none"
+
+:
+
+"block";
+
+};
+
+/* =========================
+   NOTIFICATIONS
+========================= */
+
+function showNotification(
+text
+){
+
+const note =
+document.createElement(
+"div"
+);
+
+note.innerText =
+text;
+
+note.style.cssText =
+
+`
+position:fixed;
+bottom:20px;
+right:20px;
+background:var(--primary);
+color:white;
+padding:15px 25px;
+border-radius:14px;
+font-weight:600;
+z-index:99999;
+`;
+
+document.body.appendChild(
+note
+);
+
+setTimeout(()=>{
+
+note.remove();
+
+},3000);
+
+}
+
+/* =========================
+   EDIT EARNINGS
+========================= */
+
+window.editEarning =
+async function(id){
+
+const snapshot =
+await get(
+ref(
+db,
+"users/"+currentUser.uid+
+"/earnings/"+id
+)
+);
+
+if(!snapshot.exists())
+return;
+
+const data =
+snapshot.val();
+
+const amount =
+prompt(
+"New Amount",
+data.amount
+);
+
+if(amount===null)
+return;
+
+await update(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/earnings/"+id
+),
+
+{
+amount:Number(amount)
+}
+
+);
+
+showNotification(
+"Earning Updated"
+);
+
+loadEarnings();
+
+};
+
+/* =========================
+   EDIT INVENTORY
+========================= */
+
+window.editInventory =
+async function(id){
+
+const qty =
+prompt(
+"New Quantity"
+);
+
+if(qty===null)
+return;
+
+await update(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/inventory/"+id
+),
+
+{
+qty:Number(qty)
+}
+
+);
+
+showNotification(
+"Inventory Updated"
+);
+
+loadInventory();
+
+};
+
+/* =========================
+   EDIT GOALS
+========================= */
+
+window.editGoal =
+async function(id){
+
+const goals =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/goals/"+id
+)
+
+);
+
+if(!goals.exists())
+return;
+
+const goal =
+goals.val();
+
+const name =
+prompt(
+"Goal Name",
+goal.name
+);
+
+const amount =
+prompt(
+"Goal Amount",
+goal.target
+);
+
+if(name===null)
+return;
+
+await update(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/goals/"+id
+),
+
+{
+name:name,
+target:Number(amount)
+}
+
+);
+
+showNotification(
+"Goal Updated"
+);
+
+loadGoals();
+
+};
+
+/* =========================
+   SMOOTH PAGE CHANGES
+========================= */
+
+const originalShowPage =
+showPage;
+
+showPage =
+function(page){
+
+originalShowPage(page);
+
+const active =
+document.getElementById(
+page
+);
+
+active.style.opacity="0";
+
+setTimeout(()=>{
+
+active.style.transition=
+".25s";
+
+active.style.opacity="1";
+
+},50);
+
+};
+
+/* =========================
+   AUTO CLOSE MENU
+========================= */
+
+document.addEventListener(
+"click",
+function(e){
+
+if(
+
+!quickMenu.contains(
+e.target
+)
+
+&&
+
+e.target !== menuButton
+
+){
+
+quickMenu.style.display =
+"none";
+
+}
+
+}
+);
+
+/* =========================
+   WELCOME MESSAGE
+========================= */
+
+function welcomeBack(){
 
 const hour =
 new Date()
 .getHours();
 
 let text =
-"Welcome";
+"Welcome Back";
 
 if(hour<12){
 
 text =
 "Good Morning";
 
-}else if(hour<18){
+}
+else if(hour<18){
 
 text =
 "Good Afternoon";
 
-}else{
+}
+else{
 
 text =
 "Good Evening";
 
 }
 
-document.getElementById(
-"welcomeMessage"
-).innerText =
-
-text +
-", " +
-currentUser.email;
-
-}
-
-setInterval(
-updateWelcome,
-1000
+showNotification(
+text
 );
-
-async function refreshEverything(){
-
-if(!currentUser)
-return;
-
-loadEarnings(
-currentUser.uid
-);
-
-loadDevices(
-currentUser.uid
-);
-
-loadInventory(
-currentUser.uid
-);
-
-loadTasks(
-currentUser.uid
-);
-
-loadGoals(
-currentUser.uid
-);
-
-loadLastLogin();
-
-updateGoalProgress();
-
-}
-
-setInterval(
-refreshEverything,
-15000
-);
-
-window.onerror =
-function(msg){
-
-console.log(
-"Dashboard Error:",
-msg
-);
-
-return true;
-
-};
-
-function initializeDashboard(){
-
-if(!currentUser)
-return;
-
-loadProfile();
-
-loadSettings();
-
-loadBusinessName();
-
-loadLastLogin();
-
-loadEarnings(
-currentUser.uid
-);
-
-loadDevices(
-currentUser.uid
-);
-
-loadInventory(
-currentUser.uid
-);
-
-loadTasks(
-currentUser.uid
-);
-
-loadGoals(
-currentUser.uid
-);
-
-loadNotes(
-currentUser.uid
-);
-
-updateGoalProgress();
-
-updateDashboardStats();
-
-updateWelcome();
 
 }
 
 setTimeout(
-initializeDashboard,
-2000
+welcomeBack,
+1500
 );
 
-document.addEventListener(
-"keydown",
-function(e){
+/* =========================
+   FINAL STARTUP FIXES
+========================= */
 
-if(
-e.key==="Escape"
-){
+window.addEventListener(
+"load",
+async function(){
 
-const menu =
-document.getElementById(
-"settingsMenu"
-);
+if(currentUser){
 
-if(menu){
-
-menu.style.display=
-"none";
+await loadEverything();
 
 }
 
-}
+});
+
+/* =========================
+   AUTO REFRESH CHART
+========================= */
+
+setInterval(
+async ()=>{
+
+if(currentUser){
+
+await loadEarnings();
 
 }
+
+},
+15000
 );
 
-document.addEventListener(
-"click",
-function(e){
+/* =========================
+   YEARLY STATISTICS
+========================= */
 
-const menu =
-document.getElementById(
-"settingsMenu"
-);
+async function calculateYearlyRevenue(){
 
-if(
-menu &&
-!menu.contains(
-e.target
+const snapshot =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid+
+"/earnings"
 )
-){
 
-if(
-e.target.innerText!=="⋮"
-){
+);
 
-menu.style.display=
-"none";
+let total = 0;
+
+if(snapshot.exists()){
+
+Object.values(
+snapshot.val()
+).forEach(item=>{
+
+total +=
+Number(
+item.amount || 0
+);
+
+});
 
 }
 
-}
+return total;
 
 }
+
+/* =========================
+   DASHBOARD LOADING SCREEN
+========================= */
+
+const loadingScreen =
+document.createElement(
+"div"
+);
+
+loadingScreen.id =
+"loadingScreen";
+
+loadingScreen.style.cssText =
+
+`
+position:fixed;
+inset:0;
+background:#0f1117;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:32px;
+font-weight:700;
+z-index:999999;
+color:white;
+`;
+
+loadingScreen.innerHTML =
+
+`
+TrueFix Loading...
+`;
+
+document.body.appendChild(
+loadingScreen
+);
+
+setTimeout(()=>{
+
+loadingScreen.remove();
+
+},1500);
+
+/* =========================
+   REVENUE CHART LABELS
+========================= */
+
+function updateRevenueLabels(){
+
+const chart =
+document.getElementById(
+"revenueChart"
+);
+
+if(!chart)
+return;
+
+chart.style.paddingBottom =
+"20px";
+
+}
+
+/* =========================
+   PERFORMANCE BOOST
+========================= */
+
+let refreshRunning =
+false;
+
+const originalLoadEverything =
+loadEverything;
+
+loadEverything =
+async function(){
+
+if(refreshRunning)
+return;
+
+refreshRunning =
+true;
+
+await originalLoadEverything();
+
+refreshRunning =
+false;
+
+};
+
+/* =========================
+   QUICK DASHBOARD TOTALS
+========================= */
+
+async function updateDashboardTotals(){
+
+if(!currentUser)
+return;
+
+const earnings =
+await get(
+ref(
+db,
+"users/"+currentUser.uid+
+"/earnings"
+)
+);
+
+let totalRevenue = 0;
+
+if(earnings.exists()){
+
+Object.values(
+earnings.val()
+).forEach(item=>{
+
+totalRevenue +=
+Number(
+item.amount || 0
+);
+
+});
+
+}
+
+document.getElementById(
+"totalEarnings"
+).innerText =
+"$"+
+totalRevenue.toLocaleString();
+
+}
+
+setInterval(
+updateDashboardTotals,
+5000
+);
+
+/* =========================
+   STARTUP PAGE
+========================= */
+
+showPage(
+"dashboardPage"
 );
 
 console.log(
-"TrueFix Dashboard Loaded"
+"TrueFix Dashboard V2 Ready"
 );
 
-console.log(
-"Firebase Connected"
-);
+/* =========================
+   END OF PROJECT
+========================= */
 
 </script>
 

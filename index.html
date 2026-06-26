@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TrueFix Owner Dashboard</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>
+TrueFix Dashboard V2 Ultimate
+</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
 
 <style>
 
 :root{
+
 --primary:#0a84ff;
 --bg:#0f1117;
---card:#171b24;
 --sidebar:#11151d;
+--card:#171b24;
 --border:#252c3d;
 --text:#ffffff;
+
 }
 
 *{
@@ -28,183 +37,275 @@ font-family:Poppins,sans-serif;
 
 body{
 background:var(--bg);
-color:var(--text);
+color:white;
 overflow:hidden;
 }
 
 .login-screen{
+
 position:fixed;
 inset:0;
+
 display:flex;
 justify-content:center;
 align-items:center;
+
 background:var(--bg);
-z-index:999;
+
 }
 
 .login-card{
-width:450px;
+
+width:500px;
 max-width:95%;
+
 background:var(--card);
+
 border:1px solid var(--border);
-border-radius:24px;
+
+border-radius:25px;
+
 padding:35px;
+
 }
 
 .logo{
-width:110px;
-height:110px;
-border-radius:50%;
+
+width:120px;
+height:120px;
+
 background:var(--primary);
-margin:auto;
+
+border-radius:50%;
+
 display:flex;
-align-items:center;
 justify-content:center;
-font-size:40px;
+align-items:center;
+
+font-size:42px;
 font-weight:700;
+
+margin:auto;
 margin-bottom:20px;
-}
 
-.login-title{
-text-align:center;
-font-size:32px;
-font-weight:700;
-margin-bottom:10px;
-}
-
-.login-sub{
-text-align:center;
-opacity:.7;
-margin-bottom:25px;
 }
 
 .input{
+
 width:100%;
+
 padding:14px;
-border-radius:14px;
-border:1px solid var(--border);
-background:#0d1117;
-color:white;
-margin-bottom:12px;
+
+border:none;
+
 outline:none;
+
+border-radius:14px;
+
+background:#0d1117;
+
+color:white;
+
+margin-bottom:12px;
+
 }
 
 .btn{
+
 width:100%;
+
 padding:14px;
+
 border:none;
+
 border-radius:14px;
+
 background:var(--primary);
+
 color:white;
+
 font-weight:600;
+
 cursor:pointer;
-margin-top:5px;
+
+margin-top:8px;
+
 }
 
 .btn2{
-background:#222938;
+
+background:#232938;
+
 }
 
 .sidebar{
+
 position:fixed;
+
 left:0;
 top:0;
-width:260px;
+
+width:280px;
 height:100%;
+
 background:var(--sidebar);
+
 border-right:1px solid var(--border);
+
 display:none;
+
 }
 
 .sidebar-header{
+
 padding:25px;
-font-size:26px;
+
+font-size:28px;
 font-weight:700;
+
 color:var(--primary);
+
 border-bottom:1px solid var(--border);
+
 }
 
 .menu{
+
 padding:15px;
+
 }
 
 .menu-item{
+
 padding:14px;
+
 margin-bottom:8px;
+
 border-radius:12px;
+
 cursor:pointer;
+
 transition:.2s;
+
 }
 
 .menu-item:hover{
-background:#1c2231;
+
+background:#1d2433;
+
 }
 
 .topbar{
+
 position:fixed;
-left:260px;
+
+left:280px;
 right:0;
 top:0;
+
 height:70px;
+
 background:var(--sidebar);
+
 border-bottom:1px solid var(--border);
+
 display:none;
+
 align-items:center;
 justify-content:space-between;
+
 padding:0 25px;
+
 }
 
 .dashboard{
+
 position:fixed;
-left:260px;
+
+left:280px;
 right:0;
+
 top:70px;
 bottom:0;
+
 overflow:auto;
+
 padding:25px;
+
 display:none;
+
 }
 
 .page{
+
 display:none;
+
 }
 
 .page-title{
+
 font-size:34px;
 font-weight:700;
+
 margin-bottom:20px;
+
 }
 
 .cards{
+
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+grid-template-columns:
+repeat(
+auto-fit,
+minmax(250px,1fr)
+);
+
 gap:20px;
+
 }
 
 .card{
+
 background:var(--card);
+
 border:1px solid var(--border);
+
 border-radius:20px;
+
 padding:25px;
+
 }
 
 .card-title{
+
 opacity:.7;
 font-size:14px;
+
 }
 
 .card-value{
+
 font-size:38px;
 font-weight:700;
-margin-top:8px;
+
 color:var(--primary);
+
+margin-top:10px;
+
 }
 
 </style>
+
 </head>
+
 <body>
 
-<div class="login-screen" id="loginScreen">
+<!-- LOGIN SCREEN -->
+
+<div
+class="login-screen"
+id="loginScreen">
 
 <div class="login-card">
 
@@ -212,13 +313,20 @@ color:var(--primary);
 TF
 </div>
 
-<div class="login-title">
+<h1 style="text-align:center;">
 TrueFix Dashboard
-</div>
+</h1>
 
-<div class="login-sub">
+<p
+style="
+text-align:center;
+opacity:.7;
+margin:15px 0 25px;
+">
+
 Owner Control Center
-</div>
+
+</p>
 
 <input
 class="input"
@@ -235,83 +343,164 @@ placeholder="Password">
 <button
 class="btn"
 onclick="loginUser()">
+
 Login
+
 </button>
 
 <button
 class="btn btn2"
 onclick="registerUser()">
+
 Create Account
+
 </button>
 
 </div>
 
 </div>
 
-<div class="sidebar" id="sidebar">
+<!-- SIDEBAR -->
+
+<div
+class="sidebar"
+id="sidebar">
 
 <div class="sidebar-header">
+
 TrueFix
+
 </div>
 
 <div class="menu">
 
-<div class="menu-item" onclick="showPage('dashboardPage')">
+<div
+class="menu-item"
+onclick="showPage('dashboardPage')">
+
 📊 Dashboard
+
 </div>
 
-<div class="menu-item" onclick="showPage('earningsPage')">
+<div
+class="menu-item"
+onclick="showPage('earningsPage')">
+
 💰 Earnings
+
 </div>
 
-<div class="menu-item" onclick="showPage('goalsPage')">
+<div
+class="menu-item"
+onclick="showPage('goalsPage')">
+
 🎯 Goals
+
 </div>
 
-<div class="menu-item" onclick="showPage('inventoryPage')">
-📦 Parts owned
+<div
+class="menu-item"
+onclick="showPage('bankPage')">
+
+🏦 My Bank Account
+
 </div>
 
-<div class="menu-item" onclick="showPage('tasksPage')">
+<div
+class="menu-item"
+onclick="showPage('jobsPage')">
+
+💼 Other Job Earnings
+
+</div>
+
+<div
+class="menu-item"
+onclick="showPage('inventoryPage')">
+
+📦 Parts Owned
+
+</div>
+
+<div
+class="menu-item"
+onclick="showPage('tasksPage')">
+
 📋 Tasks
+
 </div>
 
-<div class="menu-item" onclick="showPage('notesPage')">
+<div
+class="menu-item"
+onclick="showPage('notesPage')">
+
 📝 Notes
+
 </div>
 
-<div class="menu-item" onclick="showPage('statsPage')">
+<div
+class="menu-item"
+onclick="showPage('statsPage')">
+
 📈 Statistics
+
 </div>
 
-<div class="menu-item" onclick="showPage('settingsPage')">
+<div
+class="menu-item"
+onclick="showPage('settingsPage')">
+
 ⚙️ Settings
-</div>
 
 </div>
 
 </div>
 
-<div class="topbar" id="topbar">
+</div>
 
-<h2 id="businessNameDisplay">
+<!-- TOP BAR -->
+
+<div
+class="topbar"
+id="topbar">
+
+<h2
+id="businessNameDisplay">
+
 TrueFix Dashboard
+
 </h2>
 
-<div style="font-size:28px;cursor:pointer;" onclick="logoutUser()">
-logout
-</div>
+<div
+style="
+cursor:pointer;
+font-size:18px;
+"
+onclick="logoutUser()">
+
+Logout
 
 </div>
 
-<div class="dashboard" id="dashboard">
+</div>
+
+<!-- MAIN AREA -->
+
+<div
+class="dashboard"
+id="dashboard">
 
 <!-- DASHBOARD PAGE -->
 
-<div id="dashboardPage" class="page" style="display:block;">
+<div
+id="dashboardPage"
+class="page"
+style="display:block;">
 
 <h1 class="page-title">
+
 Dashboard
+
 </h1>
 
 <div class="cards">
@@ -322,20 +511,12 @@ Dashboard
 Total Earnings
 </div>
 
-<div class="card-value" id="totalEarnings">
+<div
+class="card-value"
+id="totalEarnings">
+
 $0
-</div>
 
-</div>
-
-<div class="card">
-
-<div class="card-title">
-Devices Fixed
-</div>
-
-<div class="card-value" id="devicesFixed">
-0
 </div>
 
 </div>
@@ -343,11 +524,31 @@ Devices Fixed
 <div class="card">
 
 <div class="card-title">
-Owned parts
+Bank Balance
 </div>
 
-<div class="card-value" id="inventoryCount">
-0
+<div
+class="card-value"
+id="bankBalanceCard">
+
+$0
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-title">
+Total Net Worth
+</div>
+
+<div
+class="card-value"
+id="netWorthCard">
+
+$0
+
 </div>
 
 </div>
@@ -358,8 +559,12 @@ Owned parts
 Active Goals
 </div>
 
-<div class="card-value" id="goalCount">
+<div
+class="card-value"
+id="goalCount">
+
 0
+
 </div>
 
 </div>
@@ -368,16 +573,23 @@ Active Goals
 
 <br><br>
 
-<div id="dashboardGoals"></div>
+<div
+id="dashboardGoals">
+
+</div>
 
 </div>
 
 <!-- EARNINGS PAGE -->
 
-<div id="earningsPage" class="page">
+<div
+id="earningsPage"
+class="page">
 
 <h1 class="page-title">
+
 Earnings
+
 </h1>
 
 <div class="card">
@@ -397,7 +609,7 @@ placeholder="Description">
 class="btn"
 onclick="addEarning()">
 
-Add Earnings
+Add Earning
 
 </button>
 
@@ -405,16 +617,23 @@ Add Earnings
 
 <br>
 
-<div id="earningsList"></div>
+<div
+id="earningsList">
+
+</div>
 
 </div>
 
 <!-- GOALS PAGE -->
 
-<div id="goalsPage" class="page">
+<div
+id="goalsPage"
+class="page">
 
 <h1 class="page-title">
+
 Goals
+
 </h1>
 
 <div class="card">
@@ -442,16 +661,127 @@ Create Goal
 
 <br>
 
-<div id="goalsList"></div>
+<div
+id="goalsList">
+
+</div>
+
+</div>
+
+<!-- BANK PAGE -->
+
+<div
+id="bankPage"
+class="page">
+
+<h1 class="page-title">
+
+My Bank Account
+
+</h1>
+
+<div class="card">
+
+<h2>
+
+Current Balance
+
+</h2>
+
+<br>
+
+<div
+class="card-value"
+id="bankBalance">
+
+$0
+
+</div>
+
+<br>
+
+<input
+class="input"
+id="bankAmount"
+type="number"
+placeholder="Amount">
+
+<button
+class="btn"
+onclick="addBankMoney()">
+
+Add Money
+
+</button>
+
+<br><br>
+
+<button
+class="btn"
+onclick="editBankBalance()">
+
+Edit Balance
+
+</button>
+
+</div>
+
+</div>
+
+<!-- OTHER JOBS PAGE -->
+
+<div
+id="jobsPage"
+class="page">
+
+<h1 class="page-title">
+
+Other Job Earnings
+
+</h1>
+
+<div class="card">
+
+<input
+class="input"
+id="jobName"
+placeholder="Job Name">
+
+<input
+class="input"
+id="jobAmount"
+type="number"
+placeholder="Starting Earnings">
+
+<button
+class="btn"
+onclick="addJob()">
+
+Add Job
+
+</button>
+
+</div>
+
+<br>
+
+<div
+id="jobsList">
+
+</div>
 
 </div>
 
 <!-- INVENTORY PAGE -->
 
-<div id="inventoryPage" class="page">
+<div
+id="inventoryPage"
+class="page">
 
 <h1 class="page-title">
-Owned parts
+
+Parts Owned
+
 </h1>
 
 <div class="card">
@@ -459,7 +789,7 @@ Owned parts
 <input
 class="input"
 id="inventoryItem"
-placeholder="Item Name">
+placeholder="Part Name">
 
 <input
 class="input"
@@ -471,7 +801,7 @@ placeholder="Quantity">
 class="btn"
 onclick="addInventory()">
 
-Add Item
+Add Part
 
 </button>
 
@@ -479,16 +809,23 @@ Add Item
 
 <br>
 
-<div id="inventoryList"></div>
+<div
+id="inventoryList">
+
+</div>
 
 </div>
 
 <!-- TASKS PAGE -->
 
-<div id="tasksPage" class="page">
+<div
+id="tasksPage"
+class="page">
 
 <h1 class="page-title">
+
 Tasks
+
 </h1>
 
 <div class="card">
@@ -510,58 +847,137 @@ Add Task
 
 <br>
 
-<div id="tasksList"></div>
+<div
+id="tasksList">
+
+</div>
 
 </div>
 
 <!-- NOTES PAGE -->
 
-<div id="notesPage" class="page">
+<div
+id="notesPage"
+class="page">
 
 <h1 class="page-title">
+
 Notes
+
 </h1>
 
 <textarea
+
 id="notesBox"
+
 style="
 width:100%;
-height:450px;
+height:500px;
 background:var(--card);
 border:1px solid var(--border);
 border-radius:20px;
 padding:20px;
 color:white;
 resize:none;
+font-size:16px;
 ">
+
 </textarea>
 
 </div>
 
-<!-- STATS PAGE -->
+<!-- STATISTICS PAGE -->
 
-<div id="statsPage" class="page">
+<div
+id="statsPage"
+class="page">
 
 <h1 class="page-title">
+
 Statistics
+
 </h1>
 
 <div class="card">
 
 <h2>
+
 Revenue Overview
+
 </h2>
 
 <br>
 
 <div
+
 id="revenueChart"
+
 style="
+height:280px;
 display:flex;
 align-items:flex-end;
-gap:6px;
-height:260px;
+gap:8px;
 ">
+
+</div>
+
+</div>
+
+<br>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="card-title">
+
+Yearly Revenue
+
+</div>
+
+<div
+class="card-value"
+id="yearlyRevenue">
+
+$0
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-title">
+
+Bank Balance
+
+</div>
+
+<div
+class="card-value"
+id="statsBankBalance">
+
+$0
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-title">
+
+Net Worth
+
+</div>
+
+<div
+class="card-value"
+id="statsNetWorth">
+
+$0
+
+</div>
 
 </div>
 
@@ -571,16 +987,22 @@ height:260px;
 
 <!-- SETTINGS PAGE -->
 
-<div id="settingsPage" class="page">
+<div
+id="settingsPage"
+class="page">
 
 <h1 class="page-title">
+
 Settings
+
 </h1>
 
 <div class="card">
 
 <h3>
+
 Business Name
+
 </h3>
 
 <br>
@@ -601,19 +1023,25 @@ Save Business Name
 <br><br>
 
 <h3>
+
 Theme Color
+
 </h3>
 
 <br>
 
 <input
+
 type="color"
+
 id="themeColor"
+
 style="
 width:100%;
 height:70px;
-border:none;
 background:none;
+border:none;
+cursor:pointer;
 ">
 
 <br><br>
@@ -628,11 +1056,63 @@ Save Theme Color
 
 </div>
 
+<br>
+
+<div class="card">
+
+<h3>
+
+Backup & Restore
+
+</h3>
+
+<br>
+
+<button
+class="btn"
+onclick="exportBackup()">
+
+Export Backup
+
+</button>
+
+<br><br>
+
+<button
+class="btn"
+onclick="importBackup()">
+
+Import Backup
+
+</button>
+
+<br><br>
+
+<button
+class="btn"
+style="background:#cc3333;"
+onclick="resetDashboard()">
+
+Reset Dashboard
+
+</button>
+
+<input
+type="file"
+id="backupFile"
+style="display:none">
+
+</div>
+
 </div>
 
 </div>
 
 <script type="module">
+
+/* =========================
+   FIREBASE IMPORTS
+========================= */
 
 import {
 initializeApp
@@ -662,6 +1142,10 @@ update
 from
 "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
 
+/* =========================
+   FIREBASE CONFIG
+========================= */
+
 const firebaseConfig = {
 
 apiKey:
@@ -690,6 +1174,10 @@ measurementId:
 
 };
 
+/* =========================
+   START FIREBASE
+========================= */
+
 const app =
 initializeApp(
 firebaseConfig
@@ -704,24 +1192,32 @@ getDatabase(app);
 window.currentUser =
 null;
 
+/* =========================
+   PAGE SYSTEM
+========================= */
+
 window.showPage =
-function(page){
+function(pageId){
 
 document
 .querySelectorAll(".page")
-.forEach(pageDiv=>{
+.forEach(page=>{
 
-pageDiv.style.display=
+page.style.display =
 "none";
 
 });
 
 document
-.getElementById(page)
-.style.display=
+.getElementById(pageId)
+.style.display =
 "block";
 
 };
+
+/* =========================
+   CREATE ACCOUNT
+========================= */
 
 window.registerUser =
 async function(){
@@ -768,6 +1264,10 @@ error.message
 
 };
 
+/* =========================
+   LOGIN
+========================= */
+
 window.loginUser =
 async function(){
 
@@ -799,6 +1299,10 @@ error.message
 
 };
 
+/* =========================
+   LOGOUT
+========================= */
+
 window.logoutUser =
 function(){
 
@@ -806,75 +1310,93 @@ signOut(auth);
 
 };
 
+/* =========================
+   AUTH STATE
+========================= */
+
 onAuthStateChanged(
 
 auth,
 
-(user)=>{
+async(user)=>{
 
 if(user){
 
 window.currentUser =
 user;
 
+/* hide login */
+
 document
 .getElementById(
 "loginScreen"
 )
-.style.display=
+.style.display =
 "none";
+
+/* show dashboard */
 
 document
 .getElementById(
 "sidebar"
 )
-.style.display=
+.style.display =
 "block";
 
 document
 .getElementById(
 "topbar"
 )
-.style.display=
+.style.display =
 "flex";
 
 document
 .getElementById(
 "dashboard"
 )
-.style.display=
+.style.display =
 "block";
 
-loadEverything();
+/* open dashboard */
 
-}else{
+showPage(
+"dashboardPage"
+);
+
+/* load data */
+
+await loadEverything();
+
+}
+
+else{
 
 document
 .getElementById(
 "loginScreen"
 )
-.style.display=
+.style.display =
 "flex";
 
 document
 .getElementById(
 "sidebar"
 )
-.style.display=
+.style.display =
 "none";
 
 document
 .getElementById(
 "topbar"
 )
-.style.display=
+.style.display =
 "none";
 
 document
 .getElementById(
 "dashboard"
 )
-.style.display=
+.style.display =
 "none";
 
 }
@@ -883,26 +1405,69 @@ document
 
 );
 
+/* =========================
+   MASTER LOADER
+========================= */
+
 async function loadEverything(){
 
 if(!currentUser)
 return;
 
-loadBusinessName();
+if(typeof loadEarnings==="function")
+await loadEarnings();
 
-loadThemeColor();
+if(typeof loadGoals==="function")
+await loadGoals();
 
-loadEarnings();
+if(typeof loadInventory==="function")
+await loadInventory();
 
-loadGoals();
+if(typeof loadTasks==="function")
+await loadTasks();
 
-loadInventory();
+if(typeof loadNotes==="function")
+await loadNotes();
 
-loadTasks();
+if(typeof loadBusinessName==="function")
+await loadBusinessName();
 
-loadNotes();
+if(typeof loadThemeColor==="function")
+await loadThemeColor();
+
+if(typeof loadBank==="function")
+await loadBank();
+
+if(typeof loadJobs==="function")
+await loadJobs();
+
+if(typeof updateNetWorth==="function")
+await updateNetWorth();
 
 }
+
+/* =========================
+   HELPER FUNCTIONS
+========================= */
+
+function formatMoney(amount){
+
+return "$" +
+Number(amount || 0)
+.toLocaleString();
+
+}
+
+window.formatMoney =
+formatMoney;
+
+/* =========================
+   STARTUP
+========================= */
+
+console.log(
+"TrueFix V2 Ultimate Loaded"
+);
 
 /* =========================
    EARNINGS SYSTEM
@@ -936,21 +1501,20 @@ return;
 const now =
 new Date();
 
-const month =
-now.getMonth();
-
 await push(
 
 ref(
 db,
-"users/"+currentUser.uid+
+"users/" +
+currentUser.uid +
 "/earnings"
 ),
 
 {
 amount:amount,
 description:description,
-month:month,
+month:now.getMonth(),
+year:now.getFullYear(),
 date:Date.now()
 }
 
@@ -964,21 +1528,27 @@ document.getElementById(
 "earningDescription"
 ).value="";
 
-loadEarnings();
+await loadEarnings();
 
 };
 
+/* =========================
+   LOAD EARNINGS
+========================= */
+
 async function loadEarnings(){
+
+const earningsRef =
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/earnings"
+);
 
 const snapshot =
 await get(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/earnings"
-)
-
+earningsRef
 );
 
 const list =
@@ -986,52 +1556,57 @@ document.getElementById(
 "earningsList"
 );
 
-list.innerHTML="";
+list.innerHTML = "";
 
-let total = 0;
+let totalRevenue = 0;
 
-let monthlyTotals = [
+const monthlyTotals = [
+
 0,0,0,0,0,0,
 0,0,0,0,0,0
+
 ];
 
 if(snapshot.exists()){
 
-const data =
-snapshot.val();
+Object.entries(
+snapshot.val()
+).forEach(([id,item])=>{
 
-Object.entries(data)
-.forEach(([id,item])=>{
+const amount =
+Number(
+item.amount || 0
+);
 
-total +=
-Number(item.amount);
+totalRevenue += amount;
 
 monthlyTotals[
 item.month || 0
-] +=
-Number(item.amount);
+] += amount;
 
-list.innerHTML +=
-
-`
+list.innerHTML += `
 
 <div class="card">
 
-<h3>
-
-$${Number(
-item.amount
-).toLocaleString()}
-
-</h3>
+<h2>
+${formatMoney(amount)}
+</h2>
 
 <p>
-
 ${item.description || ""}
-
 </p>
 
 <br>
+
+<button
+class="btn"
+onclick="editEarning('${id}')">
+
+Edit
+
+</button>
+
+<br><br>
 
 <button
 class="btn"
@@ -1054,18 +1629,32 @@ Delete
 document.getElementById(
 "totalEarnings"
 ).innerText =
-"$"+
-total.toLocaleString();
+formatMoney(
+totalRevenue
+);
+
+document.getElementById(
+"yearlyRevenue"
+).innerText =
+formatMoney(
+totalRevenue
+);
 
 drawRevenueChart(
 monthlyTotals
 );
 
-updateGoalProgress(
-total
+await updateGoalProgress(
+totalRevenue
 );
 
+await updateNetWorth();
+
 }
+
+/* =========================
+   DELETE EARNING
+========================= */
 
 window.deleteEarning =
 async function(id){
@@ -1074,13 +1663,80 @@ await remove(
 
 ref(
 db,
-"users/"+currentUser.uid+
-"/earnings/"+id
+"users/" +
+currentUser.uid +
+"/earnings/" +
+id
 )
 
 );
 
-loadEarnings();
+await loadEarnings();
+
+};
+
+/* =========================
+   EDIT EARNING
+========================= */
+
+window.editEarning =
+async function(id){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/earnings/" +
+id
+)
+
+);
+
+if(!snapshot.exists())
+return;
+
+const earning =
+snapshot.val();
+
+const newAmount =
+prompt(
+"New Amount",
+earning.amount
+);
+
+if(newAmount===null)
+return;
+
+const newDescription =
+prompt(
+"Description",
+earning.description || ""
+);
+
+await update(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/earnings/" +
+id
+),
+
+{
+amount:Number(
+newAmount
+),
+description:
+newDescription
+}
+
+);
+
+await loadEarnings();
 
 };
 
@@ -1100,9 +1756,9 @@ document.getElementById(
 if(!chart)
 return;
 
-chart.innerHTML="";
+chart.innerHTML = "";
 
-const monthNames = [
+const months = [
 
 "J","F","M","A",
 "M","J","J","A",
@@ -1114,27 +1770,26 @@ let max = 1;
 
 monthlyTotals.forEach(v=>{
 
-if(v > max){
-
+if(v > max)
 max = v;
-
-}
 
 });
 
-for(let i=0;i<12;i++){
+for(
+let i=0;
+i<12;
+i++
+){
 
 const height =
 
 Math.max(
 20,
-(monthlyTotals[i]/max)
-*220
+(monthlyTotals[i] / max)
+* 220
 );
 
-chart.innerHTML +=
-
-`
+chart.innerHTML += `
 
 <div
 style="
@@ -1145,10 +1800,10 @@ align-items:center;
 
 <div
 style="
-width:35px;
+width:32px;
 height:${height}px;
 background:var(--primary);
-border-radius:8px 8px 0 0;
+border-radius:10px 10px 0 0;
 ">
 </div>
 
@@ -1158,7 +1813,7 @@ margin-top:8px;
 font-size:12px;
 ">
 
-${monthNames[i]}
+${months[i]}
 
 </div>
 
@@ -1171,1827 +1826,18 @@ ${monthNames[i]}
 }
 
 /* =========================
-   GOALS SYSTEM
+   TOTAL REVENUE HELPER
 ========================= */
 
-window.addGoal =
-async function(){
-
-const name =
-document.getElementById(
-"goalName"
-).value;
-
-const amount =
-Number(
-document.getElementById(
-"goalAmount"
-).value
-);
-
-if(!name || !amount){
-
-alert(
-"Enter a goal name and amount"
-);
-
-return;
-
-}
-
-await push(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/goals"
-),
-
-{
-name:name,
-target:amount
-}
-
-);
-
-document.getElementById(
-"goalName"
-).value="";
-
-document.getElementById(
-"goalAmount"
-).value="";
-
-loadGoals();
-
-};
-
-async function loadGoals(){
+async function getTotalRevenue(){
 
 const snapshot =
 await get(
 
 ref(
 db,
-"users/"+currentUser.uid+
-"/goals"
-)
-
-);
-
-const list =
-document.getElementById(
-"goalsList"
-);
-
-const dashboardGoals =
-document.getElementById(
-"dashboardGoals"
-);
-
-list.innerHTML="";
-dashboardGoals.innerHTML="";
-
-let goalCount = 0;
-
-if(snapshot.exists()){
-
-const data =
-snapshot.val();
-
-Object.entries(data)
-.forEach(([id,goal])=>{
-
-goalCount++;
-
-list.innerHTML +=
-
-`
-
-<div class="card">
-
-<h2>
-${goal.name}
-</h2>
-
-<p>
-
-Target:
-$${Number(
-goal.target
-).toLocaleString()}
-
-</p>
-
-<br>
-
-<div
-id="goalBar_${id}"
-style="
-height:24px;
-background:#111;
-border-radius:20px;
-overflow:hidden;
-">
-
-<div
-id="goalFill_${id}"
-style="
-height:100%;
-width:0%;
-background:var(--primary);
-transition:.4s;
-">
-
-</div>
-
-</div>
-
-<br>
-
-<div
-id="goalText_${id}">
-0%
-</div>
-
-<br>
-
-<button
-class="btn"
-onclick="deleteGoal('${id}')">
-
-Delete Goal
-
-</button>
-
-</div>
-
-<br>
-
-`;
-
-dashboardGoals.innerHTML +=
-
-`
-
-<div class="card">
-
-<h3>
-${goal.name}
-</h3>
-
-<p>
-
-Target:
-$${Number(
-goal.target
-).toLocaleString()}
-
-</p>
-
-<br>
-
-<div
-style="
-height:20px;
-background:#111;
-border-radius:20px;
-overflow:hidden;
-">
-
-<div
-id="dashboardGoal_${id}"
-style="
-height:100%;
-width:0%;
-background:var(--primary);
-transition:.4s;
-">
-
-</div>
-
-</div>
-
-<br>
-
-<div
-id="dashboardGoalText_${id}">
-0%
-</div>
-
-</div>
-
-<br>
-
-`;
-
-});
-
-}
-
-document.getElementById(
-"goalCount"
-).innerText =
-goalCount;
-
-updateGoalProgress();
-
-}
-
-window.deleteGoal =
-async function(id){
-
-await remove(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/goals/"+id
-)
-
-);
-
-loadGoals();
-
-};
-
-async function updateGoalProgress(
-currentTotal
-){
-
-if(currentTotal===undefined){
-
-const earnings =
-await get(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/earnings"
-)
-
-);
-
-currentTotal = 0;
-
-if(earnings.exists()){
-
-Object.values(
-earnings.val()
-).forEach(item=>{
-
-currentTotal +=
-Number(
-item.amount || 0
-);
-
-});
-
-}
-
-}
-
-const goals =
-await get(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/goals"
-)
-
-);
-
-if(!goals.exists())
-return;
-
-Object.entries(
-goals.val()
-).forEach(([id,goal])=>{
-
-const percent =
-
-Math.min(
-100,
-(currentTotal /
-goal.target) * 100
-);
-
-const fill =
-document.getElementById(
-"goalFill_"+id
-);
-
-const text =
-document.getElementById(
-"goalText_"+id
-);
-
-const dashFill =
-document.getElementById(
-"dashboardGoal_"+id
-);
-
-const dashText =
-document.getElementById(
-"dashboardGoalText_"+id
-);
-
-if(fill){
-
-fill.style.width =
-percent+"%";
-
-}
-
-if(text){
-
-text.innerText =
-
-"$"+
-currentTotal.toLocaleString()
-
-+
-
-" / $"
-
-+
-
-Number(
-goal.target
-).toLocaleString()
-
-+
-
-" ("+
-
-percent.toFixed(1)
-
-+"%)";
-
-}
-
-if(dashFill){
-
-dashFill.style.width =
-percent+"%";
-
-}
-
-if(dashText){
-
-dashText.innerText =
-
-percent.toFixed(1)
-
-+"%";
-
-}
-
-});
-
-}
-
-/* =========================
-   INVENTORY SYSTEM
-========================= */
-
-window.addInventory =
-async function(){
-
-const item =
-document.getElementById(
-"inventoryItem"
-).value;
-
-const qty =
-Number(
-document.getElementById(
-"inventoryQty"
-).value
-);
-
-if(!item || !qty){
-
-alert(
-"Enter item and quantity"
-);
-
-return;
-
-}
-
-await push(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/inventory"
-),
-
-{
-item:item,
-qty:qty
-}
-
-);
-
-document.getElementById(
-"inventoryItem"
-).value="";
-
-document.getElementById(
-"inventoryQty"
-).value="";
-
-loadInventory();
-
-};
-
-async function loadInventory(){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/inventory"
-)
-
-);
-
-const list =
-document.getElementById(
-"inventoryList"
-);
-
-list.innerHTML="";
-
-let totalItems = 0;
-
-if(snapshot.exists()){
-
-Object.entries(
-snapshot.val()
-).forEach(([id,item])=>{
-
-totalItems +=
-Number(
-item.qty || 0
-);
-
-list.innerHTML +=
-
-`
-
-<div class="card">
-
-<h3>
-${item.item}
-</h3>
-
-<p>
-
-Quantity:
-${item.qty}
-
-</p>
-
-<br>
-
-<button
-class="btn"
-onclick="deleteInventory('${id}')">
-
-Delete
-
-</button>
-
-</div>
-
-<br>
-
-`;
-
-});
-
-}
-
-document.getElementById(
-"inventoryCount"
-).innerText =
-totalItems;
-
-}
-
-window.deleteInventory =
-async function(id){
-
-await remove(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/inventory/"+id
-)
-
-);
-
-loadInventory();
-
-};
-
-/* =========================
-   TASK SYSTEM
-========================= */
-
-window.addTask =
-async function(){
-
-const task =
-document.getElementById(
-"taskInput"
-).value;
-
-if(!task){
-
-alert(
-"Enter a task"
-);
-
-return;
-
-}
-
-await push(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/tasks"
-),
-
-{
-task:task,
-completed:false
-}
-
-);
-
-document.getElementById(
-"taskInput"
-).value="";
-
-loadTasks();
-
-};
-
-async function loadTasks(){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/tasks"
-)
-
-);
-
-const list =
-document.getElementById(
-"tasksList"
-);
-
-list.innerHTML="";
-
-if(snapshot.exists()){
-
-Object.entries(
-snapshot.val()
-).forEach(([id,item])=>{
-
-list.innerHTML +=
-
-`
-
-<div class="card">
-
-<h3>
-
-${item.task}
-
-</h3>
-
-<p>
-
-Status:
-${item.completed ? "✅ Completed" : "⏳ Active"}
-
-</p>
-
-<br>
-
-<button
-class="btn"
-onclick="toggleTask('${id}',${item.completed})">
-
-${item.completed ? "Mark Active" : "Mark Complete"}
-
-</button>
-
-<br><br>
-
-<button
-class="btn"
-onclick="deleteTask('${id}')">
-
-Delete
-
-</button>
-
-</div>
-
-<br>
-
-`;
-
-});
-
-}
-
-}
-
-window.toggleTask =
-async function(
-id,
-current
-){
-
-await update(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/tasks/"+id
-),
-
-{
-completed:!current
-}
-
-);
-
-loadTasks();
-
-};
-
-window.deleteTask =
-async function(id){
-
-await remove(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/tasks/"+id
-)
-
-);
-
-loadTasks();
-
-};
-
-/* =========================
-   DEVICE COUNTER
-========================= */
-
-async function updateDevicesFixed(){
-
-const earnings =
-await get(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/earnings"
-)
-
-);
-
-let count = 0;
-
-if(earnings.exists()){
-
-count =
-Object.keys(
-earnings.val()
-).length;
-
-}
-
-document.getElementById(
-"devicesFixed"
-).innerText =
-count;
-
-}
-
-/* =========================
-   DASHBOARD REFRESH
-========================= */
-
-async function refreshDashboard(){
-
-await updateDevicesFixed();
-
-await loadInventory();
-
-await loadGoals();
-
-}
-
-setInterval(
-refreshDashboard,
-10000
-);
-
-/* =========================
-   NOTES SYSTEM
-========================= */
-
-document.getElementById(
-"notesBox"
-).addEventListener(
-"input",
-saveNotes
-);
-
-async function saveNotes(){
-
-if(!currentUser)
-return;
-
-await set(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/notes"
-),
-
-{
-text:
-document.getElementById(
-"notesBox"
-).value
-}
-
-);
-
-}
-
-async function loadNotes(){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/notes"
-)
-
-);
-
-if(snapshot.exists()){
-
-document.getElementById(
-"notesBox"
-).value =
-
-snapshot.val().text || "";
-
-}
-
-}
-
-/* =========================
-   BUSINESS NAME
-========================= */
-
-window.saveBusinessName =
-async function(){
-
-const name =
-document.getElementById(
-"businessNameInput"
-).value;
-
-if(!name)
-return;
-
-await set(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/businessName"
-),
-
-name
-
-);
-
-document.getElementById(
-"businessNameDisplay"
-).innerText =
-name;
-
-alert(
-"Business Name Saved"
-);
-
-};
-
-async function loadBusinessName(){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/businessName"
-)
-
-);
-
-if(snapshot.exists()){
-
-const name =
-snapshot.val();
-
-document.getElementById(
-"businessNameInput"
-).value =
-name;
-
-document.getElementById(
-"businessNameDisplay"
-).innerText =
-name;
-
-}
-
-}
-
-/* =========================
-   DASHBOARD WIDGETS
-========================= */
-
-function createDashboardWidget(
-title,
-value,
-id
-){
-
-return `
-
-<div class="card">
-
-<div class="card-title">
-
-${title}
-
-</div>
-
-<div
-class="card-value"
-id="${id}">
-
-${value}
-
-</div>
-
-</div>
-
-`;
-
-}
-
-/* =========================
-   EARNINGS THIS MONTH
-========================= */
-
-async function updateMonthlyStats(){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/earnings"
-)
-
-);
-
-let monthTotal = 0;
-
-const currentMonth =
-new Date().getMonth();
-
-if(snapshot.exists()){
-
-Object.values(
-snapshot.val()
-).forEach(item=>{
-
-if(
-item.month ===
-currentMonth
-){
-
-monthTotal +=
-Number(
-item.amount || 0
-);
-
-}
-
-});
-
-}
-
-let card =
-document.getElementById(
-"monthlyRevenueCard"
-);
-
-if(!card){
-
-const container =
-document.querySelector(
-"#dashboardPage .cards"
-);
-
-container.innerHTML +=
-
-createDashboardWidget(
-"This Month",
-"$0",
-"monthlyRevenueCard"
-);
-
-card =
-document.getElementById(
-"monthlyRevenueCard"
-);
-
-}
-
-card.innerText =
-"$"+
-monthTotal.toLocaleString();
-
-}
-
-/* =========================
-   ACTIVE TASKS
-========================= */
-
-async function updateTaskStats(){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/tasks"
-)
-
-);
-
-let active = 0;
-
-if(snapshot.exists()){
-
-Object.values(
-snapshot.val()
-).forEach(task=>{
-
-if(!task.completed){
-
-active++;
-
-}
-
-});
-
-}
-
-let card =
-document.getElementById(
-"activeTaskCard"
-);
-
-if(!card){
-
-const container =
-document.querySelector(
-"#dashboardPage .cards"
-);
-
-container.innerHTML +=
-
-createDashboardWidget(
-"Active Tasks",
-"0",
-"activeTaskCard"
-);
-
-card =
-document.getElementById(
-"activeTaskCard"
-);
-
-}
-
-card.innerText =
-active;
-
-}
-
-/* =========================
-   DASHBOARD STATS REFRESH
-========================= */
-
-async function refreshStats(){
-
-await updateMonthlyStats();
-
-await updateTaskStats();
-
-}
-
-setInterval(
-refreshStats,
-5000
-);
-
-/* =========================
-   THEME COLOR SYSTEM
-========================= */
-
-window.saveThemeColor =
-async function(){
-
-const color =
-document.getElementById(
-"themeColor"
-).value;
-
-await set(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/theme"
-),
-
-{
-primary:color
-}
-
-);
-
-applyThemeColor(
-color
-);
-
-alert(
-"Theme Saved!"
-);
-
-};
-
-function applyThemeColor(
-color
-){
-
-document.documentElement
-.style
-.setProperty(
-"--primary",
-color
-);
-
-}
-
-async function loadThemeColor(){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/theme"
-)
-
-);
-
-if(snapshot.exists()){
-
-const color =
-snapshot.val().primary;
-
-document.getElementById(
-"themeColor"
-).value =
-color;
-
-applyThemeColor(
-color
-);
-
-}
-
-}
-
-/* =========================
-   EXPORT BACKUP
-========================= */
-
-window.exportBackup =
-async function(){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/"+currentUser.uid)
-
-);
-
-if(!snapshot.exists()){
-
-alert(
-"No Data Found"
-);
-
-return;
-
-}
-
-const data =
-JSON.stringify(
-snapshot.val(),
-null,
-2
-);
-
-const blob =
-new Blob(
-[data],
-{
-type:
-"application/json"
-}
-);
-
-const url =
-URL.createObjectURL(
-blob
-);
-
-const a =
-document.createElement(
-"a"
-);
-
-a.href = url;
-
-a.download =
-"truefix-backup.json";
-
-a.click();
-
-};
-
-/* =========================
-   IMPORT BACKUP
-========================= */
-
-window.importBackup =
-function(){
-
-document.getElementById(
-"backupFile"
-).click();
-
-};
-
-window.handleBackupImport =
-async function(event){
-
-const file =
-event.target.files[0];
-
-if(!file)
-return;
-
-const text =
-await file.text();
-
-const data =
-JSON.parse(text);
-
-await set(
-
-ref(
-db,
-"users/"+currentUser.uid
-),
-
-data
-
-);
-
-alert(
-"Backup Imported"
-);
-
-loadEverything();
-
-};
-
-/* =========================
-   RESET DASHBOARD
-========================= */
-
-window.resetDashboard =
-async function(){
-
-const sure =
-confirm(
-"Delete ALL dashboard data?"
-);
-
-if(!sure)
-return;
-
-await remove(
-
-ref(
-db,
-"users/"+currentUser.uid)
-
-);
-
-alert(
-"Dashboard Reset"
-);
-
-location.reload();
-
-};
-
-/* =========================
-   SETTINGS BUTTONS
-========================= */
-
-const settingsCard =
-document.querySelector(
-"#settingsPage .card"
-);
-
-settingsCard.innerHTML +=
-
-`
-
-<br><br>
-
-<h3>
-Backup
-</h3>
-
-<br>
-
-<button
-class="btn"
-onclick="exportBackup()">
-
-Export Backup
-
-</button>
-
-<br><br>
-
-<button
-class="btn"
-onclick="importBackup()">
-
-Import Backup
-
-</button>
-
-<br><br>
-
-<button
-class="btn"
-style="
-background:#d63c3c;
-"
-onclick="resetDashboard()">
-
-Reset Dashboard
-
-</button>
-
-<input
-type="file"
-id="backupFile"
-style="display:none"
-onchange="
-handleBackupImport(event)
-">
-
-`;
-
-/* =========================
-   AUTO LOAD THEME
-========================= */
-
-const oldLoadEverything =
-loadEverything;
-
-loadEverything =
-async function(){
-
-await oldLoadEverything();
-
-await loadThemeColor();
-
-await refreshStats();
-
-};
-
-/* =========================
-   TOP RIGHT MENU
-========================= */
-
-const menuButton =
-document.createElement(
-"div"
-);
-
-menuButton.innerHTML = "⋮";
-
-menuButton.style.fontSize =
-"30px";
-
-menuButton.style.cursor =
-"pointer";
-
-menuButton.onclick =
-toggleQuickMenu;
-
-document
-.querySelector(".topbar")
-.appendChild(
-menuButton
-);
-
-const quickMenu =
-document.createElement(
-"div"
-);
-
-quickMenu.id =
-"quickMenu";
-
-quickMenu.style.cssText =
-
-`
-position:fixed;
-top:75px;
-right:20px;
-width:260px;
-background:var(--card);
-border:1px solid var(--border);
-border-radius:18px;
-padding:15px;
-display:none;
-z-index:9999;
-`;
-
-quickMenu.innerHTML =
-
-`
-
-<div
-class="menu-item"
-onclick="showPage('settingsPage')">
-
-⚙️ Settings
-
-</div>
-
-<div
-class="menu-item"
-onclick="showPage('earningsPage')">
-
-💰 Earnings
-
-</div>
-
-<div
-class="menu-item"
-onclick="showPage('goalsPage')">
-
-🎯 Goals
-
-</div>
-
-<div
-class="menu-item"
-onclick="showPage('inventoryPage')">
-
-📦 Parts owned
-
-</div>
-
-`;
-
-document.body.appendChild(
-quickMenu
-);
-
-window.toggleQuickMenu =
-function(){
-
-quickMenu.style.display =
-
-quickMenu.style.display ===
-"block"
-
-?
-
-"none"
-
-:
-
-"block";
-
-};
-
-/* =========================
-   NOTIFICATIONS
-========================= */
-
-function showNotification(
-text
-){
-
-const note =
-document.createElement(
-"div"
-);
-
-note.innerText =
-text;
-
-note.style.cssText =
-
-`
-position:fixed;
-bottom:20px;
-right:20px;
-background:var(--primary);
-color:white;
-padding:15px 25px;
-border-radius:14px;
-font-weight:600;
-z-index:99999;
-`;
-
-document.body.appendChild(
-note
-);
-
-setTimeout(()=>{
-
-note.remove();
-
-},3000);
-
-}
-
-/* =========================
-   EDIT EARNINGS
-========================= */
-
-window.editEarning =
-async function(id){
-
-const snapshot =
-await get(
-ref(
-db,
-"users/"+currentUser.uid+
-"/earnings/"+id
-)
-);
-
-if(!snapshot.exists())
-return;
-
-const data =
-snapshot.val();
-
-const amount =
-prompt(
-"New Amount",
-data.amount
-);
-
-if(amount===null)
-return;
-
-await update(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/earnings/"+id
-),
-
-{
-amount:Number(amount)
-}
-
-);
-
-showNotification(
-"Earning Updated"
-);
-
-loadEarnings();
-
-};
-
-/* =========================
-   EDIT INVENTORY
-========================= */
-
-window.editInventory =
-async function(id){
-
-const qty =
-prompt(
-"New Quantity"
-);
-
-if(qty===null)
-return;
-
-await update(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/inventory/"+id
-),
-
-{
-qty:Number(qty)
-}
-
-);
-
-showNotification(
-"Inventory Updated"
-);
-
-loadInventory();
-
-};
-
-/* =========================
-   EDIT GOALS
-========================= */
-
-window.editGoal =
-async function(id){
-
-const goals =
-await get(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/goals/"+id
-)
-
-);
-
-if(!goals.exists())
-return;
-
-const goal =
-goals.val();
-
-const name =
-prompt(
-"Goal Name",
-goal.name
-);
-
-const amount =
-prompt(
-"Goal Amount",
-goal.target
-);
-
-if(name===null)
-return;
-
-await update(
-
-ref(
-db,
-"users/"+currentUser.uid+
-"/goals/"+id
-),
-
-{
-name:name,
-target:Number(amount)
-}
-
-);
-
-showNotification(
-"Goal Updated"
-);
-
-loadGoals();
-
-};
-
-/* =========================
-   SMOOTH PAGE CHANGES
-========================= */
-
-const originalShowPage =
-showPage;
-
-showPage =
-function(page){
-
-originalShowPage(page);
-
-const active =
-document.getElementById(
-page
-);
-
-active.style.opacity="0";
-
-setTimeout(()=>{
-
-active.style.transition=
-".25s";
-
-active.style.opacity="1";
-
-},50);
-
-};
-
-/* =========================
-   AUTO CLOSE MENU
-========================= */
-
-document.addEventListener(
-"click",
-function(e){
-
-if(
-
-!quickMenu.contains(
-e.target
-)
-
-&&
-
-e.target !== menuButton
-
-){
-
-quickMenu.style.display =
-"none";
-
-}
-
-}
-);
-
-/* =========================
-   WELCOME MESSAGE
-========================= */
-
-function welcomeBack(){
-
-const hour =
-new Date()
-.getHours();
-
-let text =
-"Welcome Back";
-
-if(hour<12){
-
-text =
-"Good Morning";
-
-}
-else if(hour<18){
-
-text =
-"Good Afternoon";
-
-}
-else{
-
-text =
-"Good Evening";
-
-}
-
-showNotification(
-text
-);
-
-}
-
-setTimeout(
-welcomeBack,
-1500
-);
-
-/* =========================
-   FINAL STARTUP FIXES
-========================= */
-
-window.addEventListener(
-"load",
-async function(){
-
-if(currentUser){
-
-await loadEverything();
-
-}
-
-});
-
-/* =========================
-   AUTO REFRESH CHART
-========================= */
-
-setInterval(
-async ()=>{
-
-if(currentUser){
-
-await loadEarnings();
-
-}
-
-},
-15000
-);
-
-/* =========================
-   YEARLY STATISTICS
-========================= */
-
-async function calculateYearlyRevenue(){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/"+currentUser.uid+
+"users/" +
+currentUser.uid +
 "/earnings"
 )
 
@@ -3018,153 +1864,2058 @@ return total;
 
 }
 
-/* =========================
-   DASHBOARD LOADING SCREEN
-========================= */
-
-const loadingScreen =
-document.createElement(
-"div"
+console.log(
+"V2 Ultimate Earnings Ready"
 );
 
-loadingScreen.id =
-"loadingScreen";
-
-loadingScreen.style.cssText =
-
-`
-position:fixed;
-inset:0;
-background:#0f1117;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:32px;
-font-weight:700;
-z-index:999999;
-color:white;
-`;
-
-loadingScreen.innerHTML =
-
-`
-TrueFix Loading...
-`;
-
-document.body.appendChild(
-loadingScreen
-);
-
-setTimeout(()=>{
-
-loadingScreen.remove();
-
-},1500);
-
 /* =========================
-   REVENUE CHART LABELS
+   GOALS SYSTEM
 ========================= */
 
-function updateRevenueLabels(){
+window.addGoal =
+async function(){
 
-const chart =
+const name =
 document.getElementById(
-"revenueChart"
+"goalName"
+).value;
+
+const amount =
+Number(
+document.getElementById(
+"goalAmount"
+).value
 );
 
-if(!chart)
-return;
+if(!name || !amount){
 
-chart.style.paddingBottom =
-"20px";
+alert(
+"Enter goal name and amount"
+);
+
+return;
 
 }
 
-/* =========================
-   PERFORMANCE BOOST
-========================= */
+await push(
 
-let refreshRunning =
-false;
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/goals"
+),
 
-const originalLoadEverything =
-loadEverything;
+{
+name:name,
+target:amount
+}
 
-loadEverything =
-async function(){
+);
 
-if(refreshRunning)
-return;
+document.getElementById(
+"goalName"
+).value="";
 
-refreshRunning =
-true;
+document.getElementById(
+"goalAmount"
+).value="";
 
-await originalLoadEverything();
-
-refreshRunning =
-false;
+await loadGoals();
 
 };
 
 /* =========================
-   QUICK DASHBOARD TOTALS
+   LOAD GOALS
 ========================= */
 
-async function updateDashboardTotals(){
+async function loadGoals(){
 
-if(!currentUser)
-return;
-
-const earnings =
+const snapshot =
 await get(
+
 ref(
 db,
-"users/"+currentUser.uid+
-"/earnings"
+"users/" +
+currentUser.uid +
+"/goals"
 )
+
 );
 
-let totalRevenue = 0;
-
-if(earnings.exists()){
-
-Object.values(
-earnings.val()
-).forEach(item=>{
-
-totalRevenue +=
-Number(
-item.amount || 0
+const list =
+document.getElementById(
+"goalsList"
 );
+
+const dashboardGoals =
+document.getElementById(
+"dashboardGoals"
+);
+
+list.innerHTML = "";
+dashboardGoals.innerHTML = "";
+
+let count = 0;
+
+if(snapshot.exists()){
+
+Object.entries(
+snapshot.val()
+).forEach(([id,goal])=>{
+
+count++;
+
+list.innerHTML += `
+
+<div class="card">
+
+<h2>
+${goal.name}
+</h2>
+
+<p>
+Target:
+${formatMoney(goal.target)}
+</p>
+
+<br>
+
+<div
+style="
+height:24px;
+background:#111;
+border-radius:20px;
+overflow:hidden;
+">
+
+<div
+id="goalFill_${id}"
+style="
+height:100%;
+width:0%;
+background:var(--primary);
+transition:.3s;
+">
+
+</div>
+
+</div>
+
+<br>
+
+<div
+id="goalText_${id}">
+0%
+</div>
+
+<br>
+
+<button
+class="btn"
+onclick="editGoal('${id}')">
+
+Edit Goal
+
+</button>
+
+<br><br>
+
+<button
+class="btn"
+onclick="deleteGoal('${id}')">
+
+Delete Goal
+
+</button>
+
+</div>
+
+<br>
+
+`;
+
+dashboardGoals.innerHTML += `
+
+<div class="card">
+
+<h3>
+${goal.name}
+</h3>
+
+<p>
+Goal:
+${formatMoney(goal.target)}
+</p>
+
+<br>
+
+<div
+style="
+height:20px;
+background:#111;
+border-radius:20px;
+overflow:hidden;
+">
+
+<div
+id="dashGoalFill_${id}"
+style="
+height:100%;
+width:0%;
+background:var(--primary);
+transition:.3s;
+">
+
+</div>
+
+</div>
+
+<br>
+
+<div
+id="dashGoalText_${id}">
+0%
+</div>
+
+</div>
+
+<br>
+
+`;
 
 });
 
 }
 
 document.getElementById(
-"totalEarnings"
+"goalCount"
 ).innerText =
-"$"+
-totalRevenue.toLocaleString();
+count;
+
+await updateGoalProgress();
 
 }
 
-setInterval(
-updateDashboardTotals,
-5000
+/* =========================
+   DELETE GOAL
+========================= */
+
+window.deleteGoal =
+async function(id){
+
+await remove(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/goals/" +
+id
+)
+
+);
+
+await loadGoals();
+
+};
+
+/* =========================
+   EDIT GOAL
+========================= */
+
+window.editGoal =
+async function(id){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/goals/" +
+id
+)
+
+);
+
+if(!snapshot.exists())
+return;
+
+const goal =
+snapshot.val();
+
+const newName =
+prompt(
+"Goal Name",
+goal.name
+);
+
+if(newName===null)
+return;
+
+const newTarget =
+prompt(
+"Goal Amount",
+goal.target
+);
+
+await update(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/goals/" +
+id
+),
+
+{
+name:newName,
+target:Number(
+newTarget
+)
+}
+
+);
+
+await loadGoals();
+
+};
+
+/* =========================
+   GOAL PROGRESS
+========================= */
+
+async function updateGoalProgress(
+currentRevenue
+){
+
+if(currentRevenue===undefined){
+
+currentRevenue =
+await getTotalRevenue();
+
+}
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/goals"
+)
+
+);
+
+if(!snapshot.exists())
+return;
+
+Object.entries(
+snapshot.val()
+).forEach(([id,goal])=>{
+
+const percent =
+
+Math.min(
+100,
+(currentRevenue /
+goal.target) * 100
+);
+
+const fill =
+document.getElementById(
+"goalFill_" + id
+);
+
+const text =
+document.getElementById(
+"goalText_" + id
+);
+
+const dashFill =
+document.getElementById(
+"dashGoalFill_" + id
+);
+
+const dashText =
+document.getElementById(
+"dashGoalText_" + id
+);
+
+if(fill){
+
+fill.style.width =
+percent + "%";
+
+}
+
+if(text){
+
+text.innerText =
+
+formatMoney(
+currentRevenue
+)
+
++
+
+" / "
+
++
+
+formatMoney(
+goal.target
+)
+
++
+
+" ("
+
++
+
+percent.toFixed(1)
+
++
+
+"%)";
+
+}
+
+if(dashFill){
+
+dashFill.style.width =
+percent + "%";
+
+}
+
+if(dashText){
+
+dashText.innerText =
+
+percent.toFixed(1)
+
++
+
+"% Complete";
+
+}
+
+});
+
+}
+
+/* =========================
+   GOAL COMPLETION CHECK
+========================= */
+
+async function checkGoalCompletion(){
+
+const revenue =
+await getTotalRevenue();
+
+const goals =
+await get(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/goals"
+)
+
+);
+
+if(!goals.exists())
+return;
+
+Object.values(
+goals.val()
+).forEach(goal=>{
+
+if(
+revenue >= goal.target
+){
+
+console.log(
+"Goal completed:",
+goal.name
+);
+
+}
+
+});
+
+}
+
+console.log(
+"V2 Ultimate Goals Ready"
 );
 
 /* =========================
-   STARTUP PAGE
+   BANK ACCOUNT SYSTEM
 ========================= */
+
+window.addBankMoney =
+async function(){
+
+const amount =
+Number(
+document.getElementById(
+"bankAmount"
+).value
+);
+
+if(!amount){
+
+alert(
+"Enter an amount"
+);
+
+return;
+
+}
+
+const bankRef =
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/bank"
+);
+
+const snapshot =
+await get(
+bankRef
+);
+
+let currentBalance = 0;
+
+if(snapshot.exists()){
+
+currentBalance =
+Number(
+snapshot.val().balance || 0
+);
+
+}
+
+const newBalance =
+
+currentBalance +
+amount;
+
+await set(
+
+bankRef,
+
+{
+balance:newBalance
+}
+
+);
+
+document.getElementById(
+"bankAmount"
+).value="";
+
+await loadBank();
+
+};
+
+/* =========================
+   EDIT BANK BALANCE
+========================= */
+
+window.editBankBalance =
+async function(){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/bank"
+)
+
+);
+
+let currentBalance = 0;
+
+if(snapshot.exists()){
+
+currentBalance =
+snapshot.val().balance || 0;
+
+}
+
+const newBalance =
+prompt(
+"Enter New Balance",
+currentBalance
+);
+
+if(newBalance===null)
+return;
+
+await set(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/bank"
+),
+
+{
+balance:Number(
+newBalance
+)
+}
+
+);
+
+await loadBank();
+
+};
+
+/* =========================
+   LOAD BANK
+========================= */
+
+async function loadBank(){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/bank"
+)
+
+);
+
+let balance = 0;
+
+if(snapshot.exists()){
+
+balance =
+Number(
+snapshot.val().balance || 0
+);
+
+}
+
+document.getElementById(
+"bankBalance"
+).innerText =
+
+formatMoney(
+balance
+);
+
+document.getElementById(
+"bankBalanceCard"
+).innerText =
+
+formatMoney(
+balance
+);
+
+const statsCard =
+document.getElementById(
+"statsBankBalance"
+);
+
+if(statsCard){
+
+statsCard.innerText =
+formatMoney(
+balance
+);
+
+}
+
+await updateNetWorth();
+
+}
+
+/* =========================
+   GET BANK BALANCE
+========================= */
+
+async function getBankBalance(){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/bank"
+)
+
+);
+
+if(!snapshot.exists())
+return 0;
+
+return Number(
+snapshot.val().balance || 0
+);
+
+}
+
+/* =========================
+   NET WORTH SYSTEM
+========================= */
+
+async function updateNetWorth(){
+
+const revenue =
+await getTotalRevenue();
+
+const bank =
+await getBankBalance();
+
+const netWorth =
+
+revenue +
+bank;
+
+const dashboardCard =
+document.getElementById(
+"netWorthCard"
+);
+
+if(dashboardCard){
+
+dashboardCard.innerText =
+
+formatMoney(
+netWorth
+);
+
+}
+
+const statsCard =
+document.getElementById(
+"statsNetWorth"
+);
+
+if(statsCard){
+
+statsCard.innerText =
+
+formatMoney(
+netWorth
+);
+
+}
+
+}
+
+/* =========================
+   QUICK BANK ADDITIONS
+========================= */
+
+window.addQuick100 =
+async function(){
+
+document.getElementById(
+"bankAmount"
+).value = 100;
+
+addBankMoney();
+
+};
+
+window.addQuick500 =
+async function(){
+
+document.getElementById(
+"bankAmount"
+).value = 500;
+
+addBankMoney();
+
+};
+
+window.addQuick1000 =
+async function(){
+
+document.getElementById(
+"bankAmount"
+).value = 1000;
+
+addBankMoney();
+
+};
+
+/* =========================
+   BANK AUTO REFRESH
+========================= */
+
+setInterval(
+
+async()=>{
+
+if(currentUser){
+
+await loadBank();
+
+}
+
+},
+
+15000
+
+);
+
+console.log(
+"V2 Ultimate Bank Ready"
+);
+
+/* =========================
+   OTHER JOB EARNINGS
+========================= */
+
+window.addJob =
+async function(){
+
+const name =
+document.getElementById(
+"jobName"
+).value;
+
+const amount =
+Number(
+document.getElementById(
+"jobAmount"
+).value
+);
+
+if(!name){
+
+alert(
+"Enter a Job Name"
+);
+
+return;
+
+}
+
+await push(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/jobs"
+),
+
+{
+name:name,
+amount:amount || 0
+}
+
+);
+
+document.getElementById(
+"jobName"
+).value="";
+
+document.getElementById(
+"jobAmount"
+).value="";
+
+await loadJobs();
+
+};
+
+/* =========================
+   LOAD JOBS
+========================= */
+
+async function loadJobs(){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/jobs"
+)
+
+);
+
+const jobsList =
+document.getElementById(
+"jobsList"
+);
+
+jobsList.innerHTML = "";
+
+let totalJobsIncome = 0;
+
+if(snapshot.exists()){
+
+Object.entries(
+snapshot.val()
+).forEach(([id,job])=>{
+
+totalJobsIncome +=
+Number(
+job.amount || 0
+);
+
+jobsList.innerHTML += `
+
+<div class="card">
+
+<h2>
+${job.name}
+</h2>
+
+<p>
+
+Total Earned:
+${formatMoney(job.amount)}
+
+</p>
+
+<br>
+
+<button
+class="btn"
+onclick="addMoneyToJob('${id}')">
+
+Add Money
+
+</button>
+
+<br><br>
+
+<button
+class="btn"
+onclick="removeMoneyFromJob('${id}')">
+
+Remove Money
+
+</button>
+
+<br><br>
+
+<button
+class="btn"
+onclick="editJob('${id}')">
+
+Edit Job
+
+</button>
+
+<br><br>
+
+<button
+class="btn"
+onclick="deleteJob('${id}')">
+
+Delete Job
+
+</button>
+
+</div>
+
+<br>
+
+`;
+
+});
+
+}
+
+await updateNetWorth();
+
+}
+
+/* =========================
+   ADD MONEY TO JOB
+========================= */
+
+window.addMoneyToJob =
+async function(id){
+
+const amount =
+Number(
+prompt(
+"Amount To Add"
+)
+);
+
+if(!amount)
+return;
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/jobs/" +
+id
+)
+
+);
+
+if(!snapshot.exists())
+return;
+
+const job =
+snapshot.val();
+
+await update(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/jobs/" +
+id
+),
+
+{
+amount:
+Number(job.amount || 0)
++
+amount
+}
+
+);
+
+await loadJobs();
+
+};
+
+/* =========================
+   REMOVE MONEY FROM JOB
+========================= */
+
+window.removeMoneyFromJob =
+async function(id){
+
+const amount =
+Number(
+prompt(
+"Amount To Remove"
+)
+);
+
+if(!amount)
+return;
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/jobs/" +
+id
+)
+
+);
+
+if(!snapshot.exists())
+return;
+
+const job =
+snapshot.val();
+
+await update(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/jobs/" +
+id
+),
+
+{
+amount:
+Math.max(
+0,
+Number(job.amount || 0)
+-
+amount
+)
+}
+
+);
+
+await loadJobs();
+
+};
+
+/* =========================
+   EDIT JOB
+========================= */
+
+window.editJob =
+async function(id){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/jobs/" +
+id
+)
+
+);
+
+if(!snapshot.exists())
+return;
+
+const job =
+snapshot.val();
+
+const newName =
+prompt(
+"Job Name",
+job.name
+);
+
+if(newName===null)
+return;
+
+const newAmount =
+prompt(
+"Total Earned",
+job.amount
+);
+
+await update(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/jobs/" +
+id
+),
+
+{
+name:newName,
+amount:Number(
+newAmount
+)
+}
+
+);
+
+await loadJobs();
+
+};
+
+/* =========================
+   DELETE JOB
+========================= */
+
+window.deleteJob =
+async function(id){
+
+const sure =
+confirm(
+"Delete this job?"
+);
+
+if(!sure)
+return;
+
+await remove(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/jobs/" +
+id
+)
+
+);
+
+await loadJobs();
+
+};
+
+/* =========================
+   GET TOTAL JOB EARNINGS
+========================= */
+
+async function getTotalJobIncome(){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/jobs"
+)
+
+);
+
+let total = 0;
+
+if(snapshot.exists()){
+
+Object.values(
+snapshot.val()
+).forEach(job=>{
+
+total +=
+Number(
+job.amount || 0
+);
+
+});
+
+}
+
+return total;
+
+}
+
+/* =========================
+   UPDATED NET WORTH
+========================= */
+
+const originalUpdateNetWorth =
+updateNetWorth;
+
+updateNetWorth =
+async function(){
+
+const revenue =
+await getTotalRevenue();
+
+const bank =
+await getBankBalance();
+
+const jobs =
+await getTotalJobIncome();
+
+const netWorth =
+
+revenue +
+bank +
+jobs;
+
+const dashboardCard =
+document.getElementById(
+"netWorthCard"
+);
+
+if(dashboardCard){
+
+dashboardCard.innerText =
+formatMoney(
+netWorth
+);
+
+}
+
+const statsCard =
+document.getElementById(
+"statsNetWorth"
+);
+
+if(statsCard){
+
+statsCard.innerText =
+formatMoney(
+netWorth
+);
+
+}
+
+};
+
+console.log(
+"V2 Ultimate Jobs Ready"
+);
+
+/* =========================
+   INVENTORY SYSTEM
+========================= */
+
+window.addInventory =
+async function(){
+
+const item =
+document.getElementById(
+"inventoryItem"
+).value.trim();
+
+const qty =
+Number(
+document.getElementById(
+"inventoryQty"
+).value
+);
+
+if(!item){
+
+alert("Enter a part name");
+return;
+
+}
+
+await push(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/inventory"
+),
+
+{
+item:item,
+qty:qty || 1
+}
+
+);
+
+document.getElementById(
+"inventoryItem"
+).value="";
+
+document.getElementById(
+"inventoryQty"
+).value="";
+
+await loadInventory();
+
+};
+
+async function loadInventory(){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/inventory"
+)
+
+);
+
+const list =
+document.getElementById(
+"inventoryList"
+);
+
+list.innerHTML="";
+
+let totalParts = 0;
+
+if(snapshot.exists()){
+
+Object.entries(
+snapshot.val()
+).forEach(([id,part])=>{
+
+totalParts +=
+Number(part.qty || 0);
+
+list.innerHTML += `
+
+<div class="card">
+
+<h2>${part.item}</h2>
+
+<p>
+Quantity:
+<b>${part.qty}</b>
+</p>
+
+<br>
+
+<button
+class="btn"
+onclick="editInventory('${id}')">
+
+Edit Quantity
+
+</button>
+
+<br><br>
+
+<button
+class="btn"
+onclick="deleteInventory('${id}')">
+
+Delete Part
+
+</button>
+
+</div>
+
+<br>
+
+`;
+
+});
+
+}
+
+const card =
+document.getElementById(
+"inventoryCount"
+);
+
+if(card){
+
+card.innerText =
+totalParts;
+
+}
+
+}
+
+window.editInventory =
+async function(id){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/inventory/" +
+id
+)
+
+);
+
+if(!snapshot.exists())
+return;
+
+const part =
+snapshot.val();
+
+const qty =
+prompt(
+"New Quantity",
+part.qty
+);
+
+if(qty===null)
+return;
+
+await update(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/inventory/" +
+id
+),
+
+{
+qty:Number(qty)
+}
+
+);
+
+await loadInventory();
+
+};
+
+window.deleteInventory =
+async function(id){
+
+if(!confirm(
+"Delete this part?"
+))
+return;
+
+await remove(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/inventory/" +
+id
+)
+
+);
+
+await loadInventory();
+
+};
+
+/* =========================
+   TASK SYSTEM
+========================= */
+
+window.addTask =
+async function(){
+
+const text =
+document.getElementById(
+"taskInput"
+).value.trim();
+
+if(!text){
+
+alert(
+"Enter a task"
+);
+
+return;
+
+}
+
+await push(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/tasks"
+),
+
+{
+text:text,
+completed:false,
+created:Date.now()
+}
+
+);
+
+document.getElementById(
+"taskInput"
+).value="";
+
+await loadTasks();
+
+};
+
+async function loadTasks(){
+
+const snapshot =
+await get(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/tasks"
+)
+
+);
+
+const list =
+document.getElementById(
+"tasksList"
+);
+
+list.innerHTML="";
+
+let active = 0;
+
+if(snapshot.exists()){
+
+Object.entries(
+snapshot.val()
+).forEach(([id,task])=>{
+
+if(!task.completed)
+active++;
+
+list.innerHTML += `
+
+<div class="card">
+
+<h3>
+
+${task.completed ? "✅" : "📋"}
+
+${task.text}
+
+</h3>
+
+<br>
+
+<button
+class="btn"
+onclick="toggleTask('${id}',${task.completed})">
+
+${task.completed ? "Mark Active" : "Mark Complete"}
+
+</button>
+
+<br><br>
+
+<button
+class="btn"
+onclick="deleteTask('${id}')">
+
+Delete Task
+
+</button>
+
+</div>
+
+<br>
+
+`;
+
+});
+
+}
+
+let stat =
+document.getElementById(
+"activeTaskCard"
+);
+
+if(stat){
+
+stat.innerText =
+active;
+
+}
+
+}
+
+window.toggleTask =
+async function(
+id,
+completed
+){
+
+await update(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/tasks/" +
+id
+),
+
+{
+completed:!completed
+}
+
+);
+
+await loadTasks();
+
+};
+
+window.deleteTask =
+async function(id){
+
+if(!confirm(
+"Delete this task?"
+))
+return;
+
+await remove(
+
+ref(
+db,
+"users/" +
+currentUser.uid +
+"/tasks/" +
+id
+)
+
+);
+
+await loadTasks();
+
+};
+
+/* =========================
+   AUTO REFRESH
+========================= */
+
+setInterval(
+async()=>{
+
+if(!currentUser)
+return;
+
+await loadInventory();
+await loadTasks();
+
+},
+30000
+);
+
+console.log(
+"V2 Ultimate Inventory & Tasks Ready"
+);
+
+/* =========================
+   NOTES AUTO SAVE
+========================= */
+
+window.saveNotes =
+async function(){
+
+if(!currentUser) return;
+
+await set(
+ref(
+db,
+"users/"+currentUser.uid+"/notes"
+),
+{
+text:document.getElementById("notesBox").value
+}
+);
+
+};
+
+async function loadNotes(){
+
+const snapshot=
+await get(
+ref(
+db,
+"users/"+currentUser.uid+"/notes")
+);
+
+if(snapshot.exists()){
+
+document.getElementById(
+"notesBox"
+).value=snapshot.val().text||"";
+
+}
+
+}
+
+document.getElementById(
+"notesBox"
+).addEventListener(
+"input",
+saveNotes
+);
+
+/* =========================
+   BUSINESS NAME
+========================= */
+
+window.saveBusinessName=
+async function(){
+
+const name=
+document.getElementById(
+"businessNameInput"
+).value;
+
+if(!name)return;
+
+await set(
+ref(
+db,
+"users/"+currentUser.uid+"/businessName"
+),
+name
+);
+
+document.getElementById(
+"businessNameDisplay"
+).innerText=name;
+
+alert("Business name saved!");
+
+};
+
+async function loadBusinessName(){
+
+const snapshot=
+await get(
+ref(
+db,
+"users/"+currentUser.uid+"/businessName"
+)
+);
+
+if(snapshot.exists()){
+
+const name=snapshot.val();
+
+document.getElementById(
+"businessNameDisplay"
+).innerText=name;
+
+document.getElementById(
+"businessNameInput"
+).value=name;
+
+}
+
+}
+
+/* =========================
+   THEME COLOR
+========================= */
+
+window.saveThemeColor=
+async function(){
+
+const color=
+document.getElementById(
+"themeColor"
+).value;
+
+await set(
+ref(
+db,
+"users/"+currentUser.uid+"/theme"
+),
+{
+primary:color
+}
+);
+
+applyTheme(color);
+
+};
+
+function applyTheme(color){
+
+document.documentElement.style.setProperty(
+"--primary",
+color
+);
+
+}
+
+async function loadThemeColor(){
+
+const snapshot=
+await get(
+ref(
+db,
+"users/"+currentUser.uid+"/theme"
+)
+);
+
+if(snapshot.exists()){
+
+const color=snapshot.val().primary;
+
+document.getElementById(
+"themeColor"
+).value=color;
+
+applyTheme(color);
+
+}
+
+}
+
+/* =========================
+   BACKUP
+========================= */
+
+window.exportBackup=
+async function(){
+
+const snapshot=
+await get(
+ref(
+db,
+"users/"+currentUser.uid
+)
+);
+
+if(!snapshot.exists()){
+
+alert("Nothing to export.");
+
+return;
+
+}
+
+const blob=
+new Blob(
+[
+JSON.stringify(
+snapshot.val(),
+null,
+2
+)
+],
+{
+type:"application/json"
+}
+);
+
+const url=
+URL.createObjectURL(blob);
+
+const a=
+document.createElement("a");
+
+a.href=url;
+
+a.download="TrueFixBackup.json";
+
+a.click();
+
+};
+
+window.importBackup=function(){
+
+document.getElementById(
+"backupFile"
+).click();
+
+};
+
+window.handleBackupImport=
+async function(e){
+
+const file=e.target.files[0];
+
+if(!file)return;
+
+const text=
+await file.text();
+
+await set(
+ref(
+db,
+"users/"+currentUser.uid
+),
+JSON.parse(text)
+);
+
+alert("Backup Imported!");
+
+await loadEverything();
+
+};
+
+/* =========================
+   RESET
+========================= */
+
+window.resetDashboard=
+async function(){
+
+if(!confirm(
+"Delete ALL dashboard data?"
+))
+return;
+
+await remove(
+ref(
+db,
+"users/"+currentUser.uid
+)
+);
+
+alert(
+"Dashboard Reset"
+);
+
+location.reload();
+
+};
+
+/* =========================
+   LOAD EVERYTHING
+========================= */
+
+const originalLoadEverything=loadEverything;
+
+loadEverything=
+async function(){
+
+await originalLoadEverything();
+
+await loadBusinessName();
+
+await loadThemeColor();
+
+await loadBank();
+
+await loadJobs();
+
+await loadInventory();
+
+await loadTasks();
+
+await loadGoals();
+
+await loadNotes();
+
+await updateNetWorth();
+
+};
+
+/* =========================
+   AUTO REFRESH
+========================= */
+
+setInterval(async()=>{
+
+if(!currentUser)return;
+
+await updateNetWorth();
+
+},10000);
+
+/* =========================
+   STARTUP
+========================= */
+
+window.addEventListener(
+"load",
+()=>{
 
 showPage(
 "dashboardPage"
 );
 
 console.log(
-"TrueFix Dashboard V2 Ready"
+"TrueFix Dashboard V2 Ultimate Loaded!"
 );
+
+});
 
 /* =========================
    END OF PROJECT

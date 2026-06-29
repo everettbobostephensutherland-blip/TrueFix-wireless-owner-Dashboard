@@ -333,39 +333,7 @@ const db = getDatabase(app);
 
 window.firebaseAuth = auth;
 window.firebaseDB = db;
-
-
-
-
-
-let currentUser=null;
-
-
-
-const appArea =
-document.getElementById("app");
-
-
-
-const loginScreen =
-document.getElementById("loginScreen");
-
-
-
-const content =
-document.getElementById("content");
-
-
-
-
-
-
-
-firebaseDB=db;
-
-firebaseAuth=auth;
-
-window.content=content;
+window.content = content;
 
 
 
@@ -429,7 +397,7 @@ ${name}
 
 
 
-onAuthStateChanged(auth,(user)=>{
+onAuthStateChanged(window.firebaseAuth,(user)=>{
 
 
 if(user){
@@ -470,7 +438,7 @@ appArea.style.display="none";
 window.logout=function(){
 
 
-signOut(auth);
+signOut(window.firebaseAuth);
 
 
 };
@@ -1059,7 +1027,7 @@ let result =
 
 await createUserWithEmailAndPassword(
 
-firebaseAuth,
+window.firebaseAuth,
 
 email,
 
@@ -1187,7 +1155,7 @@ try{
 
 await signInWithEmailAndPassword(
 
-firebaseAuth,
+window.firebaseAuth,
 
 email,
 
@@ -1236,7 +1204,7 @@ showLogin();
 
 // load saved theme later
 
-onAuthStateChanged(auth,async(user)=>{
+onAuthStateChanged(window.firebaseAuth,async(user)=>{
 
 
 if(user){
@@ -1311,9 +1279,6 @@ data.theme.text
 
 
 
-</script>
-
-<script type="module">
 
 
 import {
@@ -1353,7 +1318,7 @@ let profileData = {};
 
 
 
-onAuthStateChanged(auth,async(user)=>{
+onAuthStateChanged(window.firebaseAuth,async(user)=>{
 
 
 if(!user)return;
@@ -1362,7 +1327,7 @@ if(!user)return;
 
 let snap =
 await get(
-ref(db,"users/"+user.uid)
+ref(window.firebaseDB,"users/"+user.uid)
 );
 
 
@@ -1645,7 +1610,7 @@ alert(
 
 
 
-await signOut(auth);
+await signOut(window.firebaseAuth);
 
 
 
@@ -1696,7 +1661,7 @@ showCreateAccount();
 
 
 onAuthStateChanged(
-firebaseAuth,
+window.firebaseAuth,
 user=>{
 
 
@@ -4894,7 +4859,7 @@ onlineEmployeesPage();
 
 
 
-onAuthStateChanged(auth,(user)=>{
+onAuthStateChanged(window.firebaseAuth,(user)=>{
 
 
 if(!user)return;
@@ -5676,7 +5641,7 @@ Loading...
 
 onValue(
 
-ref(db,"online"),
+ref(window.firebaseDB,"online"),
 
 snap=>{
 
@@ -12557,7 +12522,7 @@ accountMenu.style.display==="block"
 window.logoutUser=async function(){
 
 
-await signOut(auth);
+await signOut(window.firebaseAuth);
 
 
 location.reload();

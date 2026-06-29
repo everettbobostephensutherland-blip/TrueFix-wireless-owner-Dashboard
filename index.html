@@ -325,18 +325,16 @@ from
 // YOUR EXISTING FIREBASE CONFIG GOES HERE
 
 
-const app =
+window.app =
 initializeApp(firebaseConfig);
 
 
-
-const auth =
-getAuth(app);
-
+window.auth =
+getAuth(window.app);
 
 
-const db =
-getDatabase(app);
+window.db =
+getDatabase(window.app);
 
 
 
@@ -1063,7 +1061,7 @@ let result =
 
 await createUserWithEmailAndPassword(
 
-auth,
+window.auth,
 
 email,
 
@@ -1191,7 +1189,7 @@ try{
 
 await signInWithEmailAndPassword(
 
-auth,
+window.auth,
 
 email,
 
@@ -1543,7 +1541,7 @@ window.logoutUser=async function(){
 
 
 
-await signOut(auth);
+await signOut(window.auth);
 
 
 
@@ -1699,7 +1697,9 @@ showCreateAccount();
 
 
 
-onAuthStateChanged(auth,(user)=>{
+onAuthStateChanged(
+window.auth,
+user=>{
 
 
 if(user){

@@ -4,3924 +4,6827 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<title>TrueFix Wireless</title>
 
-<title>
-TrueFix Dashboard V2 Ultimate
-</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-rel="stylesheet">
 
 <style>
 
+*{
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+
 :root{
 
---primary:#0a84ff;
---bg:#0f1117;
---sidebar:#11151d;
---card:#171b24;
---border:#252c3d;
+--black:#050505;
+--blue:#007bff;
+--panel:#101010;
+--panel2:#171717;
 --text:#ffffff;
 
 }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins,sans-serif;
-}
 
 body{
-background:var(--bg);
-color:white;
+
+margin:0;
+background:var(--black);
+color:var(--text);
+height:100vh;
 overflow:hidden;
+
 }
 
-.login-screen{
 
-position:fixed;
-inset:0;
+/* AUTH */
 
+#authScreen{
+
+height:100vh;
 display:flex;
-justify-content:center;
 align-items:center;
-
-background:var(--bg);
+justify-content:center;
 
 }
 
-.login-card{
 
-width:500px;
-max-width:95%;
+.authBox{
 
-background:var(--card);
-
-border:1px solid var(--border);
-
-border-radius:25px;
-
+width:420px;
+background:var(--panel);
 padding:35px;
+border-radius:22px;
+box-shadow:0 0 40px #000;
 
 }
+
 
 .logo{
 
-width:120px;
-height:120px;
-
-background:var(--primary);
-
-border-radius:50%;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-font-size:42px;
-font-weight:700;
-
-margin:auto;
-margin-bottom:20px;
+text-align:center;
+font-size:30px;
+font-weight:bold;
+color:var(--blue);
+margin-bottom:25px;
 
 }
 
-.input{
+
+input{
 
 width:100%;
-
 padding:14px;
+margin:8px 0;
 
+background:#222;
 border:none;
-
-outline:none;
-
-border-radius:14px;
-
-background:#0d1117;
-
+border-radius:12px;
 color:white;
-
-margin-bottom:12px;
 
 }
 
-.btn{
+
+button{
 
 width:100%;
-
 padding:14px;
+margin-top:10px;
 
 border:none;
+border-radius:12px;
 
-border-radius:14px;
-
-background:var(--primary);
-
+background:var(--blue);
 color:white;
-
-font-weight:600;
 
 cursor:pointer;
 
-margin-top:8px;
+}
+
+
+.switch{
+
+text-align:center;
+margin-top:15px;
+color:var(--blue);
+cursor:pointer;
 
 }
 
-.btn2{
 
-background:#232938;
+
+/* APP */
+
+
+#app{
+
+display:none;
+height:100vh;
 
 }
+
+
 
 .sidebar{
 
 position:fixed;
-
 left:0;
 top:0;
 
-width:280px;
-height:100%;
+width:300px;
+height:100vh;
 
-background:var(--sidebar);
+background:var(--panel);
 
-border-right:1px solid var(--border);
-
-display:none;
+display:flex;
+flex-direction:column;
 
 }
 
-.sidebar-header{
+
+
+.sidebarLogo{
 
 padding:25px;
 
-font-size:28px;
-font-weight:700;
+font-size:25px;
+font-weight:bold;
 
-color:var(--primary);
-
-border-bottom:1px solid var(--border);
+color:var(--blue);
 
 }
 
-.menu{
 
-padding:15px;
+
+.sidebarScroll{
+
+overflow:auto;
+flex:1;
 
 }
 
-.menu-item{
 
-padding:14px;
 
-margin-bottom:8px;
+.section{
 
-border-radius:12px;
+padding:13px 20px;
 
 cursor:pointer;
 
-transition:.2s;
+display:flex;
+justify-content:space-between;
 
 }
 
-.menu-item:hover{
 
-background:#1d2433;
+.section:hover{
+
+background:var(--panel2);
 
 }
 
-.topbar{
 
-position:fixed;
-
-left:280px;
-right:0;
-top:0;
-
-height:70px;
-
-background:var(--sidebar);
-
-border-bottom:1px solid var(--border);
+.children{
 
 display:none;
 
-align-items:center;
-justify-content:space-between;
+}
 
-padding:0 25px;
+
+.item{
+
+padding:10px 35px;
+
+color:#ccc;
+
+cursor:pointer;
 
 }
 
-.dashboard{
 
-position:fixed;
+.item:hover{
 
-left:280px;
-right:0;
+background:#222;
+color:white;
 
-top:70px;
-bottom:0;
+}
+
+
+
+/* MAIN */
+
+
+.main{
+
+margin-left:300px;
+
+height:100vh;
 
 overflow:auto;
 
 padding:25px;
 
-display:none;
-
 }
 
-.page{
 
-display:none;
 
-}
+.card{
 
-.page-title{
+background:var(--panel);
 
-font-size:34px;
-font-weight:700;
+padding:25px;
+
+border-radius:20px;
 
 margin-bottom:20px;
 
 }
 
-.cards{
 
-display:grid;
 
-grid-template-columns:
-repeat(
-auto-fit,
-minmax(250px,1fr)
-);
 
-gap:20px;
 
-}
+.account{
 
-.card{
+height:70px;
 
-background:var(--card);
+border-top:1px solid #222;
 
-border:1px solid var(--border);
+padding:20px;
 
-border-radius:20px;
+cursor:pointer;
 
-padding:25px;
+position:relative;
 
 }
 
-.card-title{
 
-opacity:.7;
-font-size:14px;
+
+.accountMenu{
+
+display:none;
+
+position:absolute;
+
+bottom:75px;
+left:15px;
+
+width:260px;
+
+background:#111;
+
+border-radius:15px;
 
 }
 
-.card-value{
 
-font-size:38px;
-font-weight:700;
 
-color:var(--primary);
+.accountOption{
 
-margin-top:10px;
+padding:15px;
 
 }
+
+
+
+.accountOption:hover{
+
+background:#222;
+
+}
+
+
 
 </style>
 
+
 </head>
+
 
 <body>
 
-<!-- LOGIN SCREEN -->
 
-<div
-class="login-screen"
-id="loginScreen">
 
-<div class="login-card">
+<div id="authScreen">
+
+
+
+<div class="authBox" id="loginBox">
+
 
 <div class="logo">
-TF
+
+TRUEFIX WIRELESS
+
 </div>
 
-<h1 style="text-align:center;">
-TrueFix Dashboard
-</h1>
 
-<p
-style="
-text-align:center;
-opacity:.7;
-margin:15px 0 25px;
-">
-
-Owner Control Center
-
-</p>
-
-<input
-class="input"
-id="email"
-type="email"
+<input id="email"
 placeholder="Email">
 
-<input
-class="input"
-id="password"
+
+<input id="password"
 type="password"
 placeholder="Password">
 
-<button
-class="btn"
-onclick="loginUser()">
 
-Login
+<button onclick="login()">
+
+SIGN IN
 
 </button>
 
-<button
-class="btn btn2"
-onclick="registerUser()">
+
+
+<div class="switch"
+onclick="openCreate()">
 
 Create Account
 
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="authBox"
+id="createBox"
+style="display:none;">
+
+
+<div class="logo">
+
+CREATE ACCOUNT
+
+</div>
+
+
+<input id="firstName"
+placeholder="First Name">
+
+
+<input id="lastName"
+placeholder="Last Name">
+
+
+<input id="newEmail"
+placeholder="Email">
+
+
+<input id="newPassword"
+type="password"
+placeholder="Create Password">
+
+
+<input id="confirmPassword"
+type="password"
+placeholder="Confirm Password">
+
+
+
+<button onclick="register()">
+
+CREATE ACCOUNT
+
 </button>
 
-</div>
+
+
+<div class="switch"
+onclick="openLogin()">
+
+Back To Login
 
 </div>
 
-<!-- SIDEBAR -->
-
-<div
-class="sidebar"
-id="sidebar">
-
-<div class="sidebar-header">
-
-TrueFix
 
 </div>
 
-<div class="menu">
-
-<div
-class="menu-item"
-onclick="showPage('dashboardPage')">
-
-📊 Dashboard
 
 </div>
 
-<div
-class="menu-item"
-onclick="showPage('earningsPage')">
 
-💰 Earnings
 
-</div>
 
-<div
-class="menu-item"
-onclick="showPage('goalsPage')">
 
-🎯 Goals
 
-</div>
 
-<div
-class="menu-item"
-onclick="showPage('bankPage')">
+<div id="app">
 
-🏦 My Bank Account
+
+
+<div class="sidebar">
+
+
+
+<div class="sidebarLogo">
+
+TRUEFIX
 
 </div>
 
-<div
-class="menu-item"
-onclick="showPage('jobsPage')">
 
-💼 Other Job Earnings
 
-</div>
 
-<div
-class="menu-item"
-onclick="showPage('inventoryPage')">
+<div class="sidebarScroll">
 
-📦 Parts Owned
 
-</div>
 
-<div
-class="menu-item"
-onclick="showPage('tasksPage')">
+<!-- HOME -->
 
-📋 Tasks
+<div class="section" onclick="toggle('home')">
+
+🏠 HOME ▼
 
 </div>
 
-<div
-class="menu-item"
-onclick="showPage('notesPage')">
 
-📝 Notes
+<div id="home" class="children">
 
-</div>
 
-<div
-class="menu-item"
-onclick="showPage('statsPage')">
+<div class="item">📊 Dashboard</div>
 
-📈 Statistics
+<div class="item">🔔 Notifications</div>
 
-</div>
+<div class="item">📰 Activity Feed</div>
 
-<div
-class="menu-item"
-onclick="showPage('settingsPage')">
+<div class="item">📌 Pinned Items</div>
 
-⚙️ Settings
+<div class="item">🗓 Today Overview</div>
+
+<div class="item">🔎 Global Search</div>
+
 
 </div>
 
-</div>
+
+
+
+
+
+<!-- REPAIRS -->
+
+<div class="section" onclick="toggle('repairs')">
+
+📱 REPAIRS ▼
 
 </div>
 
-<!-- TOP BAR -->
 
-<div
-class="topbar"
-id="topbar">
+<div id="repairs" class="children">
 
-<h2
-id="businessNameDisplay">
 
-TrueFix Dashboard
+<div class="item">📋 Repair Tickets</div>
 
-</h2>
+<div class="item">👥 Customers</div>
 
-<div
-style="
-cursor:pointer;
-font-size:18px;
-"
-onclick="logoutUser()">
+<div class="item">📅 Calendar</div>
+
+<div class="item">📷 Photos</div>
+
+<div class="item">📂 Files</div>
+
+<div class="item">🔄 Repair Status</div>
+
+<div class="item">🧾 Estimates</div>
+
+<div class="item">✍️ Customer Signatures</div>
+
+<div class="item">🛡 Warranty Claims</div>
+
+<div class="item">⭐ Reviews</div>
+
+<div class="item">🔍 Device Inspection</div>
+
+<div class="item">📸 Before Photos</div>
+
+<div class="item">📸 After Photos</div>
+
+<div class="item">🧪 Testing Checklist</div>
+
+<div class="item">🔧 Repair Steps</div>
+
+<div class="item">⏳ Waiting For Parts</div>
+
+<div class="item">⏱ Labor Timer</div>
+
+<div class="item">✅ Quality Check</div>
+
+
+</div>
+
+
+
+
+
+<!-- DEVICES -->
+
+
+<div class="section" onclick="toggle('devices')">
+
+📱 DEVICES ▼
+
+</div>
+
+
+<div id="devices" class="children">
+
+
+<div class="item">📱 iPhones</div>
+
+<div class="item">📱 Samsung</div>
+
+<div class="item">📱 iPads</div>
+
+<div class="item">💻 Computers</div>
+
+<div class="item">⌚ Smart Watches</div>
+
+<div class="item">🔩 Parts Used</div>
+
+<div class="item">🛡 Warranty Tracking</div>
+
+<div class="item">🔎 IMEI Database</div>
+
+<div class="item">📜 Device History</div>
+
+
+</div>
+
+
+
+
+<!-- MORE CONTINUES PART 2 -->
+
+
+
+</div>
+
+
+
+<div class="account"
+onclick="accountMenu()">
+
+👤 Account
+
+
+<div class="accountMenu"
+id="accountMenu">
+
+
+<div class="accountOption">
 
 Logout
 
 </div>
 
+
+<div class="accountOption">
+
+Switch Account
+
 </div>
 
-<!-- MAIN AREA -->
 
-<div
-class="dashboard"
-id="dashboard">
+</div>
 
-<!-- DASHBOARD PAGE -->
 
-<div
-id="dashboardPage"
-class="page"
-style="display:block;">
+</div>
 
-<h1 class="page-title">
 
-Dashboard
+</div>
+
+
+
+
+
+
+<div class="main">
+
+
+<div class="card">
+
+
+<h1>
+
+TrueFix Wireless Dashboard
 
 </h1>
 
-<div class="cards">
+
+<p>
+
+Loading...
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<script>
+
+
+function toggle(id){
+
+let x=document.getElementById(id);
+
+x.style.display=
+x.style.display==="block"
+?"none"
+:"block";
+
+}
+
+
+
+function openCreate(){
+
+loginBox.style.display="none";
+createBox.style.display="block";
+
+}
+
+
+
+function openLogin(){
+
+createBox.style.display="none";
+loginBox.style.display="block";
+
+}
+
+
+
+function accountMenu(){
+
+let x=document.getElementById("accountMenu");
+
+x.style.display=
+x.style.display==="block"
+?"none"
+:"block";
+
+}
+
+
+
+</script>
+
+<!-- =========================
+PART 2 / 10
+SIDEBAR CONTINUATION
+========================= -->
+
+
+<!-- COMMUNICATION -->
+
+<div class="section" onclick="toggle('communication')">
+
+💬 COMMUNICATION ▼
+
+</div>
+
+
+<div id="communication" class="children">
+
+
+<div class="item">💬 Team Chat</div>
+
+<div class="item">📢 Announcements</div>
+
+<div class="item">📝 Shared Notes</div>
+
+<div class="item">✅ Tasks</div>
+
+<div class="item">🔔 Employee Alerts</div>
+
+<div class="item">📎 Shared Files</div>
+
+<div class="item">📸 Team Photos</div>
+
+<div class="item">🟢 Online Employees</div>
+
+<div class="item">📲 SMS Messages</div>
+
+<div class="item">✉️ Email Center</div>
+
+<div class="item">📞 Call Logs</div>
+
+<div class="item">📋 Customer History</div>
+
+<div class="item">🎂 Birthday Reminders</div>
+
+<div class="item">🔁 Follow Up Reminders</div>
+
+
+</div>
+
+
+
+
+
+<!-- FINANCES -->
+
+
+<div class="section" onclick="toggle('finances')">
+
+💰 FINANCES ▼
+
+</div>
+
+
+<div id="finances" class="children">
+
+
+<div class="item">💵 Repair Income</div>
+
+<div class="item">💼 Other Jobs</div>
+
+<div class="item">🏦 Bank Account</div>
+
+<div class="item">👛 Cash Wallet</div>
+
+<div class="item">💳 Expenses</div>
+
+<div class="item">🧾 Bills</div>
+
+<div class="item">💸 Taxes</div>
+
+<div class="item">🎯 Goals</div>
+
+<div class="item">🧾 Invoices</div>
+
+<div class="item">💰 Discounts</div>
+
+<div class="item">🎟 Coupons</div>
+
+<div class="item">💳 Payment History</div>
+
+<div class="item">🧮 Tax Calculator</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- INVENTORY -->
+
+
+<div class="section" onclick="toggle('inventory')">
+
+📦 INVENTORY ▼
+
+</div>
+
+
+
+<div id="inventory" class="children">
+
+
+<div class="item">📦 Inventory</div>
+
+<div class="item">📷 Barcode Scanner</div>
+
+<div class="item">⚠ Low Stock</div>
+
+<div class="item">📥 Incoming Parts</div>
+
+<div class="item">📤 Used Parts</div>
+
+<div class="item">🧮 Stock Count</div>
+
+<div class="item">💲 Part Pricing</div>
+
+<div class="item">📍 Storage Locations</div>
+
+<div class="item">🔢 Part Numbers</div>
+
+<div class="item">🏷 Labels</div>
+
+<div class="item">📦 Part Batches</div>
+
+<div class="item">🚚 Supplier Orders</div>
+
+<div class="item">📉 Price Changes</div>
+
+<div class="item">⚠ Defective Parts</div>
+
+<div class="item">🔄 Returns</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- TOOLS -->
+
+
+<div class="section" onclick="toggle('tools')">
+
+🛠 TOOLS ▼
+
+</div>
+
+
+<div id="tools" class="children">
+
+
+<div class="item">🧮 Repair Calculator</div>
+
+<div class="item">💲 Parts Pricing</div>
+
+<div class="item">🔎 Customer Lookup</div>
+
+<div class="item">📟 IMEI Checker</div>
+
+<div class="item">🧰 Tool Inventory</div>
+
+<div class="item">⏱ Repair Timer</div>
+
+<div class="item">📏 Measurements</div>
+
+<div class="item">📝 Templates</div>
+
+<div class="item">🧠 Repair Guides</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- ANALYTICS -->
+
+
+<div class="section" onclick="toggle('analytics')">
+
+📈 ANALYTICS ▼
+
+</div>
+
+
+
+<div id="analytics" class="children">
+
+
+<div class="item">📈 Revenue</div>
+
+<div class="item">📊 Charts</div>
+
+<div class="item">📉 Profit</div>
+
+<div class="item">🏆 Top Repairs</div>
+
+<div class="item">📋 Reports</div>
+
+<div class="item">👥 Customer Growth</div>
+
+<div class="item">📦 Inventory Value</div>
+
+<div class="item">🔥 Popular Devices</div>
+
+<div class="item">🔮 Revenue Forecast</div>
+
+<div class="item">📦 Stock Predictions</div>
+
+<div class="item">👨‍🔧 Employee Stats</div>
+
+<div class="item">⏱ Average Repair Time</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- EMPLOYEES -->
+
+
+<div class="section" onclick="toggle('employees')">
+
+👨‍🔧 EMPLOYEES ▼
+
+</div>
+
+
+
+<div id="employees" class="children">
+
+
+<div class="item">👤 Employees</div>
+
+<div class="item">🔑 Permissions</div>
+
+<div class="item">🕒 Schedule</div>
+
+<div class="item">⭐ Performance</div>
+
+<div class="item">💰 Payroll</div>
+
+<div class="item">🟢 Attendance</div>
+
+<div class="item">🏆 Employee Leaderboard</div>
+
+<div class="item">📚 Training</div>
+
+<div class="item">🏅 Achievements</div>
+
+<div class="item">🔥 Repair Streaks</div>
+
+<div class="item">🗨️ Message Employees</div>
+
+<div class="item">⭐ Skill Levels</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- AI -->
+
+
+<div class="section" onclick="toggle('ai')">
+
+🤖 AI ASSISTANT ▼
+
+</div>
+
+
+
+<div id="ai" class="children">
+
+
+<div class="item">🤖 Repair Suggestions</div>
+
+<div class="item">💲 Pricing Help</div>
+
+<div class="item">✉️ Customer Reply Writer</div>
+
+<div class="item">📦 Inventory Predictions</div>
+
+<div class="item">🧠 Repair Knowledge</div>
+
+<div class="item">🔍 AI Diagnostics</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- CUSTOMER PORTAL -->
+
+
+<div class="section" onclick="toggle('customerPortal')">
+
+📞 CUSTOMER PORTAL ▼
+
+</div>
+
+
+
+<div id="customerPortal" class="children">
+
+
+<div class="item">🔎 Track Repair</div>
+
+<div class="item">📷 Upload Photos</div>
+
+<div class="item">✅ Approve Quote</div>
+
+<div class="item">💬 Messages</div>
+
+<div class="item">⭐ Leave Review</div>
+
+<div class="item">📅 Book Appointment</div>
+
+
+</div>
+
+
+
+
+<!-- BUSINESS -->
+
+
+<div class="section">
+
+🏪 BUSINESS MANAGEMENT ▼
+
+</div>
+
+
+
+<div class="section">
+
+💡 IDEAS / PLANNING ▼
+
+</div>
+
+
+<div class="section">
+
+🚨 SECURITY CENTER ▼
+
+</div>
+
+
+<div class="section">
+
+👑 ADMIN ▼
+
+</div>
+
+
+<div class="section">
+
+🔥 FIREBASE ADMIN ▼
+
+</div>
+
+
+
+
+<!-- SETTINGS -->
+
+
+<div class="section" onclick="toggle('settings')">
+
+⚙ SETTINGS ▼
+
+</div>
+
+
+<div id="settings" class="children">
+
+
+<div class="item">🎨 Theme</div>
+
+<div class="item">🌙 Dark Mode</div>
+
+<div class="item">🎨 Custom Colors</div>
+
+<div class="item">🖥 Layout Settings</div>
+
+<div class="item">🏢 Business Settings</div>
+
+<div class="item">👤 Account Settings</div>
+
+<div class="item">🔐 Security Settings</div>
+
+<div class="item">🔔 Notification Settings</div>
+
+<div class="item">📱 Device Settings</div>
+
+<div class="item">💾 Backup & Storage</div>
+
+<div class="item">🌎 Language & Region</div>
+
+<div class="item">🧾 Invoice Settings</div>
+
+<div class="item">🧪 Beta Features</div>
+
+<div class="item">🧹 Maintenance</div>
+
+<div class="item">📥 Export Data</div>
+
+<div class="item">📤 Import Data</div>
+
+
+</div>
+
+<!-- =========================
+PART 3 / 10
+FIREBASE + AUTH SYSTEM
+========================= -->
+
+
+<script type="module">
+
+
+import {
+
+initializeApp
+
+}
+
+from
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+
+
+import {
+
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+signOut,
+onAuthStateChanged
+
+}
+
+from
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+
+
+import {
+
+getDatabase,
+ref,
+set,
+get,
+update,
+push
+
+}
+
+from
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
+
+
+
+
+
+
+const firebaseConfig = {
+
+
+apiKey:
+"AIzaSyDnlNyHtqiR6n1RtLErbpBs55snGK_Z3Yk",
+
+
+authDomain:
+"truefix-dashboard.firebaseapp.com",
+
+
+databaseURL:
+"https://truefix-dashboard-default-rtdb.firebaseio.com",
+
+
+projectId:
+"truefix-dashboard",
+
+
+storageBucket:
+"truefix-dashboard.firebasestorage.app",
+
+
+messagingSenderId:
+"999290275627",
+
+
+appId:
+"1:999290275627:web:ef443cf92f75b0117fa76e",
+
+
+measurementId:
+"G-LK0QQW9PZC"
+
+
+};
+
+
+
+
+
+
+const firebaseApp =
+initializeApp(firebaseConfig);
+
+
+
+const auth =
+getAuth(firebaseApp);
+
+
+
+const db =
+getDatabase(firebaseApp);
+
+
+
+
+
+let currentUser=null;
+
+
+
+
+
+
+
+
+// OPEN CREATE ACCOUNT
+
+
+window.openCreate=function(){
+
+
+document.getElementById("loginBox")
+.style.display="none";
+
+
+document.getElementById("createBox")
+.style.display="block";
+
+
+};
+
+
+
+
+
+
+
+// OPEN LOGIN
+
+
+window.openLogin=function(){
+
+
+document.getElementById("createBox")
+.style.display="none";
+
+
+document.getElementById("loginBox")
+.style.display="block";
+
+
+};
+
+
+
+
+
+
+
+
+
+
+// CREATE ACCOUNT
+
+
+
+window.register = async function(){
+
+
+
+let first =
+document.getElementById("firstName").value;
+
+
+let last =
+document.getElementById("lastName").value;
+
+
+let email =
+document.getElementById("newEmail").value;
+
+
+let password =
+document.getElementById("newPassword").value;
+
+
+let confirm =
+document.getElementById("confirmPassword").value;
+
+
+
+
+if(password !== confirm){
+
+
+alert("Passwords do not match");
+
+
+return;
+
+
+}
+
+
+
+
+try{
+
+
+const result =
+await createUserWithEmailAndPassword(
+
+auth,
+
+email,
+
+password
+
+);
+
+
+
+
+const uid =
+result.user.uid;
+
+
+
+
+
+await set(
+
+ref(db,"users/"+uid),
+
+{
+
+
+profile:{
+
+
+firstName:first,
+
+
+lastName:last,
+
+
+email:email,
+
+
+created:Date.now()
+
+
+},
+
+
+
+settings:{
+
+
+accent:"#007bff",
+
+background:"#050505",
+
+text:"#ffffff"
+
+
+},
+
+
+
+accounts:{
+
+
+main:true
+
+},
+
+
+
+repairs:{},
+
+
+customers:{},
+
+
+inventory:{},
+
+
+messages:{},
+
+
+notifications:{}
+
+
+
+}
+
+
+
+);
+
+
+
+
+
+alert("Account created!");
+
+
+
+}
+
+
+
+catch(error){
+
+
+alert(error.message);
+
+
+}
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+// LOGIN
+
+
+
+window.login = async function(){
+
+
+let email =
+document.getElementById("email").value;
+
+
+let password =
+document.getElementById("password").value;
+
+
+
+try{
+
+
+await signInWithEmailAndPassword(
+
+auth,
+
+email,
+
+password
+
+);
+
+
+
+}
+
+
+
+catch(error){
+
+
+alert(error.message);
+
+
+}
+
+
+
+};
+
+
+
+
+
+
+
+
+
+// AUTH CHECK
+
+
+
+onAuthStateChanged(auth,(user)=>{
+
+
+if(user){
+
+
+
+currentUser=user;
+
+
+
+document
+.getElementById("authScreen")
+.style.display="none";
+
+
+
+document
+.getElementById("app")
+.style.display="flex";
+
+
+
+
+loadUserData();
+
+
+
+
+}
+
+
+
+else{
+
+
+
+document
+.getElementById("authScreen")
+.style.display="flex";
+
+
+
+document
+.getElementById("app")
+.style.display="none";
+
+
+
+}
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+// LOAD USER DATA
+
+
+
+async function loadUserData(){
+
+
+
+const snapshot =
+await get(
+
+ref(db,"users/"+currentUser.uid)
+
+);
+
+
+
+if(snapshot.exists()){
+
+
+
+let data =
+snapshot.val();
+
+
+
+console.log(
+"Loaded user:",
+data
+);
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// ACCOUNT MENU
+
+
+
+window.logout=function(){
+
+
+signOut(auth);
+
+
+};
+
+
+
+
+
+
+
+
+window.switchAccount=function(){
+
+
+alert(
+
+"Account switching will be connected here"
+
+);
+
+
+};
+
+
+
+
+
+
+
+</script>
+
+<!-- =========================
+PART 4 / 10
+DASHBOARD + REPAIRS + DEVICES
+========================= -->
+
+
+<style>
+
+
+.dashboardGrid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
+
+}
+
+
+
+.statBox{
+
+background:var(--panel);
+
+padding:25px;
+
+border-radius:20px;
+
+border-left:5px solid var(--blue);
+
+}
+
+
+
+.statBox h2{
+
+color:var(--blue);
+
+margin:0;
+
+}
+
+
+
+.formBox{
+
+background:var(--panel);
+
+padding:20px;
+
+border-radius:18px;
+
+margin-bottom:20px;
+
+}
+
+
+
+.smallBtn{
+
+width:auto;
+
+padding:10px 20px;
+
+}
+
+
+
+</style>
+
+
+
+
+
+
+
+<script type="module">
+
+
+import {
+
+ref,
+set,
+push,
+get,
+update
+
+}
+
+from
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
+
+
+
+
+
+// WAIT FOR USER
+
+
+function userPath(path){
+
+
+return ref(
+
+db,
+
+"users/"+currentUser.uid+"/"+path
+
+);
+
+
+}
+
+
+
+
+
+
+
+
+// PAGE LOADER
+
+
+window.openPage=function(page){
+
+
+
+let main =
+document.querySelector(".main");
+
+
+
+
+if(page==="Dashboard"){
+
+
+
+main.innerHTML=`
 
 <div class="card">
 
-<div class="card-title">
-Total Earnings
-</div>
+<h1>
+📊 Dashboard
+</h1>
 
-<div
-class="card-value"
-id="totalEarnings">
 
-$0
+<div class="dashboardGrid">
 
-</div>
 
-</div>
+<div class="statBox">
 
-<div class="card">
-
-<div class="card-title">
-Bank Balance
-</div>
-
-<div
-class="card-value"
-id="bankBalanceCard">
-
-$0
-
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="card-title">
-Total Net Worth
-</div>
-
-<div
-class="card-value"
-id="netWorthCard">
-
-$0
-
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="card-title">
-Active Goals
-</div>
-
-<div
-class="card-value"
-id="goalCount">
-
+<h2 id="repairTotal">
 0
-
-</div>
-
-</div>
-
-</div>
-
-<br><br>
-
-<div
-id="dashboardGoals">
-
-</div>
-
-</div>
-
-<!-- EARNINGS PAGE -->
-
-<div
-id="earningsPage"
-class="page">
-
-<h1 class="page-title">
-
-Earnings
-
-</h1>
-
-<div class="card">
-
-<input
-class="input"
-id="earningAmount"
-type="number"
-placeholder="Amount Earned">
-
-<input
-class="input"
-id="earningDescription"
-placeholder="Description">
-
-<button
-class="btn"
-onclick="addEarning()">
-
-Add Earning
-
-</button>
-
-</div>
-
-<br>
-
-<div
-id="earningsList">
-
-</div>
-
-</div>
-
-<!-- GOALS PAGE -->
-
-<div
-id="goalsPage"
-class="page">
-
-<h1 class="page-title">
-
-Goals
-
-</h1>
-
-<div class="card">
-
-<input
-class="input"
-id="goalName"
-placeholder="Goal Name">
-
-<input
-class="input"
-id="goalAmount"
-type="number"
-placeholder="Target Amount">
-
-<button
-class="btn"
-onclick="addGoal()">
-
-Create Goal
-
-</button>
-
-</div>
-
-<br>
-
-<div
-id="goalsList">
-
-</div>
-
-</div>
-
-<!-- BANK PAGE -->
-
-<div
-id="bankPage"
-class="page">
-
-<h1 class="page-title">
-
-My Bank Account
-
-</h1>
-
-<div class="card">
-
-<h2>
-
-Current Balance
-
 </h2>
 
-<br>
+<p>
+Repairs
+</p>
 
-<div
-class="card-value"
-id="bankBalance">
+</div>
 
+
+
+
+<div class="statBox">
+
+<h2 id="customerTotal">
+0
+</h2>
+
+<p>
+Customers
+</p>
+
+</div>
+
+
+
+
+<div class="statBox">
+
+<h2 id="deviceTotal">
+0
+</h2>
+
+<p>
+Devices
+</p>
+
+</div>
+
+
+
+
+
+<div class="statBox">
+
+<h2 id="moneyTotal">
 $0
+</h2>
+
+<p>
+Income
+</p>
 
 </div>
 
-<br>
 
-<input
-class="input"
-id="bankAmount"
-type="number"
-placeholder="Amount">
-
-<button
-class="btn"
-onclick="addBankMoney()">
-
-Add Money
-
-</button>
-
-<br><br>
-
-<button
-class="btn"
-onclick="editBankBalance()">
-
-Edit Balance
-
-</button>
 
 </div>
 
+
 </div>
 
-<!-- OTHER JOBS PAGE -->
+`;
 
-<div
-id="jobsPage"
-class="page">
 
-<h1 class="page-title">
 
-Other Job Earnings
+}
 
-</h1>
+
+
+
+
+if(page==="Repair Tickets"){
+
+
+
+main.innerHTML=`
 
 <div class="card">
 
-<input
-class="input"
-id="jobName"
-placeholder="Job Name">
 
-<input
-class="input"
-id="jobAmount"
-type="number"
-placeholder="Starting Earnings">
+<h1>
+📋 Repair Tickets
+</h1>
 
-<button
-class="btn"
-onclick="addJob()">
 
-Add Job
+
+<div class="formBox">
+
+
+<input id="repairDevice"
+placeholder="Device">
+
+
+<input id="repairCustomer"
+placeholder="Customer">
+
+
+<input id="repairIssue"
+placeholder="Problem">
+
+
+
+<button class="smallBtn"
+onclick="addRepair()">
+
+Create Repair
 
 </button>
 
-</div>
-
-<br>
-
-<div
-id="jobsList">
 
 </div>
 
+
+
+<div id="repairList">
+
 </div>
 
-<!-- INVENTORY PAGE -->
 
-<div
-id="inventoryPage"
-class="page">
+</div>
 
-<h1 class="page-title">
 
-Parts Owned
+`;
 
-</h1>
+
+
+loadRepairs();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+if(page==="Customers"){
+
+
+main.innerHTML=`
 
 <div class="card">
 
-<input
-class="input"
-id="inventoryItem"
-placeholder="Part Name">
 
-<input
-class="input"
-id="inventoryQty"
-type="number"
-placeholder="Quantity">
+<h1>
+👥 Customers
+</h1>
 
-<button
-class="btn"
-onclick="addInventory()">
 
-Add Part
+<div class="formBox">
+
+
+<input id="customerName"
+placeholder="Customer Name">
+
+
+<input id="customerPhone"
+placeholder="Phone">
+
+
+<input id="customerEmail"
+placeholder="Email">
+
+
+
+<button class="smallBtn"
+onclick="addCustomer()">
+
+Add Customer
 
 </button>
 
-</div>
 
-<br>
-
-<div
-id="inventoryList">
 
 </div>
 
+
+
+<div id="customerList">
+
 </div>
 
-<!-- TASKS PAGE -->
 
-<div
-id="tasksPage"
-class="page">
 
-<h1 class="page-title">
+</div>
 
-Tasks
+`;
 
-</h1>
+
+
+loadCustomers();
+
+
+}
+
+
+
+
+
+
+
+
+
+
+if(page==="iPhones"){
+
+
+devicePage("iPhones");
+
+
+}
+
+
+
+if(page==="Samsung"){
+
+
+devicePage("Samsung");
+
+
+}
+
+
+if(page==="iPads"){
+
+
+devicePage("iPads");
+
+
+}
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+// REPAIRS
+
+
+
+
+
+window.addRepair=async function(){
+
+
+
+let id =
+push(userPath("repairs")).key;
+
+
+
+
+await set(
+
+userPath("repairs/"+id),
+
+{
+
+
+device:
+repairDevice.value,
+
+
+customer:
+repairCustomer.value,
+
+
+issue:
+repairIssue.value,
+
+
+status:
+"Waiting For Parts",
+
+
+created:
+Date.now()
+
+
+}
+
+
+);
+
+
+
+repairDevice.value="";
+
+repairCustomer.value="";
+
+repairIssue.value="";
+
+
+
+loadRepairs();
+
+
+};
+
+
+
+
+
+
+
+
+
+async function loadRepairs(){
+
+
+let snap =
+await get(userPath("repairs"));
+
+
+
+let box =
+document.getElementById("repairList");
+
+
+
+if(!box)return;
+
+
+
+
+box.innerHTML="";
+
+
+
+if(snap.exists()){
+
+
+
+Object.values(snap.val()).forEach(r=>{
+
+
+
+box.innerHTML += `
+
 
 <div class="card">
 
-<input
-class="input"
-id="taskInput"
-placeholder="Task">
 
-<button
-class="btn"
-onclick="addTask()">
+<h3>
+
+${r.device}
+
+</h3>
+
+
+<p>
+
+Customer:
+${r.customer}
+
+</p>
+
+
+<p>
+
+${r.issue}
+
+</p>
+
+
+<p>
+
+Status:
+${r.status}
+
+</p>
+
+
+
+</div>
+
+
+
+`;
+
+
+
+});
+
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+// CUSTOMERS
+
+
+
+
+
+window.addCustomer=async function(){
+
+
+
+let id =
+push(userPath("customers")).key;
+
+
+
+
+await set(
+
+userPath("customers/"+id),
+
+{
+
+
+name:
+customerName.value,
+
+
+phone:
+customerPhone.value,
+
+
+email:
+customerEmail.value,
+
+
+created:
+Date.now()
+
+
+}
+
+
+);
+
+
+
+customerName.value="";
+
+customerPhone.value="";
+
+customerEmail.value="";
+
+
+
+loadCustomers();
+
+
+};
+
+
+
+
+
+
+
+
+
+
+async function loadCustomers(){
+
+
+
+let snap =
+await get(userPath("customers"));
+
+
+
+let box =
+document.getElementById("customerList");
+
+
+
+if(!box)return;
+
+
+
+box.innerHTML="";
+
+
+
+
+if(snap.exists()){
+
+
+
+Object.values(snap.val())
+.forEach(c=>{
+
+
+box.innerHTML +=`
+
+
+<div class="card">
+
+
+<h3>
+
+${c.name}
+
+</h3>
+
+
+<p>
+${c.phone}
+</p>
+
+
+<p>
+${c.email}
+</p>
+
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// DEVICES
+
+
+
+
+
+function devicePage(type){
+
+
+
+let main =
+document.querySelector(".main");
+
+
+
+main.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+📱 ${type}
+
+</h1>
+
+
+
+<div class="formBox">
+
+
+<input id="deviceName"
+placeholder="Device Name">
+
+
+<input id="imei"
+placeholder="IMEI">
+
+
+
+<button onclick="addDevice('${type}')">
+
+Save Device
+
+</button>
+
+
+
+</div>
+
+
+<div id="deviceList">
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+
+loadDevices(type);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+window.addDevice=async function(type){
+
+
+
+let id =
+push(userPath("devices")).key;
+
+
+
+await set(
+
+userPath("devices/"+id),
+
+{
+
+
+type:type,
+
+
+name:deviceName.value,
+
+
+imei:imei.value,
+
+
+created:Date.now()
+
+
+}
+
+);
+
+
+
+deviceName.value="";
+
+imei.value="";
+
+
+
+loadDevices(type);
+
+
+
+};
+
+
+
+
+
+
+
+
+
+async function loadDevices(type){
+
+
+let snap =
+await get(userPath("devices"));
+
+
+
+let box =
+document.getElementById("deviceList");
+
+
+
+if(!box)return;
+
+
+
+box.innerHTML="";
+
+
+
+if(snap.exists()){
+
+
+
+Object.values(snap.val())
+.forEach(d=>{
+
+
+if(d.type===type){
+
+
+box.innerHTML+=`
+
+
+<div class="card">
+
+
+<h3>
+
+${d.name}
+
+</h3>
+
+
+<p>
+
+IMEI:
+${d.imei}
+
+</p>
+
+
+</div>
+
+
+`;
+
+
+}
+
+
+
+});
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+</script>
+
+<!-- =========================
+PART 5 / 10
+MESSAGING + COMMUNICATION
+========================= -->
+
+
+<style>
+
+
+.chatBox{
+
+height:350px;
+
+overflow:auto;
+
+background:#080808;
+
+padding:15px;
+
+border-radius:15px;
+
+margin-bottom:15px;
+
+}
+
+
+
+.message{
+
+background:#151515;
+
+padding:12px;
+
+border-radius:12px;
+
+margin-bottom:10px;
+
+}
+
+
+
+.messageName{
+
+color:var(--blue);
+
+font-weight:bold;
+
+}
+
+
+
+.notice{
+
+padding:15px;
+
+background:#151515;
+
+border-radius:15px;
+
+margin:10px 0;
+
+}
+
+
+
+</style>
+
+
+
+
+
+
+
+
+<script type="module">
+
+
+import {
+
+ref,
+push,
+set,
+get,
+onValue
+
+}
+
+from
+
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
+
+
+
+
+
+
+
+
+
+function userRef(path){
+
+
+return ref(
+
+db,
+
+"users/"+currentUser.uid+"/"+path
+
+);
+
+
+}
+
+
+
+
+
+
+
+
+
+// OPEN COMMUNICATION PAGES
+
+
+
+
+window.communicationPage=function(type){
+
+
+
+let main =
+document.querySelector(".main");
+
+
+
+
+
+if(type==="chat"){
+
+
+
+main.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+💬 Team Chat
+</h1>
+
+
+
+<div class="chatBox"
+id="chatMessages">
+
+</div>
+
+
+
+<input id="chatInput"
+placeholder="Type message">
+
+
+<button onclick="sendChat()">
+
+Send
+
+</button>
+
+
+
+</div>
+
+
+`;
+
+
+
+loadChat();
+
+
+
+}
+
+
+
+
+
+
+
+
+if(type==="notes"){
+
+
+
+main.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+📝 Shared Notes
+</h1>
+
+
+
+<textarea
+id="noteText"
+style="width:100%;height:200px;background:#222;color:white">
+
+</textarea>
+
+
+
+<button onclick="saveNote()">
+
+Save Note
+
+</button>
+
+
+<div id="notesList">
+
+</div>
+
+
+
+</div>
+
+
+
+`;
+
+
+
+loadNotes();
+
+
+
+}
+
+
+
+
+
+
+
+
+if(type==="tasks"){
+
+
+main.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+✅ Tasks
+</h1>
+
+
+
+<input id="taskText"
+placeholder="New Task">
+
+
+
+<button onclick="addTask()">
 
 Add Task
 
 </button>
 
-</div>
 
-<br>
 
-<div
-id="tasksList">
+<div id="taskList">
 
 </div>
 
+
+
 </div>
 
-<!-- NOTES PAGE -->
 
-<div
-id="notesPage"
-class="page">
+`;
 
-<h1 class="page-title">
 
-Notes
 
+loadTasks();
+
+
+
+}
+
+
+
+
+
+
+
+
+if(type==="notifications"){
+
+
+
+main.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+🔔 Notifications
 </h1>
 
-<textarea
 
-id="notesBox"
 
-style="
-width:100%;
-height:500px;
-background:var(--card);
-border:1px solid var(--border);
-border-radius:20px;
-padding:20px;
-color:white;
-resize:none;
-font-size:16px;
-">
-
-</textarea>
+<div id="notificationList">
 
 </div>
 
-<!-- STATISTICS PAGE -->
-
-<div
-id="statsPage"
-class="page">
-
-<h1 class="page-title">
-
-Statistics
-
-</h1>
-
-<div class="card">
-
-<h2>
-
-Revenue Overview
-
-</h2>
-
-<br>
-
-<div
-
-id="revenueChart"
-
-style="
-height:280px;
-display:flex;
-align-items:flex-end;
-gap:8px;
-">
 
 </div>
 
-</div>
 
-<br>
+`;
 
-<div class="cards">
 
-<div class="card">
 
-<div class="card-title">
+loadNotifications();
 
-Yearly Revenue
 
-</div>
-
-<div
-class="card-value"
-id="yearlyRevenue">
-
-$0
-
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="card-title">
-
-Bank Balance
-
-</div>
-
-<div
-class="card-value"
-id="statsBankBalance">
-
-$0
-
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="card-title">
-
-Net Worth
-
-</div>
-
-<div
-class="card-value"
-id="statsNetWorth">
-
-$0
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- SETTINGS PAGE -->
-
-<div
-id="settingsPage"
-class="page">
-
-<h1 class="page-title">
-
-Settings
-
-</h1>
-
-<div class="card">
-
-<h3>
-
-Business Name
-
-</h3>
-
-<br>
-
-<input
-class="input"
-id="businessNameInput"
-placeholder="Business Name">
-
-<button
-class="btn"
-onclick="saveBusinessName()">
-
-Save Business Name
-
-</button>
-
-<br><br>
-
-<h3>
-
-Theme Color
-
-</h3>
-
-<br>
-
-<input
-
-type="color"
-
-id="themeColor"
-
-style="
-width:100%;
-height:70px;
-background:none;
-border:none;
-cursor:pointer;
-">
-
-<br><br>
-
-<button
-class="btn"
-onclick="saveThemeColor()">
-
-Save Theme Color
-
-</button>
-
-</div>
-
-<br>
-
-<div class="card">
-
-<h3>
-
-Backup & Restore
-
-</h3>
-
-<br>
-
-<button
-class="btn"
-onclick="exportBackup()">
-
-Export Backup
-
-</button>
-
-<br><br>
-
-<button
-class="btn"
-onclick="importBackup()">
-
-Import Backup
-
-</button>
-
-<br><br>
-
-<button
-class="btn"
-style="background:#cc3333;"
-onclick="resetDashboard()">
-
-Reset Dashboard
-
-</button>
-
-<input
-type="file"
-id="backupFile"
-style="display:none">
-
-</div>
-
-</div>
-
-</div>
-
-<script type="module">
-
-/* =========================
-   FIREBASE IMPORTS
-========================= */
-
-import {
-initializeApp
 }
-from
-"https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
-import {
-getAuth,
-createUserWithEmailAndPassword,
-signInWithEmailAndPassword,
-onAuthStateChanged,
-signOut
+
+
+
 }
-from
-"https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
-import {
-getDatabase,
-ref,
-set,
-push,
-get,
-remove,
-update
+
+
+
+
+
+
+
+
+// CHAT
+
+
+
+
+
+window.sendChat=async function(){
+
+
+
+let text =
+document.getElementById("chatInput").value;
+
+
+
+if(!text)return;
+
+
+
+
+let id =
+push(userRef("messages")).key;
+
+
+
+
+
+await set(
+
+userRef("messages/"+id),
+
+{
+
+
+text:text,
+
+
+sender:
+currentUser.email,
+
+
+time:
+Date.now()
+
+
 }
-from
-"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
 
-/* =========================
-   FIREBASE CONFIG
-========================= */
+);
 
-const firebaseConfig = {
 
-apiKey:
-"AIzaSyDnlNyHtqiR6n1RtLErbpBs55snGK_Z3Yk",
 
-authDomain:
-"truefix-dashboard.firebaseapp.com",
 
-databaseURL:
-"https://truefix-dashboard-default-rtdb.firebaseio.com",
 
-projectId:
-"truefix-dashboard",
+document.getElementById("chatInput").value="";
 
-storageBucket:
-"truefix-dashboard.firebasestorage.app",
 
-messagingSenderId:
-"999290275627",
-
-appId:
-"1:999290275627:web:ef443cf92f75b0117fa76e",
-
-measurementId:
-"G-LK0QQW9PZC"
 
 };
 
-/* =========================
-   START FIREBASE
-========================= */
 
-const app =
-initializeApp(
-firebaseConfig
-);
 
-const auth =
-getAuth(app);
 
-const db =
-getDatabase(app);
 
-window.currentUser =
-null;
 
-/* =========================
-   PAGE SYSTEM
-========================= */
 
-window.showPage =
-function(pageId){
 
-document
-.querySelectorAll(".page")
-.forEach(page=>{
 
-page.style.display =
-"none";
+
+function loadChat(){
+
+
+
+let box =
+document.getElementById("chatMessages");
+
+
+
+if(!box)return;
+
+
+
+
+onValue(
+
+userRef("messages"),
+
+snap=>{
+
+
+
+box.innerHTML="";
+
+
+
+if(snap.exists()){
+
+
+
+Object.values(snap.val())
+
+.sort((a,b)=>a.time-b.time)
+
+.forEach(m=>{
+
+
+box.innerHTML+=`
+
+
+<div class="message">
+
+
+<div class="messageName">
+
+${m.sender}
+
+</div>
+
+
+
+${m.text}
+
+
+</div>
+
+
+`;
+
+
 
 });
 
-document
-.getElementById(pageId)
-.style.display =
-"block";
 
-};
-
-/* =========================
-   CREATE ACCOUNT
-========================= */
-
-window.registerUser =
-async function(){
-
-const email =
-document.getElementById(
-"email"
-).value;
-
-const password =
-document.getElementById(
-"password"
-).value;
-
-if(!email || !password){
-
-alert(
-"Enter email and password"
-);
-
-return;
 
 }
 
-try{
 
-await createUserWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-alert(
-"Account Created!"
-);
-
-}catch(error){
-
-alert(
-error.message
-);
 
 }
 
-};
 
-/* =========================
-   LOGIN
-========================= */
 
-window.loginUser =
-async function(){
-
-const email =
-document.getElementById(
-"email"
-).value;
-
-const password =
-document.getElementById(
-"password"
-).value;
-
-try{
-
-await signInWithEmailAndPassword(
-auth,
-email,
-password
 );
 
-}catch(error){
 
-alert(
-error.message
-);
 
 }
 
-};
 
-/* =========================
-   LOGOUT
-========================= */
 
-window.logoutUser =
-function(){
 
-signOut(auth);
 
-};
 
-/* =========================
-   AUTH STATE
-========================= */
 
-onAuthStateChanged(
 
-auth,
 
-async(user)=>{
+// NOTES
 
-if(user){
 
-window.currentUser =
-user;
 
-/* hide login */
 
-document
-.getElementById(
-"loginScreen"
-)
-.style.display =
-"none";
 
-/* show dashboard */
+window.saveNote=async function(){
 
-document
-.getElementById(
-"sidebar"
-)
-.style.display =
-"block";
 
-document
-.getElementById(
-"topbar"
-)
-.style.display =
-"flex";
 
-document
-.getElementById(
-"dashboard"
-)
-.style.display =
-"block";
+let text =
+document.getElementById("noteText").value;
 
-/* open dashboard */
 
-showPage(
-"dashboardPage"
+
+let id =
+push(userRef("notes")).key;
+
+
+
+
+await set(
+
+userRef("notes/"+id),
+
+{
+
+
+text:text,
+
+
+created:Date.now()
+
+
+}
+
 );
 
-/* load data */
 
-await loadEverything();
+
+loadNotes();
+
+
+};
+
+
+
+
+
+
+
+
+async function loadNotes(){
+
+
+
+let snap =
+await get(userRef("notes"));
+
+
+
+let box =
+document.getElementById("notesList");
+
+
+
+if(!box)return;
+
+
+
+box.innerHTML="";
+
+
+
+if(snap.exists()){
+
+
+
+Object.values(snap.val())
+
+.forEach(n=>{
+
+
+
+box.innerHTML+=`
+
+
+<div class="notice">
+
+${n.text}
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// TASKS
+
+
+
+
+
+
+window.addTask=async function(){
+
+
+
+let text =
+document.getElementById("taskText").value;
+
+
+
+let id =
+push(userRef("tasks")).key;
+
+
+
+
+await set(
+
+userRef("tasks/"+id),
+
+{
+
+
+text:text,
+
+
+done:false,
+
+
+created:Date.now()
+
+
+}
+
+
+);
+
+
+
+document.getElementById("taskText").value="";
+
+
+
+loadTasks();
+
+
+
+};
+
+
+
+
+
+
+
+
+async function loadTasks(){
+
+
+let snap =
+await get(userRef("tasks"));
+
+
+
+let box =
+document.getElementById("taskList");
+
+
+
+if(!box)return;
+
+
+
+box.innerHTML="";
+
+
+
+if(snap.exists()){
+
+
+
+Object.values(snap.val())
+
+.forEach(t=>{
+
+
+
+box.innerHTML+=`
+
+
+<div class="notice">
+
+
+☐ ${t.text}
+
+
+</div>
+
+
+
+`;
+
+
+
+});
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// NOTIFICATIONS
+
+
+
+
+
+async function loadNotifications(){
+
+
+let box =
+document.getElementById("notificationList");
+
+
+
+if(!box)return;
+
+
+
+
+let snap =
+await get(userRef("notifications"));
+
+
+
+box.innerHTML="";
+
+
+
+
+if(snap.exists()){
+
+
+
+Object.values(snap.val())
+
+.forEach(n=>{
+
+
+box.innerHTML+=`
+
+
+<div class="notice">
+
+
+🔔 ${n.text}
+
+
+</div>
+
+
+
+`;
+
+
+});
+
+
 
 }
 
 else{
 
-document
-.getElementById(
-"loginScreen"
-)
-.style.display =
-"flex";
 
-document
-.getElementById(
-"sidebar"
-)
-.style.display =
-"none";
+box.innerHTML=
+"No notifications yet";
 
-document
-.getElementById(
-"topbar"
-)
-.style.display =
-"none";
-
-document
-.getElementById(
-"dashboard"
-)
-.style.display =
-"none";
 
 }
 
-}
 
-);
-
-/* =========================
-   MASTER LOADER
-========================= */
-
-async function loadEverything(){
-
-if(!currentUser)
-return;
-
-if(typeof loadEarnings==="function")
-await loadEarnings();
-
-if(typeof loadGoals==="function")
-await loadGoals();
-
-if(typeof loadInventory==="function")
-await loadInventory();
-
-if(typeof loadTasks==="function")
-await loadTasks();
-
-if(typeof loadNotes==="function")
-await loadNotes();
-
-if(typeof loadBusinessName==="function")
-await loadBusinessName();
-
-if(typeof loadThemeColor==="function")
-await loadThemeColor();
-
-if(typeof loadBank==="function")
-await loadBank();
-
-if(typeof loadJobs==="function")
-await loadJobs();
-
-if(typeof updateNetWorth==="function")
-await updateNetWorth();
 
 }
 
-/* =========================
-   HELPER FUNCTIONS
-========================= */
 
-function formatMoney(amount){
 
-return "$" +
-Number(amount || 0)
-.toLocaleString();
 
-}
 
-window.formatMoney =
-formatMoney;
 
-/* =========================
-   STARTUP
-========================= */
 
-console.log(
-"TrueFix V2 Ultimate Loaded"
-);
 
-/* =========================
-   EARNINGS SYSTEM
-========================= */
 
-window.addEarning =
-async function(){
 
-const amount =
-Number(
-document.getElementById(
-"earningAmount"
-).value
-);
 
-const description =
-document.getElementById(
-"earningDescription"
-).value;
 
-if(!amount){
+// CREATE ACTIVITY
 
-alert(
-"Enter an amount"
-);
 
-return;
 
-}
 
-const now =
-new Date();
 
-await push(
+window.addNotification=async function(text){
 
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/earnings"
-),
+
+
+let id =
+push(userRef("notifications")).key;
+
+
+
+await set(
+
+userRef("notifications/"+id),
 
 {
-amount:amount,
-description:description,
-month:now.getMonth(),
-year:now.getFullYear(),
-date:Date.now()
+
+
+text:text,
+
+
+time:Date.now()
+
+
 }
+
 
 );
 
-document.getElementById(
-"earningAmount"
-).value="";
 
-document.getElementById(
-"earningDescription"
-).value="";
-
-await loadEarnings();
 
 };
 
-/* =========================
-   LOAD EARNINGS
-========================= */
 
-async function loadEarnings(){
 
-const earningsRef =
-ref(
+
+
+
+
+</script>
+
+<!-- =========================
+PART 6 / 10
+INVENTORY SYSTEM
+========================= -->
+
+
+<style>
+
+
+.inventoryCard{
+
+background:var(--panel);
+
+padding:20px;
+
+border-radius:18px;
+
+margin:15px 0;
+
+}
+
+
+
+.badge{
+
+padding:6px 12px;
+
+border-radius:20px;
+
+background:#222;
+
+}
+
+
+
+.low{
+
+color:#ff5555;
+
+}
+
+
+
+.good{
+
+color:#00ff88;
+
+}
+
+
+
+</style>
+
+
+
+
+
+
+
+<script type="module">
+
+
+import {
+
+ref,
+push,
+set,
+get,
+update,
+remove
+
+}
+
+from
+
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
+
+
+
+
+
+
+function invRef(path){
+
+
+return ref(
+
 db,
-"users/" +
-currentUser.uid +
-"/earnings"
+
+"users/"+currentUser.uid+"/inventory/"+path
+
 );
 
-const snapshot =
-await get(
-earningsRef
-);
 
-const list =
-document.getElementById(
-"earningsList"
-);
+}
 
-list.innerHTML = "";
 
-let totalRevenue = 0;
 
-const monthlyTotals = [
 
-0,0,0,0,0,0,
-0,0,0,0,0,0
 
-];
 
-if(snapshot.exists()){
 
-Object.entries(
-snapshot.val()
-).forEach(([id,item])=>{
+window.inventoryPage=function(){
 
-const amount =
-Number(
-item.amount || 0
-);
 
-totalRevenue += amount;
 
-monthlyTotals[
-item.month || 0
-] += amount;
+let main =
+document.querySelector(".main");
 
-list.innerHTML += `
+
+
+main.innerHTML=`
+
 
 <div class="card">
 
-<h2>
-${formatMoney(amount)}
-</h2>
 
-<p>
-${item.description || ""}
-</p>
+<h1>
+📦 Inventory
+</h1>
 
-<br>
 
-<button
-class="btn"
-onclick="editEarning('${id}')">
 
-Edit
+<div class="inventoryCard">
+
+
+<input id="partName"
+placeholder="Part Name">
+
+
+
+<input id="partNumber"
+placeholder="Part Number">
+
+
+
+<input id="partPrice"
+placeholder="Price">
+
+
+
+<input id="partStock"
+placeholder="Stock Amount">
+
+
+
+<input id="partLocation"
+placeholder="Storage Location">
+
+
+
+<button onclick="addPart()">
+
+Add Part
 
 </button>
 
-<br><br>
 
-<button
-class="btn"
-onclick="deleteEarning('${id}')">
+
+</div>
+
+
+
+
+<h2>
+Parts
+</h2>
+
+
+
+<div id="inventoryList">
+
+</div>
+
+
+
+</div>
+
+
+`;
+
+
+
+loadInventory();
+
+
+
+};
+
+
+
+
+
+
+
+
+window.addPart=async function(){
+
+
+
+let id =
+push(invRef("items")).key;
+
+
+
+await set(
+
+invRef("items/"+id),
+
+{
+
+
+name:
+partName.value,
+
+
+number:
+partNumber.value,
+
+
+price:
+partPrice.value,
+
+
+stock:
+Number(partStock.value),
+
+
+location:
+partLocation.value,
+
+
+created:
+Date.now()
+
+
+}
+
+
+
+);
+
+
+
+partName.value="";
+
+partNumber.value="";
+
+partPrice.value="";
+
+partStock.value="";
+
+partLocation.value="";
+
+
+
+loadInventory();
+
+
+
+};
+
+
+
+
+
+
+
+
+async function loadInventory(){
+
+
+
+let snap =
+await get(invRef("items"));
+
+
+
+let box =
+document.getElementById("inventoryList");
+
+
+
+if(!box)return;
+
+
+
+box.innerHTML="";
+
+
+
+if(snap.exists()){
+
+
+
+Object.entries(snap.val())
+
+.forEach(([id,p])=>{
+
+
+
+let status =
+p.stock < 5
+?
+"<span class='low'>LOW STOCK</span>"
+:
+"<span class='good'>IN STOCK</span>";
+
+
+
+
+
+box.innerHTML+=`
+
+
+<div class="inventoryCard">
+
+
+<h3>
+
+${p.name}
+
+</h3>
+
+
+
+<p>
+
+Part:
+${p.number}
+
+</p>
+
+
+<p>
+
+Price:
+$${p.price}
+
+</p>
+
+
+<p>
+
+Stock:
+${p.stock}
+
+</p>
+
+
+<p>
+
+Location:
+${p.location}
+
+</p>
+
+
+
+<p>
+
+${status}
+
+</p>
+
+
+
+<button onclick="deletePart('${id}')">
 
 Delete
 
 </button>
 
+
+
 </div>
 
-<br>
 
 `;
 
+
+
 });
 
-}
 
-document.getElementById(
-"totalEarnings"
-).innerText =
-formatMoney(
-totalRevenue
-);
-
-document.getElementById(
-"yearlyRevenue"
-).innerText =
-formatMoney(
-totalRevenue
-);
-
-drawRevenueChart(
-monthlyTotals
-);
-
-await updateGoalProgress(
-totalRevenue
-);
-
-await updateNetWorth();
 
 }
 
-/* =========================
-   DELETE EARNING
-========================= */
 
-window.deleteEarning =
-async function(id){
+
+}
+
+
+
+
+
+
+
+
+window.deletePart=async function(id){
+
+
 
 await remove(
 
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/earnings/" +
-id
-)
+invRef("items/"+id)
 
 );
 
-await loadEarnings();
+
+
+loadInventory();
+
 
 };
 
-/* =========================
-   EDIT EARNING
-========================= */
 
-window.editEarning =
-async function(id){
 
-const snapshot =
-await get(
 
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/earnings/" +
-id
-)
 
-);
 
-if(!snapshot.exists())
-return;
 
-const earning =
-snapshot.val();
 
-const newAmount =
-prompt(
-"New Amount",
-earning.amount
-);
 
-if(newAmount===null)
-return;
 
-const newDescription =
-prompt(
-"Description",
-earning.description || ""
-);
+
+// USED PARTS
+
+
+
+window.usePart=async function(id){
+
+
+
+let snap =
+await get(invRef("items/"+id));
+
+
+
+if(!snap.exists())return;
+
+
+
+let data=snap.val();
+
+
 
 await update(
 
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/earnings/" +
-id
-),
+invRef("items/"+id),
 
 {
-amount:Number(
-newAmount
-),
-description:
-newDescription
+
+
+stock:data.stock-1
+
 }
+
 
 );
 
-await loadEarnings();
+
 
 };
 
-/* =========================
-   REVENUE CHART
-========================= */
 
-function drawRevenueChart(
-monthlyTotals
-){
 
-const chart =
-document.getElementById(
-"revenueChart"
-);
 
-if(!chart)
-return;
 
-chart.innerHTML = "";
 
-const months = [
 
-"J","F","M","A",
-"M","J","J","A",
-"S","O","N","D"
 
-];
 
-let max = 1;
 
-monthlyTotals.forEach(v=>{
 
-if(v > max)
-max = v;
+// SUPPLIER ORDERS
 
-});
 
-for(
-let i=0;
-i<12;
-i++
-){
 
-const height =
 
-Math.max(
-20,
-(monthlyTotals[i] / max)
-* 220
-);
 
-chart.innerHTML += `
+window.supplierPage=function(){
 
-<div
-style="
-display:flex;
-flex-direction:column;
-align-items:center;
-">
 
-<div
-style="
-width:32px;
-height:${height}px;
-background:var(--primary);
-border-radius:10px 10px 0 0;
-">
-</div>
 
-<div
-style="
-margin-top:8px;
-font-size:12px;
-">
-
-${months[i]}
-
-</div>
-
-</div>
-
-`;
-
-}
-
-}
-
-/* =========================
-   TOTAL REVENUE HELPER
-========================= */
-
-async function getTotalRevenue(){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/earnings"
-)
-
-);
-
-let total = 0;
-
-if(snapshot.exists()){
-
-Object.values(
-snapshot.val()
-).forEach(item=>{
-
-total +=
-Number(
-item.amount || 0
-);
-
-});
-
-}
-
-return total;
-
-}
-
-console.log(
-"V2 Ultimate Earnings Ready"
-);
-
-/* =========================
-   GOALS SYSTEM
-========================= */
-
-window.addGoal =
-async function(){
-
-const name =
-document.getElementById(
-"goalName"
-).value;
-
-const amount =
-Number(
-document.getElementById(
-"goalAmount"
-).value
-);
-
-if(!name || !amount){
-
-alert(
-"Enter goal name and amount"
-);
-
-return;
-
-}
-
-await push(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/goals"
-),
-
-{
-name:name,
-target:amount
-}
-
-);
-
-document.getElementById(
-"goalName"
-).value="";
-
-document.getElementById(
-"goalAmount"
-).value="";
-
-await loadGoals();
-
-};
-
-/* =========================
-   LOAD GOALS
-========================= */
-
-async function loadGoals(){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/goals"
-)
-
-);
-
-const list =
-document.getElementById(
-"goalsList"
-);
-
-const dashboardGoals =
-document.getElementById(
-"dashboardGoals"
-);
-
-list.innerHTML = "";
-dashboardGoals.innerHTML = "";
-
-let count = 0;
-
-if(snapshot.exists()){
-
-Object.entries(
-snapshot.val()
-).forEach(([id,goal])=>{
-
-count++;
-
-list.innerHTML += `
+document.querySelector(".main")
+.innerHTML=`
 
 <div class="card">
 
-<h2>
-${goal.name}
-</h2>
 
-<p>
-Target:
-${formatMoney(goal.target)}
-</p>
+<h1>
 
-<br>
+🚚 Supplier Orders
 
-<div
-style="
-height:24px;
-background:#111;
-border-radius:20px;
-overflow:hidden;
-">
+</h1>
 
-<div
-id="goalFill_${id}"
-style="
-height:100%;
-width:0%;
-background:var(--primary);
-transition:.3s;
-">
 
-</div>
+<input id="supplierName"
+placeholder="Supplier">
 
-</div>
 
-<br>
+<input id="orderPart"
+placeholder="Part Needed">
 
-<div
-id="goalText_${id}">
-0%
-</div>
 
-<br>
 
-<button
-class="btn"
-onclick="editGoal('${id}')">
+<button onclick="addOrder()">
 
-Edit Goal
+Create Order
 
 </button>
 
-<br><br>
 
-<button
-class="btn"
-onclick="deleteGoal('${id}')">
 
-Delete Goal
-
-</button>
+<div id="orders">
 
 </div>
 
-<br>
+
+
+</div>
+
 
 `;
 
-dashboardGoals.innerHTML += `
 
-<div class="card">
 
-<h3>
-${goal.name}
-</h3>
+loadOrders();
 
-<p>
-Goal:
-${formatMoney(goal.target)}
-</p>
-
-<br>
-
-<div
-style="
-height:20px;
-background:#111;
-border-radius:20px;
-overflow:hidden;
-">
-
-<div
-id="dashGoalFill_${id}"
-style="
-height:100%;
-width:0%;
-background:var(--primary);
-transition:.3s;
-">
-
-</div>
-
-</div>
-
-<br>
-
-<div
-id="dashGoalText_${id}">
-0%
-</div>
-
-</div>
-
-<br>
-
-`;
-
-});
-
-}
-
-document.getElementById(
-"goalCount"
-).innerText =
-count;
-
-await updateGoalProgress();
-
-}
-
-/* =========================
-   DELETE GOAL
-========================= */
-
-window.deleteGoal =
-async function(id){
-
-await remove(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/goals/" +
-id
-)
-
-);
-
-await loadGoals();
 
 };
 
-/* =========================
-   EDIT GOAL
-========================= */
 
-window.editGoal =
-async function(id){
 
-const snapshot =
-await get(
 
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/goals/" +
-id
-)
 
-);
 
-if(!snapshot.exists())
-return;
 
-const goal =
-snapshot.val();
 
-const newName =
-prompt(
-"Goal Name",
-goal.name
-);
 
-if(newName===null)
-return;
 
-const newTarget =
-prompt(
-"Goal Amount",
-goal.target
-);
+window.addOrder=async function(){
 
-await update(
+
+
+let id =
+push(
 
 ref(
 db,
-"users/" +
-currentUser.uid +
-"/goals/" +
-id
-),
+"users/"+currentUser.uid+"/suppliers"
 
-{
-name:newName,
-target:Number(
-newTarget
-)
-}
-
-);
-
-await loadGoals();
-
-};
-
-/* =========================
-   GOAL PROGRESS
-========================= */
-
-async function updateGoalProgress(
-currentRevenue
-){
-
-if(currentRevenue===undefined){
-
-currentRevenue =
-await getTotalRevenue();
-
-}
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/goals"
 )
 
-);
+).key;
 
-if(!snapshot.exists())
-return;
 
-Object.entries(
-snapshot.val()
-).forEach(([id,goal])=>{
 
-const percent =
-
-Math.min(
-100,
-(currentRevenue /
-goal.target) * 100
-);
-
-const fill =
-document.getElementById(
-"goalFill_" + id
-);
-
-const text =
-document.getElementById(
-"goalText_" + id
-);
-
-const dashFill =
-document.getElementById(
-"dashGoalFill_" + id
-);
-
-const dashText =
-document.getElementById(
-"dashGoalText_" + id
-);
-
-if(fill){
-
-fill.style.width =
-percent + "%";
-
-}
-
-if(text){
-
-text.innerText =
-
-formatMoney(
-currentRevenue
-)
-
-+
-
-" / "
-
-+
-
-formatMoney(
-goal.target
-)
-
-+
-
-" ("
-
-+
-
-percent.toFixed(1)
-
-+
-
-"%)";
-
-}
-
-if(dashFill){
-
-dashFill.style.width =
-percent + "%";
-
-}
-
-if(dashText){
-
-dashText.innerText =
-
-percent.toFixed(1)
-
-+
-
-"% Complete";
-
-}
-
-});
-
-}
-
-/* =========================
-   GOAL COMPLETION CHECK
-========================= */
-
-async function checkGoalCompletion(){
-
-const revenue =
-await getTotalRevenue();
-
-const goals =
-await get(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/goals"
-)
-
-);
-
-if(!goals.exists())
-return;
-
-Object.values(
-goals.val()
-).forEach(goal=>{
-
-if(
-revenue >= goal.target
-){
-
-console.log(
-"Goal completed:",
-goal.name
-);
-
-}
-
-});
-
-}
-
-console.log(
-"V2 Ultimate Goals Ready"
-);
-
-/* =========================
-   BANK ACCOUNT SYSTEM
-========================= */
-
-window.addBankMoney =
-async function(){
-
-const amount =
-Number(
-document.getElementById(
-"bankAmount"
-).value
-);
-
-if(!amount){
-
-alert(
-"Enter an amount"
-);
-
-return;
-
-}
-
-const bankRef =
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/bank"
-);
-
-const snapshot =
-await get(
-bankRef
-);
-
-let currentBalance = 0;
-
-if(snapshot.exists()){
-
-currentBalance =
-Number(
-snapshot.val().balance || 0
-);
-
-}
-
-const newBalance =
-
-currentBalance +
-amount;
-
-await set(
-
-bankRef,
-
-{
-balance:newBalance
-}
-
-);
-
-document.getElementById(
-"bankAmount"
-).value="";
-
-await loadBank();
-
-};
-
-/* =========================
-   EDIT BANK BALANCE
-========================= */
-
-window.editBankBalance =
-async function(){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/bank"
-)
-
-);
-
-let currentBalance = 0;
-
-if(snapshot.exists()){
-
-currentBalance =
-snapshot.val().balance || 0;
-
-}
-
-const newBalance =
-prompt(
-"Enter New Balance",
-currentBalance
-);
-
-if(newBalance===null)
-return;
 
 await set(
 
 ref(
 db,
-"users/" +
-currentUser.uid +
-"/bank"
+"users/"+currentUser.uid+"/suppliers/"+id
 ),
 
 {
-balance:Number(
-newBalance
-)
+
+
+supplier:
+supplierName.value,
+
+
+part:
+orderPart.value,
+
+
+status:
+"Pending",
+
+
+created:
+Date.now()
+
+
 }
 
 );
 
-await loadBank();
+
+
+loadOrders();
+
 
 };
 
-/* =========================
-   LOAD BANK
-========================= */
 
-async function loadBank(){
 
-const snapshot =
+
+
+
+
+
+async function loadOrders(){
+
+
+
+let box =
+document.getElementById("orders");
+
+
+
+if(!box)return;
+
+
+
+let snap =
 await get(
 
 ref(
 db,
-"users/" +
-currentUser.uid +
-"/bank"
+"users/"+currentUser.uid+"/suppliers"
+
 )
 
 );
 
-let balance = 0;
 
-if(snapshot.exists()){
 
-balance =
-Number(
-snapshot.val().balance || 0
-);
+box.innerHTML="";
 
-}
 
-document.getElementById(
-"bankBalance"
-).innerText =
 
-formatMoney(
-balance
-);
+if(snap.exists()){
 
-document.getElementById(
-"bankBalanceCard"
-).innerText =
 
-formatMoney(
-balance
-);
 
-const statsCard =
-document.getElementById(
-"statsBankBalance"
-);
+Object.values(snap.val())
 
-if(statsCard){
+.forEach(o=>{
 
-statsCard.innerText =
-formatMoney(
-balance
-);
 
-}
 
-await updateNetWorth();
+box.innerHTML+=`
 
-}
 
-/* =========================
-   GET BANK BALANCE
-========================= */
+<div class="inventoryCard">
 
-async function getBankBalance(){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/bank"
-)
-
-);
-
-if(!snapshot.exists())
-return 0;
-
-return Number(
-snapshot.val().balance || 0
-);
-
-}
-
-/* =========================
-   NET WORTH SYSTEM
-========================= */
-
-async function updateNetWorth(){
-
-const revenue =
-await getTotalRevenue();
-
-const bank =
-await getBankBalance();
-
-const netWorth =
-
-revenue +
-bank;
-
-const dashboardCard =
-document.getElementById(
-"netWorthCard"
-);
-
-if(dashboardCard){
-
-dashboardCard.innerText =
-
-formatMoney(
-netWorth
-);
-
-}
-
-const statsCard =
-document.getElementById(
-"statsNetWorth"
-);
-
-if(statsCard){
-
-statsCard.innerText =
-
-formatMoney(
-netWorth
-);
-
-}
-
-}
-
-/* =========================
-   QUICK BANK ADDITIONS
-========================= */
-
-window.addQuick100 =
-async function(){
-
-document.getElementById(
-"bankAmount"
-).value = 100;
-
-addBankMoney();
-
-};
-
-window.addQuick500 =
-async function(){
-
-document.getElementById(
-"bankAmount"
-).value = 500;
-
-addBankMoney();
-
-};
-
-window.addQuick1000 =
-async function(){
-
-document.getElementById(
-"bankAmount"
-).value = 1000;
-
-addBankMoney();
-
-};
-
-/* =========================
-   BANK AUTO REFRESH
-========================= */
-
-setInterval(
-
-async()=>{
-
-if(currentUser){
-
-await loadBank();
-
-}
-
-},
-
-15000
-
-);
-
-console.log(
-"V2 Ultimate Bank Ready"
-);
-
-/* =========================
-   OTHER JOB EARNINGS
-========================= */
-
-window.addJob =
-async function(){
-
-const name =
-document.getElementById(
-"jobName"
-).value;
-
-const amount =
-Number(
-document.getElementById(
-"jobAmount"
-).value
-);
-
-if(!name){
-
-alert(
-"Enter a Job Name"
-);
-
-return;
-
-}
-
-await push(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/jobs"
-),
-
-{
-name:name,
-amount:amount || 0
-}
-
-);
-
-document.getElementById(
-"jobName"
-).value="";
-
-document.getElementById(
-"jobAmount"
-).value="";
-
-await loadJobs();
-
-};
-
-/* =========================
-   LOAD JOBS
-========================= */
-
-async function loadJobs(){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/jobs"
-)
-
-);
-
-const jobsList =
-document.getElementById(
-"jobsList"
-);
-
-jobsList.innerHTML = "";
-
-let totalJobsIncome = 0;
-
-if(snapshot.exists()){
-
-Object.entries(
-snapshot.val()
-).forEach(([id,job])=>{
-
-totalJobsIncome +=
-Number(
-job.amount || 0
-);
-
-jobsList.innerHTML += `
-
-<div class="card">
-
-<h2>
-${job.name}
-</h2>
-
-<p>
-
-Total Earned:
-${formatMoney(job.amount)}
-
-</p>
-
-<br>
-
-<button
-class="btn"
-onclick="addMoneyToJob('${id}')">
-
-Add Money
-
-</button>
-
-<br><br>
-
-<button
-class="btn"
-onclick="removeMoneyFromJob('${id}')">
-
-Remove Money
-
-</button>
-
-<br><br>
-
-<button
-class="btn"
-onclick="editJob('${id}')">
-
-Edit Job
-
-</button>
-
-<br><br>
-
-<button
-class="btn"
-onclick="deleteJob('${id}')">
-
-Delete Job
-
-</button>
-
-</div>
-
-<br>
-
-`;
-
-});
-
-}
-
-await updateNetWorth();
-
-}
-
-/* =========================
-   ADD MONEY TO JOB
-========================= */
-
-window.addMoneyToJob =
-async function(id){
-
-const amount =
-Number(
-prompt(
-"Amount To Add"
-)
-);
-
-if(!amount)
-return;
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/jobs/" +
-id
-)
-
-);
-
-if(!snapshot.exists())
-return;
-
-const job =
-snapshot.val();
-
-await update(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/jobs/" +
-id
-),
-
-{
-amount:
-Number(job.amount || 0)
-+
-amount
-}
-
-);
-
-await loadJobs();
-
-};
-
-/* =========================
-   REMOVE MONEY FROM JOB
-========================= */
-
-window.removeMoneyFromJob =
-async function(id){
-
-const amount =
-Number(
-prompt(
-"Amount To Remove"
-)
-);
-
-if(!amount)
-return;
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/jobs/" +
-id
-)
-
-);
-
-if(!snapshot.exists())
-return;
-
-const job =
-snapshot.val();
-
-await update(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/jobs/" +
-id
-),
-
-{
-amount:
-Math.max(
-0,
-Number(job.amount || 0)
--
-amount
-)
-}
-
-);
-
-await loadJobs();
-
-};
-
-/* =========================
-   EDIT JOB
-========================= */
-
-window.editJob =
-async function(id){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/jobs/" +
-id
-)
-
-);
-
-if(!snapshot.exists())
-return;
-
-const job =
-snapshot.val();
-
-const newName =
-prompt(
-"Job Name",
-job.name
-);
-
-if(newName===null)
-return;
-
-const newAmount =
-prompt(
-"Total Earned",
-job.amount
-);
-
-await update(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/jobs/" +
-id
-),
-
-{
-name:newName,
-amount:Number(
-newAmount
-)
-}
-
-);
-
-await loadJobs();
-
-};
-
-/* =========================
-   DELETE JOB
-========================= */
-
-window.deleteJob =
-async function(id){
-
-const sure =
-confirm(
-"Delete this job?"
-);
-
-if(!sure)
-return;
-
-await remove(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/jobs/" +
-id
-)
-
-);
-
-await loadJobs();
-
-};
-
-/* =========================
-   GET TOTAL JOB EARNINGS
-========================= */
-
-async function getTotalJobIncome(){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/jobs"
-)
-
-);
-
-let total = 0;
-
-if(snapshot.exists()){
-
-Object.values(
-snapshot.val()
-).forEach(job=>{
-
-total +=
-Number(
-job.amount || 0
-);
-
-});
-
-}
-
-return total;
-
-}
-
-/* =========================
-   UPDATED NET WORTH
-========================= */
-
-const originalUpdateNetWorth =
-updateNetWorth;
-
-updateNetWorth =
-async function(){
-
-const revenue =
-await getTotalRevenue();
-
-const bank =
-await getBankBalance();
-
-const jobs =
-await getTotalJobIncome();
-
-const netWorth =
-
-revenue +
-bank +
-jobs;
-
-const dashboardCard =
-document.getElementById(
-"netWorthCard"
-);
-
-if(dashboardCard){
-
-dashboardCard.innerText =
-formatMoney(
-netWorth
-);
-
-}
-
-const statsCard =
-document.getElementById(
-"statsNetWorth"
-);
-
-if(statsCard){
-
-statsCard.innerText =
-formatMoney(
-netWorth
-);
-
-}
-
-};
-
-console.log(
-"V2 Ultimate Jobs Ready"
-);
-
-/* =========================
-   INVENTORY SYSTEM
-========================= */
-
-window.addInventory =
-async function(){
-
-const item =
-document.getElementById(
-"inventoryItem"
-).value.trim();
-
-const qty =
-Number(
-document.getElementById(
-"inventoryQty"
-).value
-);
-
-if(!item){
-
-alert("Enter a part name");
-return;
-
-}
-
-await push(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/inventory"
-),
-
-{
-item:item,
-qty:qty || 1
-}
-
-);
-
-document.getElementById(
-"inventoryItem"
-).value="";
-
-document.getElementById(
-"inventoryQty"
-).value="";
-
-await loadInventory();
-
-};
-
-async function loadInventory(){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/inventory"
-)
-
-);
-
-const list =
-document.getElementById(
-"inventoryList"
-);
-
-list.innerHTML="";
-
-let totalParts = 0;
-
-if(snapshot.exists()){
-
-Object.entries(
-snapshot.val()
-).forEach(([id,part])=>{
-
-totalParts +=
-Number(part.qty || 0);
-
-list.innerHTML += `
-
-<div class="card">
-
-<h2>${part.item}</h2>
-
-<p>
-Quantity:
-<b>${part.qty}</b>
-</p>
-
-<br>
-
-<button
-class="btn"
-onclick="editInventory('${id}')">
-
-Edit Quantity
-
-</button>
-
-<br><br>
-
-<button
-class="btn"
-onclick="deleteInventory('${id}')">
-
-Delete Part
-
-</button>
-
-</div>
-
-<br>
-
-`;
-
-});
-
-}
-
-const card =
-document.getElementById(
-"inventoryCount"
-);
-
-if(card){
-
-card.innerText =
-totalParts;
-
-}
-
-}
-
-window.editInventory =
-async function(id){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/inventory/" +
-id
-)
-
-);
-
-if(!snapshot.exists())
-return;
-
-const part =
-snapshot.val();
-
-const qty =
-prompt(
-"New Quantity",
-part.qty
-);
-
-if(qty===null)
-return;
-
-await update(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/inventory/" +
-id
-),
-
-{
-qty:Number(qty)
-}
-
-);
-
-await loadInventory();
-
-};
-
-window.deleteInventory =
-async function(id){
-
-if(!confirm(
-"Delete this part?"
-))
-return;
-
-await remove(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/inventory/" +
-id
-)
-
-);
-
-await loadInventory();
-
-};
-
-/* =========================
-   TASK SYSTEM
-========================= */
-
-window.addTask =
-async function(){
-
-const text =
-document.getElementById(
-"taskInput"
-).value.trim();
-
-if(!text){
-
-alert(
-"Enter a task"
-);
-
-return;
-
-}
-
-await push(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/tasks"
-),
-
-{
-text:text,
-completed:false,
-created:Date.now()
-}
-
-);
-
-document.getElementById(
-"taskInput"
-).value="";
-
-await loadTasks();
-
-};
-
-async function loadTasks(){
-
-const snapshot =
-await get(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/tasks"
-)
-
-);
-
-const list =
-document.getElementById(
-"tasksList"
-);
-
-list.innerHTML="";
-
-let active = 0;
-
-if(snapshot.exists()){
-
-Object.entries(
-snapshot.val()
-).forEach(([id,task])=>{
-
-if(!task.completed)
-active++;
-
-list.innerHTML += `
-
-<div class="card">
 
 <h3>
 
-${task.completed ? "✅" : "📋"}
-
-${task.text}
+${o.supplier}
 
 </h3>
 
-<br>
 
-<button
-class="btn"
-onclick="toggleTask('${id}',${task.completed})">
+<p>
 
-${task.completed ? "Mark Active" : "Mark Complete"}
+${o.part}
 
-</button>
+</p>
 
-<br><br>
 
-<button
-class="btn"
-onclick="deleteTask('${id}')">
+<p>
 
-Delete Task
+${o.status}
 
-</button>
+</p>
+
+
 
 </div>
 
-<br>
 
 `;
 
-});
-
-}
-
-let stat =
-document.getElementById(
-"activeTaskCard"
-);
-
-if(stat){
-
-stat.innerText =
-active;
-
-}
-
-}
-
-window.toggleTask =
-async function(
-id,
-completed
-){
-
-await update(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/tasks/" +
-id
-),
-
-{
-completed:!completed
-}
-
-);
-
-await loadTasks();
-
-};
-
-window.deleteTask =
-async function(id){
-
-if(!confirm(
-"Delete this task?"
-))
-return;
-
-await remove(
-
-ref(
-db,
-"users/" +
-currentUser.uid +
-"/tasks/" +
-id
-)
-
-);
-
-await loadTasks();
-
-};
-
-/* =========================
-   AUTO REFRESH
-========================= */
-
-setInterval(
-async()=>{
-
-if(!currentUser)
-return;
-
-await loadInventory();
-await loadTasks();
-
-},
-30000
-);
-
-console.log(
-"V2 Ultimate Inventory & Tasks Ready"
-);
-
-/* =========================
-   NOTES AUTO SAVE
-========================= */
-
-window.saveNotes =
-async function(){
-
-if(!currentUser) return;
-
-await set(
-ref(
-db,
-"users/"+currentUser.uid+"/notes"
-),
-{
-text:document.getElementById("notesBox").value
-}
-);
-
-};
-
-async function loadNotes(){
-
-const snapshot=
-await get(
-ref(
-db,
-"users/"+currentUser.uid+"/notes")
-);
-
-if(snapshot.exists()){
-
-document.getElementById(
-"notesBox"
-).value=snapshot.val().text||"";
-
-}
-
-}
-
-document.getElementById(
-"notesBox"
-).addEventListener(
-"input",
-saveNotes
-);
-
-/* =========================
-   BUSINESS NAME
-========================= */
-
-window.saveBusinessName=
-async function(){
-
-const name=
-document.getElementById(
-"businessNameInput"
-).value;
-
-if(!name)return;
-
-await set(
-ref(
-db,
-"users/"+currentUser.uid+"/businessName"
-),
-name
-);
-
-document.getElementById(
-"businessNameDisplay"
-).innerText=name;
-
-alert("Business name saved!");
-
-};
-
-async function loadBusinessName(){
-
-const snapshot=
-await get(
-ref(
-db,
-"users/"+currentUser.uid+"/businessName"
-)
-);
-
-if(snapshot.exists()){
-
-const name=snapshot.val();
-
-document.getElementById(
-"businessNameDisplay"
-).innerText=name;
-
-document.getElementById(
-"businessNameInput"
-).value=name;
-
-}
-
-}
-
-/* =========================
-   THEME COLOR
-========================= */
-
-window.saveThemeColor=
-async function(){
-
-const color=
-document.getElementById(
-"themeColor"
-).value;
-
-await set(
-ref(
-db,
-"users/"+currentUser.uid+"/theme"
-),
-{
-primary:color
-}
-);
-
-applyTheme(color);
-
-};
-
-function applyTheme(color){
-
-document.documentElement.style.setProperty(
-"--primary",
-color
-);
-
-}
-
-async function loadThemeColor(){
-
-const snapshot=
-await get(
-ref(
-db,
-"users/"+currentUser.uid+"/theme"
-)
-);
-
-if(snapshot.exists()){
-
-const color=snapshot.val().primary;
-
-document.getElementById(
-"themeColor"
-).value=color;
-
-applyTheme(color);
-
-}
-
-}
-
-/* =========================
-   BACKUP
-========================= */
-
-window.exportBackup=
-async function(){
-
-const snapshot=
-await get(
-ref(
-db,
-"users/"+currentUser.uid
-)
-);
-
-if(!snapshot.exists()){
-
-alert("Nothing to export.");
-
-return;
-
-}
-
-const blob=
-new Blob(
-[
-JSON.stringify(
-snapshot.val(),
-null,
-2
-)
-],
-{
-type:"application/json"
-}
-);
-
-const url=
-URL.createObjectURL(blob);
-
-const a=
-document.createElement("a");
-
-a.href=url;
-
-a.download="TrueFixBackup.json";
-
-a.click();
-
-};
-
-window.importBackup=function(){
-
-document.getElementById(
-"backupFile"
-).click();
-
-};
-
-window.handleBackupImport=
-async function(e){
-
-const file=e.target.files[0];
-
-if(!file)return;
-
-const text=
-await file.text();
-
-await set(
-ref(
-db,
-"users/"+currentUser.uid
-),
-JSON.parse(text)
-);
-
-alert("Backup Imported!");
-
-await loadEverything();
-
-};
-
-/* =========================
-   RESET
-========================= */
-
-window.resetDashboard=
-async function(){
-
-if(!confirm(
-"Delete ALL dashboard data?"
-))
-return;
-
-await remove(
-ref(
-db,
-"users/"+currentUser.uid
-)
-);
-
-alert(
-"Dashboard Reset"
-);
-
-location.reload();
-
-};
-
-/* =========================
-   LOAD EVERYTHING
-========================= */
-
-const originalLoadEverything=loadEverything;
-
-loadEverything=
-async function(){
-
-await originalLoadEverything();
-
-await loadBusinessName();
-
-await loadThemeColor();
-
-await loadBank();
-
-await loadJobs();
-
-await loadInventory();
-
-await loadTasks();
-
-await loadGoals();
-
-await loadNotes();
-
-await updateNetWorth();
-
-};
-
-/* =========================
-   AUTO REFRESH
-========================= */
-
-setInterval(async()=>{
-
-if(!currentUser)return;
-
-await updateNetWorth();
-
-},10000);
-
-/* =========================
-   STARTUP
-========================= */
-
-window.addEventListener(
-"load",
-()=>{
-
-showPage(
-"dashboardPage"
-);
-
-console.log(
-"TrueFix Dashboard V2 Ultimate Loaded!"
-);
 
 });
 
-/* =========================
-   END OF PROJECT
-========================= */
+
+
+}
+
+
+
+}
+
+
+
+
+
+
 
 </script>
 
+<!-- =========================
+PART 7 / 10
+FINANCES + ANALYTICS
+========================= -->
+
+
+<style>
+
+
+.moneyCard{
+
+background:var(--panel);
+
+padding:25px;
+
+border-radius:20px;
+
+margin:15px 0;
+
+}
+
+
+
+.money{
+
+font-size:30px;
+
+color:var(--blue);
+
+font-weight:bold;
+
+}
+
+
+
+.row{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
+
+}
+
+
+
+</style>
+
+
+
+
+
+
+
+
+<script type="module">
+
+
+import {
+
+ref,
+push,
+set,
+get,
+remove
+
+}
+
+from
+
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
+
+
+
+
+
+
+
+function financeRef(path){
+
+
+return ref(
+
+db,
+
+"users/"+currentUser.uid+"/finances/"+path
+
+);
+
+
+}
+
+
+
+
+
+
+
+window.financePage=function(){
+
+
+let main =
+document.querySelector(".main");
+
+
+
+main.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+💰 Finances
+</h1>
+
+
+
+<div class="row">
+
+
+
+<div class="moneyCard">
+
+<div class="money"
+id="incomeDisplay">
+
+$0
+
+</div>
+
+<p>
+Income
+</p>
+
+</div>
+
+
+
+
+<div class="moneyCard">
+
+<div class="money"
+id="expenseDisplay">
+
+$0
+
+</div>
+
+<p>
+Expenses
+</p>
+
+</div>
+
+
+
+
+<div class="moneyCard">
+
+<div class="money"
+id="profitDisplay">
+
+$0
+
+</div>
+
+<p>
+Profit
+</p>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="moneyCard">
+
+
+<h2>
+Add Income
+</h2>
+
+
+
+<input id="incomeName"
+placeholder="Job Name">
+
+
+<input id="incomeAmount"
+placeholder="Amount">
+
+
+
+<button onclick="addIncome()">
+
+Add Income
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="moneyCard">
+
+
+<h2>
+Add Expense
+</h2>
+
+
+<input id="expenseName"
+placeholder="Expense">
+
+
+<input id="expenseAmount"
+placeholder="Amount">
+
+
+
+<button onclick="addExpense()">
+
+Add Expense
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+<div id="financeList">
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+`;
+
+
+
+loadFinance();
+
+
+
+};
+
+
+
+
+
+
+
+
+
+// INCOME
+
+
+
+window.addIncome=async function(){
+
+
+
+let id =
+push(financeRef("income")).key;
+
+
+
+
+await set(
+
+financeRef("income/"+id),
+
+{
+
+
+name:
+incomeName.value,
+
+
+amount:
+Number(incomeAmount.value),
+
+
+created:
+Date.now()
+
+
+}
+
+);
+
+
+
+incomeName.value="";
+
+incomeAmount.value="";
+
+
+
+loadFinance();
+
+
+};
+
+
+
+
+
+
+
+
+
+
+// EXPENSE
+
+
+
+
+
+window.addExpense=async function(){
+
+
+
+let id =
+push(financeRef("expenses")).key;
+
+
+
+await set(
+
+financeRef("expenses/"+id),
+
+{
+
+
+name:
+expenseName.value,
+
+
+amount:
+Number(expenseAmount.value),
+
+
+created:
+Date.now()
+
+
+}
+
+
+);
+
+
+
+expenseName.value="";
+
+expenseAmount.value="";
+
+
+
+loadFinance();
+
+
+};
+
+
+
+
+
+
+
+
+
+async function loadFinance(){
+
+
+
+let income=0;
+
+let expenses=0;
+
+
+
+let incomeSnap =
+await get(financeRef("income"));
+
+
+
+let expenseSnap =
+await get(financeRef("expenses"));
+
+
+
+
+
+
+if(incomeSnap.exists()){
+
+
+Object.values(incomeSnap.val())
+
+.forEach(x=>{
+
+
+income+=Number(x.amount);
+
+
+});
+
+
+}
+
+
+
+
+
+if(expenseSnap.exists()){
+
+
+Object.values(expenseSnap.val())
+
+.forEach(x=>{
+
+
+expenses+=Number(x.amount);
+
+
+});
+
+
+}
+
+
+
+
+
+
+document
+.getElementById("incomeDisplay")
+.innerHTML="$"+income;
+
+
+
+document
+.getElementById("expenseDisplay")
+.innerHTML="$"+expenses;
+
+
+
+document
+.getElementById("profitDisplay")
+.innerHTML="$"+(income-expenses);
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// INVOICES
+
+
+
+
+
+window.invoicePage=function(){
+
+
+
+document.querySelector(".main")
+.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+🧾 Invoices
+</h1>
+
+
+
+<input id="invoiceCustomer"
+placeholder="Customer">
+
+
+
+<input id="invoiceTotal"
+placeholder="Total">
+
+
+
+<button onclick="createInvoice()">
+
+Create Invoice
+
+</button>
+
+
+
+<div id="invoiceList">
+
+</div>
+
+
+
+</div>
+
+`;
+
+
+
+loadInvoices();
+
+
+};
+
+
+
+
+
+
+
+
+
+
+window.createInvoice=async function(){
+
+
+
+let id =
+push(
+
+ref(
+db,
+"users/"+currentUser.uid+"/invoices"
+
+)
+
+).key;
+
+
+
+
+
+await set(
+
+ref(
+db,
+"users/"+currentUser.uid+"/invoices/"+id
+),
+
+{
+
+
+customer:
+invoiceCustomer.value,
+
+
+total:
+invoiceTotal.value,
+
+
+status:
+"Unpaid",
+
+
+created:
+Date.now()
+
+
+}
+
+);
+
+
+
+loadInvoices();
+
+
+};
+
+
+
+
+
+
+
+
+
+
+async function loadInvoices(){
+
+
+
+let box =
+document.getElementById("invoiceList");
+
+
+
+if(!box)return;
+
+
+
+let snap =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid+"/invoices"
+
+)
+
+);
+
+
+
+box.innerHTML="";
+
+
+
+if(snap.exists()){
+
+
+
+Object.values(snap.val())
+
+.forEach(i=>{
+
+
+box.innerHTML+=`
+
+
+<div class="moneyCard">
+
+
+<h3>
+
+${i.customer}
+
+</h3>
+
+
+<p>
+
+$${i.total}
+
+</p>
+
+
+<p>
+
+${i.status}
+
+</p>
+
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// ANALYTICS
+
+
+
+
+
+window.analyticsPage=function(){
+
+
+
+document.querySelector(".main")
+.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+📈 Analytics
+
+</h1>
+
+
+
+<div class="moneyCard">
+
+<h2>
+
+Business Overview
+
+</h2>
+
+
+
+<p>
+
+Revenue tracking connected
+
+</p>
+
+
+<p>
+
+Repair performance connected
+
+</p>
+
+
+<p>
+
+Inventory values connected
+
+</p>
+
+
+
+</div>
+
+
+
+</div>
+
+`;
+
+
+
+};
+
+
+
+
+
+
+</script>
+
+<!-- =========================
+PART 8 / 10
+EMPLOYEES + AI + CUSTOMER PORTAL
+========================= -->
+
+
+<style>
+
+
+.employeeCard{
+
+background:var(--panel);
+
+padding:20px;
+
+border-radius:18px;
+
+margin:15px 0;
+
+}
+
+
+
+.aiBox{
+
+background:#0b0b0b;
+
+border-radius:18px;
+
+padding:20px;
+
+}
+
+
+
+</style>
+
+
+
+
+
+
+
+<script type="module">
+
+
+import {
+
+ref,
+push,
+set,
+get,
+update
+
+}
+
+from
+
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
+
+
+
+
+
+
+
+function employeeRef(path){
+
+
+return ref(
+
+db,
+
+"users/"+currentUser.uid+"/employees/"+path
+
+);
+
+
+}
+
+
+
+
+
+
+
+
+
+// EMPLOYEES
+
+
+
+
+
+
+window.employeePage=function(){
+
+
+
+document.querySelector(".main")
+.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+👨‍🔧 Employees
+</h1>
+
+
+
+
+<div class="employeeCard">
+
+
+<input id="employeeName"
+placeholder="Employee Name">
+
+
+<input id="employeeRole"
+placeholder="Role">
+
+
+<input id="employeeEmail"
+placeholder="Email">
+
+
+
+<button onclick="addEmployee()">
+
+Add Employee
+
+</button>
+
+
+
+</div>
+
+
+
+<div id="employeeList">
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+
+loadEmployees();
+
+
+};
+
+
+
+
+
+
+
+
+
+
+window.addEmployee=async function(){
+
+
+
+let id =
+push(employeeRef("list")).key;
+
+
+
+await set(
+
+employeeRef("list/"+id),
+
+{
+
+
+name:
+employeeName.value,
+
+
+role:
+employeeRole.value,
+
+
+email:
+employeeEmail.value,
+
+
+status:
+"Active",
+
+
+created:
+Date.now()
+
+
+}
+
+);
+
+
+
+employeeName.value="";
+
+employeeRole.value="";
+
+employeeEmail.value="";
+
+
+
+loadEmployees();
+
+
+};
+
+
+
+
+
+
+
+
+
+
+async function loadEmployees(){
+
+
+
+let box =
+document.getElementById("employeeList");
+
+
+
+if(!box)return;
+
+
+
+let snap =
+await get(employeeRef("list"));
+
+
+
+box.innerHTML="";
+
+
+
+if(snap.exists()){
+
+
+
+Object.values(snap.val())
+
+.forEach(e=>{
+
+
+box.innerHTML+=`
+
+
+<div class="employeeCard">
+
+
+<h3>
+
+${e.name}
+
+</h3>
+
+
+<p>
+
+Role:
+${e.role}
+
+</p>
+
+
+<p>
+
+${e.email}
+
+</p>
+
+
+<p>
+
+${e.status}
+
+</p>
+
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// ATTENDANCE
+
+
+
+
+
+window.attendancePage=function(){
+
+
+
+document.querySelector(".main")
+.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+🟢 Attendance
+</h1>
+
+
+
+<div class="employeeCard">
+
+
+<button onclick="clockIn()">
+
+Clock In
+
+</button>
+
+
+<button onclick="clockOut()">
+
+Clock Out
+
+</button>
+
+
+</div>
+
+
+
+<div id="attendanceList">
+
+</div>
+
+
+
+</div>
+
+
+`;
+
+
+
+loadAttendance();
+
+
+};
+
+
+
+
+
+
+
+
+
+window.clockIn=async function(){
+
+
+
+await push(
+
+ref(
+db,
+"users/"+currentUser.uid+"/attendance"
+
+)
+
+)
+.set({
+
+type:"Clock In",
+
+time:Date.now()
+
+});
+
+
+
+};
+
+
+
+
+
+
+
+window.clockOut=async function(){
+
+
+
+await push(
+
+ref(
+db,
+"users/"+currentUser.uid+"/attendance"
+
+)
+
+)
+.set({
+
+type:"Clock Out",
+
+time:Date.now()
+
+});
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+async function loadAttendance(){
+
+
+let box =
+document.getElementById("attendanceList");
+
+
+
+if(!box)return;
+
+
+
+let snap =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid+"/attendance"
+
+)
+
+);
+
+
+
+box.innerHTML="";
+
+
+
+if(snap.exists()){
+
+
+
+Object.values(snap.val())
+
+.forEach(a=>{
+
+
+box.innerHTML+=`
+
+<div class="employeeCard">
+
+${a.type}
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// AI ASSISTANT
+
+
+
+
+
+
+
+window.aiPage=function(){
+
+
+
+document.querySelector(".main")
+.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+🤖 AI Assistant
+
+</h1>
+
+
+
+
+<div class="aiBox">
+
+
+<h3>
+Repair Suggestions
+</h3>
+
+
+<p>
+
+AI repair helper ready.
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+<div class="aiBox">
+
+
+<h3>
+
+💲 Pricing Help
+
+</h3>
+
+
+<p>
+
+Estimate repair pricing.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="aiBox">
+
+
+<h3>
+
+🔍 AI Diagnostics
+
+</h3>
+
+
+<p>
+
+Device troubleshooting assistant.
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+`;
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+// CUSTOMER PORTAL
+
+
+
+
+
+
+window.customerPortal=function(){
+
+
+
+document.querySelector(".main")
+.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+📞 Customer Portal
+
+</h1>
+
+
+
+<div class="employeeCard">
+
+
+<h3>
+
+🔎 Track Repair
+
+</h3>
+
+
+<p>
+
+Customers can view repair status.
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="employeeCard">
+
+
+<h3>
+
+📷 Upload Photos
+
+</h3>
+
+
+<p>
+
+Photo uploads will connect to storage.
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="employeeCard">
+
+
+<h3>
+
+⭐ Reviews
+
+</h3>
+
+
+<p>
+
+Customer reviews system.
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+`;
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+// BUSINESS MANAGEMENT
+
+
+
+
+
+window.businessPage=function(){
+
+
+
+document.querySelector(".main")
+.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+🏪 Business Management
+
+</h1>
+
+
+
+<div class="employeeCard">
+
+🏬 Locations
+
+</div>
+
+
+<div class="employeeCard">
+
+🧑‍💼 Managers
+
+</div>
+
+
+<div class="employeeCard">
+
+📜 Policies
+
+</div>
+
+
+<div class="employeeCard">
+
+📝 Forms
+
+</div>
+
+
+<div class="employeeCard">
+
+📅 Business Calendar
+
+</div>
+
+
+
+</div>
+
+`;
+
+
+
+};
+
+
+
+
+
+
+
+</script>
+
+<!-- =========================
+PART 9 / 10
+SETTINGS + ADMIN + SECURITY
+========================= -->
+
+<style>
+
+
+.settingsCard{
+
+background:var(--panel);
+
+padding:25px;
+
+border-radius:20px;
+
+margin:15px 0;
+
+}
+
+
+
+.colorInput{
+
+height:45px;
+
+padding:5px;
+
+}
+
+
+
+</style>
+
+
+
+
+
+
+
+<script type="module">
+
+
+import {
+
+ref,
+get,
+set
+
+}
+
+from
+
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
+
+
+
+
+
+
+
+function settingsRef(){
+
+
+return ref(
+
+db,
+
+"users/"+currentUser.uid+"/settings"
+
+);
+
+
+}
+
+
+
+
+
+
+
+
+
+// SETTINGS PAGE
+
+
+
+
+
+window.settingsPage=function(){
+
+
+
+document.querySelector(".main")
+.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+⚙ Settings
+
+</h1>
+
+
+
+
+
+<div class="settingsCard">
+
+
+<h2>
+
+🎨 Custom Colors
+
+</h2>
+
+
+
+
+<label>
+
+Background Color
+
+</label>
+
+
+<input 
+class="colorInput"
+type="color"
+id="bgColor">
+
+
+
+
+
+<label>
+
+Main Blue Color
+
+</label>
+
+
+<input
+class="colorInput"
+type="color"
+id="blueColor">
+
+
+
+
+
+<label>
+
+Text Color
+
+</label>
+
+
+<input
+class="colorInput"
+type="color"
+id="textColor">
+
+
+
+
+
+<button onclick="saveTheme()">
+
+Save Theme
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="settingsCard">
+
+🌙 Dark Mode
+
+<br>
+
+<button onclick="darkMode()">
+
+Enable Dark Mode
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="settingsCard">
+
+💾 Backup & Storage
+
+<br>
+
+Firebase backup connected
+
+</div>
+
+
+
+
+
+
+<div class="settingsCard">
+
+🌎 Language & Region
+
+<br>
+
+English
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+`;
+
+
+
+loadTheme();
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+// SAVE COLORS
+
+
+
+
+
+window.saveTheme=async function(){
+
+
+
+let bg =
+bgColor.value;
+
+
+let blue =
+blueColor.value;
+
+
+let text =
+textColor.value;
+
+
+
+
+
+document.documentElement
+.style.setProperty(
+"--black",
+bg
+);
+
+
+
+document.documentElement
+.style.setProperty(
+"--blue",
+blue
+);
+
+
+
+document.documentElement
+.style.setProperty(
+"--text",
+text
+);
+
+
+
+
+
+await set(
+
+settingsRef(),
+
+{
+
+
+background:bg,
+
+accent:blue,
+
+text:text,
+
+
+updated:Date.now()
+
+
+}
+
+
+);
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+async function loadTheme(){
+
+
+
+let snap =
+await get(settingsRef());
+
+
+
+if(snap.exists()){
+
+
+
+let t =
+snap.val();
+
+
+
+
+document.documentElement
+.style.setProperty(
+"--black",
+t.background
+);
+
+
+
+document.documentElement
+.style.setProperty(
+"--blue",
+t.accent
+);
+
+
+
+document.documentElement
+.style.setProperty(
+"--text",
+t.text
+);
+
+
+
+bgColor.value=t.background;
+
+blueColor.value=t.accent;
+
+textColor.value=t.text;
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+window.darkMode=function(){
+
+
+
+document.documentElement
+.style.setProperty(
+"--black",
+"#050505"
+);
+
+
+
+document.documentElement
+.style.setProperty(
+"--blue",
+"#007bff"
+);
+
+
+
+document.documentElement
+.style.setProperty(
+"--text",
+"#ffffff"
+);
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+// SECURITY CENTER
+
+
+
+
+
+
+window.securityPage=function(){
+
+
+
+document.querySelector(".main")
+.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+🚨 Security Center
+
+</h1>
+
+
+
+<div class="settingsCard">
+
+🔐 Login History
+
+</div>
+
+
+
+<div class="settingsCard">
+
+🖥 Active Sessions
+
+</div>
+
+
+
+<div class="settingsCard">
+
+📱 Device Access
+
+</div>
+
+
+
+<div class="settingsCard">
+
+📜 Audit Logs
+
+</div>
+
+
+
+<div class="settingsCard">
+
+⚠ Security Alerts
+
+</div>
+
+
+
+<div class="settingsCard">
+
+🔑 Backup Codes
+
+</div>
+
+
+
+</div>
+
+`;
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+// ADMIN
+
+
+
+
+
+
+window.adminPage=function(){
+
+
+
+document.querySelector(".main")
+.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+👑 Admin Panel
+
+</h1>
+
+
+
+
+<div class="settingsCard">
+
+👑 Owner Panel
+
+</div>
+
+
+
+<div class="settingsCard">
+
+🛂 Access Control
+
+</div>
+
+
+
+<div class="settingsCard">
+
+📜 Change History
+
+</div>
+
+
+
+<div class="settingsCard">
+
+🗑 Deleted Items
+
+</div>
+
+
+
+<div class="settingsCard">
+
+💾 Data Management
+
+</div>
+
+
+
+</div>
+
+
+`;
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+// FIREBASE ADMIN
+
+
+
+
+
+
+window.firebaseAdmin=function(){
+
+
+
+document.querySelector(".main")
+.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+🔥 Firebase Admin
+
+</h1>
+
+
+
+<div class="settingsCard">
+
+👥 User Management
+
+</div>
+
+
+
+<div class="settingsCard">
+
+🗄 Database Status
+
+</div>
+
+
+
+<div class="settingsCard">
+
+📦 Storage Usage
+
+</div>
+
+
+
+<div class="settingsCard">
+
+📊 App Analytics
+
+</div>
+
+
+
+<div class="settingsCard">
+
+🛠 Developer Tools
+
+</div>
+
+
+
+
+</div>
+
+
+`;
+
+
+
+};
+
+
+
+
+
+
+
+
+
+</script>
+
+<!-- =========================
+PART 10 / 10
+FINAL CONNECTIONS
+========================= -->
+
+<script>
+
+
+// SIDEBAR ITEM CLICK SYSTEM
+
+
+document.addEventListener(
+"click",
+function(e){
+
+
+
+if(e.target.classList.contains("item")){
+
+
+let name =
+e.target.innerText;
+
+
+
+if(name.includes("Dashboard"))
+openPage("Dashboard");
+
+
+
+else if(name.includes("Repair Tickets"))
+openPage("Repair Tickets");
+
+
+
+else if(name.includes("Customers"))
+openPage("Customers");
+
+
+
+else if(name.includes("iPhones"))
+openPage("iPhones");
+
+
+
+else if(name.includes("Samsung"))
+openPage("Samsung");
+
+
+
+else if(name.includes("iPads"))
+openPage("iPads");
+
+
+
+else if(name.includes("Inventory"))
+inventoryPage();
+
+
+
+else if(name.includes("Supplier"))
+supplierPage();
+
+
+
+else if(name.includes("Team Chat"))
+communicationPage("chat");
+
+
+
+else if(name.includes("Shared Notes"))
+communicationPage("notes");
+
+
+
+else if(name.includes("Tasks"))
+communicationPage("tasks");
+
+
+
+else if(name.includes("Notifications"))
+communicationPage("notifications");
+
+
+
+else if(name.includes("Finances"))
+financePage();
+
+
+
+else if(name.includes("Invoices"))
+invoicePage();
+
+
+
+else if(name.includes("Analytics"))
+analyticsPage();
+
+
+
+else if(name.includes("Employees"))
+employeePage();
+
+
+
+else if(name.includes("Attendance"))
+attendancePage();
+
+
+
+else if(name.includes("AI"))
+aiPage();
+
+
+
+else if(name.includes("CUSTOMER"))
+customerPortal();
+
+
+
+else if(name.includes("BUSINESS"))
+businessPage();
+
+
+
+else if(name.includes("SETTINGS"))
+settingsPage();
+
+
+
+}
+
+
+});
+
+
+
+
+
+
+
+
+
+// ACCOUNT MENU
+
+
+
+
+
+function accountMenu(){
+
+
+let menu =
+document.getElementById("accountMenu");
+
+
+
+menu.style.display =
+menu.style.display==="block"
+?
+"none"
+:
+"block";
+
+
+}
+
+
+
+
+
+// SWITCH ACCOUNT SYSTEM
+
+
+
+
+let accounts=[];
+
+
+
+async function loadAccounts(){
+
+
+
+let snap =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid+"/accounts"
+
+)
+
+);
+
+
+
+if(snap.exists()){
+
+
+accounts =
+Object.keys(
+snap.val()
+);
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+window.switchAccount=function(){
+
+
+
+loadAccounts();
+
+
+
+if(accounts.length < 5){
+
+
+let create =
+confirm(
+"No other accounts found.\nCreate another account?"
+);
+
+
+
+if(create){
+
+
+
+openCreate();
+
+
+
+}
+
+
+
+}
+
+else{
+
+
+alert(
+"Maximum 5 accounts reached"
+);
+
+
+}
+
+
+
+};
+
+
+
+
+
+
+
+
+// DEFAULT DASHBOARD
+
+
+
+
+setTimeout(()=>{
+
+
+if(currentUser){
+
+openPage("Dashboard");
+
+}
+
+
+},1000);
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
 </body>
+
 </html>

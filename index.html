@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -8,7 +9,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>TrueFix Wireless</title>
+<title>
+TrueFix Wireless
+</title>
 
 
 
@@ -19,9 +22,8 @@
 
 --bg:#050505;
 --panel:#111111;
---panel2:#1b1b1b;
---blue:#007bff;
---text:#ffffff;
+--blue:#008cff;
+--text:white;
 
 }
 
@@ -30,6 +32,7 @@
 *{
 
 box-sizing:border-box;
+
 font-family:Arial,Helvetica,sans-serif;
 
 }
@@ -41,14 +44,10 @@ body{
 margin:0;
 background:var(--bg);
 color:var(--text);
+overflow:hidden;
 
 }
 
-
-
-
-
-/* LOGIN */
 
 
 #loginScreen{
@@ -62,173 +61,101 @@ justify-content:center;
 
 
 
-.loginCard{
+.loginBox{
 
-width:430px;
-
+width:400px;
 background:var(--panel);
-
-padding:35px;
-
+padding:30px;
 border-radius:25px;
+box-shadow:0 0 30px #008cff55;
 
-box-shadow:
-0 0 50px #000;
-
-}
-
-
-
-
-
-.logo{
-
-font-size:34px;
-font-weight:bold;
-text-align:center;
-color:var(--blue);
-
-margin-bottom:25px;
+animation:fadeIn .5s;
 
 }
 
 
 
-
-
-input{
+input,button,textarea,select{
 
 width:100%;
-
 padding:14px;
-
-margin:7px 0;
-
-background:#222;
-
+margin-top:10px;
+border-radius:12px;
 border:none;
 
-border-radius:12px;
+}
 
+
+
+input,textarea,select{
+
+background:#222;
 color:white;
 
 }
-
 
 
 
 button{
 
-width:100%;
-
-padding:14px;
-
-margin-top:10px;
-
 background:var(--blue);
-
-border:none;
-
-border-radius:12px;
-
 color:white;
-
 cursor:pointer;
+
+transition:.2s;
 
 }
 
 
 
-.link{
+button:hover{
 
-text-align:center;
-
-margin-top:15px;
-
-color:var(--blue);
-
-cursor:pointer;
+transform:scale(1.03);
+box-shadow:0 0 15px var(--blue);
 
 }
 
-
-
-
-
-/* MAIN APP */
 
 
 #app{
 
 display:none;
-
 height:100vh;
 
 }
-
-
 
 
 
 .sidebar{
 
-
+width:280px;
+height:100vh;
+background:#080808;
 position:fixed;
-
 left:0;
 top:0;
-
-width:300px;
-
-height:100vh;
-
-
-background:var(--panel);
-
-display:flex;
-
-flex-direction:column;
+overflow:auto;
+padding-bottom:120px;
 
 }
 
 
 
+.logo{
 
-.sideTitle{
-
+font-size:25px;
+font-weight:bold;
 padding:25px;
 
-font-size:28px;
-
-font-weight:bold;
-
-color:var(--blue);
-
 }
-
-
-
-
-.menu{
-
-overflow:auto;
-
-flex:1;
-
-}
-
-
 
 
 
 .category{
 
-
-padding:15px 20px;
-
-font-weight:bold;
-
+padding:15px;
 cursor:pointer;
+transition:.2s;
 
 }
 
@@ -236,10 +163,9 @@ cursor:pointer;
 
 .category:hover{
 
-background:var(--panel2);
+background:#111;
 
 }
-
 
 
 
@@ -251,17 +177,11 @@ display:none;
 
 
 
-
-
 .item{
 
-
-padding:10px 35px;
-
+padding:12px 25px;
 cursor:pointer;
-
-color:#ccc;
-
+transition:.2s;
 
 }
 
@@ -269,89 +189,76 @@ color:#ccc;
 
 .item:hover{
 
-background:#222;
-
-color:white;
-
-}
-
-
-
-
-
-.accountBox{
-
-padding:20px;
-
-border-top:1px solid #333;
-
-cursor:pointer;
+background:#008cff33;
+padding-left:35px;
 
 }
-
-
-
-
 
 
 
 .main{
 
-
-margin-left:300px;
-
+margin-left:280px;
 height:100vh;
-
 overflow:auto;
+padding:25px;
 
-padding:30px;
+animation:slide .4s;
 
 }
-
-
 
 
 
 .card{
 
-
 background:var(--panel);
-
-border-radius:25px;
-
-padding:25px;
-
+padding:20px;
+border-radius:20px;
 margin-bottom:20px;
 
-}
-
-
-
-
-
-.statGrid{
-
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(200px,1fr));
-
-gap:20px;
+animation:fadeIn .3s;
 
 }
 
 
 
+.accountBox{
 
-.stat{
+position:fixed;
+bottom:20px;
+left:20px;
+width:240px;
+
+}
 
 
-background:var(--panel2);
 
-padding:25px;
+@keyframes fadeIn{
 
-border-radius:20px;
+from{
+opacity:0;
+transform:translateY(15px);
+}
+
+to{
+opacity:1;
+transform:none;
+}
+
+}
+
+
+
+@keyframes slide{
+
+from{
+opacity:0;
+transform:translateX(20px);
+}
+
+to{
+opacity:1;
+}
 
 }
 
@@ -364,1046 +271,7 @@ border-radius:20px;
 
 
 
-
-
-
-</head>
-
-
-
-
-
-
-<body>
-
-
-
-
-
-
-
-
-
-<!-- LOGIN AREA -->
-
-
-<div id="loginScreen">
-
-
-
-<div class="loginCard">
-
-
-
-<div class="logo">
-
-TRUEFIX WIRELESS
-
-</div>
-
-
-
-
-
-<div id="signInArea">
-
-
-<input id="loginEmail"
-placeholder="Email">
-
-
-<input id="loginPassword"
-type="password"
-placeholder="Password">
-
-
-<button onclick="signIn()">
-
-Sign In
-
-</button>
-
-
-
-<div class="link"
-onclick="showCreate()">
-
-Create Account
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div id="createArea"
-style="display:none;">
-
-
-
-<input id="firstName"
-placeholder="First Name">
-
-
-<input id="lastName"
-placeholder="Last Name">
-
-
-<input id="newEmail"
-placeholder="Email">
-
-
-<input id="newPassword"
-type="password"
-placeholder="Create Password">
-
-
-<input id="confirmPassword"
-type="password"
-placeholder="Confirm Password">
-
-
-<button onclick="createAccount()">
-
-Create Account
-
-</button>
-
-
-
-<div class="link"
-onclick="showLogin()">
-
-Back To Login
-
-</div>
-
-
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- APP AREA -->
-
-
-
-<div id="app">
-
-
-
-
-
-
-
-<!-- SIDEBAR -->
-
-
-
-<div class="sidebar">
-
-
-
-
-
-<div class="sideTitle">
-
-TRUEFIX
-
-</div>
-
-
-
-
-
-<div class="menu">
-
-
-
-
-
-
-
-<div class="category">
-
-🏠 HOME ▼
-
-</div>
-
-
-<div class="dropdown">
-
-
-<div class="item"
-onclick="openPage('Dashboard')">
-
-📊 Dashboard
-
-</div>
-
-
-
-<div class="item"
-onclick="openPage('Notifications')">
-
-🔔 Notifications
-
-</div>
-
-
-<div class="item">
-
-📰 Activity Feed
-
-</div>
-
-
-<div class="item">
-
-📌 Pinned Items
-
-</div>
-
-
-<div class="item">
-
-🗓 Today Overview
-
-</div>
-
-
-<div class="item">
-
-🔎 Global Search
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="category">
-
-📱 REPAIRS ▼
-
-</div>
-
-
-
-<div class="dropdown">
-
-
-
-<div class="item">
-
-📋 Repair Tickets
-
-</div>
-
-
-<div class="item">
-
-👥 Customers
-
-</div>
-
-
-<div class="item">
-
-📅 Calendar
-
-</div>
-
-
-<div class="item">
-
-📷 Photos
-
-</div>
-
-
-<div class="item">
-
-📂 Files
-
-</div>
-
-
-<div class="item">
-
-🔄 Repair Status
-
-</div>
-
-
-<div class="item">
-
-🧾 Estimates
-
-</div>
-
-
-<div class="item">
-
-✍️ Customer Signatures
-
-</div>
-
-
-<div class="item">
-
-🛡 Warranty Claims
-
-</div>
-
-
-<div class="item">
-
-⭐ Reviews
-
-</div>
-
-
-<div class="item">
-
-🔍 Device Inspection
-
-</div>
-
-
-<div class="item">
-
-📸 Before Photos
-
-</div>
-
-
-<div class="item">
-
-📸 After Photos
-
-</div>
-
-
-<div class="item">
-
-🧪 Testing Checklist
-
-</div>
-
-
-<div class="item">
-
-🔧 Repair Steps
-
-</div>
-
-
-<div class="item">
-
-⏳ Waiting For Parts
-
-</div>
-
-
-<div class="item">
-
-⏱ Labor Timer
-
-</div>
-
-
-<div class="item">
-
-✅ Quality Check
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="category">
-
-📱 DEVICES ▼
-
-</div>
-
-
-
-<div class="dropdown">
-
-
-<div class="item">
-
-📱 iPhones
-
-</div>
-
-
-<div class="item">
-
-📱 Samsung
-
-</div>
-
-
-<div class="item">
-
-📱 iPads
-
-</div>
-
-
-<div class="item">
-
-💻 Computers
-
-</div>
-
-
-<div class="item">
-
-⌚ Smart Watches
-
-</div>
-
-
-<div class="item">
-
-🔩 Parts Used
-
-</div>
-
-
-<div class="item">
-
-🛡 Warranty Tracking
-
-</div>
-
-
-<div class="item">
-
-🔎 IMEI Database
-
-</div>
-
-
-<div class="item">
-
-📜 Device History
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="category">
-
-💬 COMMUNICATION ▼
-
-</div>
-
-
-
-
-<div class="dropdown">
-
-
-<div class="item">
-
-💬 Team Chat
-
-</div>
-
-
-<div class="item">
-
-📢 Announcements
-
-</div>
-
-
-<div class="item">
-
-📝 Shared Notes
-
-</div>
-
-
-<div class="item">
-
-✅ Tasks
-
-</div>
-
-
-<div class="item">
-
-🔔 Employee Alerts
-
-</div>
-
-
-<div class="item">
-
-📲 SMS Messages
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-<div class="category">
-
-💰 FINANCES ▼
-
-</div>
-
-
-
-<div class="dropdown">
-
-
-<div class="item">
-
-💵 Repair Income
-
-</div>
-
-
-<div class="item">
-
-💳 Expenses
-
-</div>
-
-
-<div class="item">
-
-🧾 Invoices
-
-</div>
-
-
-<div class="item">
-
-💸 Taxes
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="category">
-
-📦 INVENTORY ▼
-
-</div>
-
-
-<div class="dropdown">
-
-
-<div class="item">
-
-📦 Inventory
-
-</div>
-
-
-<div class="item">
-
-📷 Barcode Scanner
-
-</div>
-
-
-<div class="item">
-
-⚠ Low Stock
-
-</div>
-
-
-<div class="item">
-
-🚚 Supplier Orders
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="category">
-
-🛠 TOOLS ▼
-
-</div>
-
-
-
-
-<div class="dropdown">
-
-
-<div class="item">
-
-🧮 Repair Calculator
-
-</div>
-
-
-<div class="item">
-
-💲 Parts Pricing
-
-</div>
-
-
-<div class="item">
-
-📟 IMEI Checker
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="category">
-
-📈 ANALYTICS ▼
-
-</div>
-
-
-
-
-<div class="dropdown">
-
-
-<div class="item">
-
-📈 Revenue
-
-</div>
-
-
-<div class="item">
-
-📊 Charts
-
-</div>
-
-
-<div class="item">
-
-📉 Profit
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="category">
-
-👨‍🔧 EMPLOYEES ▼
-
-</div>
-
-
-
-
-
-<div class="dropdown">
-
-
-<div class="item">
-
-👤 Employees
-
-</div>
-
-
-<div class="item">
-
-🔑 Permissions
-
-</div>
-
-
-<div class="item">
-
-🕒 Schedule
-
-</div>
-
-
-<div class="item">
-
-💰 Payroll
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="category">
-
-🤖 AI ASSISTANT ▼
-
-</div>
-
-
-
-<div class="dropdown">
-
-
-<div class="item">
-
-🤖 Repair Suggestions
-
-</div>
-
-
-<div class="item">
-
-💲 Pricing Help
-
-</div>
-
-
-<div class="item">
-
-🔍 AI Diagnostics
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-<div class="category">
-
-📞 CUSTOMER PORTAL ▼
-
-</div>
-
-
-
-
-
-
-
-<div class="category">
-
-🏪 BUSINESS MANAGEMENT ▼
-
-</div>
-
-
-
-
-
-
-<div class="category">
-
-💡 IDEAS / PLANNING ▼
-
-</div>
-
-
-
-
-
-
-<div class="category">
-
-🚨 SECURITY CENTER ▼
-
-</div>
-
-
-
-
-
-
-<div class="category">
-
-👑 ADMIN ▼
-
-</div>
-
-
-
-
-
-
-
-<div class="category">
-
-🔥 FIREBASE ADMIN ▼
-
-</div>
-
-
-
-
-
-
-<div class="category">
-
-⚙ SETTINGS ▼
-
-</div>
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="accountBox">
-
-
-👤 Account
-
-
-</div>
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="main" id="content">
-
-
-
-<div class="card">
-
-
-<h1>
-
-TrueFix Wireless
-
-</h1>
-
-
-
-<h2>
-
-Dashboard
-
-</h2>
-
-
-
-
-
-<div class="statGrid">
-
-
-
-<div class="stat">
-
-📱 Repairs
-
-<br>
-
-0
-
-</div>
-
-
-<div class="stat">
-
-👥 Customers
-
-<br>
-
-0
-
-</div>
-
-
-<div class="stat">
-
-💰 Revenue
-
-<br>
-
-$0
-
-</div>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- FIREBASE IMPORTS WILL STAY HERE -->
 
 <script type="module">
 
@@ -1423,9 +291,8 @@ from
 import {
 
 getAuth,
-createUserWithEmailAndPassword,
-signInWithEmailAndPassword,
-onAuthStateChanged
+onAuthStateChanged,
+signOut
 
 }
 
@@ -1440,8 +307,10 @@ import {
 getDatabase,
 ref,
 set,
-push,
 get,
+push,
+update,
+remove,
 onValue
 
 }
@@ -1453,65 +322,21 @@ from
 
 
 
-
-const firebaseConfig={
-
-
-apiKey:
-"AIzaSyDnlNyHtqiR6n1RtLErbpBs55snGK_Z3Yk",
+// YOUR EXISTING FIREBASE CONFIG GOES HERE
 
 
-authDomain:
-"truefix-dashboard.firebaseapp.com",
-
-
-databaseURL:
-"https://truefix-dashboard-default-rtdb.firebaseio.com",
-
-
-projectId:
-"truefix-dashboard",
-
-
-storageBucket:
-"truefix-dashboard.firebasestorage.app",
-
-
-messagingSenderId:
-"999290275627",
-
-
-appId:
-"1:999290275627:web:ef443cf92f75b0117fa76e"
-
-
-};
-
-
-
-const firebaseApp =
+const app =
 initializeApp(firebaseConfig);
 
 
+
 const auth =
-getAuth(firebaseApp);
+getAuth(app);
 
 
 
 const db =
-getDatabase(firebaseApp);
-
-
-
-
-
-// PART 1 CONTINUES IN PART 2
-
- 
-// ===============================
-// PART 2 / 8
-// AUTH + HOME SYSTEMS
-// ===============================
+getDatabase(app);
 
 
 
@@ -1521,12 +346,94 @@ let currentUser=null;
 
 
 
+const appArea =
+document.getElementById("app");
+
+
+
+const loginScreen =
+document.getElementById("loginScreen");
+
+
+
+const content =
+document.getElementById("content");
 
 
 
 
 
-onAuthStateChanged(auth,user=>{
+
+
+window.db=db;
+
+window.auth=auth;
+
+window.content=content;
+
+
+
+
+
+
+window.userPath=function(path){
+
+return ref(
+db,
+"users/"+currentUser.uid+"/"+path
+);
+
+};
+
+
+
+
+
+
+
+const pages={};
+
+
+
+window.openPage=function(name){
+
+
+
+content.innerHTML="";
+
+
+
+content.innerHTML=
+
+`
+
+<div class="card">
+
+<h1>
+
+${name}
+
+</h1>
+
+
+</div>
+
+`;
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+onAuthStateChanged(auth,(user)=>{
 
 
 if(user){
@@ -1534,12 +441,28 @@ if(user){
 
 currentUser=user;
 
+window.currentUser=user;
 
-openApp();
 
+loginScreen.style.display="none";
+
+appArea.style.display="block";
+
+
+openPage("📊 Dashboard");
+
+
+
+}else{
+
+
+loginScreen.style.display="flex";
+
+appArea.style.display="none";
 
 
 }
+
 
 
 });
@@ -1548,36 +471,508 @@ openApp();
 
 
 
+window.logout=function(){
+
+
+signOut(auth);
+
+
+};
 
 
 
 
-window.signIn=async function(){
+
+</script>
 
 
-try{
+</head>
 
 
-await signInWithEmailAndPassword(
+<body>
 
-auth,
 
-loginEmail.value,
 
-loginPassword.value
 
-);
+
+<div id="loginScreen">
+
+
+<div class="loginBox">
+
+
+<h1>
+
+TrueFix Wireless
+
+</h1>
+
+
+<p>
+
+Login system loading...
+
+</p>
+
+
+
+<div id="loginArea">
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div id="app">
+
+
+
+<div class="sidebar">
+
+
+
+<div class="logo">
+
+🔧 TrueFix Wireless
+
+</div>
+
+
+
+
+
+<div class="category">
+
+🏠 HOME ▼
+
+</div>
+
+
+<div class="dropdown">
+
+<div class="item" onclick="openPage('📊 Dashboard')">
+
+📊 Dashboard
+
+</div>
+
+
+<div class="item" onclick="openPage('🔔 Notifications')">
+
+🔔 Notifications
+
+</div>
+
+
+<div class="item" onclick="openPage('📰 Activity Feed')">
+
+📰 Activity Feed
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="category">
+
+📱 REPAIRS ▼
+
+</div>
+
+
+<div class="dropdown">
+
+
+<div class="item" onclick="openPage('📋 Repair Tickets')">
+
+📋 Repair Tickets
+
+</div>
+
+
+<div class="item" onclick="openPage('👥 Customers')">
+
+👥 Customers
+
+</div>
+
+
+<div class="item" onclick="openPage('📅 Calendar')">
+
+📅 Calendar
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="category">
+
+💬 COMMUNICATION ▼
+
+</div>
+
+
+<div class="dropdown">
+
+
+<div class="item" onclick="openPage('💬 Team Chat')">
+
+💬 Team Chat
+
+</div>
+
+
+<div class="item" onclick="openPage('📝 Shared Notes')">
+
+📝 Shared Notes
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="category">
+
+⚙ SETTINGS ▼
+
+</div>
+
+
+<div class="dropdown">
+
+
+<div class="item" onclick="openPage('🎨 Theme')">
+
+🎨 Theme
+
+</div>
+
+
+<div class="item" onclick="openPage('🎨 Custom Colors')">
+
+🎨 Custom Colors
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="accountBox card">
+
+
+<button onclick="logout()">
+
+Logout
+
+</button>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="main">
+
+
+<div id="content">
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+<script>
+
+
+document.querySelectorAll(".category")
+.forEach(c=>{
+
+
+c.onclick=()=>{
+
+
+let menu=c.nextElementSibling;
+
+
+menu.style.display=
+
+menu.style.display==="block"
+
+?
+
+"none"
+
+:
+
+"block";
+
+
+
+};
+
+
+
+});
+
+
+
+</script>
+
+
+
+<script type="module">
+
+
+
+import {
+
+
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword
 
 
 }
 
-catch(e){
+from
+
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 
-alert(e.message);
+
+import {
+
+
+ref,
+set,
+get
 
 
 }
+
+from
+
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
+
+
+
+
+
+
+
+
+
+const loginArea =
+document.getElementById("loginArea");
+
+
+
+
+
+function showLogin(){
+
+
+
+loginArea.innerHTML=`
+
+
+
+<h2>
+
+Sign In
+
+</h2>
+
+
+
+
+<input id="loginEmail"
+
+placeholder="Email">
+
+
+
+<input id="loginPassword"
+
+type="password"
+
+placeholder="Password">
+
+
+
+
+
+<button onclick="loginUser()">
+
+Sign In
+
+</button>
+
+
+
+
+<button onclick="showCreateAccount()">
+
+Create Account
+
+</button>
+
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+window.showCreateAccount=function(){
+
+
+
+loginArea.innerHTML=`
+
+
+
+<h2>
+
+Create TrueFix Account
+
+</h2>
+
+
+
+
+
+<input id="firstName"
+
+placeholder="First Name">
+
+
+
+
+
+<input id="lastName"
+
+placeholder="Last Name">
+
+
+
+
+
+
+<input id="createEmail"
+
+placeholder="Email">
+
+
+
+
+
+
+<input id="createPassword"
+
+type="password"
+
+placeholder="Create Password">
+
+
+
+
+
+
+<input id="confirmPassword"
+
+type="password"
+
+placeholder="Confirm Password">
+
+
+
+
+
+<button onclick="createAccount()">
+
+Create Account
+
+</button>
+
+
+
+
+
+
+<button onclick="showLogin()">
+
+Back To Login
+
+</button>
+
+
+
+
+`;
+
 
 
 };
@@ -1594,10 +989,61 @@ window.createAccount=async function(){
 
 
 
-if(newPassword.value !== confirmPassword.value){
+let first =
+document.getElementById("firstName").value;
 
 
-alert("Passwords do not match");
+
+let last =
+document.getElementById("lastName").value;
+
+
+
+let email =
+document.getElementById("createEmail").value;
+
+
+
+let password =
+document.getElementById("createPassword").value;
+
+
+
+let confirm =
+document.getElementById("confirmPassword").value;
+
+
+
+
+
+
+if(
+!first ||
+!last ||
+!email ||
+!password
+){
+
+alert(
+"Fill in every field"
+);
+
+return;
+
+}
+
+
+
+
+
+
+if(password!==confirm){
+
+
+alert(
+"Passwords do not match"
+);
+
 
 return;
 
@@ -1608,19 +1054,24 @@ return;
 
 
 
+
 try{
 
 
+
 let result =
+
 await createUserWithEmailAndPassword(
 
 auth,
 
-newEmail.value,
+email,
 
-newPassword.value
+password
 
 );
+
+
 
 
 
@@ -1636,44 +1087,42 @@ db,
 {
 
 
-firstName:firstName.value,
-
-lastName:lastName.value,
-
-email:newEmail.value,
+firstName:first,
 
 
-created:
-Date.now(),
+lastName:last,
+
+
+email:email,
 
 
 
-repairs:{},
+createdAt:Date.now(),
 
 
-customers:{},
 
-
-inventory:{},
-
-
-messages:{},
-
-
-notifications:{},
-
-
-settings:{
+theme:{
 
 
 background:"#050505",
 
-blue:"#007bff",
+
+blue:"#008cff",
+
 
 text:"#ffffff"
 
 
-}
+},
+
+
+
+businessName:"TrueFix Wireless",
+
+
+
+accounts:[email]
+
 
 
 }
@@ -1686,16 +1135,23 @@ text:"#ffffff"
 
 
 
-alert("Account created!");
+alert(
+"Account created!"
+);
+
 
 
 
 }
+
+
 
 catch(e){
 
 
-alert(e.message);
+alert(
+e.message
+);
 
 
 }
@@ -1712,12 +1168,53 @@ alert(e.message);
 
 
 
-window.showCreate=function(){
+window.loginUser=async function(){
 
 
-signInArea.style.display="none";
 
-createArea.style.display="block";
+let email =
+
+document.getElementById("loginEmail").value;
+
+
+
+let password =
+
+document.getElementById("loginPassword").value;
+
+
+
+
+
+try{
+
+
+await signInWithEmailAndPassword(
+
+auth,
+
+email,
+
+password
+
+);
+
+
+
+}
+
+
+
+catch(e){
+
+
+alert(
+e.message
+);
+
+
+}
+
 
 
 };
@@ -1729,15 +1226,9 @@ createArea.style.display="block";
 
 
 
-window.showLogin=function(){
 
 
-createArea.style.display="none";
-
-signInArea.style.display="block";
-
-
-};
+showLogin();
 
 
 
@@ -1747,15 +1238,61 @@ signInArea.style.display="block";
 
 
 
-function openApp(){
+// load saved theme later
+
+onAuthStateChanged(auth,async(user)=>{
 
 
-loginScreen.style.display="none";
-
-app.style.display="block";
+if(user){
 
 
-loadDashboard();
+let snap =
+
+await get(
+
+ref(
+db,
+"users/"+user.uid
+
+)
+
+);
+
+
+
+
+if(snap.exists()){
+
+
+let data=snap.val();
+
+
+
+if(data.theme){
+
+
+
+document.documentElement.style
+.setProperty(
+"--bg",
+data.theme.background
+);
+
+
+
+document.documentElement.style
+.setProperty(
+"--blue",
+data.theme.blue
+);
+
+
+
+document.documentElement.style
+.setProperty(
+"--text",
+data.theme.text
+);
 
 
 
@@ -1763,188 +1300,302 @@ loadDashboard();
 
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-// ===============================
-// PAGE ENGINE
-// ===============================
-
-
-
-
-
-window.openPage=function(pageName){
-
-
-
-let area =
-document.getElementById("content");
-
-
-
-
-
-
-if(pageName==="Dashboard"){
-
-
-loadDashboard();
-
-
-return;
 
 
 }
 
 
 
+});
 
 
 
 
-if(pageName==="Notifications"){
+
+
+</script>
+
+<script type="module">
+
+
+import {
+
+signOut,
+onAuthStateChanged
+
+}
+
+from
+
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 
 
-area.innerHTML=`
+import {
 
+ref,
+get,
+set,
+push,
+onValue
 
-<div class="card">
+}
 
+from
 
-<h1>
-
-🔔 Notifications
-
-</h1>
-
-
-<div id="notifications">
-
-Loading...
-
-</div>
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
 
 
 
-</div>
+
+
+let profileData = {};
 
 
 
-`;
+
+
+onAuthStateChanged(auth,async(user)=>{
+
+
+if(!user)return;
 
 
 
-loadNotifications();
+let snap =
+await get(
+ref(db,"users/"+user.uid)
+);
 
 
 
-return;
+if(snap.exists()){
+
+
+profileData =
+snap.val();
 
 
 }
 
 
 
+loadAccountBox();
+
+
+
+});
 
 
 
 
 
-if(pageName==="Activity Feed"){
 
 
 
-area.innerHTML=`
 
-
-<div class="card">
-
-
-<h1>
-
-📰 Activity Feed
-
-</h1>
+// ============================
+// ACCOUNT MENU
+// ============================
 
 
 
-<div id="activity">
 
-No activity yet
+function loadAccountBox(){
+
+
+
+let box =
+document.querySelector(".accountBox");
+
+
+
+box.innerHTML=`
+
+
+<div>
+
+👤
+
+${profileData.firstName || ""}
+
+${profileData.lastName || ""}
 
 </div>
 
 
 
-</div>
+<button onclick="openAccountMenu()">
 
-
-`;
-
-
-
-return;
-
-
-}
-
-
-
-
-
-
-
-
-
-if(pageName==="Pinned Items"){
-
-
-
-area.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-📌 Pinned Items
-
-</h1>
-
-
-<button onclick="addPin()">
-
-Add Pin
+Account
 
 </button>
 
 
-<div id="pins">
-
-</div>
+`;
 
 
-</div>
+
+}
+
+
+
+
+
+
+
+
+window.openAccountMenu=function(){
+
+
+
+let old =
+document.getElementById("accountMenu");
+
+
+
+if(old){
+
+old.remove();
+
+return;
+
+}
+
+
+
+
+let menu =
+document.createElement("div");
+
+
+
+menu.id="accountMenu";
+
+menu.className="card";
+
+menu.style.position="fixed";
+
+menu.style.left="20px";
+
+menu.style.bottom="90px";
+
+menu.style.width="240px";
+
+
+
+
+menu.innerHTML=`
+
+
+<h3>
+
+Account
+
+</h3>
+
+
+<button onclick="logoutUser()">
+
+🚪 Logout
+
+</button>
+
+
+
+<button onclick="switchAccount()">
+
+🔄 Switch Account
+
+</button>
+
+
+
+<button onclick="createNewAccount()">
+
+➕ Create Account
+
+</button>
+
 
 
 `;
 
 
 
-loadPins();
+document.body.appendChild(menu);
 
+
+
+};
+
+
+
+
+
+
+
+
+
+window.logoutUser=async function(){
+
+
+
+await signOut(auth);
+
+
+
+location.reload();
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+// ============================
+// ACCOUNT SWITCHING
+// ============================
+
+
+
+
+window.switchAccount=async function(){
+
+
+
+let accounts =
+JSON.parse(
+
+localStorage.getItem(
+"truefixAccounts"
+)
+
+||
+
+"[]"
+
+);
+
+
+
+
+if(accounts.length===0){
+
+
+alert(
+"No saved accounts"
+);
 
 
 return;
@@ -1956,72 +1607,29 @@ return;
 
 
 
+let email =
+prompt(
+
+"Enter account email"
+
+);
 
 
 
 
-if(pageName==="Today Overview"){
+
+if(!email)return;
 
 
 
-area.innerHTML=`
 
 
-<div class="card">
+if(!accounts.includes(email)){
 
 
-<h1>
-
-🗓 Today Overview
-
-</h1>
-
-
-<div class="statGrid">
-
-
-<div class="stat">
-
-Repairs Today
-
-<br>
-
-0
-
-</div>
-
-
-
-<div class="stat">
-
-Appointments
-
-<br>
-
-0
-
-</div>
-
-
-<div class="stat">
-
-Messages
-
-<br>
-
-0
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-`;
-
+alert(
+"Account not found on this device"
+);
 
 
 return;
@@ -2031,83 +1639,117 @@ return;
 
 
 
+alert(
+
+"Please sign in again with: "+email
+
+);
 
 
 
 
 
-if(pageName==="Global Search"){
+await signOut(auth);
 
 
 
-area.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-🔎 Global Search
-
-</h1>
+};
 
 
 
-<input
-id="searchBox"
-placeholder="Search TrueFix...">
 
 
 
-<div id="searchResults">
-
-</div>
 
 
 
-</div>
 
 
-`;
+// ============================
+// CREATE ACCOUNT
+// ============================
 
 
 
-return;
+
+window.createNewAccount=function(){
+
+
+showCreateAccount();
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+// ============================
+// SAVE ACCOUNT LIST
+// ============================
+
+
+
+
+onAuthStateChanged(auth,(user)=>{
+
+
+if(user){
+
+
+
+let list =
+
+JSON.parse(
+
+localStorage.getItem(
+"truefixAccounts"
+)
+
+||
+
+"[]"
+
+);
+
+
+
+
+if(!list.includes(user.email)){
+
+
+
+if(list.length>=5){
+
+
+list.shift();
 
 
 }
 
 
 
-
-
-area.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-${pageName}
-
-</h1>
+list.push(
+user.email
+);
 
 
 
-<p>
+localStorage.setItem(
 
-System loaded.
+"truefixAccounts",
 
-</p>
+JSON.stringify(list)
 
-
-
-</div>
-
-
-`;
+);
 
 
 
@@ -2115,6 +1757,11 @@ System loaded.
 
 
 
+}
+
+
+
+});
 
 
 
@@ -2124,25 +1771,64 @@ System loaded.
 
 
 
-// ===============================
-// DASHBOARD
-// ===============================
+
+
+
+// ============================
+// HOME DASHBOARD
+// ============================
 
 
 
 
 
-async function loadDashboard(){
+
+window.openPage=function(name){
 
 
 
-let area =
-document.getElementById("content");
+content.innerHTML=`
+
+<div class="card">
+
+<h1>
+
+${name}
+
+</h1>
+
+
+</div>
+
+`;
 
 
 
-area.innerHTML=`
+if(name==="📊 Dashboard"){
 
+
+dashboardHome();
+
+}
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+function dashboardHome(){
+
+
+
+content.innerHTML=`
 
 <div class="card">
 
@@ -2155,99 +1841,40 @@ area.innerHTML=`
 
 
 
-<div class="statGrid">
+<div class="card">
 
-
-
-<div class="stat">
-
-
-📱 Repairs
-
+Repairs Today
 
 <br>
 
-<span id="repairCount">
-
 0
-
-</span>
-
 
 </div>
 
 
 
+<div class="card">
 
-
-
-<div class="stat">
-
-
-👥 Customers
-
+Customers
 
 <br>
 
-<span id="customerCount">
-
 0
-
-</span>
-
 
 </div>
 
 
 
+<div class="card">
 
-
-
-<div class="stat">
-
-
-📦 Inventory
-
+Revenue
 
 <br>
 
-<span id="inventoryCount">
-
-0
-
-</span>
-
+$0
 
 </div>
 
-
-
-
-
-
-<div class="stat">
-
-
-💰 Earnings
-
-
-<br>
-
-$<span id="money">
-
-0
-
-</span>
-
-
-</div>
-
-
-
-
-
-
-</div>
 
 
 </div>
@@ -2257,53 +1884,6 @@ $<span id="money">
 
 
 
-if(!currentUser)return;
-
-
-
-
-let snap =
-await get(
-
-ref(
-db,
-"users/"+currentUser.uid
-)
-
-);
-
-
-
-
-
-if(snap.exists()){
-
-
-let data=snap.val();
-
-
-
-
-repairCount.innerHTML =
-Object.keys(data.repairs||{}).length;
-
-
-
-
-customerCount.innerHTML =
-Object.keys(data.customers||{}).length;
-
-
-
-inventoryCount.innerHTML =
-Object.keys(data.inventory||{}).length;
-
-
-
-}
-
-
-
 }
 
 
@@ -2314,138 +1894,22 @@ Object.keys(data.inventory||{}).length;
 
 
 
-
-
-// ===============================
+// ============================
 // NOTIFICATIONS
-// ===============================
+// ============================
 
 
 
-
-async function loadNotifications(){
-
-
-
-let box =
-document.getElementById("notifications");
+async function addNotification(text){
 
 
 
-let snap =
-await get(
+await push(
 
 ref(
 db,
 "users/"+currentUser.uid+"/notifications"
 
-)
-
-);
-
-
-
-
-
-box.innerHTML="";
-
-
-
-
-if(snap.exists()){
-
-
-
-Object.values(
-snap.val()
-
-)
-.forEach(n=>{
-
-
-box.innerHTML +=`
-
-
-<div class="card">
-
-🔔 ${n.text}
-
-</div>
-
-
-`;
-
-
-
-});
-
-
-
-}
-else{
-
-
-box.innerHTML="No notifications";
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-// ===============================
-// PINS
-// ===============================
-
-
-
-
-
-window.addPin=async function(){
-
-
-
-let text =
-prompt("Pin item");
-
-
-
-if(!text)return;
-
-
-
-
-let id =
-push(
-
-ref(
-db,
-"users/"+currentUser.uid+"/pins"
-
-)
-
-).key;
-
-
-
-
-
-await set(
-
-ref(
-db,
-"users/"+currentUser.uid+"/pins/"+id
 ),
 
 {
@@ -2459,15 +1923,11 @@ time:Date.now()
 }
 
 
-
 );
 
 
 
-loadPins();
-
-
-};
+}
 
 
 
@@ -2477,30 +1937,50 @@ loadPins();
 
 
 
-async function loadPins(){
+function notificationsPage(){
 
 
 
-let box =
-document.getElementById("pins");
+content.innerHTML=`
+
+<div class="card">
+
+<h1>
+
+🔔 Notifications
+
+</h1>
+
+
+<div id="notices">
+
+Loading...
+
+</div>
+
+
+</div>
+
+
+`;
 
 
 
-if(!box)return;
 
 
-
-let snap =
-await get(
+onValue(
 
 ref(
 db,
-"users/"+currentUser.uid+"/pins"
+"users/"+currentUser.uid+"/notifications"
 
-)
+),
 
-);
+snap=>{
 
+
+let box =
+document.getElementById("notices");
 
 
 
@@ -2512,19 +1992,75 @@ if(snap.exists()){
 
 
 
-Object.values(
-snap.val()
-
-)
-.forEach(p=>{
+Object.values(snap.val())
+.forEach(n=>{
 
 
 box.innerHTML+=`
 
+<div class="card">
+
+${n.text}
+
+</div>
+
+`;
+
+
+});
+
+
+
+}
+
+
+
+}
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ============================
+// SEARCH
+// ============================
+
+
+
+
+
+function searchPage(){
+
+
+
+content.innerHTML=`
 
 <div class="card">
 
-📌 ${p.text}
+
+<h1>
+
+🔎 Global Search
+
+</h1>
+
+
+<input
+
+placeholder="Search TrueFix..."
+
+>
+
 
 </div>
 
@@ -2533,14 +2069,6 @@ box.innerHTML+=`
 
 
 
-});
-
-
-
-}
-
-
-
 }
 
 
@@ -2548,81 +2076,15 @@ box.innerHTML+=`
 
 
 
+</script>
 
+<script type="module">
 
+// =====================================
+// PART 4 / 15
+// REPAIR MANAGEMENT SYSTEM
+// =====================================
 
-
-
-// ===============================
-// SEARCH
-// ===============================
-
-
-document.addEventListener(
-"input",
-
-e=>{
-
-
-if(e.target.id==="searchBox"){
-
-
-let text=e.target.value;
-
-
-document.getElementById("searchResults")
-.innerHTML=
-
-
-text
-?
-"Searching: "+text
-:
-"";
-
-
-
-}
-
-
-
-});
-
-
-
-
-// PART 2 CONTINUES IN PART 3
-
-
-// ===============================
-// PART 3 / 8
-// REPAIRS + CUSTOMERS + DEVICES
-// ===============================
-
-
-
-
-
-function userPath(path){
-
-return ref(
-db,
-"users/"+currentUser.uid+"/"+path
-);
-
-}
-
-
-
-
-
-
-
-
-
-// ===============================
-// REPAIRS PAGE
-// ===============================
 
 
 
@@ -2631,10 +2093,7 @@ document.querySelectorAll(".item")
 .forEach(item=>{
 
 
-item.addEventListener(
-"click",
-
-()=>{
+item.addEventListener("click",()=>{
 
 
 let name =
@@ -2642,44 +2101,82 @@ item.innerText.trim();
 
 
 
+
 if(name==="📋 Repair Tickets"){
 
-repairPage();
+repairTicketsPage();
 
 }
+
 
 
 
 if(name==="👥 Customers"){
 
-customerPage();
+customersPage();
 
 }
 
 
 
-if(name==="📱 iPhones" ||
-name==="📱 Samsung" ||
-name==="📱 iPads" ||
-name==="💻 Computers" ||
-name==="⌚ Smart Watches"){
 
-devicePage(name);
+if(name==="🔄 Repair Status"){
+
+repairStatusPage();
 
 }
 
 
 
-if(name==="🔎 IMEI Database"){
+if(name==="🔍 Device Inspection"){
 
-imeiPage();
+inspectionPage();
+
+}
+
+
+
+if(name==="🧪 Testing Checklist"){
+
+testingPage();
 
 }
 
 
+
+if(name==="🔧 Repair Steps"){
+
+repairStepsPage();
+
 }
 
-);
+
+
+if(name==="⏳ Waiting For Parts"){
+
+waitingPartsPage();
+
+}
+
+
+
+if(name==="⏱ Labor Timer"){
+
+laborTimerPage();
+
+}
+
+
+
+if(name==="✅ Quality Check"){
+
+qualityPage();
+
+}
+
+
+
+});
 
 
 });
@@ -2692,33 +2189,26 @@ imeiPage();
 
 
 
-
-
-// ===============================
+// =====================================
 // REPAIR TICKETS
-// ===============================
+// =====================================
 
 
 
 
 
-function repairPage(){
 
+function repairTicketsPage(){
 
 
 content.innerHTML=`
-
 
 <div class="card">
 
 
 <h1>
-
 📋 Repair Tickets
-
 </h1>
-
-
 
 
 
@@ -2728,6 +2218,10 @@ placeholder="Customer Name">
 
 
 
+<input id="repairPhone"
+
+placeholder="Phone Number">
+
 
 
 <input id="repairDevice"
@@ -2736,57 +2230,58 @@ placeholder="Device">
 
 
 
-
-
-
-<input id="repairProblem"
+<input id="repairIssue"
 
 placeholder="Problem">
 
 
 
-
-
-
-<select id="repairStatus"
-style="
-width:100%;
-padding:14px;
-background:#222;
-color:white;
-border-radius:12px;
-">
+<select id="repairStatus">
 
 
 <option>
-
-Waiting
-
+Received
 </option>
 
 
 <option>
-
-In Repair
-
+Diagnosing
 </option>
 
 
 <option>
+Repairing
+</option>
 
+
+<option>
+Waiting For Parts
+</option>
+
+
+<option>
 Completed
-
 </option>
 
+
+<option>
+Returned
+</option>
 
 
 </select>
 
 
 
+<input id="repairEmployee"
+
+placeholder="Assigned Employee Email">
 
 
-<button onclick="addRepair()">
+
+
+
+<button onclick="createRepair()">
 
 Create Repair
 
@@ -2795,14 +2290,11 @@ Create Repair
 
 
 
-
-
-<div id="repairList">
-
 </div>
 
 
 
+<div id="repairList">
 
 </div>
 
@@ -2814,6 +2306,7 @@ Create Repair
 loadRepairs();
 
 
+
 }
 
 
@@ -2824,14 +2317,17 @@ loadRepairs();
 
 
 
-
-window.addRepair=async function(){
+window.createRepair=async function(){
 
 
 
 let id =
 push(
-userPath("repairs")
+ref(
+db,
+"users/"+currentUser.uid+"/repairs"
+)
+
 ).key;
 
 
@@ -2840,49 +2336,73 @@ userPath("repairs")
 
 await set(
 
-userPath(
-"repairs/"+id
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/repairs/"+id
+
 ),
 
+
+
 {
+
+
+id:id,
 
 
 customer:
 repairCustomer.value,
 
 
+phone:
+repairPhone.value,
+
+
+
 device:
 repairDevice.value,
 
 
-problem:
-repairProblem.value,
+
+issue:
+repairIssue.value,
+
 
 
 status:
 repairStatus.value,
 
 
+
+employee:
+repairEmployee.value,
+
+
+
 created:
 Date.now()
 
 
+
 }
+
 
 
 );
 
 
 
-repairCustomer.value="";
 
-repairDevice.value="";
-
-repairProblem.value="";
+alert(
+"Repair Created"
+);
 
 
 
 loadRepairs();
+
 
 
 };
@@ -2908,10 +2428,19 @@ if(!box)return;
 
 
 
+
+
 let snap =
 await get(
-userPath("repairs")
+
+ref(
+db,
+"users/"+currentUser.uid+"/repairs"
+
+)
+
 );
+
 
 
 
@@ -2919,15 +2448,38 @@ box.innerHTML="";
 
 
 
-if(snap.exists()){
+
+
+if(!snap.exists()){
+
+
+box.innerHTML=
+
+`
+
+<div class="card">
+
+No repairs yet
+
+</div>
+
+`;
+
+return;
+
+
+}
 
 
 
-Object.entries(
+
+
+
+Object.values(
 snap.val()
 
 )
-.forEach(([id,r])=>{
+.forEach(r=>{
 
 
 
@@ -2937,42 +2489,44 @@ box.innerHTML+=`
 <div class="card">
 
 
-<h3>
+<h2>
 
-📱 ${r.device}
+${r.device}
 
-</h3>
+</h2>
 
-
-<p>
 
 Customer:
+
 ${r.customer}
 
-</p>
+<br>
 
-
-<p>
 
 Issue:
-${r.problem}
 
-</p>
+${r.issue}
 
 
-<p>
+<br>
+
 
 Status:
+
+<b>
+
 ${r.status}
 
-</p>
+</b>
 
 
-<button onclick="updateRepair('${id}')">
+<br>
 
-Change Status
 
-</button>
+Employee:
+
+${r.employee || "Unassigned"}
+
 
 
 </div>
@@ -2985,7 +2539,6 @@ Change Status
 });
 
 
-}
 
 
 }
@@ -2998,73 +2551,20 @@ Change Status
 
 
 
-window.updateRepair=async function(id){
-
-
-
-let status =
-prompt(
-
-"New status"
-
-);
-
-
-
-if(!status)return;
-
-
-
-
-await update(
-
-userPath(
-"repairs/"+id
-),
-
-{
-
-
-status:status
-
-
-}
-
-);
-
-
-
-loadRepairs();
-
-
-
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ===============================
+// =====================================
 // CUSTOMERS
-// ===============================
+// =====================================
 
 
 
 
-function customerPage(){
+
+
+function customersPage(){
 
 
 
 content.innerHTML=`
-
 
 <div class="card">
 
@@ -3077,31 +2577,11 @@ content.innerHTML=`
 
 
 
-<input id="customerName"
+<p>
 
-placeholder="Customer Name">
+Customers are linked from repair tickets.
 
-
-
-<input id="customerPhone"
-
-placeholder="Phone">
-
-
-
-<input id="customerEmail"
-
-placeholder="Email">
-
-
-
-<button onclick="addCustomer()">
-
-Add Customer
-
-</button>
-
-
+</p>
 
 
 <div id="customerList">
@@ -3120,73 +2600,8 @@ Add Customer
 loadCustomers();
 
 
-}
-
-
-
-
-
-
-
-
-
-window.addCustomer=async function(){
-
-
-
-let id =
-push(
-userPath("customers")
-).key;
-
-
-
-await set(
-
-userPath(
-"customers/"+id
-),
-
-{
-
-
-name:
-customerName.value,
-
-
-phone:
-customerPhone.value,
-
-
-email:
-customerEmail.value,
-
-
-created:
-Date.now()
-
 
 }
-
-
-
-);
-
-
-
-customerName.value="";
-
-customerPhone.value="";
-
-customerEmail.value="";
-
-
-
-loadCustomers();
-
-
-
-};
 
 
 
@@ -3205,22 +2620,35 @@ document.getElementById("customerList");
 
 
 
-if(!box)return;
-
-
-
 let snap =
 await get(
-userPath("customers")
+
+ref(
+db,
+"users/"+currentUser.uid+"/repairs"
+
+)
+
 );
 
 
 
-box.innerHTML="";
+
+
+if(!snap.exists()){
+
+box.innerHTML="No customers";
+
+return;
+
+}
 
 
 
-if(snap.exists()){
+
+
+let customers={};
+
 
 
 
@@ -3228,268 +2656,39 @@ Object.values(
 snap.val()
 
 )
+
+.forEach(r=>{
+
+
+customers[r.customer]=r;
+
+
+});
+
+
+
+
+
+box.innerHTML="";
+
+
+
+
+
+Object.values(customers)
+
 .forEach(c=>{
 
 
 box.innerHTML+=`
 
-
 <div class="card">
 
-
-<h3>
-
-${c.name}
-
-</h3>
-
-
-<p>
-
-📞 ${c.phone}
-
-</p>
-
-
-<p>
-
-✉️ ${c.email}
-
-</p>
-
-
-</div>
-
-
-`;
-
-
-
-});
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ===============================
-// DEVICES
-// ===============================
-
-
-
-
-
-function devicePage(type){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-${type}
-
-</h1>
-
-
-
-
-<input id="deviceModel"
-
-placeholder="Model">
-
-
-
-
-
-<input id="deviceImei"
-
-placeholder="IMEI">
-
-
-
-
-
-<input id="deviceNotes"
-
-placeholder="Notes">
-
-
-
-
-
-<button onclick="addDevice()">
-
-Save Device
-
-</button>
-
-
-
-
-<div id="deviceList">
-
-</div>
-
-
-
-</div>
-
-
-`;
-
-
-
-loadDevices();
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-window.addDevice=async function(){
-
-
-
-let id =
-push(
-userPath("devices")
-).key;
-
-
-
-await set(
-
-userPath(
-"devices/"+id
-),
-
-{
-
-
-model:
-deviceModel.value,
-
-
-imei:
-deviceImei.value,
-
-
-notes:
-deviceNotes.value,
-
-
-created:
-Date.now()
-
-
-}
-
-
-);
-
-
-
-deviceModel.value="";
-
-deviceImei.value="";
-
-deviceNotes.value="";
-
-
-
-loadDevices();
-
-
-
-};
-
-
-
-
-
-
-
-
-
-
-async function loadDevices(){
-
-
-
-let box =
-document.getElementById("deviceList");
-
-
-
-if(!box)return;
-
-
-
-let snap =
-await get(
-userPath("devices")
-);
-
-
-
-box.innerHTML="";
-
-
-
-if(snap.exists()){
-
-
-
-Object.values(
-snap.val()
-
-)
-.forEach(d=>{
-
-
-
-box.innerHTML+=`
-
-
-<div class="card">
-
-
-📱 ${d.model}
+👤 ${c.customer}
 
 <br>
 
-🔎 ${d.imei}
-
+📱 ${c.phone}
 
 </div>
 
@@ -3502,9 +2701,6 @@ box.innerHTML+=`
 
 
 
-}
-
-
 
 }
 
@@ -3516,49 +2712,181 @@ box.innerHTML+=`
 
 
 
-
-
-// ===============================
-// IMEI DATABASE
-// ===============================
-
+// =====================================
+// STATUS
+// =====================================
 
 
 
-function imeiPage(){
+
+
+function repairStatusPage(){
 
 
 
 content.innerHTML=`
-
 
 <div class="card">
 
 
 <h1>
 
-🔎 IMEI Database
+🔄 Repair Status
 
 </h1>
 
 
-<input id="imeiSearch"
 
-placeholder="Search IMEI">
+<p>
+
+Track all active repairs
+
+</p>
+
+
+</div>
+
+`;
+
+loadRepairs();
 
 
 
-<button onclick="searchIMEI()">
+}
 
-Search
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// INSPECTION
+// =====================================
+
+
+
+
+
+
+function inspectionPage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+🔍 Device Inspection
+
+</h1>
+
+
+
+<label>
+
+Damage Found
+
+</label>
+
+
+<textarea
+
+placeholder="Describe damage..."
+
+></textarea>
+
+
+
+<button>
+
+Save Inspection
 
 </button>
 
 
-
-<div id="imeiResult">
-
 </div>
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// CHECKLIST
+// =====================================
+
+
+
+
+
+function testingPage(){
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+🧪 Testing Checklist
+
+</h1>
+
+
+<label>
+
+<input type="checkbox">
+
+Power Test
+
+</label>
+
+
+<label>
+
+<input type="checkbox">
+
+Touch Test
+
+</label>
+
+
+<label>
+
+<input type="checkbox">
+
+Camera Test
+
+</label>
+
+
+<label>
+
+<input type="checkbox">
+
+Speaker Test
+
+</label>
 
 
 </div>
@@ -3575,35 +2903,111 @@ Search
 
 
 
-window.searchIMEI=function(){
-
-
-imeiResult.innerHTML=
-
-"IMEI checker ready";
-
-
-};
 
 
 
 
-// PART 3 CONTINUES IN PART 4
+
+// =====================================
+// REPAIR STEPS
+// =====================================
 
 
-// ===============================
-// PART 4 / 8
-// COMMUNICATION SYSTEM
-// ===============================
 
 
+function repairStepsPage(){
+
+
+simplePage("🔧 Repair Steps");
+
+
+}
 
 
 
 
 
 
-// Communication menu handler
+
+
+function waitingPartsPage(){
+
+
+simplePage("⏳ Waiting For Parts");
+
+
+}
+
+
+
+
+
+
+function laborTimerPage(){
+
+
+simplePage("⏱ Labor Timer");
+
+
+}
+
+
+
+
+
+
+function qualityPage(){
+
+
+simplePage("✅ Quality Check");
+
+
+}
+
+
+
+
+
+
+
+</script>
+
+
+<script type="module">
+
+// =====================================
+// PART 5 / 15
+// PHOTOS + FILES SYSTEM
+// =====================================
+
+
+
+
+
+import {
+
+getStorage,
+ref as storageRef,
+uploadBytes,
+getDownloadURL
+
+}
+
+from
+
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js";
+
+
+
+
+
+const storage =
+getStorage();
+
+
+
+
+
 
 
 
@@ -3612,10 +3016,1809 @@ document.querySelectorAll(".item")
 .forEach(item=>{
 
 
-item.addEventListener(
-"click",
+item.addEventListener("click",()=>{
 
-()=>{
+
+let name =
+item.innerText.trim();
+
+
+
+
+if(name==="📷 Photos"){
+
+photosPage();
+
+}
+
+
+
+if(name==="📂 Files"){
+
+filesPage();
+
+}
+
+
+
+if(name==="📸 Before Photos"){
+
+beforePhotosPage();
+
+}
+
+
+
+if(name==="📸 After Photos"){
+
+afterPhotosPage();
+
+}
+
+
+
+});
+
+
+});
+
+
+
+
+
+
+
+
+
+// =====================================
+// PHOTOS HOME
+// =====================================
+
+
+
+
+
+function photosPage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+📷 Repair Photos
+
+</h1>
+
+
+
+<button onclick="beforePhotosPage()">
+
+Before Photos
+
+</button>
+
+
+
+<button onclick="afterPhotosPage()">
+
+After Photos
+
+</button>
+
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// BEFORE PHOTOS
+// =====================================
+
+
+
+
+
+
+function beforePhotosPage(){
+
+
+
+photoUploadPage(
+
+"📸 Before Photos",
+
+"before"
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// AFTER PHOTOS
+// =====================================
+
+
+
+
+
+
+function afterPhotosPage(){
+
+
+
+photoUploadPage(
+
+"📸 After Photos",
+
+"after"
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// UPLOAD PAGE
+// =====================================
+
+
+
+
+
+
+function photoUploadPage(title,type){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+${title}
+
+</h1>
+
+
+
+<input
+
+id="repairIDPhoto"
+
+placeholder="Repair ID"
+
+>
+
+
+
+<input
+
+type="file"
+
+id="photoFile"
+
+accept="image/*"
+
+>
+
+
+
+
+<button onclick="uploadPhoto('${type}')">
+
+Upload Photo
+
+</button>
+
+
+
+
+<div id="photoList">
+
+</div>
+
+
+
+</div>
+
+
+`;
+
+
+
+loadPhotos(type);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+window.uploadPhoto=async function(type){
+
+
+
+let file =
+
+document.getElementById(
+"photoFile"
+).files[0];
+
+
+
+
+
+let repairID =
+
+document.getElementById(
+"repairIDPhoto"
+).value;
+
+
+
+
+
+
+if(!file || !repairID){
+
+
+alert(
+"Choose photo and repair ID"
+);
+
+
+return;
+
+
+}
+
+
+
+
+
+
+let path =
+
+"repairs/"+
+currentUser.uid+
+"/"+
+repairID+
+"/"+
+type+
+"/"+
+file.name;
+
+
+
+
+
+let location =
+storageRef(
+storage,
+path
+);
+
+
+
+
+
+
+
+await uploadBytes(
+
+location,
+
+file
+
+);
+
+
+
+
+
+
+let url =
+
+await getDownloadURL(
+location
+);
+
+
+
+
+
+
+
+await push(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/photos"
+
+),
+
+{
+
+
+repairID:repairID,
+
+
+
+type:type,
+
+
+
+url:url,
+
+
+
+name:file.name,
+
+
+
+time:Date.now()
+
+
+}
+
+
+);
+
+
+
+
+
+
+
+alert(
+"Photo uploaded"
+);
+
+
+
+
+loadPhotos(type);
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// LOAD PHOTOS
+// =====================================
+
+
+
+
+
+async function loadPhotos(type){
+
+
+
+let box =
+document.getElementById("photoList");
+
+
+
+if(!box)return;
+
+
+
+
+
+let snap =
+await get(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/photos"
+
+)
+
+);
+
+
+
+
+
+
+box.innerHTML="";
+
+
+
+
+
+
+if(!snap.exists()){
+
+
+box.innerHTML=
+
+"No photos yet";
+
+
+return;
+
+
+}
+
+
+
+
+
+
+
+Object.values(
+snap.val()
+
+)
+
+.filter(p=>p.type===type)
+
+.forEach(p=>{
+
+
+
+box.innerHTML+=`
+
+
+<div class="card">
+
+
+Repair:
+
+${p.repairID}
+
+
+
+<br>
+
+
+<img
+
+src="${p.url}"
+
+style="width:150px;border-radius:15px"
+
+
+>
+
+
+</div>
+
+
+
+`;
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// FILES
+// =====================================
+
+
+
+
+
+
+function filesPage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+📂 Files
+
+</h1>
+
+
+
+<input
+
+type="file"
+
+id="generalFile"
+
+>
+
+
+
+<button onclick="uploadFile()">
+
+Upload File
+
+</button>
+
+
+
+<div id="fileList">
+
+</div>
+
+
+
+</div>
+
+
+`;
+
+
+
+loadFiles();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+window.uploadFile=async function(){
+
+
+
+let file =
+
+document.getElementById(
+"generalFile"
+).files[0];
+
+
+
+
+
+if(!file)return;
+
+
+
+
+
+
+
+let path =
+
+"files/"+
+currentUser.uid+
+"/"+
+file.name;
+
+
+
+
+
+
+let location =
+storageRef(
+storage,
+path
+);
+
+
+
+
+
+await uploadBytes(
+
+location,
+
+file
+
+);
+
+
+
+
+
+
+
+let url =
+
+await getDownloadURL(
+location
+);
+
+
+
+
+
+
+
+await push(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/files"
+
+),
+
+{
+
+
+name:file.name,
+
+
+url:url,
+
+
+time:Date.now()
+
+
+}
+
+
+);
+
+
+
+
+
+
+alert(
+"File saved"
+);
+
+
+
+loadFiles();
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// LOAD FILES
+// =====================================
+
+
+
+
+
+
+async function loadFiles(){
+
+
+
+let box =
+document.getElementById("fileList");
+
+
+
+if(!box)return;
+
+
+
+
+
+let snap =
+await get(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/files"
+
+)
+
+);
+
+
+
+
+
+box.innerHTML="";
+
+
+
+
+
+if(!snap.exists()){
+
+box.innerHTML="No files";
+
+return;
+
+}
+
+
+
+
+
+Object.values(
+snap.val()
+
+)
+
+.forEach(f=>{
+
+
+
+box.innerHTML+=`
+
+<div class="card">
+
+
+${f.name}
+
+
+<br>
+
+
+<a href="${f.url}" target="_blank">
+
+Open
+
+</a>
+
+
+</div>
+
+`;
+
+
+});
+
+
+
+
+
+}
+
+
+
+
+
+
+</script>
+
+
+<script type="module">
+
+// =====================================
+// PART 5 / 15
+// PHOTOS + FILES SYSTEM
+// =====================================
+
+
+
+
+
+import {
+
+getStorage,
+ref as storageRef,
+uploadBytes,
+getDownloadURL
+
+}
+
+from
+
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js";
+
+
+
+
+
+const storage =
+getStorage();
+
+
+
+
+
+
+
+
+
+document.querySelectorAll(".item")
+.forEach(item=>{
+
+
+item.addEventListener("click",()=>{
+
+
+let name =
+item.innerText.trim();
+
+
+
+
+if(name==="📷 Photos"){
+
+photosPage();
+
+}
+
+
+
+if(name==="📂 Files"){
+
+filesPage();
+
+}
+
+
+
+if(name==="📸 Before Photos"){
+
+beforePhotosPage();
+
+}
+
+
+
+if(name==="📸 After Photos"){
+
+afterPhotosPage();
+
+}
+
+
+
+});
+
+
+});
+
+
+
+
+
+
+
+
+
+// =====================================
+// PHOTOS HOME
+// =====================================
+
+
+
+
+
+function photosPage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+📷 Repair Photos
+
+</h1>
+
+
+
+<button onclick="beforePhotosPage()">
+
+Before Photos
+
+</button>
+
+
+
+<button onclick="afterPhotosPage()">
+
+After Photos
+
+</button>
+
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// BEFORE PHOTOS
+// =====================================
+
+
+
+
+
+
+function beforePhotosPage(){
+
+
+
+photoUploadPage(
+
+"📸 Before Photos",
+
+"before"
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// AFTER PHOTOS
+// =====================================
+
+
+
+
+
+
+function afterPhotosPage(){
+
+
+
+photoUploadPage(
+
+"📸 After Photos",
+
+"after"
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// UPLOAD PAGE
+// =====================================
+
+
+
+
+
+
+function photoUploadPage(title,type){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+${title}
+
+</h1>
+
+
+
+<input
+
+id="repairIDPhoto"
+
+placeholder="Repair ID"
+
+>
+
+
+
+<input
+
+type="file"
+
+id="photoFile"
+
+accept="image/*"
+
+>
+
+
+
+
+<button onclick="uploadPhoto('${type}')">
+
+Upload Photo
+
+</button>
+
+
+
+
+<div id="photoList">
+
+</div>
+
+
+
+</div>
+
+
+`;
+
+
+
+loadPhotos(type);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+window.uploadPhoto=async function(type){
+
+
+
+let file =
+
+document.getElementById(
+"photoFile"
+).files[0];
+
+
+
+
+
+let repairID =
+
+document.getElementById(
+"repairIDPhoto"
+).value;
+
+
+
+
+
+
+if(!file || !repairID){
+
+
+alert(
+"Choose photo and repair ID"
+);
+
+
+return;
+
+
+}
+
+
+
+
+
+
+let path =
+
+"repairs/"+
+currentUser.uid+
+"/"+
+repairID+
+"/"+
+type+
+"/"+
+file.name;
+
+
+
+
+
+let location =
+storageRef(
+storage,
+path
+);
+
+
+
+
+
+
+
+await uploadBytes(
+
+location,
+
+file
+
+);
+
+
+
+
+
+
+let url =
+
+await getDownloadURL(
+location
+);
+
+
+
+
+
+
+
+await push(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/photos"
+
+),
+
+{
+
+
+repairID:repairID,
+
+
+
+type:type,
+
+
+
+url:url,
+
+
+
+name:file.name,
+
+
+
+time:Date.now()
+
+
+}
+
+
+);
+
+
+
+
+
+
+
+alert(
+"Photo uploaded"
+);
+
+
+
+
+loadPhotos(type);
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// LOAD PHOTOS
+// =====================================
+
+
+
+
+
+async function loadPhotos(type){
+
+
+
+let box =
+document.getElementById("photoList");
+
+
+
+if(!box)return;
+
+
+
+
+
+let snap =
+await get(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/photos"
+
+)
+
+);
+
+
+
+
+
+
+box.innerHTML="";
+
+
+
+
+
+
+if(!snap.exists()){
+
+
+box.innerHTML=
+
+"No photos yet";
+
+
+return;
+
+
+}
+
+
+
+
+
+
+
+Object.values(
+snap.val()
+
+)
+
+.filter(p=>p.type===type)
+
+.forEach(p=>{
+
+
+
+box.innerHTML+=`
+
+
+<div class="card">
+
+
+Repair:
+
+${p.repairID}
+
+
+
+<br>
+
+
+<img
+
+src="${p.url}"
+
+style="width:150px;border-radius:15px"
+
+
+>
+
+
+</div>
+
+
+
+`;
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// FILES
+// =====================================
+
+
+
+
+
+
+function filesPage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+📂 Files
+
+</h1>
+
+
+
+<input
+
+type="file"
+
+id="generalFile"
+
+>
+
+
+
+<button onclick="uploadFile()">
+
+Upload File
+
+</button>
+
+
+
+<div id="fileList">
+
+</div>
+
+
+
+</div>
+
+
+`;
+
+
+
+loadFiles();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+window.uploadFile=async function(){
+
+
+
+let file =
+
+document.getElementById(
+"generalFile"
+).files[0];
+
+
+
+
+
+if(!file)return;
+
+
+
+
+
+
+
+let path =
+
+"files/"+
+currentUser.uid+
+"/"+
+file.name;
+
+
+
+
+
+
+let location =
+storageRef(
+storage,
+path
+);
+
+
+
+
+
+await uploadBytes(
+
+location,
+
+file
+
+);
+
+
+
+
+
+
+
+let url =
+
+await getDownloadURL(
+location
+);
+
+
+
+
+
+
+
+await push(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/files"
+
+),
+
+{
+
+
+name:file.name,
+
+
+url:url,
+
+
+time:Date.now()
+
+
+}
+
+
+);
+
+
+
+
+
+
+alert(
+"File saved"
+);
+
+
+
+loadFiles();
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// LOAD FILES
+// =====================================
+
+
+
+
+
+
+async function loadFiles(){
+
+
+
+let box =
+document.getElementById("fileList");
+
+
+
+if(!box)return;
+
+
+
+
+
+let snap =
+await get(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/files"
+
+)
+
+);
+
+
+
+
+
+box.innerHTML="";
+
+
+
+
+
+if(!snap.exists()){
+
+box.innerHTML="No files";
+
+return;
+
+}
+
+
+
+
+
+Object.values(
+snap.val()
+
+)
+
+.forEach(f=>{
+
+
+
+box.innerHTML+=`
+
+<div class="card">
+
+
+${f.name}
+
+
+<br>
+
+
+<a href="${f.url}" target="_blank">
+
+Open
+
+</a>
+
+
+</div>
+
+`;
+
+
+});
+
+
+
+
+
+}
+
+
+
+
+
+
+</script>
+
+<script type="module">
+
+// =====================================
+// PART 7 / 15
+// COMMUNICATION SYSTEM
+// =====================================
+
+
+
+
+
+import {
+
+onDisconnect
+
+}
+
+from
+
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
+
+
+
+
+
+
+
+
+document.querySelectorAll(".item")
+.forEach(item=>{
+
+
+item.addEventListener("click",()=>{
 
 
 let name =
@@ -3626,19 +4829,17 @@ item.innerText.trim();
 
 if(name==="💬 Team Chat"){
 
-chatPage();
+teamChatPage();
 
 }
-
 
 
 
 if(name==="📢 Announcements"){
 
-announcementPage();
+announcementsPage();
 
 }
-
 
 
 
@@ -3650,13 +4851,11 @@ notesPage();
 
 
 
-
 if(name==="✅ Tasks"){
 
 tasksPage();
 
 }
-
 
 
 
@@ -3668,27 +4867,15 @@ alertsPage();
 
 
 
-
 if(name==="🟢 Online Employees"){
 
-employeesOnlinePage();
+onlineEmployeesPage();
 
 }
 
 
 
-if(name==="🗨️message employees separate"){
-
-employeeMessagePage();
-
-}
-
-
-
-}
-
-
-);
+});
 
 
 });
@@ -3701,20 +4888,97 @@ employeeMessagePage();
 
 
 
+// =====================================
+// ONLINE STATUS
+// =====================================
 
 
-// ===============================
+
+
+
+onAuthStateChanged(auth,(user)=>{
+
+
+if(!user)return;
+
+
+
+let onlineRef =
+
+ref(
+
+db,
+
+"online/"+user.uid
+
+);
+
+
+
+
+
+
+set(
+onlineRef,
+
+{
+
+
+name:
+
+profileData.firstName+
+
+" "+
+
+profileData.lastName,
+
+
+email:user.email,
+
+
+time:Date.now()
+
+
+}
+
+);
+
+
+
+
+
+
+onDisconnect(onlineRef)
+
+.remove();
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+// =====================================
 // TEAM CHAT
-// ===============================
+// =====================================
 
 
 
 
-function chatPage(){
+
+function teamChatPage(){
+
 
 
 content.innerHTML=`
-
 
 <div class="card">
 
@@ -3727,31 +4991,29 @@ content.innerHTML=`
 
 
 
-<div id="chatBox"
 
-style="
-height:350px;
-overflow:auto;
-background:#080808;
-padding:15px;
-border-radius:15px;
-">
+<div id="chatMessages"
 
+style="height:350px;overflow:auto">
 
-Loading messages...
+Loading...
 
 </div>
 
 
 
 
-<input id="chatMessage"
+<input
 
-placeholder="Type message...">
+id="chatText"
+
+placeholder="Type message..."
+
+>
 
 
 
-<button onclick="sendMessage()">
+<button onclick="sendChat()">
 
 Send
 
@@ -3780,13 +5042,17 @@ loadChat();
 
 
 
-
-window.sendMessage=async function(){
+window.sendChat=async function(){
 
 
 
 let text =
-chatMessage.value;
+
+document.getElementById(
+"chatText"
+).value;
+
+
 
 
 
@@ -3796,33 +5062,41 @@ if(!text)return;
 
 
 
-let id =
-push(
-userPath("messages")
-).key;
 
+await push(
 
+ref(
 
+db,
 
+"users/"+currentUser.uid+"/chat"
 
-await set(
-
-userPath(
-"messages/"+id
 ),
 
 {
 
 
-text:text,
+message:text,
 
 
 sender:
+
+profileData.firstName+
+
+" "+
+
+profileData.lastName,
+
+
+email:
+
 currentUser.email,
 
 
 time:
+
 Date.now()
+
 
 
 }
@@ -3833,11 +5107,11 @@ Date.now()
 
 
 
-chatMessage.value="";
 
 
-
-loadChat();
+document.getElementById(
+"chatText"
+).value="";
 
 
 
@@ -3851,12 +5125,20 @@ loadChat();
 
 
 
-async function loadChat(){
+function loadChat(){
+
+
 
 
 
 let box =
-document.getElementById("chatBox");
+
+document.getElementById(
+"chatMessages"
+);
+
+
+
 
 
 
@@ -3865,33 +5147,56 @@ if(!box)return;
 
 
 
+
+
 onValue(
 
-userPath("messages"),
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/chat"
+
+)
+
+,
 
 snap=>{
+
 
 
 box.innerHTML="";
 
 
 
-if(snap.exists()){
+
+
+if(!snap.exists()){
+
+
+box.innerHTML="No messages";
+
+return;
+
+
+}
+
+
 
 
 
 Object.values(
+
 snap.val()
 
-)
-.sort(
-(a,b)=>a.time-b.time
 )
 
 .forEach(m=>{
 
 
+
 box.innerHTML+=`
+
 
 
 <div class="card">
@@ -3907,13 +5212,26 @@ ${m.sender}
 <br>
 
 
-${m.text}
+${m.message}
+
+
+<br>
+
+
+<small>
+
+${new Date(m.time)
+.toLocaleString()}
+
+</small>
 
 
 </div>
 
 
+
 `;
+
 
 
 
@@ -3921,14 +5239,8 @@ ${m.text}
 
 
 
-}
+});
 
-
-
-}
-
-
-);
 
 
 
@@ -3942,184 +5254,28 @@ ${m.text}
 
 
 
-
-
-// ===============================
+// =====================================
 // ANNOUNCEMENTS
-// ===============================
-
-
-
-
-function announcementPage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-📢 Announcements
-
-</h1>
-
-
-
-<input id="announcementText"
-
-placeholder="Announcement">
-
-
-
-<button onclick="addAnnouncement()">
-
-Post
-
-</button>
-
-
-
-<div id="announcementList">
-
-</div>
-
-
-
-</div>
-
-
-`;
-
-
-
-loadAnnouncements();
-
-
-
-}
+// =====================================
 
 
 
 
 
+function announcementsPage(){
 
 
 
-window.addAnnouncement=async function(){
+simpleSavePage(
 
+"📢 Announcements",
 
-
-let id =
-push(
-userPath("announcements")
-).key;
-
-
-
-
-await set(
-
-userPath(
-"announcements/"+id
-),
-
-{
-
-
-text:
-announcementText.value,
-
-
-time:
-Date.now()
-
-
-}
-
+"announcements"
 
 
 );
 
 
-
-announcementText.value="";
-
-
-
-loadAnnouncements();
-
-
-};
-
-
-
-
-
-
-
-
-
-async function loadAnnouncements(){
-
-
-let box =
-document.getElementById("announcementList");
-
-
-
-if(!box)return;
-
-
-
-let snap =
-await get(
-userPath("announcements")
-);
-
-
-
-box.innerHTML="";
-
-
-
-if(snap.exists()){
-
-
-
-Object.values(
-snap.val()
-
-)
-.forEach(a=>{
-
-
-box.innerHTML+=`
-
-
-<div class="card">
-
-
-📢 ${a.text}
-
-
-</div>
-
-
-`;
-
-
-
-});
-
-
-}
-
-
-
 }
 
 
@@ -4132,10 +5288,9 @@ box.innerHTML+=`
 
 
 
-
-// ===============================
+// =====================================
 // NOTES
-// ===============================
+// =====================================
 
 
 
@@ -4145,180 +5300,16 @@ function notesPage(){
 
 
 
-content.innerHTML=`
+simpleSavePage(
 
+"📝 Shared Notes",
 
-<div class="card">
-
-
-<h1>
-
-📝 Shared Notes
-
-</h1>
-
-
-
-<textarea id="noteText"
-
-style="
-width:100%;
-height:150px;
-background:#222;
-color:white;
-border-radius:12px;
-">
-
-</textarea>
-
-
-
-<button onclick="saveNote()">
-
-Save Note
-
-</button>
-
-
-
-<div id="noteList">
-
-</div>
-
-
-
-</div>
-
-
-`;
-
-
-
-loadNotes();
-
-
-}
-
-
-
-
-
-
-
-
-
-
-window.saveNote=async function(){
-
-
-
-let id =
-push(
-userPath("notes")
-).key;
-
-
-
-
-await set(
-
-userPath(
-"notes/"+id
-),
-
-{
-
-
-text:
-noteText.value,
-
-
-time:
-Date.now()
-
-
-}
-
+"notes"
 
 
 );
 
 
-
-noteText.value="";
-
-loadNotes();
-
-
-
-};
-
-
-
-
-
-
-
-
-
-async function loadNotes(){
-
-
-let box =
-document.getElementById("noteList");
-
-
-
-if(!box)return;
-
-
-
-
-let snap =
-await get(
-userPath("notes")
-);
-
-
-
-box.innerHTML="";
-
-
-
-if(snap.exists()){
-
-
-
-Object.values(
-snap.val()
-
-)
-.forEach(n=>{
-
-
-box.innerHTML+=`
-
-
-<div class="card">
-
-
-📝 ${n.text}
-
-
-</div>
-
-
-`;
-
-
-
-});
-
-
-}
-
-
-
 }
 
 
@@ -4331,9 +5322,10 @@ box.innerHTML+=`
 
 
 
-// ===============================
+
+// =====================================
 // TASKS
-// ===============================
+// =====================================
 
 
 
@@ -4343,175 +5335,16 @@ function tasksPage(){
 
 
 
-content.innerHTML=`
+simpleSavePage(
 
+"✅ Tasks",
 
-<div class="card">
-
-
-<h1>
-
-✅ Tasks
-
-</h1>
-
-
-
-<input id="taskText"
-
-placeholder="New Task">
-
-
-<button onclick="addTask()">
-
-Add
-
-</button>
-
-
-
-<div id="taskList">
-
-</div>
-
-
-
-</div>
-
-
-`;
-
-
-
-loadTasks();
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-window.addTask=async function(){
-
-
-
-let id =
-push(
-userPath("tasks")
-).key;
-
-
-
-
-await set(
-
-userPath(
-"tasks/"+id
-),
-
-{
-
-
-task:
-taskText.value,
-
-
-done:false,
-
-
-time:Date.now()
-
-
-}
+"tasks"
 
 
 );
 
 
-
-taskText.value="";
-
-
-loadTasks();
-
-
-
-};
-
-
-
-
-
-
-
-
-
-async function loadTasks(){
-
-
-
-let box =
-document.getElementById("taskList");
-
-
-
-if(!box)return;
-
-
-
-
-let snap =
-await get(
-userPath("tasks")
-);
-
-
-
-box.innerHTML="";
-
-
-
-if(snap.exists()){
-
-
-
-Object.values(
-snap.val()
-
-)
-.forEach(t=>{
-
-
-box.innerHTML+=`
-
-
-<div class="card">
-
-
-☐ ${t.task}
-
-
-</div>
-
-
-`;
-
-
-
-});
-
-
-}
-
-
-
 }
 
 
@@ -4525,9 +5358,9 @@ box.innerHTML+=`
 
 
 
-// ===============================
-// EMPLOYEE ALERTS
-// ===============================
+// =====================================
+// ALERTS
+// =====================================
 
 
 
@@ -4537,80 +5370,18 @@ function alertsPage(){
 
 
 
-content.innerHTML=`
+simpleSavePage(
 
+"🔔 Employee Alerts",
 
-<div class="card">
-
-
-<h1>
-
-🔔 Employee Alerts
-
-</h1>
-
-
-
-<input id="alertText"
-
-placeholder="Alert">
-
-
-
-<button onclick="sendAlert()">
-
-Send Alert
-
-</button>
-
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-
-window.sendAlert=async function(){
-
-
-
-await push(
-
-userPath("alerts"),
-
-{
-
-
-text:
-alertText.value,
-
-
-time:
-Date.now()
-
-
-}
+"alerts"
 
 
 );
 
 
 
-alert("Alert sent");
-
-
-};
+}
 
 
 
@@ -4622,1115 +5393,19 @@ alert("Alert sent");
 
 
 
-// ===============================
-// ONLINE EMPLOYEES
-// ===============================
+// =====================================
+// GENERIC SAVING PAGE
+// =====================================
 
 
 
 
 
-function employeesOnlinePage(){
+function simpleSavePage(title,path){
 
 
 
 content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-🟢 Online Employees
-
-</h1>
-
-
-<p>
-
-Online system active
-
-</p>
-
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-
-// ===============================
-// SEPARATE EMPLOYEE MESSAGE
-// ===============================
-
-
-
-
-
-function employeeMessagePage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-🗨️ Employee Messages
-
-</h1>
-
-
-
-<input id="employeeEmail"
-
-placeholder="Employee Email">
-
-
-
-<input id="employeeMessage"
-
-placeholder="Message">
-
-
-
-<button onclick="sendEmployeeMessage()">
-
-Send Message
-
-</button>
-
-
-
-</div>
-
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-
-window.sendEmployeeMessage=async function(){
-
-
-
-let id =
-push(
-userPath("employeeMessages")
-).key;
-
-
-
-
-await set(
-
-userPath(
-"employeeMessages/"+id
-),
-
-{
-
-
-to:
-employeeEmail.value,
-
-
-message:
-employeeMessage.value,
-
-
-time:
-Date.now()
-
-
-}
-
-
-);
-
-
-
-alert("Message sent");
-
-
-};
-
-
-
-
-
-// PART 4 CONTINUES IN PART 5
-
-
-// ===============================
-// PART 5 / 8
-// INVENTORY + FINANCES
-// ===============================
-
-
-
-
-
-
-
-document.querySelectorAll(".item")
-.forEach(item=>{
-
-
-item.addEventListener(
-"click",
-
-()=>{
-
-
-let name =
-item.innerText.trim();
-
-
-
-
-if(name==="📦 Inventory"){
-
-inventoryPage();
-
-}
-
-
-
-
-if(name==="⚠ Low Stock"){
-
-lowStockPage();
-
-}
-
-
-
-
-if(name==="🚚 Supplier Orders"){
-
-supplierPage();
-
-}
-
-
-
-
-if(name==="🔩 Parts Used"){
-
-usedPartsPage();
-
-}
-
-
-
-
-if(name==="💲 Parts Pricing"){
-
-pricingPage();
-
-}
-
-
-
-
-if(name==="💵 Repair Income"){
-
-incomePage();
-
-}
-
-
-
-
-if(name==="💳 Expenses"){
-
-expensePage();
-
-}
-
-
-
-
-if(name==="🧾 Invoices"){
-
-invoicePage();
-
-}
-
-
-
-
-if(name==="💸 Taxes"){
-
-taxPage();
-
-}
-
-
-
-
-}
-
-
-);
-
-
-});
-
-
-
-
-
-
-
-
-
-
-
-// ===============================
-// INVENTORY
-// ===============================
-
-
-
-
-
-function inventoryPage(){
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-📦 Inventory
-
-</h1>
-
-
-
-
-<input id="partName"
-
-placeholder="Part Name">
-
-
-
-<input id="partNumber"
-
-placeholder="Part Number">
-
-
-
-<input id="partQty"
-
-placeholder="Quantity">
-
-
-
-<input id="partPrice"
-
-placeholder="Price">
-
-
-
-<button onclick="addPart()">
-
-Add Part
-
-</button>
-
-
-
-
-<div id="inventoryList">
-
-</div>
-
-
-
-
-</div>
-
-
-
-`;
-
-
-
-loadInventory();
-
-
-
-}
-
-
-
-
-
-
-
-
-
-window.addPart=async function(){
-
-
-
-let id =
-push(
-userPath("inventory")
-).key;
-
-
-
-
-await set(
-
-userPath(
-"inventory/"+id
-),
-
-{
-
-
-name:
-partName.value,
-
-
-number:
-partNumber.value,
-
-
-quantity:
-Number(partQty.value),
-
-
-price:
-Number(partPrice.value),
-
-
-created:
-Date.now()
-
-
-
-}
-
-
-
-);
-
-
-
-partName.value="";
-
-partNumber.value="";
-
-partQty.value="";
-
-partPrice.value="";
-
-
-
-loadInventory();
-
-
-
-};
-
-
-
-
-
-
-
-
-
-async function loadInventory(){
-
-
-
-let box =
-document.getElementById("inventoryList");
-
-
-
-if(!box)return;
-
-
-
-let snap =
-await get(
-userPath("inventory")
-);
-
-
-
-box.innerHTML="";
-
-
-
-if(snap.exists()){
-
-
-
-Object.values(
-snap.val()
-
-)
-.forEach(p=>{
-
-
-box.innerHTML+=`
-
-
-<div class="card">
-
-
-<h3>
-
-📦 ${p.name}
-
-</h3>
-
-
-Part:
-${p.number}
-
-<br>
-
-Qty:
-${p.quantity}
-
-<br>
-
-Price:
-$${p.price}
-
-
-</div>
-
-
-`;
-
-
-
-});
-
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-// ===============================
-// LOW STOCK
-// ===============================
-
-
-
-
-async function lowStockPage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-⚠ Low Stock
-
-</h1>
-
-
-<div id="lowStock">
-
-Checking...
-
-</div>
-
-
-</div>
-
-
-
-`;
-
-
-
-
-let snap =
-await get(
-userPath("inventory")
-);
-
-
-
-
-let box =
-document.getElementById("lowStock");
-
-
-
-box.innerHTML="";
-
-
-
-if(snap.exists()){
-
-
-
-Object.values(
-snap.val()
-
-)
-.forEach(p=>{
-
-
-
-if(p.quantity < 5){
-
-
-box.innerHTML+=`
-
-
-<div class="card">
-
-
-⚠ ${p.name}
-
-Only ${p.quantity} left
-
-
-</div>
-
-
-`;
-
-
-}
-
-
-
-});
-
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// ===============================
-// SUPPLIERS
-// ===============================
-
-
-
-
-
-function supplierPage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-🚚 Supplier Orders
-
-</h1>
-
-
-
-
-<input id="supplierName"
-
-placeholder="Supplier">
-
-
-
-<input id="supplierPart"
-
-placeholder="Part">
-
-
-
-<button onclick="addSupplier()">
-
-Save Order
-
-</button>
-
-
-
-<div id="supplierList">
-
-</div>
-
-
-
-</div>
-
-
-`;
-
-
-
-loadSuppliers();
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-window.addSupplier=async function(){
-
-
-
-let id =
-push(
-userPath("suppliers")
-).key;
-
-
-
-await set(
-
-userPath(
-"suppliers/"+id
-),
-
-{
-
-
-supplier:
-supplierName.value,
-
-
-part:
-supplierPart.value,
-
-
-time:
-Date.now()
-
-
-}
-
-
-);
-
-
-
-loadSuppliers();
-
-
-
-};
-
-
-
-
-
-
-
-
-async function loadSuppliers(){
-
-
-
-let box =
-document.getElementById("supplierList");
-
-
-
-if(!box)return;
-
-
-
-let snap =
-await get(
-userPath("suppliers")
-);
-
-
-
-box.innerHTML="";
-
-
-
-if(snap.exists()){
-
-
-
-Object.values(
-snap.val()
-
-)
-.forEach(s=>{
-
-
-box.innerHTML+=`
-
-
-<div class="card">
-
-
-🚚 ${s.supplier}
-
-<br>
-
-${s.part}
-
-
-</div>
-
-
-`;
-
-
-
-});
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-// ===============================
-// USED PARTS
-// ===============================
-
-
-
-
-
-function usedPartsPage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-🔩 Used Parts
-
-</h1>
-
-
-
-<input id="usedPart"
-
-placeholder="Used Part">
-
-
-
-<button onclick="saveUsedPart()">
-
-Save
-
-</button>
-
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-window.saveUsedPart=async function(){
-
-
-
-await push(
-
-userPath("usedParts"),
-
-{
-
-
-name:
-usedPart.value,
-
-
-time:
-Date.now()
-
-
-}
-
-
-);
-
-
-
-alert("Saved");
-
-
-};
-
-
-
-
-
-
-
-
-
-
-
-// ===============================
-// PART PRICING
-// ===============================
-
-
-
-
-
-function pricingPage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-💲 Parts Pricing
-
-</h1>
-
-
-
-<input id="pricePart"
-
-placeholder="Part">
-
-
-<input id="priceValue"
-
-placeholder="Price">
-
-
-
-<button onclick="savePrice()">
-
-Save
-
-</button>
-
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-
-
-window.savePrice=async function(){
-
-
-let id =
-push(
-userPath("prices")
-).key;
-
-
-
-
-await set(
-
-userPath(
-"prices/"+id
-),
-
-{
-
-
-part:
-pricePart.value,
-
-
-price:
-priceValue.value
-
-
-}
-
-
-);
-
-
-
-alert("Saved");
-
-
-};
-
-
-
-
-
-
-
-
-
-
-
-// ===============================
-// FINANCES
-// ===============================
-
-
-
-
-
-function incomePage(){
-
-
-moneyPage(
-"💵 Repair Income",
-"income"
-
-);
-
-
-}
-
-
-
-
-
-function expensePage(){
-
-
-moneyPage(
-"💳 Expenses",
-"expenses"
-
-);
-
-
-}
-
-
-
-
-
-
-
-function moneyPage(title,pathName){
-
-
-
-content.innerHTML=`
-
 
 <div class="card">
 
@@ -5743,19 +5418,15 @@ ${title}
 
 
 
-<input id="moneyText"
+<textarea id="saveText"
 
-placeholder="Description">
+placeholder="Write here..."
 
-
-
-<input id="moneyAmount"
-
-placeholder="Amount">
+></textarea>
 
 
 
-<button onclick="saveMoney('${pathName}')">
+<button onclick="saveSimple('${path}')">
 
 Save
 
@@ -5763,20 +5434,23 @@ Save
 
 
 
-<div id="moneyList">
+<div id="savedItems">
 
 </div>
 
 
 
 </div>
-
 
 
 `;
 
 
 
+loadSimple(path);
+
+
+
 }
 
 
@@ -5787,47 +5461,63 @@ Save
 
 
 
-window.saveMoney=async function(pathName){
+window.saveSimple=async function(path){
 
 
 
-let id =
-push(
-userPath(pathName)
-).key;
+let text =
+
+document.getElementById(
+"saveText"
+).value;
 
 
 
 
-await set(
 
-userPath(
-pathName+"/"+id
+if(!text)return;
+
+
+
+
+
+
+
+await push(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/"+path
+
 ),
 
 {
 
 
-text:
-moneyText.value,
+text:text,
 
 
-amount:
-moneyAmount.value,
+author:
+
+profileData.firstName,
 
 
 time:
+
 Date.now()
 
 
 }
 
-
 );
 
 
 
-alert("Saved");
+
+loadSimple(path);
+
 
 
 };
@@ -5840,180 +5530,179 @@ alert("Saved");
 
 
 
+async function loadSimple(path){
 
 
 
-// ===============================
-// INVOICES
-// ===============================
+let box =
+document.getElementById(
+"savedItems"
+);
+
+
+
+if(!box)return;
 
 
 
 
 
-function invoicePage(){
+
+
+let snap =
+
+await get(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/"+path
+
+)
+
+);
+
+
+
+
+
+
+
+box.innerHTML="";
+
+
+
+
+
+
+
+if(!snap.exists()){
+
+
+box.innerHTML="Nothing saved";
+
+return;
+
+
+}
+
+
+
+
+
+
+
+Object.values(
+
+snap.val()
+
+)
+
+.forEach(x=>{
+
+
+
+box.innerHTML+=`
+
+<div class="card">
+
+${x.text}
+
+<br>
+
+${x.author}
+
+</div>
+
+`;
+
+
+
+});
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// ONLINE EMPLOYEES
+// =====================================
+
+
+
+
+
+function onlineEmployeesPage(){
 
 
 
 content.innerHTML=`
-
 
 <div class="card">
 
 
 <h1>
 
-🧾 Invoices
+🟢 Online Employees
 
 </h1>
 
 
+<div id="onlineList">
 
-<input id="invoiceName"
-
-placeholder="Customer">
-
-
-
-<input id="invoiceAmount"
-
-placeholder="Amount">
-
-
-
-<button onclick="createInvoice()">
-
-Create
-
-</button>
-
-
+Loading...
 
 </div>
 
+
+</div>
 
 
 `;
 
 
 
-}
 
 
 
 
+onValue(
+
+ref(db,"online"),
+
+snap=>{
 
 
 
-
-
-window.createInvoice=async function(){
-
-
-
-let id =
-push(
-userPath("invoices")
-).key;
-
-
-
-
-await set(
-
-userPath(
-"invoices/"+id
-),
-
-{
-
-
-customer:
-invoiceName.value,
-
-
-amount:
-invoiceAmount.value,
-
-
-time:
-Date.now()
-
-
-}
-
-
-
+let box =
+document.getElementById(
+"onlineList"
 );
 
 
 
-alert("Invoice created");
-
-
-};
+box.innerHTML="";
 
 
 
 
 
+if(!snap.exists()){
 
 
+box.innerHTML="Nobody online";
 
-
-
-
-// ===============================
-// TAXES
-// ===============================
-
-
-
-
-function taxPage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-💸 Tax Calculator
-
-</h1>
-
-
-
-<input id="taxIncome"
-
-placeholder="Income">
-
-
-
-<button onclick="calcTax()">
-
-Calculate
-
-</button>
-
-
-
-<div id="taxResult">
-
-</div>
-
-
-
-</div>
-
-
-
-`;
-
+return;
 
 
 }
@@ -6023,39 +5712,55 @@ Calculate
 
 
 
-window.calcTax=function(){
+
+Object.values(
+snap.val()
+
+)
+
+.forEach(e=>{
+
+
+box.innerHTML+=`
+
+<div class="card">
+
+
+🟢 ${e.name}
+
+<br>
+
+${e.email}
+
+</div>
+
+`;
 
 
 
-let value =
-Number(taxIncome.value);
+});
 
 
 
-taxResult.innerHTML=
-
-"Estimated tax: $"+
-(value*0.15).toFixed(2);
+});
 
 
 
-};
 
+}
 
 
 
 
 
+</script>
 
-// PART 5 CONTINUES IN PART 6
+<script type="module">
 
-
-// ===============================
-// PART 6 / 8
-// ANALYTICS + EMPLOYEES
-// ===============================
-
-
+// =====================================
+// PART 8 / 15
+// EMPLOYEE MANAGEMENT SYSTEM
+// =====================================
 
 
 
@@ -6065,10 +5770,7 @@ document.querySelectorAll(".item")
 .forEach(item=>{
 
 
-item.addEventListener(
-"click",
-
-()=>{
+item.addEventListener("click",()=>{
 
 
 let name =
@@ -6077,77 +5779,9 @@ item.innerText.trim();
 
 
 
-
-if(name==="📈 Revenue"){
-
-analyticsPage("Revenue");
-
-}
-
-
-
-if(name==="📊 Charts"){
-
-chartsPage();
-
-}
-
-
-
-if(name==="📉 Profit"){
-
-analyticsPage("Profit");
-
-}
-
-
-
-if(name==="🏆 Top Repairs"){
-
-topRepairsPage();
-
-}
-
-
-
-if(name==="📋 Reports"){
-
-reportsPage();
-
-}
-
-
-
-if(name==="👥 Customer Growth"){
-
-customerGrowthPage();
-
-}
-
-
-
-if(name==="📦 Inventory Value"){
-
-inventoryValuePage();
-
-}
-
-
-
-if(name==="🔥 Popular Devices"){
-
-popularDevicesPage();
-
-}
-
-
-
-
-
-
 if(name==="👤 Employees"){
 
-employeePage();
+employeesPage();
 
 }
 
@@ -6209,18 +5843,23 @@ trainingPage();
 
 
 
-if(name==="⭐ Skill Levels"){
+if(name==="🏅 Achievements"){
 
-skillsPage();
+achievementsPage();
+
+}
+
+
+
+if(name==="🔥 Repair Streaks"){
+
+streakPage();
 
 }
 
 
 
-}
-
-
-);
+});
 
 
 });
@@ -6233,441 +5872,69 @@ skillsPage();
 
 
 
-
-
-
-// ===============================
-// ANALYTICS
-// ===============================
-
-
-
-
-
-
-function analyticsPage(title){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-📈 ${title}
-
-</h1>
-
-
-
-<div class="statGrid">
-
-
-
-<div class="stat">
-
-Revenue
-
-<br>
-
-$0
-
-</div>
-
-
-
-<div class="stat">
-
-Repairs
-
-<br>
-
-0
-
-</div>
-
-
-
-<div class="stat">
-
-Customers
-
-<br>
-
-0
-
-</div>
-
-
-
-
-</div>
-
-
-
-
-</div>
-
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-
-
-function chartsPage(){
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-📊 Charts
-
-</h1>
-
-
-
-<div class="statGrid">
-
-
-<div class="stat">
-
-Monthly Repairs
-
-<br>
-
-📈
-
-</div>
-
-
-<div class="stat">
-
-Income
-
-<br>
-
-📈
-
-</div>
-
-
-
-<div class="stat">
-
-Inventory
-
-<br>
-
-📈
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-
-
-function topRepairsPage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-🏆 Top Repairs
-
-</h1>
-
-
-
-<p>
-
-iPhone Screen Repairs
-
-</p>
-
-
-<p>
-
-Battery Replacements
-
-</p>
-
-
-<p>
-
-Charging Ports
-
-</p>
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-
-
-function reportsPage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-📋 Reports
-
-</h1>
-
-
-<button>
-
-Export Report
-
-</button>
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-function customerGrowthPage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-👥 Customer Growth
-
-</h1>
-
-
-<div class="stat">
-
-Customers increasing
-
-</div>
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-
-
-function inventoryValuePage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-📦 Inventory Value
-
-</h1>
-
-
-
-<p>
-
-Calculating inventory value...
-
-</p>
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-function popularDevicesPage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-🔥 Popular Devices
-
-</h1>
-
-
-<p>
-
-No data yet
-
-</p>
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ===============================
+// =====================================
 // EMPLOYEES
-// ===============================
+// =====================================
 
 
 
 
 
 
-
-function employeePage(){
+function employeesPage(){
 
 
 
 content.innerHTML=`
-
 
 <div class="card">
 
 
 <h1>
 
-👤 Employees
+👨‍🔧 Employees
 
 </h1>
 
 
 
-<input id="employeeName"
 
-placeholder="Employee Name">
+<input
+
+id="employeeEmail"
+
+placeholder="Employee account email"
+
+>
 
 
 
-<input id="employeeRole"
+<select id="employeeRole">
 
-placeholder="Role">
+
+<option>
+
+Technician
+
+</option>
+
+
+<option>
+
+Manager
+
+</option>
+
+
+<option>
+
+Admin
+
+</option>
+
+
+</select>
+
 
 
 
@@ -6679,14 +5946,13 @@ Add Employee
 
 
 
+</div>
+
+
+
 <div id="employeeList">
 
 </div>
-
-
-
-</div>
-
 
 
 `;
@@ -6711,36 +5977,184 @@ window.addEmployee=async function(){
 
 
 
-let id =
-push(
-userPath("employees")
-).key;
+let email =
+
+employeeEmail.value;
+
+
+
+
+
+if(!email){
+
+alert(
+"Enter email"
+);
+
+return;
+
+}
+
+
+
+
+
+
+
+
+// search all registered users
+
+let usersSnap =
+
+await get(
+
+ref(
+
+db,
+
+"users"
+
+)
+
+);
+
+
+
+
+
+
+
+if(!usersSnap.exists()){
+
+
+alert(
+"User not found"
+);
+
+
+return;
+
+
+}
+
+
+
+
+
+
+
+let found=null;
+
+
+
+
+
+
+
+Object.entries(
+
+usersSnap.val()
+
+)
+
+.forEach(([uid,user])=>{
+
+
+
+if(user.email===email){
+
+
+
+found={
+
+uid,
+
+...user
+
+};
+
+
+
+}
+
+
+
+});
+
+
+
+
+
+
+if(!found){
+
+
+alert(
+
+"This person needs to create a TrueFix account first"
+
+);
+
+
+
+return;
+
+
+}
+
+
+
+
+
+
+let id=found.uid;
+
+
+
 
 
 
 
 await set(
 
-userPath(
-"employees/"+id
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/employees/"+id
+
 ),
 
 {
 
 
+uid:id,
+
+
+email:found.email,
+
+
+
 name:
-employeeName.value,
+
+(found.firstName||"")+
+
+" "+
+
+(found.lastName||""),
+
 
 
 role:
+
 employeeRole.value,
 
 
-active:true,
 
+joined:
 
-time:
 Date.now()
+
 
 
 }
@@ -6748,6 +6162,17 @@ Date.now()
 
 
 );
+
+
+
+
+
+
+
+alert(
+"Employee added"
+);
+
 
 
 
@@ -6765,12 +6190,25 @@ loadEmployees();
 
 
 
+
+
+// =====================================
+// LOAD EMPLOYEES
+// =====================================
+
+
+
+
+
+
 async function loadEmployees(){
 
 
 
 let box =
-document.getElementById("employeeList");
+document.getElementById(
+"employeeList"
+);
 
 
 
@@ -6779,10 +6217,24 @@ if(!box)return;
 
 
 
+
 let snap =
+
 await get(
-userPath("employees")
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/employees"
+
+)
+
 );
+
+
+
+
 
 
 
@@ -6790,34 +6242,79 @@ box.innerHTML="";
 
 
 
-if(snap.exists()){
+
+
+
+
+if(!snap.exists()){
+
+
+box.innerHTML=
+
+"No employees yet";
+
+
+return;
+
+
+}
+
+
+
 
 
 
 Object.values(
+
 snap.val()
 
 )
+
 .forEach(e=>{
+
+
+
 
 
 box.innerHTML+=`
 
-
 <div class="card">
 
 
+<h3>
+
 👤 ${e.name}
 
+</h3>
+
+
+Email:
+
+${e.email}
+
+
 <br>
+
+
+Role:
 
 ${e.role}
 
 
+<br>
+
+
+Joined:
+
+${new Date(e.joined)
+.toLocaleDateString()}
+
+
+
 </div>
 
-
 `;
+
 
 
 
@@ -6825,26 +6322,23 @@ ${e.role}
 
 
 
+
+
 }
 
 
 
-}
 
 
 
 
 
 
-
-
-
-
-
-
-// ===============================
+// =====================================
 // PERMISSIONS
-// ===============================
+// =====================================
+
+
 
 
 
@@ -6854,7 +6348,6 @@ function permissionsPage(){
 
 
 content.innerHTML=`
-
 
 <div class="card">
 
@@ -6866,16 +6359,15 @@ content.innerHTML=`
 </h1>
 
 
-
 <p>
 
-Manage employee access
+Control employee access levels.
 
 </p>
 
 
-</div>
 
+</div>
 
 
 `;
@@ -6894,9 +6386,9 @@ Manage employee access
 
 
 
-// ===============================
+// =====================================
 // SCHEDULE
-// ===============================
+// =====================================
 
 
 
@@ -6905,40 +6397,15 @@ Manage employee access
 function schedulePage(){
 
 
-content.innerHTML=`
+
+simpleSavePage(
+
+"🕒 Schedule",
+
+"schedule"
 
 
-<div class="card">
-
-
-<h1>
-
-🕒 Schedule
-
-</h1>
-
-
-
-<input placeholder="Employee">
-
-
-<input placeholder="Shift">
-
-
-<button>
-
-Save Schedule
-
-</button>
-
-
-
-</div>
-
-
-
-`;
-
+);
 
 
 }
@@ -6954,9 +6421,10 @@ Save Schedule
 
 
 
-// ===============================
+// =====================================
 // PERFORMANCE
-// ===============================
+// =====================================
+
 
 
 
@@ -6968,7 +6436,6 @@ function performancePage(){
 
 content.innerHTML=`
 
-
 <div class="card">
 
 
@@ -6979,132 +6446,9 @@ content.innerHTML=`
 </h1>
 
 
-<div class="statGrid">
-
-
-<div class="stat">
-
-Repairs Done
-
-</div>
-
-
-
-<div class="stat">
-
-Reviews
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-// ===============================
-// PAYROLL
-// ===============================
-
-
-
-
-function payrollPage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-💰 Payroll
-
-</h1>
-
-
-
-<input placeholder="Employee">
-
-
-<input placeholder="Amount">
-
-
-<button>
-
-Save Payroll
-
-</button>
-
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// ===============================
-// ATTENDANCE
-// ===============================
-
-
-
-
-function attendancePage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-🟢 Attendance
-
-</h1>
-
-
 <p>
 
-Attendance tracking active
+Employee repair statistics will appear here.
 
 </p>
 
@@ -7128,9 +6472,75 @@ Attendance tracking active
 
 
 
-// ===============================
+// =====================================
+// PAYROLL
+// =====================================
+
+
+
+
+
+function payrollPage(){
+
+
+simpleSavePage(
+
+"💰 Payroll",
+
+"payroll"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// ATTENDANCE
+// =====================================
+
+
+
+
+
+
+function attendancePage(){
+
+
+simpleSavePage(
+
+"🟢 Attendance",
+
+"attendance"
+
+
+);
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
 // LEADERBOARD
-// ===============================
+// =====================================
+
+
 
 
 
@@ -7140,7 +6550,6 @@ function leaderboardPage(){
 
 
 content.innerHTML=`
-
 
 <div class="card">
 
@@ -7152,15 +6561,14 @@ content.innerHTML=`
 </h1>
 
 
-<div class="stat">
+<p>
 
-#1 Employee
+Top employees based on completed repairs.
+
+</p>
+
 
 </div>
-
-
-</div>
-
 
 
 `;
@@ -7179,9 +6587,11 @@ content.innerHTML=`
 
 
 
-// ===============================
+// =====================================
 // TRAINING
-// ===============================
+// =====================================
+
+
 
 
 
@@ -7190,30 +6600,93 @@ function trainingPage(){
 
 
 
-content.innerHTML=`
+simpleSavePage(
 
+"📚 Training",
+
+"training"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// ACHIEVEMENTS
+// =====================================
+
+
+
+
+
+
+function achievementsPage(){
+
+
+simpleSavePage(
+
+"🏅 Achievements",
+
+"achievements"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// STREAKS
+// =====================================
+
+
+
+
+
+
+function streakPage(){
+
+
+
+content.innerHTML=`
 
 <div class="card">
 
 
 <h1>
 
-📚 Training
+🔥 Repair Streaks
 
 </h1>
 
 
-
 <p>
 
-Repair training modules
+Track repair completion streaks.
 
 </p>
 
 
-
 </div>
-
 
 
 `;
@@ -7230,64 +6703,15 @@ Repair training modules
 
 
 
+</script>
 
 
+<script type="module">
 
-// ===============================
-// SKILLS
-// ===============================
-
-
-
-
-
-function skillsPage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-⭐ Skill Levels
-
-</h1>
-
-
-<p>
-
-Employee repair skills
-
-</p>
-
-
-</div>
-
-
-
-`;
-
-
-
-}
-
-
-
-
-
-// PART 6 CONTINUES IN PART 7
-
-
-// ===============================
-// PART 7 / 8
-// AI + CUSTOMER + ADMIN SYSTEMS
-// ===============================
-
-
+// =====================================
+// PART 9 / 15
+// INVENTORY MANAGEMENT SYSTEM
+// =====================================
 
 
 
@@ -7297,10 +6721,7 @@ document.querySelectorAll(".item")
 .forEach(item=>{
 
 
-item.addEventListener(
-"click",
-
-()=>{
+item.addEventListener("click",()=>{
 
 
 let name =
@@ -7310,93 +6731,47 @@ item.innerText.trim();
 
 
 
-// AI
+if(name==="📦 Inventory"){
 
-
-if(name==="🤖 Repair Suggestions"){
-
-aiRepairPage();
+inventoryPage();
 
 }
 
 
 
-if(name==="💲 Pricing Help"){
+if(name==="⚠ Low Stock"){
 
-aiPricingPage();
-
-}
-
-
-
-if(name==="🔍 AI Diagnostics"){
-
-aiDiagnosticsPage();
+lowStockPage();
 
 }
 
 
 
+if(name==="📥 Incoming Parts"){
 
-
-// CUSTOMER PORTAL
-
-
-if(name==="🔎 Track Repair"){
-
-trackRepairPage();
+incomingPartsPage();
 
 }
 
 
 
-if(name==="📷 Upload Photos"){
+if(name==="📤 Used Parts"){
 
-uploadPhotosPage();
-
-}
-
-
-
-if(name==="✅ Approve Quote"){
-
-approveQuotePage();
+usedPartsPage();
 
 }
 
 
 
-if(name==="💬 Messages"){
+if(name==="💲 Part Pricing"){
 
-customerMessagesPage();
-
-}
-
-
-
-if(name==="⭐ Leave Review"){
-
-reviewPage();
+pricingPage();
 
 }
 
 
 
-if(name==="📅 Book Appointment"){
-
-appointmentPage();
-
-}
-
-
-
-
-
-
-// BUSINESS
-
-
-if(name==="🏬 Locations"){
+if(name==="📍 Storage Locations"){
 
 locationsPage();
 
@@ -7404,191 +6779,39 @@ locationsPage();
 
 
 
-if(name==="🧑‍💼 Managers"){
+if(name==="🔢 Part Numbers"){
 
-managerPage();
-
-}
-
-
-
-if(name==="📜 Policies"){
-
-policyPage();
+partNumbersPage();
 
 }
 
 
 
-if(name==="📝 Forms"){
+if(name==="🚚 Supplier Orders"){
 
-formsPage();
-
-}
-
-
-
-
-
-// IDEAS
-
-
-if(name==="💡 Feature Requests"){
-
-ideasPage();
+suppliersPage();
 
 }
 
 
 
-if(name==="🗒 Ideas Board"){
+if(name==="⚠ Defective Parts"){
 
-ideasBoardPage();
-
-}
-
-
-
-if(name==="🧪 Experiments"){
-
-experimentsPage();
+defectivePartsPage();
 
 }
 
 
 
-if(name==="🚀 Roadmap"){
+if(name==="🔄 Returns"){
 
-roadmapPage();
-
-}
-
-
-
-
-
-// SECURITY
-
-
-if(name==="🔐 Login History"){
-
-loginHistoryPage();
+returnsPage();
 
 }
 
 
 
-if(name==="🖥 Active Sessions"){
-
-sessionsPage();
-
-}
-
-
-
-if(name==="📱 Device Access"){
-
-deviceAccessPage();
-
-}
-
-
-
-if(name==="📜 Audit Logs"){
-
-auditPage();
-
-}
-
-
-
-
-
-// ADMIN
-
-
-if(name==="👑 Owner Panel"){
-
-ownerPage();
-
-}
-
-
-
-if(name==="🛂 Access Control"){
-
-accessPage();
-
-}
-
-
-
-if(name==="📜 Change History"){
-
-historyPage();
-
-}
-
-
-
-if(name==="🗑 Deleted Items"){
-
-deletedPage();
-
-}
-
-
-
-
-
-// FIREBASE
-
-
-if(name==="👥 User Management"){
-
-usersPage();
-
-}
-
-
-
-if(name==="🗄 Database Status"){
-
-databasePage();
-
-}
-
-
-
-if(name==="📦 Storage Usage"){
-
-storagePage();
-
-}
-
-
-
-if(name==="📊 App Analytics"){
-
-appAnalyticsPage();
-
-}
-
-
-
-if(name==="🛠 Developer Tools"){
-
-developerPage();
-
-}
-
-
-
-
-}
-
-
-);
+});
 
 
 });
@@ -7601,57 +6824,103 @@ developerPage();
 
 
 
-// ===============================
-// AI ASSISTANT
-// ===============================
+// =====================================
+// INVENTORY MAIN
+// =====================================
 
 
 
 
 
-function aiRepairPage(){
+function inventoryPage(){
+
 
 
 content.innerHTML=`
-
 
 <div class="card">
 
 
 <h1>
 
-🤖 Repair Suggestions
+📦 Inventory
 
 </h1>
 
 
-<input id="aiDevice"
-
-placeholder="Device">
 
 
-<input id="aiProblem"
+<input id="partName"
 
-placeholder="Problem">
+placeholder="Part Name"
+
+>
 
 
-<button onclick="aiSuggest()">
 
-Generate
+<input id="partNumber"
+
+placeholder="Part Number"
+
+>
+
+
+
+<input id="partQuantity"
+
+type="number"
+
+placeholder="Quantity"
+
+
+
+>
+
+
+
+<input id="partPrice"
+
+type="number"
+
+placeholder="Price"
+
+
+
+>
+
+
+
+<input id="partLocation"
+
+placeholder="Storage Location"
+
+
+
+>
+
+
+
+<button onclick="addPart()">
+
+Add Part
 
 </button>
 
 
 
-<div id="aiResult">
-
 </div>
 
 
-</div>
 
+<div id="inventoryList">
+
+</div>
 
 `;
+
+
+
+loadInventory();
 
 
 
@@ -7660,12 +6929,103 @@ Generate
 
 
 
-window.aiSuggest=function(){
 
 
-aiResult.innerHTML=
 
-"Possible repair: inspect device, test components, and check common failure points.";
+
+
+window.addPart=async function(){
+
+
+
+let id =
+
+push(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/inventory"
+
+)
+
+).key;
+
+
+
+
+
+
+
+
+await set(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/inventory/"+id
+
+),
+
+{
+
+
+id:id,
+
+
+name:
+partName.value,
+
+
+
+number:
+partNumber.value,
+
+
+
+quantity:
+Number(partQuantity.value),
+
+
+
+price:
+Number(partPrice.value),
+
+
+
+location:
+partLocation.value,
+
+
+
+created:
+Date.now()
+
+
+
+}
+
+
+
+);
+
+
+
+
+
+
+alert(
+"Part Added"
+);
+
+
+
+
+loadInventory();
+
+
 
 };
 
@@ -7677,34 +7037,425 @@ aiResult.innerHTML=
 
 
 
-function aiPricingPage(){
+// =====================================
+// LOAD INVENTORY
+// =====================================
+
+
+
+
+
+
+async function loadInventory(){
+
+
+
+let box =
+
+document.getElementById(
+"inventoryList"
+);
+
+
+
+if(!box)return;
+
+
+
+
+
+let snap =
+
+await get(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/inventory"
+
+)
+
+);
+
+
+
+
+
+
+box.innerHTML="";
+
+
+
+
+
+
+
+if(!snap.exists()){
+
+
+box.innerHTML="Inventory empty";
+
+return;
+
+
+}
+
+
+
+
+
+
+
+Object.values(
+
+snap.val()
+
+)
+
+.forEach(p=>{
+
+
+
+
+
+let warning =
+"";
+
+
+
+if(p.quantity<=3){
+
+
+warning=
+
+" ⚠ LOW STOCK";
+
+
+}
+
+
+
+
+
+box.innerHTML+=`
+
+<div class="card">
+
+
+<h3>
+
+${p.name}
+
+${warning}
+
+</h3>
+
+
+
+Part #
+
+${p.number}
+
+
+<br>
+
+
+Quantity:
+
+${p.quantity}
+
+
+<br>
+
+
+Price:
+
+$${p.price}
+
+
+
+<br>
+
+
+Location:
+
+${p.location}
+
+
+
+</div>
+
+`;
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// LOW STOCK
+// =====================================
+
+
+
+
+
+function lowStockPage(){
 
 
 
 content.innerHTML=`
-
 
 <div class="card">
 
 
 <h1>
 
-💲 Pricing Help
+⚠ Low Stock
 
 </h1>
 
 
+<div id="lowList">
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+
+
+
+loadLowStock();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+async function loadLowStock(){
+
+
+
+let box =
+document.getElementById(
+"lowList"
+);
+
+
+
+let snap =
+
+await get(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/inventory"
+
+)
+
+);
+
+
+
+
+
+box.innerHTML="";
+
+
+
+
+
+if(!snap.exists()){
+
+box.innerHTML="No inventory";
+
+return;
+
+}
+
+
+
+
+
+
+Object.values(
+snap.val()
+
+)
+
+.forEach(p=>{
+
+
+
+if(p.quantity<=3){
+
+
+
+box.innerHTML+=`
+
+<div class="card">
+
+
+⚠ ${p.name}
+
+
+<br>
+
+
+Only ${p.quantity} left
+
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// INCOMING PARTS
+// =====================================
+
+
+
+
+
+function incomingPartsPage(){
+
+
+simpleSavePage(
+
+"📥 Incoming Parts",
+
+"incomingParts"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// USED PARTS
+// =====================================
+
+
+
+
+
+
+function usedPartsPage(){
+
+
+
+simpleSavePage(
+
+"📤 Used Parts",
+
+"usedParts"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// PRICING
+// =====================================
+
+
+
+
+
+function pricingPage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+💲 Part Pricing
+
+</h1>
+
 
 <p>
 
-AI pricing assistant ready
+Pricing is saved with inventory items.
 
 </p>
 
 
 </div>
 
-
 `;
 
 
@@ -7719,305 +7470,9 @@ AI pricing assistant ready
 
 
 
-
-function aiDiagnosticsPage(){
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-🔍 AI Diagnostics
-
-</h1>
-
-
-<p>
-
-Diagnostics system ready
-
-</p>
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// ===============================
-// CUSTOMER PORTAL
-// ===============================
-
-
-
-
-
-
-function trackRepairPage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-🔎 Track Repair
-
-</h1>
-
-
-<input placeholder="Repair ID">
-
-
-<button>
-
-Search
-
-</button>
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-function uploadPhotosPage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-📷 Upload Photos
-
-</h1>
-
-
-<input type="file">
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-
-function approveQuotePage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-✅ Approve Quote
-
-</h1>
-
-
-<button>
-
-Approve
-
-</button>
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-function customerMessagesPage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-💬 Customer Messages
-
-</h1>
-
-
-<input placeholder="Message">
-
-
-<button>
-
-Send
-
-</button>
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-
-function reviewPage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-⭐ Reviews
-
-</h1>
-
-
-<textarea placeholder="Review"></textarea>
-
-
-<button>
-
-Submit
-
-</button>
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-function appointmentPage(){
-
-
-
-content.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-
-📅 Book Appointment
-
-</h1>
-
-
-<input placeholder="Date">
-
-
-<button>
-
-Book
-
-</button>
-
-
-</div>
-
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// ===============================
-// BUSINESS
-// ===============================
+// =====================================
+// STORAGE LOCATIONS
+// =====================================
 
 
 
@@ -8027,9 +7482,12 @@ Book
 function locationsPage(){
 
 
+simpleSavePage(
 
-simplePage(
-"🏬 Locations"
+"📍 Storage Locations",
+
+"locations"
+
 
 );
 
@@ -8039,41 +7497,32 @@ simplePage(
 
 
 
-function managerPage(){
 
 
-simplePage(
-"🧑‍💼 Managers"
+
+
+
+
+// =====================================
+// PART NUMBERS
+// =====================================
+
+
+
+
+
+function partNumbersPage(){
+
+
+simpleSavePage(
+
+"🔢 Part Numbers",
+
+"partNumbers"
+
 
 );
 
-
-}
-
-
-
-function policyPage(){
-
-
-
-simplePage(
-"📜 Policies"
-
-);
-
-
-}
-
-
-
-function formsPage(){
-
-
-
-simplePage(
-"📝 Forms"
-
-);
 
 
 }
@@ -8086,59 +7535,27 @@ simplePage(
 
 
 
-
-// ===============================
-// IDEAS
-// ===============================
-
+// =====================================
+// SUPPLIERS
+// =====================================
 
 
 
 
-function ideasPage(){
+
+function suppliersPage(){
 
 
-simplePage(
-"💡 Feature Requests"
+
+simpleSavePage(
+
+"🚚 Supplier Orders",
+
+"suppliers"
+
 
 );
 
-
-}
-
-
-function ideasBoardPage(){
-
-
-simplePage(
-"🗒 Ideas Board"
-
-);
-
-
-}
-
-
-function experimentsPage(){
-
-
-simplePage(
-"🧪 Experiments"
-
-);
-
-
-}
-
-
-
-function roadmapPage(){
-
-
-simplePage(
-"🚀 Roadmap"
-
-);
 
 
 }
@@ -8151,60 +7568,28 @@ simplePage(
 
 
 
-// ===============================
-// SECURITY
-// ===============================
+// =====================================
+// DEFECTIVE
+// =====================================
 
 
 
 
-function loginHistoryPage(){
 
 
-simplePage(
-"🔐 Login History"
+function defectivePartsPage(){
+
+
+
+simpleSavePage(
+
+"⚠ Defective Parts",
+
+"defectiveParts"
+
 
 );
 
-
-}
-
-
-
-function sessionsPage(){
-
-
-simplePage(
-"🖥 Active Sessions"
-
-);
-
-
-}
-
-
-
-function deviceAccessPage(){
-
-
-simplePage(
-"📱 Device Access"
-
-);
-
-
-}
-
-
-
-
-function auditPage(){
-
-
-simplePage(
-"📜 Audit Logs"
-
-);
 
 
 }
@@ -8217,63 +7602,27 @@ simplePage(
 
 
 
-// ===============================
-// ADMIN
-// ===============================
+// =====================================
+// RETURNS
+// =====================================
 
 
 
 
 
-function ownerPage(){
+function returnsPage(){
 
 
-simplePage(
-"👑 Owner Panel"
+
+simpleSavePage(
+
+"🔄 Returns",
+
+"returns"
+
 
 );
 
-
-}
-
-
-
-
-function accessPage(){
-
-
-simplePage(
-"🛂 Access Control"
-
-);
-
-
-}
-
-
-
-
-function historyPage(){
-
-
-simplePage(
-"📜 Change History"
-
-);
-
-
-}
-
-
-
-
-function deletedPage(){
-
-
-simplePage(
-"🗑 Deleted Items"
-
-);
 
 
 }
@@ -8283,86 +7632,118 @@ simplePage(
 
 
 
+</script>
+
+<script type="module">
+
+// =====================================
+// PART 10 / 15
+// FINANCE MANAGEMENT SYSTEM
+// =====================================
 
 
 
 
 
-// ===============================
-// FIREBASE ADMIN
-// ===============================
+
+document.querySelectorAll(".item")
+.forEach(item=>{
+
+
+item.addEventListener("click",()=>{
+
+
+let name =
+item.innerText.trim();
 
 
 
 
 
+if(name==="💵 Repair Income"){
 
-function usersPage(){
-
-
-simplePage(
-"👥 User Management"
-
-);
-
-
-}
-
-
-
-function databasePage(){
-
-
-simplePage(
-"🗄 Database Status"
-
-);
-
+financePage("Repair Income","income");
 
 }
 
 
 
-function storagePage(){
+if(name==="💼 Other Jobs"){
 
-
-simplePage(
-"📦 Storage Usage"
-
-);
-
+financePage("Other Jobs","otherJobs");
 
 }
 
 
 
-function appAnalyticsPage(){
+if(name==="💳 Expenses"){
 
-
-simplePage(
-"📊 App Analytics"
-
-);
-
+financePage("Expenses","expenses");
 
 }
 
 
 
+if(name==="🧾 Bills"){
 
-function developerPage(){
-
-
-simplePage(
-"🛠 Developer Tools"
-
-);
-
+financePage("Bills","bills");
 
 }
 
 
 
+if(name==="🧾 Invoices"){
+
+invoicePage();
+
+}
+
+
+
+if(name==="💰 Discounts"){
+
+financePage("Discounts","discounts");
+
+}
+
+
+
+if(name==="🎟 Coupons"){
+
+financePage("Coupons","coupons");
+
+}
+
+
+
+if(name==="💳 Payment History"){
+
+paymentHistory();
+
+}
+
+
+
+if(name==="🎯 Goals"){
+
+goalsPage();
+
+}
+
+
+
+if(name==="🧮 Tax Calculator"){
+
+taxPage();
+
+}
+
+
+
+});
+
+
+});
 
 
 
@@ -8371,12 +7752,18 @@ simplePage(
 
 
 
-// SIMPLE PAGE BUILDER
+
+// =====================================
+// MONEY RECORDS
+// =====================================
 
 
 
 
-function simplePage(title){
+
+
+function financePage(title,path){
+
 
 
 content.innerHTML=`
@@ -8391,9 +7778,558 @@ ${title}
 </h1>
 
 
+
+
+<input id="moneyName"
+
+placeholder="Description"
+
+>
+
+
+
+<input id="moneyAmount"
+
+type="number"
+
+placeholder="Amount"
+
+
+
+>
+
+
+
+
+<button onclick="saveMoney('${path}')">
+
+Save
+
+</button>
+
+
+
+</div>
+
+
+
+<div id="moneyList">
+
+</div>
+
+
+`;
+
+
+
+loadMoney(path);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+window.saveMoney=async function(path){
+
+
+
+
+
+let id =
+
+push(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/"+path
+
+)
+
+).key;
+
+
+
+
+
+
+
+await set(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/"+path+"/"+id
+
+),
+
+
+{
+
+
+id:id,
+
+
+name:
+
+moneyName.value,
+
+
+
+amount:
+
+Number(moneyAmount.value),
+
+
+
+time:
+
+Date.now()
+
+
+}
+
+
+);
+
+
+
+
+
+
+loadMoney(path);
+
+
+
+};
+
+
+
+
+
+
+
+
+
+async function loadMoney(path){
+
+
+
+let box =
+document.getElementById(
+"moneyList"
+);
+
+
+
+if(!box)return;
+
+
+
+
+
+let snap =
+
+await get(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/"+path
+
+)
+
+);
+
+
+
+
+
+
+box.innerHTML="";
+
+
+
+
+
+if(!snap.exists()){
+
+
+box.innerHTML="Nothing saved";
+
+
+return;
+
+
+}
+
+
+
+
+
+
+
+
+Object.values(
+snap.val()
+
+)
+
+.forEach(m=>{
+
+
+
+box.innerHTML+=`
+
+<div class="card">
+
+
+${m.name}
+
+
+<br>
+
+
+$${m.amount}
+
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// INVOICES
+// =====================================
+
+
+
+
+
+
+function invoicePage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+🧾 Invoices
+
+</h1>
+
+
+
+<input id="invoiceCustomer"
+
+placeholder="Customer"
+
+
+
+>
+
+
+
+<input id="invoiceAmount"
+
+placeholder="Amount"
+
+
+
+>
+
+
+
+<button onclick="createInvoice()">
+
+Create Invoice
+
+</button>
+
+
+
+<div id="invoiceList">
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+
+loadInvoices();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+window.createInvoice=async function(){
+
+
+
+let id =
+
+push(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/invoices"
+
+)
+
+).key;
+
+
+
+
+
+await set(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/invoices/"+id
+
+),
+
+
+
+{
+
+
+customer:
+
+invoiceCustomer.value,
+
+
+amount:
+
+invoiceAmount.value,
+
+
+paid:false,
+
+
+created:
+
+Date.now()
+
+
+
+}
+
+
+
+);
+
+
+
+
+
+loadInvoices();
+
+
+
+};
+
+
+
+
+
+
+
+
+
+async function loadInvoices(){
+
+
+
+let box =
+document.getElementById(
+"invoiceList"
+);
+
+
+
+if(!box)return;
+
+
+
+
+
+
+let snap =
+
+await get(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/invoices"
+
+)
+
+);
+
+
+
+
+
+
+
+box.innerHTML="";
+
+
+
+
+
+
+
+if(!snap.exists()){
+
+box.innerHTML="No invoices";
+
+return;
+
+}
+
+
+
+
+
+Object.values(
+
+snap.val()
+
+)
+
+.forEach(i=>{
+
+
+box.innerHTML+=`
+
+<div class="card">
+
+
+👤 ${i.customer}
+
+
+<br>
+
+
+💵 $${i.amount}
+
+
+
+<br>
+
+
+Status:
+
+${i.paid?"Paid":"Unpaid"}
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// PAYMENT HISTORY
+// =====================================
+
+
+
+
+
+function paymentHistory(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+💳 Payment History
+
+</h1>
+
+
 <p>
 
-${title} loaded.
+Payments appear from invoices and income.
 
 </p>
 
@@ -8403,54 +8339,308 @@ ${title} loaded.
 `;
 
 
+
 }
 
 
 
 
-// PART 7 CONTINUES IN PART 8
-
-
-// ===============================
-// PART 8 / 8
-// SETTINGS + ACCOUNT + FINISH
-// ===============================
 
 
 
 
 
-
-
-document.querySelectorAll(".category")
-.forEach(category=>{
-
-
-category.onclick=function(){
-
-
-let drop =
-this.nextElementSibling;
+// =====================================
+// GOALS
+// =====================================
 
 
 
-if(drop){
 
 
-drop.style.display =
-drop.style.display==="block"
-?
-"none"
-:
-"block";
+
+function goalsPage(){
+
+
+
+financePage(
+
+"🎯 Goals",
+
+"goals"
+
+
+);
+
 
 
 }
 
 
 
+
+
+
+
+
+
+// =====================================
+// TAX
+// =====================================
+
+
+
+
+
+function taxPage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+🧮 Tax Calculator
+
+</h1>
+
+
+
+<input id="taxAmount"
+
+type="number"
+
+placeholder="Amount"
+
+
+
+>
+
+
+
+<input id="taxRate"
+
+type="number"
+
+placeholder="Tax %"
+
+
+
+>
+
+
+
+
+<button onclick="calculateTax()">
+
+Calculate
+
+</button>
+
+
+
+<div id="taxResult">
+
+</div>
+
+
+
+</div>
+
+`;
+
+
+
 }
 
+
+
+
+
+
+
+
+
+window.calculateTax=function(){
+
+
+
+let amount =
+
+Number(
+taxAmount.value
+);
+
+
+
+let rate =
+
+Number(
+taxRate.value
+);
+
+
+
+let tax =
+
+amount*(rate/100);
+
+
+
+
+taxResult.innerHTML=
+
+`
+
+Tax:
+
+$${tax.toFixed(2)}
+
+<br>
+
+Total:
+
+$${(amount+tax).toFixed(2)}
+
+`;
+
+
+
+};
+
+
+
+
+
+
+
+</script>
+
+<script type="module">
+
+// =====================================
+// PART 11 / 15
+// ANALYTICS SYSTEM
+// =====================================
+
+
+
+
+
+document.querySelectorAll(".item")
+.forEach(item=>{
+
+
+item.addEventListener("click",()=>{
+
+
+let name =
+item.innerText.trim();
+
+
+
+
+
+if(name==="📈 Revenue"){
+
+analyticsPage("Revenue");
+
+}
+
+
+
+if(name==="📊 Charts"){
+
+chartsPage();
+
+}
+
+
+
+if(name==="📉 Profit"){
+
+profitPage();
+
+}
+
+
+
+if(name==="🏆 Top Repairs"){
+
+topRepairsPage();
+
+}
+
+
+
+if(name==="📋 Reports"){
+
+reportsPage();
+
+}
+
+
+
+if(name==="👥 Customer Growth"){
+
+customerGrowthPage();
+
+}
+
+
+
+if(name==="📦 Inventory Value"){
+
+inventoryValuePage();
+
+}
+
+
+
+if(name==="🔥 Popular Devices"){
+
+popularDevicesPage();
+
+}
+
+
+
+if(name==="🔮 Revenue Forecast"){
+
+forecastPage();
+
+}
+
+
+
+if(name==="📦 Stock Predictions"){
+
+stockPredictionPage();
+
+}
+
+
+
+if(name==="👨‍🔧 Employee Stats"){
+
+employeeStatsPage();
+
+}
+
+
+
+if(name==="⏱ Average Repair Time"){
+
+repairTimePage();
+
+}
+
+
+
+});
 
 
 });
@@ -8463,11 +8653,1120 @@ drop.style.display==="block"
 
 
 
+// =====================================
+// REVENUE
+// =====================================
 
 
-// ===============================
-// SETTINGS SYSTEM
-// ===============================
+
+
+
+function analyticsPage(title){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+📈 ${title}
+
+</h1>
+
+
+
+<div id="analyticsResult">
+
+Loading...
+
+</div>
+
+
+</div>
+
+`;
+
+
+
+loadRevenue();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+async function loadRevenue(){
+
+
+
+let box =
+document.getElementById(
+"analyticsResult"
+);
+
+
+
+let snap =
+
+await get(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/income"
+
+)
+
+);
+
+
+
+
+
+let total=0;
+
+
+
+
+
+if(snap.exists()){
+
+
+
+Object.values(
+snap.val()
+
+)
+
+.forEach(i=>{
+
+
+total += Number(i.amount)||0;
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+box.innerHTML=
+
+`
+
+<h2>
+
+Total Revenue
+
+</h2>
+
+
+<h1>
+
+$${total.toFixed(2)}
+
+</h1>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// CHARTS
+// =====================================
+
+
+
+
+
+function chartsPage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+📊 Charts
+
+</h1>
+
+
+
+<canvas id="revenueChart"
+
+height="200">
+
+</canvas>
+
+
+</div>
+
+`;
+
+
+
+
+
+drawChart();
+
+
+
+}
+
+
+
+
+
+
+
+function drawChart(){
+
+
+
+let canvas =
+document.getElementById(
+"revenueChart"
+);
+
+
+
+if(!canvas)return;
+
+
+
+let ctx =
+canvas.getContext("2d");
+
+
+
+ctx.beginPath();
+
+
+
+ctx.moveTo(20,180);
+
+
+
+ctx.lineTo(100,100);
+
+
+
+ctx.lineTo(180,140);
+
+
+
+ctx.lineTo(260,50);
+
+
+
+ctx.stroke();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// PROFIT
+// =====================================
+
+
+
+
+
+async function profitPage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+📉 Profit
+
+</h1>
+
+
+<div id="profitResult">
+
+Loading...
+
+</div>
+
+
+</div>
+
+`;
+
+
+
+
+
+let incomeSnap =
+
+await get(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/income"
+
+)
+
+);
+
+
+
+let expenseSnap =
+
+await get(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/expenses"
+
+)
+
+);
+
+
+
+
+
+let income=0;
+
+let expense=0;
+
+
+
+
+
+
+
+if(incomeSnap.exists())
+
+Object.values(
+incomeSnap.val()
+
+)
+
+.forEach(x=>{
+
+income+=Number(x.amount)||0;
+
+});
+
+
+
+
+
+
+
+if(expenseSnap.exists())
+
+Object.values(
+expenseSnap.val()
+
+)
+
+.forEach(x=>{
+
+expense+=Number(x.amount)||0;
+
+});
+
+
+
+
+
+
+
+
+document.getElementById(
+"profitResult"
+)
+
+.innerHTML=
+
+`
+
+Revenue:
+
+$${income}
+
+
+
+<br>
+
+
+
+Expenses:
+
+$${expense}
+
+
+
+<br><br>
+
+
+<b>
+
+Profit:
+
+$${income-expense}
+
+</b>
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// TOP REPAIRS
+// =====================================
+
+
+
+
+
+
+async function topRepairsPage(){
+
+
+
+simpleAnalytics(
+
+"🏆 Top Repairs",
+
+"repairs"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// REPORTS
+// =====================================
+
+
+
+
+
+
+function reportsPage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+📋 Reports
+
+</h1>
+
+
+
+<p>
+
+Business reports generated from saved data.
+
+</p>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// CUSTOMER GROWTH
+// =====================================
+
+
+
+
+
+
+async function customerGrowthPage(){
+
+
+
+simpleAnalytics(
+
+"👥 Customer Growth",
+
+"repairs"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// INVENTORY VALUE
+// =====================================
+
+
+
+
+
+
+async function inventoryValuePage(){
+
+
+
+simpleAnalytics(
+
+"📦 Inventory Value",
+
+"inventory"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// POPULAR DEVICES
+// =====================================
+
+
+
+
+
+
+async function popularDevicesPage(){
+
+
+
+simpleAnalytics(
+
+"🔥 Popular Devices",
+
+"devices"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// FORECAST
+// =====================================
+
+
+
+
+
+
+function forecastPage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+🔮 Revenue Forecast
+
+</h1>
+
+
+
+<p>
+
+Forecast is calculated from previous revenue.
+
+</p>
+
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// STOCK PREDICTIONS
+// =====================================
+
+
+
+
+
+
+function stockPredictionPage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+📦 Stock Predictions
+
+</h1>
+
+
+
+<p>
+
+Low stock items are predicted from inventory.
+
+</p>
+
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// EMPLOYEE STATS
+// =====================================
+
+
+
+
+
+
+function employeeStatsPage(){
+
+
+
+simpleAnalytics(
+
+"👨‍🔧 Employee Stats",
+
+"employees"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// REPAIR TIME
+// =====================================
+
+
+
+
+
+
+function repairTimePage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+⏱ Average Repair Time
+
+</h1>
+
+
+
+<p>
+
+Calculated from repair history.
+
+</p>
+
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+async function simpleAnalytics(title,path){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+${title}
+
+</h1>
+
+
+<div id="simpleData">
+
+Loading...
+
+</div>
+
+
+</div>
+
+`;
+
+
+
+let snap =
+
+await get(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/"+path
+
+)
+
+);
+
+
+
+
+
+let count=0;
+
+
+
+if(snap.exists())
+
+count=
+
+Object.keys(
+snap.val()
+
+).length;
+
+
+
+
+
+
+
+document.getElementById(
+"simpleData"
+)
+
+.innerHTML=
+
+`
+
+Total Records:
+
+<b>
+
+${count}
+
+</b>
+
+`;
+
+
+
+}
+
+
+
+
+
+
+</script>
+
+
+<script type="module">
+
+// =====================================
+// PART 12 / 15
+// PROBLEM SOLVER + CUSTOMER PORTAL
+// =====================================
+
+
+
+
+
+const repairGuides = {
+
+
+"💧 Liquid Damage":{
+
+
+symptoms:[
+
+"Device not charging",
+
+"Random shutdowns",
+
+"Camera fogging",
+
+"Speaker issues"
+
+],
+
+
+steps:[
+
+"Inspect device",
+
+"Document damage",
+
+"Inspect internal connections",
+
+"Replace damaged components",
+
+"Test device"
+
+],
+
+
+parts:[
+
+"Battery",
+
+"Charging Port",
+
+"Screen Assembly"
+
+]
+
+
+},
+
+
+
+
+"💥 Physical Damage":{
+
+
+symptoms:[
+
+"Cracked housing",
+
+"Broken display",
+
+"Frame damage"
+
+],
+
+
+steps:[
+
+"Inspect frame",
+
+"Check internal damage",
+
+"Replace damaged parts",
+
+"Run tests"
+
+],
+
+
+parts:[
+
+"Screen",
+
+"Housing",
+
+"Buttons"
+
+]
+
+
+},
+
+
+
+
+"🔋 Battery Problems":{
+
+
+symptoms:[
+
+"Fast draining",
+
+"Won't power on",
+
+"Unexpected shutdown"
+
+],
+
+
+steps:[
+
+"Test battery",
+
+"Check charging system",
+
+"Replace battery",
+
+"Verify health"
+
+],
+
+
+parts:[
+
+"Battery"
+
+]
+
+
+},
+
+
+
+
+
+"🔌 Charging Problems":{
+
+
+symptoms:[
+
+"No charging",
+
+"Loose connector",
+
+"Slow charging"
+
+],
+
+
+steps:[
+
+"Inspect port",
+
+"Clean/test connector",
+
+"Replace charging assembly",
+
+"Test charging"
+
+],
+
+
+parts:[
+
+"Charging Port"
+
+]
+
+
+},
+
+
+
+
+"📷 Camera Problems":{
+
+
+symptoms:[
+
+"Camera blurry",
+
+"Camera not opening",
+
+"Focus problems"
+
+],
+
+
+steps:[
+
+"Inspect camera",
+
+"Test connection",
+
+"Replace module",
+
+"Test"
+
+],
+
+
+parts:[
+
+"Camera Module"
+
+]
+
+
+}
+
+
+
+};
+
+
+
 
 
 
@@ -8478,10 +9777,1568 @@ document.querySelectorAll(".item")
 .forEach(item=>{
 
 
-item.addEventListener(
-"click",
+item.addEventListener("click",()=>{
 
-()=>{
+
+let name =
+item.innerText.trim();
+
+
+
+
+
+if(name==="🤖 Repair Suggestions"
+||
+name==="🤖 Problem Solver"){
+
+
+problemSolverPage();
+
+}
+
+
+
+
+if(name==="🔎 Track Repair"){
+
+
+trackRepairPage();
+
+}
+
+
+
+if(name==="💬 Messages"){
+
+
+customerMessagesPage();
+
+}
+
+
+
+if(name==="⭐ Leave Review"){
+
+
+reviewPage();
+
+}
+
+
+
+if(name==="📅 Book Appointment"){
+
+
+appointmentPage();
+
+}
+
+
+
+});
+
+
+});
+
+
+
+
+
+
+
+
+
+// =====================================
+// PROBLEM SOLVER
+// =====================================
+
+
+
+
+
+
+function problemSolverPage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+🧠 Problem Solver
+
+</h1>
+
+
+
+
+<select id="damageSelect">
+
+
+<option>
+
+Select Damage
+
+</option>
+
+
+
+${Object.keys(repairGuides)
+.map(x=>`
+
+<option>
+
+${x}
+
+</option>
+
+`)
+.join("")}
+
+
+
+</select>
+
+
+
+<button onclick="showGuide()">
+
+Find Solution
+
+</button>
+
+
+
+
+<div id="guideResult">
+
+</div>
+
+
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+window.showGuide=function(){
+
+
+
+let type =
+
+document.getElementById(
+"damageSelect"
+).value;
+
+
+
+
+
+let data =
+repairGuides[type];
+
+
+
+
+
+if(!data)return;
+
+
+
+
+
+
+document.getElementById(
+"guideResult"
+)
+
+.innerHTML=
+
+`
+
+<div class="card">
+
+
+<h2>
+
+${type}
+
+</h2>
+
+
+
+<h3>
+
+Symptoms
+
+</h3>
+
+
+${data.symptoms.join("<br>")}
+
+
+
+<h3>
+
+Repair Steps
+
+</h3>
+
+
+${data.steps.join("<br>")}
+
+
+
+<h3>
+
+Possible Parts
+
+</h3>
+
+
+${data.parts.join("<br>")}
+
+
+
+</div>
+
+`;
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// CUSTOMER TRACKING
+// =====================================
+
+
+
+
+
+
+function trackRepairPage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+🔎 Track Repair
+
+</h1>
+
+
+
+
+<input id="trackID"
+
+placeholder="Repair ID"
+
+
+
+>
+
+
+
+<button onclick="trackRepair()">
+
+Search
+
+</button>
+
+
+
+
+<div id="trackResult">
+
+</div>
+
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+window.trackRepair=async function(){
+
+
+
+let id =
+trackID.value;
+
+
+
+
+
+
+let snap =
+
+await get(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+
+"/repairs/"+id
+
+)
+
+);
+
+
+
+
+
+
+let box =
+document.getElementById(
+"trackResult"
+);
+
+
+
+
+
+if(!snap.exists()){
+
+
+box.innerHTML="Repair not found";
+
+
+return;
+
+
+}
+
+
+
+
+
+
+
+let r=snap.val();
+
+
+
+
+
+box.innerHTML=
+
+`
+
+<div class="card">
+
+
+Device:
+
+${r.device}
+
+
+<br>
+
+
+Status:
+
+${r.status}
+
+
+</div>
+
+
+`;
+
+
+
+};
+
+
+
+
+
+
+
+
+
+// =====================================
+// CUSTOMER MESSAGES
+// =====================================
+
+
+
+
+
+
+function customerMessagesPage(){
+
+
+
+simpleSavePage(
+
+"💬 Customer Messages",
+
+"customerMessages"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// REVIEWS
+// =====================================
+
+
+
+
+
+function reviewPage(){
+
+
+
+simpleSavePage(
+
+"⭐ Reviews",
+
+"reviews"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// APPOINTMENTS
+// =====================================
+
+
+
+
+
+function appointmentPage(){
+
+
+
+simpleSavePage(
+
+"📅 Book Appointment",
+
+"appointments"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+</script>
+
+<script type="module">
+
+// =====================================
+// PART 13 / 15
+// BUSINESS + SECURITY + ADMIN
+// =====================================
+
+
+
+
+
+document.querySelectorAll(".item")
+.forEach(item=>{
+
+
+item.addEventListener("click",()=>{
+
+
+let name =
+item.innerText.trim();
+
+
+
+
+if(name==="🏬 Locations"){
+
+businessPage("Locations","locations");
+
+}
+
+
+
+if(name==="🧑‍💼 Managers"){
+
+businessPage("Managers","managers");
+
+}
+
+
+
+if(name==="📜 Policies"){
+
+businessPage("Policies","policies");
+
+}
+
+
+
+if(name==="📝 Forms"){
+
+businessPage("Forms","forms");
+
+}
+
+
+
+if(name==="📌 Important Documents"){
+
+businessPage("Documents","documents");
+
+}
+
+
+
+if(name==="🔐 Login History"){
+
+securityPage();
+
+}
+
+
+
+if(name==="🖥 Active Sessions"){
+
+sessionsPage();
+
+}
+
+
+
+if(name==="📜 Audit Logs"){
+
+auditPage();
+
+}
+
+
+
+if(name==="⚠ Security Alerts"){
+
+securityAlerts();
+
+}
+
+
+
+if(name==="🔑 Backup Codes"){
+
+backupCodes();
+
+}
+
+
+
+if(name==="👑 Owner Panel"){
+
+ownerPanel();
+
+}
+
+
+
+if(name==="🛂 Access Control"){
+
+accessControl();
+
+}
+
+
+
+if(name==="📜 Change History"){
+
+changeHistory();
+
+}
+
+
+
+if(name==="🗑 Deleted Items"){
+
+deletedItems();
+
+}
+
+
+
+if(name==="💾 Data Management"){
+
+dataManagement();
+
+}
+
+
+
+if(name==="👥 User Management"){
+
+userManagement();
+
+}
+
+
+
+if(name==="🗄 Database Status"){
+
+databaseStatus();
+
+}
+
+
+
+});
+
+
+});
+
+
+
+
+
+
+
+
+
+// =====================================
+// BUSINESS MANAGEMENT
+// =====================================
+
+
+
+
+
+function businessPage(title,path){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+🏪 ${title}
+
+</h1>
+
+
+
+<input id="businessText"
+
+placeholder="Enter ${title}"
+
+>
+
+
+
+<button onclick="saveBusiness('${path}')">
+
+Save
+
+</button>
+
+
+
+<div id="businessList">
+
+</div>
+
+
+</div>
+
+`;
+
+
+
+loadBusiness(path);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+window.saveBusiness=async function(path){
+
+
+
+let value =
+
+businessText.value;
+
+
+
+
+
+if(!value)return;
+
+
+
+
+
+
+
+await push(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/"+path
+
+),
+
+{
+
+
+text:value,
+
+
+time:Date.now()
+
+
+}
+
+);
+
+
+
+
+
+
+
+loadBusiness(path);
+
+
+
+};
+
+
+
+
+
+
+
+
+
+async function loadBusiness(path){
+
+
+
+let box =
+document.getElementById(
+"businessList"
+);
+
+
+
+if(!box)return;
+
+
+
+
+
+let snap =
+
+await get(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+"/"+path
+
+)
+
+);
+
+
+
+
+
+box.innerHTML="";
+
+
+
+
+
+if(!snap.exists()){
+
+
+box.innerHTML="Nothing saved";
+
+return;
+
+
+}
+
+
+
+
+
+
+Object.values(
+
+snap.val()
+
+)
+
+.forEach(x=>{
+
+
+
+box.innerHTML+=`
+
+<div class="card">
+
+${x.text}
+
+</div>
+
+`;
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// SECURITY CENTER
+// =====================================
+
+
+
+
+
+
+function securityPage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+🔐 Login History
+
+</h1>
+
+
+<div id="loginHistory">
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+
+loadLoginHistory();
+
+
+
+}
+
+
+
+
+
+
+
+
+async function loadLoginHistory(){
+
+
+
+let box =
+document.getElementById(
+"loginHistory"
+);
+
+
+
+
+
+let snap =
+
+await get(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+
+"/loginHistory"
+
+)
+
+);
+
+
+
+
+
+
+if(!snap.exists()){
+
+
+box.innerHTML="No login history";
+
+return;
+
+
+}
+
+
+
+
+
+
+box.innerHTML="";
+
+
+
+
+
+
+Object.values(
+snap.val()
+
+)
+
+.forEach(x=>{
+
+
+box.innerHTML+=`
+
+<div class="card">
+
+${new Date(x.time)
+.toLocaleString()}
+
+<br>
+
+${x.email}
+
+</div>
+
+`;
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// ACTIVE SESSIONS
+// =====================================
+
+
+
+
+
+
+function sessionsPage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+🖥 Active Sessions
+
+</h1>
+
+
+<p>
+
+Current logged in sessions.
+
+</p>
+
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// AUDIT LOGS
+// =====================================
+
+
+
+
+
+
+function auditPage(){
+
+
+
+simpleSavePage(
+
+"📜 Audit Logs",
+
+"auditLogs"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// ALERTS
+// =====================================
+
+
+
+
+
+
+function securityAlerts(){
+
+
+
+simpleSavePage(
+
+"⚠ Security Alerts",
+
+"securityAlerts"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// BACKUP CODES
+// =====================================
+
+
+
+
+
+
+function backupCodes(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+🔑 Backup Codes
+
+</h1>
+
+
+<p>
+
+Backup codes are stored securely.
+
+</p>
+
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// ADMIN
+// =====================================
+
+
+
+
+
+
+function ownerPanel(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+👑 Owner Panel
+
+</h1>
+
+
+<p>
+
+Business owner controls.
+
+</p>
+
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function accessControl(){
+
+
+simpleSavePage(
+
+"🛂 Access Control",
+
+"permissions"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function changeHistory(){
+
+
+simpleSavePage(
+
+"📜 Change History",
+
+"changes"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function deletedItems(){
+
+
+simpleSavePage(
+
+"🗑 Deleted Items",
+
+"deleted"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function dataManagement(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+💾 Data Management
+
+</h1>
+
+
+<button onclick="exportData()">
+
+Export Data
+
+</button>
+
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+window.exportData=async function(){
+
+
+
+let snap =
+
+await get(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid
+
+)
+
+);
+
+
+
+
+
+
+let blob =
+
+new Blob(
+
+[JSON.stringify(
+snap.val(),
+null,2
+)]
+
+,
+
+{
+
+type:"application/json"
+
+}
+
+);
+
+
+
+
+
+
+let a =
+document.createElement("a");
+
+
+
+a.href =
+URL.createObjectURL(blob);
+
+
+
+a.download="truefix-backup.json";
+
+
+
+a.click();
+
+
+
+};
+
+
+
+
+
+
+
+
+
+function userManagement(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+👥 User Management
+
+</h1>
+
+
+<p>
+
+Firebase users connected here.
+
+</p>
+
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function databaseStatus(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+🗄 Database Status
+
+</h1>
+
+
+<p>
+
+Realtime Database Connected
+
+</p>
+
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+</script>
+
+
+<script type="module">
+
+// =====================================
+// PART 14 / 15
+// SETTINGS + THEME ENGINE
+// =====================================
+
+
+
+
+
+document.querySelectorAll(".item")
+.forEach(item=>{
+
+
+item.addEventListener("click",()=>{
 
 
 let name =
@@ -8525,7 +11382,7 @@ layoutPage();
 
 if(name==="🏢 Business Settings"){
 
-businessSettingsPage();
+businessSettings();
 
 }
 
@@ -8533,7 +11390,7 @@ businessSettingsPage();
 
 if(name==="👤 Account Settings"){
 
-accountSettingsPage();
+accountSettings();
 
 }
 
@@ -8541,7 +11398,7 @@ accountSettingsPage();
 
 if(name==="🔐 Security Settings"){
 
-securitySettingsPage();
+securitySettings();
 
 }
 
@@ -8549,7 +11406,15 @@ securitySettingsPage();
 
 if(name==="🔔 Notification Settings"){
 
-notificationSettingsPage();
+notificationSettings();
+
+}
+
+
+
+if(name==="📱 Device Settings"){
+
+deviceSettings();
 
 }
 
@@ -8557,7 +11422,39 @@ notificationSettingsPage();
 
 if(name==="💾 Backup & Storage"){
 
-backupPage();
+backupSettings();
+
+}
+
+
+
+if(name==="🌎 Language & Region"){
+
+languageSettings();
+
+}
+
+
+
+if(name==="🧾 Invoice Settings"){
+
+invoiceSettings();
+
+}
+
+
+
+if(name==="🧪 Beta Features"){
+
+betaFeatures();
+
+}
+
+
+
+if(name==="🧹 Maintenance"){
+
+maintenancePage();
 
 }
 
@@ -8565,7 +11462,7 @@ backupPage();
 
 if(name==="📥 Export Data"){
 
-exportPage();
+exportData();
 
 }
 
@@ -8573,17 +11470,13 @@ exportPage();
 
 if(name==="📤 Import Data"){
 
-importPage();
+importDataPage();
 
 }
 
 
 
-
-}
-
-
-);
+});
 
 
 });
@@ -8596,11 +11489,9 @@ importPage();
 
 
 
-
-
-// ===============================
-// SETTINGS PAGES
-// ===============================
+// =====================================
+// THEME
+// =====================================
 
 
 
@@ -8610,36 +11501,36 @@ importPage();
 function themePage(){
 
 
-simplePage("🎨 Theme Settings");
-
-
-}
-
-
-
-
-
-function darkModePage(){
-
 
 content.innerHTML=`
-
 
 <div class="card">
 
 
 <h1>
 
-🌙 Dark Mode
+🎨 Theme
 
 </h1>
 
 
-<button onclick="toggleDark()">
 
-Toggle Mode
+<input type="color"
+
+id="mainColor"
+
+
+
+>
+
+
+
+<button onclick="saveTheme()">
+
+Save Theme
 
 </button>
+
 
 
 </div>
@@ -8648,6 +11539,7 @@ Toggle Mode
 `;
 
 
+
 }
 
 
@@ -8656,14 +11548,52 @@ Toggle Mode
 
 
 
-window.toggleDark=function(){
+
+window.saveTheme=async function(){
 
 
-document.documentElement.style
+
+let color =
+
+mainColor.value;
+
+
+
+
+
+document.documentElement
+.style
 .setProperty(
-"--bg",
-"#000000"
+"--main-color",
+color
 );
+
+
+
+
+
+
+await set(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+
+"/theme/main"
+
+),
+
+color
+
+);
+
+
+
+alert(
+"Theme saved"
+);
+
 
 
 };
@@ -8676,11 +11606,21 @@ document.documentElement.style
 
 
 
+
+
+// =====================================
+// COLORS
+// =====================================
+
+
+
+
+
 function colorsPage(){
 
 
-content.innerHTML=`
 
+content.innerHTML=`
 
 <div class="card">
 
@@ -8696,57 +11636,65 @@ content.innerHTML=`
 
 <label>
 
-Background
+Sidebar Color
 
 </label>
 
 
 <input type="color"
-id="bgColor">
+
+id="sideColor"
+
+>
 
 
+
+<br>
 
 
 
 <label>
 
-Blue
+Accent Color
 
 </label>
 
 
 <input type="color"
-id="blueColor">
+
+id="accentColor"
+
+>
 
 
 
+<br>
 
 
 
 <label>
 
-Text
+Text Color
 
 </label>
 
 
 <input type="color"
-id="textColor">
+
+id="textColor"
+
+>
 
 
 
+<button onclick="applyColors()">
 
-
-<button onclick="saveColors()">
-
-Save Colors
+Apply
 
 </button>
 
 
-
 </div>
-
 
 `;
 
@@ -8762,23 +11710,26 @@ Save Colors
 
 
 
-window.saveColors=async function(){
+window.applyColors=function(){
 
 
 
 document.documentElement.style
 .setProperty(
-"--bg",
-bgColor.value
+"--sidebar",
+sideColor.value
 );
+
 
 
 
 document.documentElement.style
 .setProperty(
-"--blue",
-blueColor.value
+"--main-color",
+accentColor.value
 );
+
+
 
 
 
@@ -8792,27 +11743,33 @@ textColor.value
 
 
 
-if(currentUser){
+};
 
 
 
-await update(
-
-userPath("settings"),
-
-{
 
 
-background:bgColor.value,
-
-blue:blueColor.value,
-
-text:textColor.value
 
 
-}
 
 
+
+
+// =====================================
+// DARK MODE
+// =====================================
+
+
+
+
+
+
+function darkModePage(){
+
+
+
+document.body.classList.toggle(
+"dark"
 );
 
 
@@ -8823,11 +11780,15 @@ text:textColor.value
 
 
 
-};
 
 
 
 
+
+
+// =====================================
+// LAYOUT
+// =====================================
 
 
 
@@ -8836,22 +11797,16 @@ text:textColor.value
 function layoutPage(){
 
 
-simplePage(
-"🖥 Layout Settings"
+
+simpleSavePage(
+
+"🖥 Layout Settings",
+
+"layout"
+
+
 );
 
-
-}
-
-
-
-
-function businessSettingsPage(){
-
-
-simplePage(
-"🏢 Business Settings"
-);
 
 
 }
@@ -8860,12 +11815,31 @@ simplePage(
 
 
 
-function accountSettingsPage(){
 
 
-simplePage(
-"👤 Account Settings"
+
+
+// =====================================
+// BUSINESS SETTINGS
+// =====================================
+
+
+
+
+
+function businessSettings(){
+
+
+
+simpleSavePage(
+
+"🏢 Business Settings",
+
+"businessSettings"
+
+
 );
+
 
 
 }
@@ -8874,61 +11848,183 @@ simplePage(
 
 
 
-function securitySettingsPage(){
-
-
-simplePage(
-"🔐 Security Settings"
-);
-
-
-}
 
 
 
 
-
-function notificationSettingsPage(){
-
-
-simplePage(
-"🔔 Notification Settings"
-);
-
-
-}
+// =====================================
+// ACCOUNT
+// =====================================
 
 
 
 
 
-function backupPage(){
 
-
-simplePage(
-"💾 Backup & Storage"
-);
-
-
-}
-
-
-
-
-
-function exportPage(){
+function accountSettings(){
 
 
 
 content.innerHTML=`
-
 
 <div class="card">
 
 
 <h1>
 
-📥 Export Data
+👤 Account Settings
+
+</h1>
+
+
+<p>
+
+Email:
+
+${currentUser.email}
+
+</p>
+
+
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// SECURITY
+// =====================================
+
+
+
+
+
+function securitySettings(){
+
+
+
+simpleSavePage(
+
+"🔐 Security Settings",
+
+"securitySettings"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// NOTIFICATIONS
+// =====================================
+
+
+
+
+
+
+function notificationSettings(){
+
+
+
+simpleSavePage(
+
+"🔔 Notification Settings",
+
+"notificationSettings"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// DEVICES
+// =====================================
+
+
+
+
+
+
+function deviceSettings(){
+
+
+
+simpleSavePage(
+
+"📱 Device Settings",
+
+"deviceSettings"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// BACKUP
+// =====================================
+
+
+
+
+
+
+function backupSettings(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+💾 Backup & Storage
 
 </h1>
 
@@ -8936,13 +12032,153 @@ content.innerHTML=`
 
 <button onclick="exportData()">
 
-Export
+Create Backup
 
 </button>
 
 
 </div>
 
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// LANGUAGE
+// =====================================
+
+
+
+
+
+
+function languageSettings(){
+
+
+
+simpleSavePage(
+
+"🌎 Language & Region",
+
+"language"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// INVOICES
+// =====================================
+
+
+
+
+
+
+function invoiceSettings(){
+
+
+
+simpleSavePage(
+
+"🧾 Invoice Settings",
+
+"invoiceSettings"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =====================================
+// BETA
+// =====================================
+
+
+
+
+
+
+function betaFeatures(){
+
+
+
+simpleSavePage(
+
+"🧪 Beta Features",
+
+"beta"
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function maintenancePage(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+🧹 Maintenance
+
+</h1>
+
+
+<p>
+
+System maintenance tools.
+
+</p>
+
+
+</div>
 
 `;
 
@@ -8956,140 +12192,101 @@ Export
 
 
 
-window.exportData=async function(){
 
 
+// =====================================
+// IMPORT DATA
+// =====================================
 
-let snap =
-await get(
 
-userPath("")
 
-);
 
 
+function importDataPage(){
 
-let blob =
-new Blob(
 
-[
-JSON.stringify(
-snap.val(),
-null,
-2
-)
-],
 
-{
-type:"application/json"
-}
+content.innerHTML=`
 
-);
+<div class="card">
 
 
+<h1>
 
-let a =
-document.createElement("a");
+📤 Import Data
 
+</h1>
 
 
-a.href =
-URL.createObjectURL(blob);
 
+<input type="file"
 
+id="importFile"
 
-a.download =
-"truefix-backup.json";
 
 
+>
 
-a.click();
 
+<button onclick="importJSON()">
 
-
-};
-
-
-
-
-
-
-
-
-
-function importPage(){
-
-
-simplePage(
-"📤 Import Data"
-);
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-// ===============================
-// ACCOUNT BUTTON
-// ===============================
-
-
-
-
-
-document.querySelector(".accountBox")
-.onclick=function(){
-
-
-let menu =
-document.createElement("div");
-
-
-menu.className="card";
-
-
-menu.style.position="fixed";
-
-menu.style.bottom="80px";
-
-menu.style.left="20px";
-
-menu.style.width="250px";
-
-
-
-menu.innerHTML=`
-
-
-<button onclick="logoutUser()">
-
-Logout
+Import
 
 </button>
 
 
-
-<button onclick="switchAccount()">
-
-Switch Account
-
-</button>
-
-
+</div>
 
 `;
 
 
 
-document.body.appendChild(menu);
+}
+
+
+
+
+
+
+
+
+
+window.importJSON=function(){
+
+
+
+let file =
+
+importFile.files[0];
+
+
+
+if(!file)return;
+
+
+
+
+let reader =
+new FileReader();
+
+
+
+
+reader.onload=e=>{
+
+
+
+alert(
+"Backup loaded"
+);
+
+
+
+};
+
+
+
+reader.readAsText(file);
 
 
 
@@ -9103,22 +12300,266 @@ document.body.appendChild(menu);
 
 
 
+</script>
+
+<!-- =====================================
+PART 15 / 15
+FINAL POLISH + ACCOUNT SYSTEM
+===================================== -->
 
 
-// ===============================
+<style>
+
+
+:root{
+
+--main-color:#008cff;
+--sidebar:#050505;
+--text:#ffffff;
+
+}
+
+
+
+
+*{
+
+box-sizing:border-box;
+
+}
+
+
+
+body{
+
+margin:0;
+background:#070707;
+color:var(--text);
+font-family:Arial,Helvetica,sans-serif;
+
+}
+
+
+
+.card{
+
+background:#111;
+border-radius:18px;
+padding:20px;
+margin:15px;
+box-shadow:0 0 20px #000;
+
+animation:fade .25s;
+
+}
+
+
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+transform:translateY(10px);
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+
+
+
+
+button{
+
+background:var(--main-color);
+border:none;
+padding:12px 18px;
+border-radius:12px;
+color:white;
+cursor:pointer;
+
+}
+
+
+
+button:hover{
+
+transform:scale(1.04);
+
+}
+
+
+
+
+input,textarea,select{
+
+width:100%;
+padding:12px;
+margin:8px;
+border-radius:10px;
+background:#222;
+color:white;
+border:1px solid #333;
+
+}
+
+
+
+
+
+.sidebar{
+
+background:var(--sidebar);
+width:260px;
+height:100vh;
+position:fixed;
+overflow:auto;
+left:0;
+top:0;
+padding:15px;
+
+}
+
+
+
+
+.item{
+
+padding:12px;
+border-radius:12px;
+cursor:pointer;
+transition:.2s;
+
+}
+
+
+
+.item:hover{
+
+background:var(--main-color);
+
+}
+
+
+
+
+
+.main{
+
+margin-left:270px;
+padding:20px;
+
+}
+
+
+
+
+
+#accountMenu{
+
+
+position:fixed;
+bottom:20px;
+left:20px;
+background:#111;
+border-radius:15px;
+padding:15px;
+display:none;
+
+}
+
+
+
+
+</style>
+
+
+
+
+
+
+
+<script type="module">
+
+
+
+// =====================================
+// ACCOUNT MENU
+// =====================================
+
+
+
+
+let accountButton =
+document.getElementById(
+"accountButton"
+);
+
+
+
+let accountMenu =
+document.getElementById(
+"accountMenu"
+);
+
+
+
+
+
+if(accountButton){
+
+
+accountButton.onclick=()=>{
+
+
+accountMenu.style.display=
+
+accountMenu.style.display==="block"
+
+?
+
+"none"
+
+:
+
+"block";
+
+
+
+};
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+// =====================================
 // LOGOUT
-// ===============================
+// =====================================
 
 
 
 
 
+window.logoutUser=async function(){
 
-window.logoutUser=function(){
 
-
-signOut(auth);
-
+await signOut(auth);
 
 
 location.reload();
@@ -9135,11 +12576,11 @@ location.reload();
 
 
 
+// =====================================
+// SWITCH ACCOUNT
+// =====================================
 
 
-// ===============================
-// SWITCH / CREATE ACCOUNT
-// ===============================
 
 
 
@@ -9148,35 +12589,11 @@ window.switchAccount=function(){
 
 
 
-let accounts =
-JSON.parse(
-localStorage.getItem("truefixAccounts")
-||
-"[]"
-
-);
-
-
-
-
-
-if(accounts.length>=5){
-
-
 alert(
-"Maximum of 5 accounts reached"
+
+"Create another account from account settings"
+
 );
-
-
-return;
-
-
-}
-
-
-
-
-showCreate();
 
 
 
@@ -9190,51 +12607,201 @@ showCreate();
 
 
 
+// =====================================
+// SEARCH
+// =====================================
 
 
-// ===============================
-// SAVE LOGIN ACCOUNT
-// ===============================
 
 
 
-auth.onAuthStateChanged(async user=>{
+function globalSearch(){
+
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+🔎 Global Search
+
+</h1>
+
+
+
+<input id="searchBox"
+
+placeholder="Search TrueFix..."
+
+>
+
+
+
+<div id="searchResults">
+
+</div>
+
+
+</div>
+
+`;
+
+
+
+searchBox.oninput=function(){
+
+
+let text =
+searchBox.value.toLowerCase();
+
+
+
+let results="";
+
+
+
+
+document.querySelectorAll(".item")
+.forEach(x=>{
+
+
+if(
+x.innerText
+.toLowerCase()
+.includes(text)
+
+){
+
+
+results+=
+
+"<br>"+x.innerText;
+
+
+}
+
+
+});
+
+
+
+
+
+document.getElementById(
+"searchResults"
+)
+.innerHTML=results;
+
+
+
+};
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+document.querySelectorAll(".item")
+.forEach(i=>{
+
+
+if(
+i.innerText.includes(
+"🔎 Global Search"
+)
+
+){
+
+
+
+i.onclick=globalSearch;
+
+
+
+}
+
+
+});
+
+
+
+
+
+
+
+
+
+// =====================================
+// LOAD SAVED COLORS
+// =====================================
+
+
+
+
+
+async function loadTheme(){
+
+
+
+let snap =
+
+await get(
+
+ref(
+
+db,
+
+"users/"+currentUser.uid+
+"/theme/main"
+
+)
+
+);
+
+
+
+
+
+if(snap.exists()){
+
+
+document.documentElement.style
+.setProperty(
+"--main-color",
+snap.val()
+
+);
+
+
+}
+
+
+
+}
+
+
+
+
+onAuthStateChanged(
+auth,
+
+user=>{
 
 
 if(user){
 
-
-let accounts =
-JSON.parse(
-
-localStorage.getItem("truefixAccounts")
-||
-"[]"
-
-);
-
-
-
-
-if(!accounts.includes(user.email)){
-
-
-
-accounts.push(user.email);
-
-
-
-localStorage.setItem(
-
-"truefixAccounts",
-
-JSON.stringify(accounts)
-
-);
-
-
-}
-
+loadTheme();
 
 
 }
@@ -9248,54 +12815,14 @@ JSON.stringify(accounts)
 
 
 
-
-
-
-
-
-// ===============================
-// FINAL STARTUP
-// ===============================
-
-
-
-
-
-window.addEventListener(
-"load",
-
-()=>{
-
-
-document
-.querySelectorAll(".dropdown")
-.forEach(d=>{
-
-d.style.display="none";
-
-});
-
-
-}
-
-);
-
-
-
-
-
-
-
-
-// ===============================
-// CLOSE FILE
-// ===============================
 
 
 </script>
 
 
-</body>
 
+
+
+</body>
 
 </html>

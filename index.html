@@ -1,47 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <title>TrueFix Wireless</title>
 
 
-<style>
 
-*{
-box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
-}
+<style>
 
 
 :root{
 
---black:#050505;
+--bg:#050505;
+--panel:#111111;
+--panel2:#1b1b1b;
 --blue:#007bff;
---panel:#101010;
---panel2:#171717;
 --text:#ffffff;
 
 }
 
 
-body{
 
-margin:0;
-background:var(--black);
-color:var(--text);
-height:100vh;
-overflow:hidden;
+*{
+
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
 
 }
 
 
-/* AUTH */
 
-#authScreen{
+body{
+
+margin:0;
+background:var(--bg);
+color:var(--text);
+
+}
+
+
+
+
+
+/* LOGIN */
+
+
+#loginScreen{
 
 height:100vh;
 display:flex;
@@ -51,52 +61,76 @@ justify-content:center;
 }
 
 
-.authBox{
 
-width:420px;
+.loginCard{
+
+width:430px;
+
 background:var(--panel);
+
 padding:35px;
-border-radius:22px;
-box-shadow:0 0 40px #000;
+
+border-radius:25px;
+
+box-shadow:
+0 0 50px #000;
 
 }
 
 
+
+
+
 .logo{
 
-text-align:center;
-font-size:30px;
+font-size:34px;
 font-weight:bold;
+text-align:center;
 color:var(--blue);
+
 margin-bottom:25px;
 
 }
 
 
+
+
+
 input{
 
 width:100%;
+
 padding:14px;
-margin:8px 0;
+
+margin:7px 0;
 
 background:#222;
+
 border:none;
+
 border-radius:12px;
+
 color:white;
 
 }
+
+
 
 
 button{
 
 width:100%;
+
 padding:14px;
+
 margin-top:10px;
 
+background:var(--blue);
+
 border:none;
+
 border-radius:12px;
 
-background:var(--blue);
 color:white;
 
 cursor:pointer;
@@ -104,52 +138,68 @@ cursor:pointer;
 }
 
 
-.switch{
+
+.link{
 
 text-align:center;
+
 margin-top:15px;
+
 color:var(--blue);
+
 cursor:pointer;
 
 }
 
 
 
-/* APP */
+
+
+/* MAIN APP */
 
 
 #app{
 
 display:none;
+
 height:100vh;
 
 }
 
 
 
+
+
 .sidebar{
 
+
 position:fixed;
+
 left:0;
 top:0;
 
 width:300px;
+
 height:100vh;
+
 
 background:var(--panel);
 
 display:flex;
+
 flex-direction:column;
 
 }
 
 
 
-.sidebarLogo{
+
+.sideTitle{
 
 padding:25px;
 
-font-size:25px;
+font-size:28px;
+
 font-weight:bold;
 
 color:var(--blue);
@@ -158,65 +208,95 @@ color:var(--blue);
 
 
 
-.sidebarScroll{
+
+.menu{
 
 overflow:auto;
+
 flex:1;
 
 }
 
 
 
-.section{
 
-padding:13px 20px;
+
+.category{
+
+
+padding:15px 20px;
+
+font-weight:bold;
 
 cursor:pointer;
-
-display:flex;
-justify-content:space-between;
 
 }
 
 
-.section:hover{
+
+.category:hover{
 
 background:var(--panel2);
 
 }
 
 
-.children{
+
+
+.dropdown{
 
 display:none;
 
 }
 
 
+
+
+
 .item{
+
 
 padding:10px 35px;
 
-color:#ccc;
-
 cursor:pointer;
 
+color:#ccc;
+
+
 }
+
 
 
 .item:hover{
 
 background:#222;
+
 color:white;
 
 }
 
 
 
-/* MAIN */
+
+
+.accountBox{
+
+padding:20px;
+
+border-top:1px solid #333;
+
+cursor:pointer;
+
+}
+
+
+
+
+
 
 
 .main{
+
 
 margin-left:300px;
 
@@ -224,19 +304,22 @@ height:100vh;
 
 overflow:auto;
 
-padding:25px;
+padding:30px;
 
 }
 
 
 
+
+
 .card{
+
 
 background:var(--panel);
 
-padding:25px;
+border-radius:25px;
 
-border-radius:20px;
+padding:25px;
 
 margin-bottom:20px;
 
@@ -246,52 +329,29 @@ margin-bottom:20px;
 
 
 
-.account{
+.statGrid{
 
-height:70px;
 
-border-top:1px solid #222;
+display:grid;
 
-padding:20px;
+grid-template-columns:
+repeat(auto-fit,minmax(200px,1fr));
 
-cursor:pointer;
-
-position:relative;
+gap:20px;
 
 }
 
 
 
-.accountMenu{
 
-display:none;
-
-position:absolute;
-
-bottom:75px;
-left:15px;
-
-width:260px;
-
-background:#111;
-
-border-radius:15px;
-
-}
+.stat{
 
 
+background:var(--panel2);
 
-.accountOption{
+padding:25px;
 
-padding:15px;
-
-}
-
-
-
-.accountOption:hover{
-
-background:#222;
+border-radius:20px;
 
 }
 
@@ -300,18 +360,39 @@ background:#222;
 </style>
 
 
+
+
+
+
+
+
+
 </head>
+
+
+
+
 
 
 <body>
 
 
 
-<div id="authScreen">
 
 
 
-<div class="authBox" id="loginBox">
+
+
+
+<!-- LOGIN AREA -->
+
+
+<div id="loginScreen">
+
+
+
+<div class="loginCard">
+
 
 
 <div class="logo">
@@ -321,25 +402,31 @@ TRUEFIX WIRELESS
 </div>
 
 
-<input id="email"
+
+
+
+<div id="signInArea">
+
+
+<input id="loginEmail"
 placeholder="Email">
 
 
-<input id="password"
+<input id="loginPassword"
 type="password"
 placeholder="Password">
 
 
-<button onclick="login()">
+<button onclick="signIn()">
 
-SIGN IN
+Sign In
 
 </button>
 
 
 
-<div class="switch"
-onclick="openCreate()">
+<div class="link"
+onclick="showCreate()">
 
 Create Account
 
@@ -354,16 +441,11 @@ Create Account
 
 
 
-<div class="authBox"
-id="createBox"
+
+
+<div id="createArea"
 style="display:none;">
 
-
-<div class="logo">
-
-CREATE ACCOUNT
-
-</div>
 
 
 <input id="firstName"
@@ -388,23 +470,30 @@ type="password"
 placeholder="Confirm Password">
 
 
+<button onclick="createAccount()">
 
-<button onclick="register()">
-
-CREATE ACCOUNT
+Create Account
 
 </button>
 
 
 
-<div class="switch"
-onclick="openLogin()">
+<div class="link"
+onclick="showLogin()">
 
 Back To Login
 
 </div>
 
 
+
+
+</div>
+
+
+
+
+
 </div>
 
 
@@ -413,6 +502,17 @@ Back To Login
 
 
 
+
+
+
+
+
+
+
+
+
+
+<!-- APP AREA -->
 
 
 
@@ -420,11 +520,21 @@ Back To Login
 
 
 
+
+
+
+
+<!-- SIDEBAR -->
+
+
+
 <div class="sidebar">
 
 
 
-<div class="sidebarLogo">
+
+
+<div class="sideTitle">
 
 TRUEFIX
 
@@ -433,33 +543,69 @@ TRUEFIX
 
 
 
-<div class="sidebarScroll">
+
+<div class="menu">
 
 
 
-<!-- HOME -->
 
-<div class="section" onclick="toggle('home')">
+
+
+
+<div class="category">
 
 🏠 HOME ▼
 
 </div>
 
 
-<div id="home" class="children">
+<div class="dropdown">
 
 
-<div class="item">📊 Dashboard</div>
+<div class="item"
+onclick="openPage('Dashboard')">
 
-<div class="item">🔔 Notifications</div>
+📊 Dashboard
 
-<div class="item">📰 Activity Feed</div>
+</div>
 
-<div class="item">📌 Pinned Items</div>
 
-<div class="item">🗓 Today Overview</div>
 
-<div class="item">🔎 Global Search</div>
+<div class="item"
+onclick="openPage('Notifications')">
+
+🔔 Notifications
+
+</div>
+
+
+<div class="item">
+
+📰 Activity Feed
+
+</div>
+
+
+<div class="item">
+
+📌 Pinned Items
+
+</div>
+
+
+<div class="item">
+
+🗓 Today Overview
+
+</div>
+
+
+<div class="item">
+
+🔎 Global Search
+
+</div>
+
 
 
 </div>
@@ -469,53 +615,149 @@ TRUEFIX
 
 
 
-<!-- REPAIRS -->
 
-<div class="section" onclick="toggle('repairs')">
+
+
+
+
+
+<div class="category">
 
 📱 REPAIRS ▼
 
 </div>
 
 
-<div id="repairs" class="children">
+
+<div class="dropdown">
 
 
-<div class="item">📋 Repair Tickets</div>
 
-<div class="item">👥 Customers</div>
+<div class="item">
 
-<div class="item">📅 Calendar</div>
+📋 Repair Tickets
 
-<div class="item">📷 Photos</div>
+</div>
 
-<div class="item">📂 Files</div>
 
-<div class="item">🔄 Repair Status</div>
+<div class="item">
 
-<div class="item">🧾 Estimates</div>
+👥 Customers
 
-<div class="item">✍️ Customer Signatures</div>
+</div>
 
-<div class="item">🛡 Warranty Claims</div>
 
-<div class="item">⭐ Reviews</div>
+<div class="item">
 
-<div class="item">🔍 Device Inspection</div>
+📅 Calendar
 
-<div class="item">📸 Before Photos</div>
+</div>
 
-<div class="item">📸 After Photos</div>
 
-<div class="item">🧪 Testing Checklist</div>
+<div class="item">
 
-<div class="item">🔧 Repair Steps</div>
+📷 Photos
 
-<div class="item">⏳ Waiting For Parts</div>
+</div>
 
-<div class="item">⏱ Labor Timer</div>
 
-<div class="item">✅ Quality Check</div>
+<div class="item">
+
+📂 Files
+
+</div>
+
+
+<div class="item">
+
+🔄 Repair Status
+
+</div>
+
+
+<div class="item">
+
+🧾 Estimates
+
+</div>
+
+
+<div class="item">
+
+✍️ Customer Signatures
+
+</div>
+
+
+<div class="item">
+
+🛡 Warranty Claims
+
+</div>
+
+
+<div class="item">
+
+⭐ Reviews
+
+</div>
+
+
+<div class="item">
+
+🔍 Device Inspection
+
+</div>
+
+
+<div class="item">
+
+📸 Before Photos
+
+</div>
+
+
+<div class="item">
+
+📸 After Photos
+
+</div>
+
+
+<div class="item">
+
+🧪 Testing Checklist
+
+</div>
+
+
+<div class="item">
+
+🔧 Repair Steps
+
+</div>
+
+
+<div class="item">
+
+⏳ Waiting For Parts
+
+</div>
+
+
+<div class="item">
+
+⏱ Labor Timer
+
+</div>
+
+
+<div class="item">
+
+✅ Quality Check
+
+</div>
+
 
 
 </div>
@@ -524,107 +766,83 @@ TRUEFIX
 
 
 
-<!-- DEVICES -->
 
 
-<div class="section" onclick="toggle('devices')">
+
+
+
+
+
+<div class="category">
 
 📱 DEVICES ▼
 
 </div>
 
 
-<div id="devices" class="children">
+
+<div class="dropdown">
 
 
-<div class="item">📱 iPhones</div>
+<div class="item">
 
-<div class="item">📱 Samsung</div>
-
-<div class="item">📱 iPads</div>
-
-<div class="item">💻 Computers</div>
-
-<div class="item">⌚ Smart Watches</div>
-
-<div class="item">🔩 Parts Used</div>
-
-<div class="item">🛡 Warranty Tracking</div>
-
-<div class="item">🔎 IMEI Database</div>
-
-<div class="item">📜 Device History</div>
-
+📱 iPhones
 
 </div>
 
 
+<div class="item">
 
-
-<!-- MORE CONTINUES PART 2 -->
-
-
+📱 Samsung
 
 </div>
 
 
+<div class="item">
 
-<div class="account"
-onclick="accountMenu()">
-
-👤 Account
-
-
-<div class="accountMenu"
-id="accountMenu">
-
-
-<div class="accountOption">
-
-Logout
+📱 iPads
 
 </div>
 
 
-<div class="accountOption">
+<div class="item">
 
-Switch Account
-
-</div>
-
+💻 Computers
 
 </div>
 
 
+<div class="item">
+
+⌚ Smart Watches
+
 </div>
 
 
+<div class="item">
+
+🔩 Parts Used
+
 </div>
 
 
+<div class="item">
+
+🛡 Warranty Tracking
+
+</div>
 
 
+<div class="item">
+
+🔎 IMEI Database
+
+</div>
 
 
-<div class="main">
+<div class="item">
 
-
-<div class="card">
-
-
-<h1>
-
-TrueFix Wireless Dashboard
-
-</h1>
-
-
-<p>
-
-Loading...
-
-</p>
-
+📜 Device History
 
 </div>
 
@@ -633,107 +851,68 @@ Loading...
 
 
 
-</div>
 
 
 
 
 
 
-<script>
-
-
-function toggle(id){
-
-let x=document.getElementById(id);
-
-x.style.display=
-x.style.display==="block"
-?"none"
-:"block";
-
-}
 
 
 
-function openCreate(){
-
-loginBox.style.display="none";
-createBox.style.display="block";
-
-}
-
-
-
-function openLogin(){
-
-createBox.style.display="none";
-loginBox.style.display="block";
-
-}
-
-
-
-function accountMenu(){
-
-let x=document.getElementById("accountMenu");
-
-x.style.display=
-x.style.display==="block"
-?"none"
-:"block";
-
-}
-
-
-
-</script>
-
-<!-- =========================
-PART 2 / 10
-SIDEBAR CONTINUATION
-========================= -->
-
-
-<!-- COMMUNICATION -->
-
-<div class="section" onclick="toggle('communication')">
+<div class="category">
 
 💬 COMMUNICATION ▼
 
 </div>
 
 
-<div id="communication" class="children">
 
 
-<div class="item">💬 Team Chat</div>
+<div class="dropdown">
 
-<div class="item">📢 Announcements</div>
 
-<div class="item">📝 Shared Notes</div>
+<div class="item">
 
-<div class="item">✅ Tasks</div>
+💬 Team Chat
 
-<div class="item">🔔 Employee Alerts</div>
+</div>
 
-<div class="item">📎 Shared Files</div>
 
-<div class="item">📸 Team Photos</div>
+<div class="item">
 
-<div class="item">🟢 Online Employees</div>
+📢 Announcements
 
-<div class="item">📲 SMS Messages</div>
+</div>
 
-<div class="item">✉️ Email Center</div>
 
-<div class="item">📞 Call Logs</div>
+<div class="item">
 
-<div class="item">📋 Customer History</div>
+📝 Shared Notes
 
-<div class="item">🎂 Birthday Reminders</div>
+</div>
 
-<div class="item">🔁 Follow Up Reminders</div>
+
+<div class="item">
+
+✅ Tasks
+
+</div>
+
+
+<div class="item">
+
+🔔 Employee Alerts
+
+</div>
+
+
+<div class="item">
+
+📲 SMS Messages
+
+</div>
+
 
 
 </div>
@@ -742,44 +921,49 @@ SIDEBAR CONTINUATION
 
 
 
-<!-- FINANCES -->
 
 
-<div class="section" onclick="toggle('finances')">
+
+
+
+<div class="category">
 
 💰 FINANCES ▼
 
 </div>
 
 
-<div id="finances" class="children">
+
+<div class="dropdown">
 
 
-<div class="item">💵 Repair Income</div>
+<div class="item">
 
-<div class="item">💼 Other Jobs</div>
+💵 Repair Income
 
-<div class="item">🏦 Bank Account</div>
+</div>
 
-<div class="item">👛 Cash Wallet</div>
 
-<div class="item">💳 Expenses</div>
+<div class="item">
 
-<div class="item">🧾 Bills</div>
+💳 Expenses
 
-<div class="item">💸 Taxes</div>
+</div>
 
-<div class="item">🎯 Goals</div>
 
-<div class="item">🧾 Invoices</div>
+<div class="item">
 
-<div class="item">💰 Discounts</div>
+🧾 Invoices
 
-<div class="item">🎟 Coupons</div>
+</div>
 
-<div class="item">💳 Payment History</div>
 
-<div class="item">🧮 Tax Calculator</div>
+<div class="item">
+
+💸 Taxes
+
+</div>
+
 
 
 </div>
@@ -790,49 +974,44 @@ SIDEBAR CONTINUATION
 
 
 
-<!-- INVENTORY -->
 
 
-<div class="section" onclick="toggle('inventory')">
+<div class="category">
 
 📦 INVENTORY ▼
 
 </div>
 
 
+<div class="dropdown">
 
-<div id="inventory" class="children">
+
+<div class="item">
+
+📦 Inventory
+
+</div>
 
 
-<div class="item">📦 Inventory</div>
+<div class="item">
 
-<div class="item">📷 Barcode Scanner</div>
+📷 Barcode Scanner
 
-<div class="item">⚠ Low Stock</div>
+</div>
 
-<div class="item">📥 Incoming Parts</div>
 
-<div class="item">📤 Used Parts</div>
+<div class="item">
 
-<div class="item">🧮 Stock Count</div>
+⚠ Low Stock
 
-<div class="item">💲 Part Pricing</div>
+</div>
 
-<div class="item">📍 Storage Locations</div>
 
-<div class="item">🔢 Part Numbers</div>
+<div class="item">
 
-<div class="item">🏷 Labels</div>
+🚚 Supplier Orders
 
-<div class="item">📦 Part Batches</div>
-
-<div class="item">🚚 Supplier Orders</div>
-
-<div class="item">📉 Price Changes</div>
-
-<div class="item">⚠ Defective Parts</div>
-
-<div class="item">🔄 Returns</div>
+</div>
 
 
 </div>
@@ -843,36 +1022,38 @@ SIDEBAR CONTINUATION
 
 
 
-<!-- TOOLS -->
 
-
-<div class="section" onclick="toggle('tools')">
+<div class="category">
 
 🛠 TOOLS ▼
 
 </div>
 
 
-<div id="tools" class="children">
 
 
-<div class="item">🧮 Repair Calculator</div>
+<div class="dropdown">
 
-<div class="item">💲 Parts Pricing</div>
 
-<div class="item">🔎 Customer Lookup</div>
+<div class="item">
 
-<div class="item">📟 IMEI Checker</div>
+🧮 Repair Calculator
 
-<div class="item">🧰 Tool Inventory</div>
+</div>
 
-<div class="item">⏱ Repair Timer</div>
 
-<div class="item">📏 Measurements</div>
+<div class="item">
 
-<div class="item">📝 Templates</div>
+💲 Parts Pricing
 
-<div class="item">🧠 Repair Guides</div>
+</div>
+
+
+<div class="item">
+
+📟 IMEI Checker
+
+</div>
 
 
 </div>
@@ -883,11 +1064,7 @@ SIDEBAR CONTINUATION
 
 
 
-
-<!-- ANALYTICS -->
-
-
-<div class="section" onclick="toggle('analytics')">
+<div class="category">
 
 📈 ANALYTICS ▼
 
@@ -895,32 +1072,29 @@ SIDEBAR CONTINUATION
 
 
 
-<div id="analytics" class="children">
+
+<div class="dropdown">
 
 
-<div class="item">📈 Revenue</div>
+<div class="item">
 
-<div class="item">📊 Charts</div>
+📈 Revenue
 
-<div class="item">📉 Profit</div>
+</div>
 
-<div class="item">🏆 Top Repairs</div>
 
-<div class="item">📋 Reports</div>
+<div class="item">
 
-<div class="item">👥 Customer Growth</div>
+📊 Charts
 
-<div class="item">📦 Inventory Value</div>
+</div>
 
-<div class="item">🔥 Popular Devices</div>
 
-<div class="item">🔮 Revenue Forecast</div>
+<div class="item">
 
-<div class="item">📦 Stock Predictions</div>
+📉 Profit
 
-<div class="item">👨‍🔧 Employee Stats</div>
-
-<div class="item">⏱ Average Repair Time</div>
+</div>
 
 
 </div>
@@ -932,10 +1106,8 @@ SIDEBAR CONTINUATION
 
 
 
-<!-- EMPLOYEES -->
 
-
-<div class="section" onclick="toggle('employees')">
+<div class="category">
 
 👨‍🔧 EMPLOYEES ▼
 
@@ -943,32 +1115,37 @@ SIDEBAR CONTINUATION
 
 
 
-<div id="employees" class="children">
 
 
-<div class="item">👤 Employees</div>
+<div class="dropdown">
 
-<div class="item">🔑 Permissions</div>
 
-<div class="item">🕒 Schedule</div>
+<div class="item">
 
-<div class="item">⭐ Performance</div>
+👤 Employees
 
-<div class="item">💰 Payroll</div>
+</div>
 
-<div class="item">🟢 Attendance</div>
 
-<div class="item">🏆 Employee Leaderboard</div>
+<div class="item">
 
-<div class="item">📚 Training</div>
+🔑 Permissions
 
-<div class="item">🏅 Achievements</div>
+</div>
 
-<div class="item">🔥 Repair Streaks</div>
 
-<div class="item">🗨️ Message Employees</div>
+<div class="item">
 
-<div class="item">⭐ Skill Levels</div>
+🕒 Schedule
+
+</div>
+
+
+<div class="item">
+
+💰 Payroll
+
+</div>
 
 
 </div>
@@ -978,10 +1155,9 @@ SIDEBAR CONTINUATION
 
 
 
-<!-- AI -->
 
 
-<div class="section" onclick="toggle('ai')">
+<div class="category">
 
 🤖 AI ASSISTANT ▼
 
@@ -989,20 +1165,28 @@ SIDEBAR CONTINUATION
 
 
 
-<div id="ai" class="children">
+<div class="dropdown">
 
 
-<div class="item">🤖 Repair Suggestions</div>
+<div class="item">
 
-<div class="item">💲 Pricing Help</div>
+🤖 Repair Suggestions
 
-<div class="item">✉️ Customer Reply Writer</div>
+</div>
 
-<div class="item">📦 Inventory Predictions</div>
 
-<div class="item">🧠 Repair Knowledge</div>
+<div class="item">
 
-<div class="item">🔍 AI Diagnostics</div>
+💲 Pricing Help
+
+</div>
+
+
+<div class="item">
+
+🔍 AI Diagnostics
+
+</div>
 
 
 </div>
@@ -1012,10 +1196,11 @@ SIDEBAR CONTINUATION
 
 
 
-<!-- CUSTOMER PORTAL -->
 
 
-<div class="section" onclick="toggle('customerPortal')">
+
+
+<div class="category">
 
 📞 CUSTOMER PORTAL ▼
 
@@ -1023,31 +1208,11 @@ SIDEBAR CONTINUATION
 
 
 
-<div id="customerPortal" class="children">
-
-
-<div class="item">🔎 Track Repair</div>
-
-<div class="item">📷 Upload Photos</div>
-
-<div class="item">✅ Approve Quote</div>
-
-<div class="item">💬 Messages</div>
-
-<div class="item">⭐ Leave Review</div>
-
-<div class="item">📅 Book Appointment</div>
-
-
-</div>
 
 
 
 
-<!-- BUSINESS -->
-
-
-<div class="section">
+<div class="category">
 
 🏪 BUSINESS MANAGEMENT ▼
 
@@ -1055,28 +1220,44 @@ SIDEBAR CONTINUATION
 
 
 
-<div class="section">
+
+
+
+<div class="category">
 
 💡 IDEAS / PLANNING ▼
 
 </div>
 
 
-<div class="section">
+
+
+
+
+<div class="category">
 
 🚨 SECURITY CENTER ▼
 
 </div>
 
 
-<div class="section">
+
+
+
+
+<div class="category">
 
 👑 ADMIN ▼
 
 </div>
 
 
-<div class="section">
+
+
+
+
+
+<div class="category">
 
 🔥 FIREBASE ADMIN ▼
 
@@ -1085,58 +1266,143 @@ SIDEBAR CONTINUATION
 
 
 
-<!-- SETTINGS -->
 
 
-<div class="section" onclick="toggle('settings')">
+<div class="category">
 
 ⚙ SETTINGS ▼
 
 </div>
 
 
-<div id="settings" class="children">
 
 
-<div class="item">🎨 Theme</div>
 
-<div class="item">🌙 Dark Mode</div>
-
-<div class="item">🎨 Custom Colors</div>
-
-<div class="item">🖥 Layout Settings</div>
-
-<div class="item">🏢 Business Settings</div>
-
-<div class="item">👤 Account Settings</div>
-
-<div class="item">🔐 Security Settings</div>
-
-<div class="item">🔔 Notification Settings</div>
-
-<div class="item">📱 Device Settings</div>
-
-<div class="item">💾 Backup & Storage</div>
-
-<div class="item">🌎 Language & Region</div>
-
-<div class="item">🧾 Invoice Settings</div>
-
-<div class="item">🧪 Beta Features</div>
-
-<div class="item">🧹 Maintenance</div>
-
-<div class="item">📥 Export Data</div>
-
-<div class="item">📤 Import Data</div>
 
 
 </div>
 
-<!-- =========================
-PART 3 / 10
-FIREBASE + AUTH SYSTEM
-========================= -->
+
+
+
+
+
+
+
+
+<div class="accountBox">
+
+
+👤 Account
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="main" id="content">
+
+
+
+<div class="card">
+
+
+<h1>
+
+TrueFix Wireless
+
+</h1>
+
+
+
+<h2>
+
+Dashboard
+
+</h2>
+
+
+
+
+
+<div class="statGrid">
+
+
+
+<div class="stat">
+
+📱 Repairs
+
+<br>
+
+0
+
+</div>
+
+
+<div class="stat">
+
+👥 Customers
+
+<br>
+
+0
+
+</div>
+
+
+<div class="stat">
+
+💰 Revenue
+
+<br>
+
+$0
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 <script type="module">
@@ -1149,6 +1415,7 @@ initializeApp
 }
 
 from
+
 "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
 
@@ -1158,12 +1425,12 @@ import {
 getAuth,
 createUserWithEmailAndPassword,
 signInWithEmailAndPassword,
-signOut,
 onAuthStateChanged
 
 }
 
 from
+
 "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 
@@ -1173,21 +1440,21 @@ import {
 getDatabase,
 ref,
 set,
+push,
 get,
-update,
-push
+onValue
 
 }
 
 from
+
 "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
 
 
 
 
 
-
-const firebaseConfig = {
+const firebaseConfig={
 
 
 apiKey:
@@ -1215,23 +1482,15 @@ messagingSenderId:
 
 
 appId:
-"1:999290275627:web:ef443cf92f75b0117fa76e",
-
-
-measurementId:
-"G-LK0QQW9PZC"
+"1:999290275627:web:ef443cf92f75b0117fa76e"
 
 
 };
 
 
 
-
-
-
 const firebaseApp =
 initializeApp(firebaseConfig);
-
 
 
 const auth =
@@ -1246,6 +1505,18 @@ getDatabase(firebaseApp);
 
 
 
+// PART 1 CONTINUES IN PART 2
+
+ 
+// ===============================
+// PART 2 / 8
+// AUTH + HOME SYSTEMS
+// ===============================
+
+
+
+
+
 let currentUser=null;
 
 
@@ -1255,18 +1526,58 @@ let currentUser=null;
 
 
 
-// OPEN CREATE ACCOUNT
+onAuthStateChanged(auth,user=>{
 
 
-window.openCreate=function(){
+if(user){
 
 
-document.getElementById("loginBox")
-.style.display="none";
+currentUser=user;
 
 
-document.getElementById("createBox")
-.style.display="block";
+openApp();
+
+
+
+}
+
+
+});
+
+
+
+
+
+
+
+
+
+window.signIn=async function(){
+
+
+try{
+
+
+await signInWithEmailAndPassword(
+
+auth,
+
+loginEmail.value,
+
+loginPassword.value
+
+);
+
+
+}
+
+catch(e){
+
+
+alert(e.message);
+
+
+}
 
 
 };
@@ -1277,66 +1588,16 @@ document.getElementById("createBox")
 
 
 
-// OPEN LOGIN
 
 
-window.openLogin=function(){
-
-
-document.getElementById("createBox")
-.style.display="none";
-
-
-document.getElementById("loginBox")
-.style.display="block";
-
-
-};
+window.createAccount=async function(){
 
 
 
-
-
-
-
-
-
-
-// CREATE ACCOUNT
-
-
-
-window.register = async function(){
-
-
-
-let first =
-document.getElementById("firstName").value;
-
-
-let last =
-document.getElementById("lastName").value;
-
-
-let email =
-document.getElementById("newEmail").value;
-
-
-let password =
-document.getElementById("newPassword").value;
-
-
-let confirm =
-document.getElementById("confirmPassword").value;
-
-
-
-
-if(password !== confirm){
+if(newPassword.value !== confirmPassword.value){
 
 
 alert("Passwords do not match");
-
 
 return;
 
@@ -1346,25 +1607,20 @@ return;
 
 
 
+
 try{
 
 
-const result =
+let result =
 await createUserWithEmailAndPassword(
 
 auth,
 
-email,
+newEmail.value,
 
-password
+newPassword.value
 
 );
-
-
-
-
-const uid =
-result.user.uid;
 
 
 
@@ -1372,50 +1628,23 @@ result.user.uid;
 
 await set(
 
-ref(db,"users/"+uid),
+ref(
+db,
+"users/"+result.user.uid
+),
 
 {
 
 
-profile:{
+firstName:firstName.value,
+
+lastName:lastName.value,
+
+email:newEmail.value,
 
 
-firstName:first,
-
-
-lastName:last,
-
-
-email:email,
-
-
-created:Date.now()
-
-
-},
-
-
-
-settings:{
-
-
-accent:"#007bff",
-
-background:"#050505",
-
-text:"#ffffff"
-
-
-},
-
-
-
-accounts:{
-
-
-main:true
-
-},
+created:
+Date.now(),
 
 
 
@@ -1431,8 +1660,20 @@ inventory:{},
 messages:{},
 
 
-notifications:{}
+notifications:{},
 
+
+settings:{
+
+
+background:"#050505",
+
+blue:"#007bff",
+
+text:"#ffffff"
+
+
+}
 
 
 }
@@ -1451,12 +1692,10 @@ alert("Account created!");
 
 }
 
+catch(e){
 
 
-catch(error){
-
-
-alert(error.message);
+alert(e.message);
 
 
 }
@@ -1473,51 +1712,759 @@ alert(error.message);
 
 
 
+window.showCreate=function(){
 
 
-// LOGIN
+signInArea.style.display="none";
+
+createArea.style.display="block";
 
 
-
-window.login = async function(){
-
-
-let email =
-document.getElementById("email").value;
-
-
-let password =
-document.getElementById("password").value;
+};
 
 
 
-try{
 
 
-await signInWithEmailAndPassword(
 
-auth,
 
-email,
 
-password
+window.showLogin=function(){
+
+
+createArea.style.display="none";
+
+signInArea.style.display="block";
+
+
+};
+
+
+
+
+
+
+
+
+
+function openApp(){
+
+
+loginScreen.style.display="none";
+
+app.style.display="block";
+
+
+loadDashboard();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// PAGE ENGINE
+// ===============================
+
+
+
+
+
+window.openPage=function(pageName){
+
+
+
+let area =
+document.getElementById("content");
+
+
+
+
+
+
+if(pageName==="Dashboard"){
+
+
+loadDashboard();
+
+
+return;
+
+
+}
+
+
+
+
+
+
+
+if(pageName==="Notifications"){
+
+
+
+area.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+🔔 Notifications
+
+</h1>
+
+
+<div id="notifications">
+
+Loading...
+
+</div>
+
+
+
+</div>
+
+
+
+`;
+
+
+
+loadNotifications();
+
+
+
+return;
+
+
+}
+
+
+
+
+
+
+
+
+if(pageName==="Activity Feed"){
+
+
+
+area.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+📰 Activity Feed
+
+</h1>
+
+
+
+<div id="activity">
+
+No activity yet
+
+</div>
+
+
+
+</div>
+
+
+`;
+
+
+
+return;
+
+
+}
+
+
+
+
+
+
+
+
+
+if(pageName==="Pinned Items"){
+
+
+
+area.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+📌 Pinned Items
+
+</h1>
+
+
+<button onclick="addPin()">
+
+Add Pin
+
+</button>
+
+
+<div id="pins">
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+
+loadPins();
+
+
+
+return;
+
+
+}
+
+
+
+
+
+
+
+
+
+if(pageName==="Today Overview"){
+
+
+
+area.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+🗓 Today Overview
+
+</h1>
+
+
+<div class="statGrid">
+
+
+<div class="stat">
+
+Repairs Today
+
+<br>
+
+0
+
+</div>
+
+
+
+<div class="stat">
+
+Appointments
+
+<br>
+
+0
+
+</div>
+
+
+<div class="stat">
+
+Messages
+
+<br>
+
+0
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+
+return;
+
+
+}
+
+
+
+
+
+
+
+
+if(pageName==="Global Search"){
+
+
+
+area.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+🔎 Global Search
+
+</h1>
+
+
+
+<input
+id="searchBox"
+placeholder="Search TrueFix...">
+
+
+
+<div id="searchResults">
+
+</div>
+
+
+
+</div>
+
+
+`;
+
+
+
+return;
+
+
+}
+
+
+
+
+
+area.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+${pageName}
+
+</h1>
+
+
+
+<p>
+
+System loaded.
+
+</p>
+
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// DASHBOARD
+// ===============================
+
+
+
+
+
+async function loadDashboard(){
+
+
+
+let area =
+document.getElementById("content");
+
+
+
+area.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+📊 Dashboard
+
+</h1>
+
+
+
+<div class="statGrid">
+
+
+
+<div class="stat">
+
+
+📱 Repairs
+
+
+<br>
+
+<span id="repairCount">
+
+0
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+<div class="stat">
+
+
+👥 Customers
+
+
+<br>
+
+<span id="customerCount">
+
+0
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+<div class="stat">
+
+
+📦 Inventory
+
+
+<br>
+
+<span id="inventoryCount">
+
+0
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+<div class="stat">
+
+
+💰 Earnings
+
+
+<br>
+
+$<span id="money">
+
+0
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+
+if(!currentUser)return;
+
+
+
+
+let snap =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid
+)
 
 );
 
 
 
+
+
+if(snap.exists()){
+
+
+let data=snap.val();
+
+
+
+
+repairCount.innerHTML =
+Object.keys(data.repairs||{}).length;
+
+
+
+
+customerCount.innerHTML =
+Object.keys(data.customers||{}).length;
+
+
+
+inventoryCount.innerHTML =
+Object.keys(data.inventory||{}).length;
+
+
+
 }
 
 
 
-catch(error){
+}
 
 
-alert(error.message);
+
+
+
+
+
+
+
+
+
+// ===============================
+// NOTIFICATIONS
+// ===============================
+
+
+
+
+async function loadNotifications(){
+
+
+
+let box =
+document.getElementById("notifications");
+
+
+
+let snap =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid+"/notifications"
+
+)
+
+);
+
+
+
+
+
+box.innerHTML="";
+
+
+
+
+if(snap.exists()){
+
+
+
+Object.values(
+snap.val()
+
+)
+.forEach(n=>{
+
+
+box.innerHTML +=`
+
+
+<div class="card">
+
+🔔 ${n.text}
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+
+}
+else{
+
+
+box.innerHTML="No notifications";
 
 
 }
 
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// PINS
+// ===============================
+
+
+
+
+
+window.addPin=async function(){
+
+
+
+let text =
+prompt("Pin item");
+
+
+
+if(!text)return;
+
+
+
+
+let id =
+push(
+
+ref(
+db,
+"users/"+currentUser.uid+"/pins"
+
+)
+
+).key;
+
+
+
+
+
+await set(
+
+ref(
+db,
+"users/"+currentUser.uid+"/pins/"+id
+),
+
+{
+
+
+text:text,
+
+time:Date.now()
+
+
+}
+
+
+
+);
+
+
+
+loadPins();
 
 
 };
@@ -1530,36 +2477,63 @@ alert(error.message);
 
 
 
-// AUTH CHECK
+async function loadPins(){
 
 
 
-onAuthStateChanged(auth,(user)=>{
-
-
-if(user){
-
-
-
-currentUser=user;
+let box =
+document.getElementById("pins");
 
 
 
-document
-.getElementById("authScreen")
-.style.display="none";
+if(!box)return;
 
 
 
-document
-.getElementById("app")
-.style.display="flex";
+let snap =
+await get(
+
+ref(
+db,
+"users/"+currentUser.uid+"/pins"
+
+)
+
+);
 
 
 
 
-loadUserData();
+box.innerHTML="";
 
+
+
+if(snap.exists()){
+
+
+
+Object.values(
+snap.val()
+
+)
+.forEach(p=>{
+
+
+box.innerHTML+=`
+
+
+<div class="card">
+
+📌 ${p.text}
+
+</div>
+
+
+`;
+
+
+
+});
 
 
 
@@ -1567,25 +2541,145 @@ loadUserData();
 
 
 
-else{
+}
 
 
 
-document
-.getElementById("authScreen")
-.style.display="flex";
 
 
 
-document
-.getElementById("app")
-.style.display="none";
+
+
+
+
+
+// ===============================
+// SEARCH
+// ===============================
+
+
+document.addEventListener(
+"input",
+
+e=>{
+
+
+if(e.target.id==="searchBox"){
+
+
+let text=e.target.value;
+
+
+document.getElementById("searchResults")
+.innerHTML=
+
+
+text
+?
+"Searching: "+text
+:
+"";
 
 
 
 }
 
 
+
+});
+
+
+
+
+// PART 2 CONTINUES IN PART 3
+
+
+// ===============================
+// PART 3 / 8
+// REPAIRS + CUSTOMERS + DEVICES
+// ===============================
+
+
+
+
+
+function userPath(path){
+
+return ref(
+db,
+"users/"+currentUser.uid+"/"+path
+);
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// REPAIRS PAGE
+// ===============================
+
+
+
+
+document.querySelectorAll(".item")
+.forEach(item=>{
+
+
+item.addEventListener(
+"click",
+
+()=>{
+
+
+let name =
+item.innerText.trim();
+
+
+
+if(name==="📋 Repair Tickets"){
+
+repairPage();
+
+}
+
+
+
+if(name==="👥 Customers"){
+
+customerPage();
+
+}
+
+
+
+if(name==="📱 iPhones" ||
+name==="📱 Samsung" ||
+name==="📱 iPads" ||
+name==="💻 Computers" ||
+name==="⌚ Smart Watches"){
+
+devicePage(name);
+
+}
+
+
+
+if(name==="🔎 IMEI Database"){
+
+imeiPage();
+
+}
+
+
+}
+
+);
 
 
 });
@@ -1600,366 +2694,114 @@ document
 
 
 
-// LOAD USER DATA
+// ===============================
+// REPAIR TICKETS
+// ===============================
 
 
 
-async function loadUserData(){
 
 
+function repairPage(){
 
-const snapshot =
-await get(
 
-ref(db,"users/"+currentUser.uid)
 
-);
+content.innerHTML=`
 
-
-
-if(snapshot.exists()){
-
-
-
-let data =
-snapshot.val();
-
-
-
-console.log(
-"Loaded user:",
-data
-);
-
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-// ACCOUNT MENU
-
-
-
-window.logout=function(){
-
-
-signOut(auth);
-
-
-};
-
-
-
-
-
-
-
-
-window.switchAccount=function(){
-
-
-alert(
-
-"Account switching will be connected here"
-
-);
-
-
-};
-
-
-
-
-
-
-
-</script>
-
-<!-- =========================
-PART 4 / 10
-DASHBOARD + REPAIRS + DEVICES
-========================= -->
-
-
-<style>
-
-
-.dashboardGrid{
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(220px,1fr));
-
-gap:20px;
-
-}
-
-
-
-.statBox{
-
-background:var(--panel);
-
-padding:25px;
-
-border-radius:20px;
-
-border-left:5px solid var(--blue);
-
-}
-
-
-
-.statBox h2{
-
-color:var(--blue);
-
-margin:0;
-
-}
-
-
-
-.formBox{
-
-background:var(--panel);
-
-padding:20px;
-
-border-radius:18px;
-
-margin-bottom:20px;
-
-}
-
-
-
-.smallBtn{
-
-width:auto;
-
-padding:10px 20px;
-
-}
-
-
-
-</style>
-
-
-
-
-
-
-
-<script type="module">
-
-
-import {
-
-ref,
-set,
-push,
-get,
-update
-
-}
-
-from
-"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
-
-
-
-
-
-// WAIT FOR USER
-
-
-function userPath(path){
-
-
-return ref(
-
-db,
-
-"users/"+currentUser.uid+"/"+path
-
-);
-
-
-}
-
-
-
-
-
-
-
-
-// PAGE LOADER
-
-
-window.openPage=function(page){
-
-
-
-let main =
-document.querySelector(".main");
-
-
-
-
-if(page==="Dashboard"){
-
-
-
-main.innerHTML=`
-
-<div class="card">
-
-<h1>
-📊 Dashboard
-</h1>
-
-
-<div class="dashboardGrid">
-
-
-<div class="statBox">
-
-<h2 id="repairTotal">
-0
-</h2>
-
-<p>
-Repairs
-</p>
-
-</div>
-
-
-
-
-<div class="statBox">
-
-<h2 id="customerTotal">
-0
-</h2>
-
-<p>
-Customers
-</p>
-
-</div>
-
-
-
-
-<div class="statBox">
-
-<h2 id="deviceTotal">
-0
-</h2>
-
-<p>
-Devices
-</p>
-
-</div>
-
-
-
-
-
-<div class="statBox">
-
-<h2 id="moneyTotal">
-$0
-</h2>
-
-<p>
-Income
-</p>
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
-`;
-
-
-
-}
-
-
-
-
-
-if(page==="Repair Tickets"){
-
-
-
-main.innerHTML=`
 
 <div class="card">
 
 
 <h1>
+
 📋 Repair Tickets
+
 </h1>
 
 
 
-<div class="formBox">
-
-
-<input id="repairDevice"
-placeholder="Device">
 
 
 <input id="repairCustomer"
-placeholder="Customer">
+
+placeholder="Customer Name">
 
 
-<input id="repairIssue"
+
+
+
+<input id="repairDevice"
+
+placeholder="Device">
+
+
+
+
+
+
+<input id="repairProblem"
+
 placeholder="Problem">
 
 
 
-<button class="smallBtn"
-onclick="addRepair()">
+
+
+
+<select id="repairStatus"
+style="
+width:100%;
+padding:14px;
+background:#222;
+color:white;
+border-radius:12px;
+">
+
+
+<option>
+
+Waiting
+
+</option>
+
+
+<option>
+
+In Repair
+
+</option>
+
+
+<option>
+
+Completed
+
+</option>
+
+
+
+</select>
+
+
+
+
+
+<button onclick="addRepair()">
 
 Create Repair
 
 </button>
 
 
-</div>
+
 
 
 
 <div id="repairList">
 
 </div>
+
+
 
 
 </div>
@@ -1972,126 +2814,12 @@ Create Repair
 loadRepairs();
 
 
-
 }
 
 
 
 
 
-
-
-
-
-if(page==="Customers"){
-
-
-main.innerHTML=`
-
-<div class="card">
-
-
-<h1>
-👥 Customers
-</h1>
-
-
-<div class="formBox">
-
-
-<input id="customerName"
-placeholder="Customer Name">
-
-
-<input id="customerPhone"
-placeholder="Phone">
-
-
-<input id="customerEmail"
-placeholder="Email">
-
-
-
-<button class="smallBtn"
-onclick="addCustomer()">
-
-Add Customer
-
-</button>
-
-
-
-</div>
-
-
-
-<div id="customerList">
-
-</div>
-
-
-
-</div>
-
-`;
-
-
-
-loadCustomers();
-
-
-}
-
-
-
-
-
-
-
-
-
-
-if(page==="iPhones"){
-
-
-devicePage("iPhones");
-
-
-}
-
-
-
-if(page==="Samsung"){
-
-
-devicePage("Samsung");
-
-
-}
-
-
-if(page==="iPads"){
-
-
-devicePage("iPads");
-
-
-}
-
-
-};
-
-
-
-
-
-
-
-
-
-
-
-// REPAIRS
 
 
 
@@ -2102,32 +2830,37 @@ window.addRepair=async function(){
 
 
 let id =
-push(userPath("repairs")).key;
+push(
+userPath("repairs")
+).key;
+
 
 
 
 
 await set(
 
-userPath("repairs/"+id),
+userPath(
+"repairs/"+id
+),
 
 {
-
-
-device:
-repairDevice.value,
 
 
 customer:
 repairCustomer.value,
 
 
-issue:
-repairIssue.value,
+device:
+repairDevice.value,
+
+
+problem:
+repairProblem.value,
 
 
 status:
-"Waiting For Parts",
+repairStatus.value,
 
 
 created:
@@ -2141,11 +2874,11 @@ Date.now()
 
 
 
-repairDevice.value="";
-
 repairCustomer.value="";
 
-repairIssue.value="";
+repairDevice.value="";
+
+repairProblem.value="";
 
 
 
@@ -2165,10 +2898,6 @@ loadRepairs();
 async function loadRepairs(){
 
 
-let snap =
-await get(userPath("repairs"));
-
-
 
 let box =
 document.getElementById("repairList");
@@ -2177,6 +2906,12 @@ document.getElementById("repairList");
 
 if(!box)return;
 
+
+
+let snap =
+await get(
+userPath("repairs")
+);
 
 
 
@@ -2188,11 +2923,15 @@ if(snap.exists()){
 
 
 
-Object.values(snap.val()).forEach(r=>{
+Object.entries(
+snap.val()
+
+)
+.forEach(([id,r])=>{
 
 
 
-box.innerHTML += `
+box.innerHTML+=`
 
 
 <div class="card">
@@ -2200,7 +2939,7 @@ box.innerHTML += `
 
 <h3>
 
-${r.device}
+📱 ${r.device}
 
 </h3>
 
@@ -2215,7 +2954,8 @@ ${r.customer}
 
 <p>
 
-${r.issue}
+Issue:
+${r.problem}
 
 </p>
 
@@ -2228,9 +2968,14 @@ ${r.status}
 </p>
 
 
+<button onclick="updateRepair('${id}')">
+
+Change Status
+
+</button>
+
 
 </div>
-
 
 
 `;
@@ -2240,7 +2985,6 @@ ${r.status}
 });
 
 
-
 }
 
 
@@ -2254,7 +2998,133 @@ ${r.status}
 
 
 
+window.updateRepair=async function(id){
+
+
+
+let status =
+prompt(
+
+"New status"
+
+);
+
+
+
+if(!status)return;
+
+
+
+
+await update(
+
+userPath(
+"repairs/"+id
+),
+
+{
+
+
+status:status
+
+
+}
+
+);
+
+
+
+loadRepairs();
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
 // CUSTOMERS
+// ===============================
+
+
+
+
+function customerPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+👥 Customers
+
+</h1>
+
+
+
+<input id="customerName"
+
+placeholder="Customer Name">
+
+
+
+<input id="customerPhone"
+
+placeholder="Phone">
+
+
+
+<input id="customerEmail"
+
+placeholder="Email">
+
+
+
+<button onclick="addCustomer()">
+
+Add Customer
+
+</button>
+
+
+
+
+<div id="customerList">
+
+</div>
+
+
+
+</div>
+
+
+`;
+
+
+
+loadCustomers();
+
+
+}
+
+
+
+
 
 
 
@@ -2265,14 +3135,17 @@ window.addCustomer=async function(){
 
 
 let id =
-push(userPath("customers")).key;
-
+push(
+userPath("customers")
+).key;
 
 
 
 await set(
 
-userPath("customers/"+id),
+userPath(
+"customers/"+id
+),
 
 {
 
@@ -2296,6 +3169,7 @@ Date.now()
 }
 
 
+
 );
 
 
@@ -2311,8 +3185,8 @@ customerEmail.value="";
 loadCustomers();
 
 
-};
 
+};
 
 
 
@@ -2326,11 +3200,6 @@ async function loadCustomers(){
 
 
 
-let snap =
-await get(userPath("customers"));
-
-
-
 let box =
 document.getElementById("customerList");
 
@@ -2340,8 +3209,14 @@ if(!box)return;
 
 
 
-box.innerHTML="";
+let snap =
+await get(
+userPath("customers")
+);
 
+
+
+box.innerHTML="";
 
 
 
@@ -2349,11 +3224,14 @@ if(snap.exists()){
 
 
 
-Object.values(snap.val())
+Object.values(
+snap.val()
+
+)
 .forEach(c=>{
 
 
-box.innerHTML +=`
+box.innerHTML+=`
 
 
 <div class="card">
@@ -2367,14 +3245,17 @@ ${c.name}
 
 
 <p>
-${c.phone}
+
+📞 ${c.phone}
+
 </p>
 
 
 <p>
-${c.email}
-</p>
 
+✉️ ${c.email}
+
+</p>
 
 
 </div>
@@ -2387,7 +3268,6 @@ ${c.email}
 });
 
 
-
 }
 
 
@@ -2404,7 +3284,12 @@ ${c.email}
 
 
 
+
+
+
+// ===============================
 // DEVICES
+// ===============================
 
 
 
@@ -2414,12 +3299,7 @@ function devicePage(type){
 
 
 
-let main =
-document.querySelector(".main");
-
-
-
-main.innerHTML=`
+content.innerHTML=`
 
 
 <div class="card">
@@ -2427,25 +3307,38 @@ main.innerHTML=`
 
 <h1>
 
-📱 ${type}
+${type}
 
 </h1>
 
 
 
-<div class="formBox">
+
+<input id="deviceModel"
+
+placeholder="Model">
 
 
-<input id="deviceName"
-placeholder="Device Name">
 
 
-<input id="imei"
+
+<input id="deviceImei"
+
 placeholder="IMEI">
 
 
 
-<button onclick="addDevice('${type}')">
+
+
+<input id="deviceNotes"
+
+placeholder="Notes">
+
+
+
+
+
+<button onclick="addDevice()">
 
 Save Device
 
@@ -2453,12 +3346,11 @@ Save Device
 
 
 
-</div>
-
 
 <div id="deviceList">
 
 </div>
+
 
 
 </div>
@@ -2468,7 +3360,7 @@ Save Device
 
 
 
-loadDevices(type);
+loadDevices();
 
 
 
@@ -2482,47 +3374,60 @@ loadDevices(type);
 
 
 
-window.addDevice=async function(type){
+
+
+window.addDevice=async function(){
 
 
 
 let id =
-push(userPath("devices")).key;
+push(
+userPath("devices")
+).key;
 
 
 
 await set(
 
-userPath("devices/"+id),
+userPath(
+"devices/"+id
+),
 
 {
 
 
-type:type,
+model:
+deviceModel.value,
 
 
-name:deviceName.value,
+imei:
+deviceImei.value,
 
 
-imei:imei.value,
+notes:
+deviceNotes.value,
 
 
-created:Date.now()
+created:
+Date.now()
 
 
 }
+
 
 );
 
 
 
-deviceName.value="";
+deviceModel.value="";
 
-imei.value="";
+deviceImei.value="";
+
+deviceNotes.value="";
 
 
 
-loadDevices(type);
+loadDevices();
 
 
 
@@ -2536,11 +3441,8 @@ loadDevices(type);
 
 
 
-async function loadDevices(type){
 
-
-let snap =
-await get(userPath("devices"));
+async function loadDevices(){
 
 
 
@@ -2553,6 +3455,13 @@ if(!box)return;
 
 
 
+let snap =
+await get(
+userPath("devices")
+);
+
+
+
 box.innerHTML="";
 
 
@@ -2561,11 +3470,12 @@ if(snap.exists()){
 
 
 
-Object.values(snap.val())
+Object.values(
+snap.val()
+
+)
 .forEach(d=>{
 
-
-if(d.type===type){
 
 
 box.innerHTML+=`
@@ -2574,19 +3484,11 @@ box.innerHTML+=`
 <div class="card">
 
 
-<h3>
+📱 ${d.model}
 
-${d.name}
+<br>
 
-</h3>
-
-
-<p>
-
-IMEI:
-${d.imei}
-
-</p>
+🔎 ${d.imei}
 
 
 </div>
@@ -2595,135 +3497,13 @@ ${d.imei}
 `;
 
 
-}
-
-
 
 });
 
 
-}
-
-
 
 }
 
-
-
-
-
-
-</script>
-
-<!-- =========================
-PART 5 / 10
-MESSAGING + COMMUNICATION
-========================= -->
-
-
-<style>
-
-
-.chatBox{
-
-height:350px;
-
-overflow:auto;
-
-background:#080808;
-
-padding:15px;
-
-border-radius:15px;
-
-margin-bottom:15px;
-
-}
-
-
-
-.message{
-
-background:#151515;
-
-padding:12px;
-
-border-radius:12px;
-
-margin-bottom:10px;
-
-}
-
-
-
-.messageName{
-
-color:var(--blue);
-
-font-weight:bold;
-
-}
-
-
-
-.notice{
-
-padding:15px;
-
-background:#151515;
-
-border-radius:15px;
-
-margin:10px 0;
-
-}
-
-
-
-</style>
-
-
-
-
-
-
-
-
-<script type="module">
-
-
-import {
-
-ref,
-push,
-set,
-get,
-onValue
-
-}
-
-from
-
-"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
-
-
-
-
-
-
-
-
-
-function userRef(path){
-
-
-return ref(
-
-db,
-
-"users/"+currentUser.uid+"/"+path
-
-);
 
 
 }
@@ -2736,50 +3516,242 @@ db,
 
 
 
-// OPEN COMMUNICATION PAGES
+
+
+// ===============================
+// IMEI DATABASE
+// ===============================
 
 
 
 
-window.communicationPage=function(type){
+function imeiPage(){
 
 
 
-let main =
-document.querySelector(".main");
-
-
-
-
-
-if(type==="chat"){
-
-
-
-main.innerHTML=`
+content.innerHTML=`
 
 
 <div class="card">
 
 
 <h1>
+
+🔎 IMEI Database
+
+</h1>
+
+
+<input id="imeiSearch"
+
+placeholder="Search IMEI">
+
+
+
+<button onclick="searchIMEI()">
+
+Search
+
+</button>
+
+
+
+<div id="imeiResult">
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+window.searchIMEI=function(){
+
+
+imeiResult.innerHTML=
+
+"IMEI checker ready";
+
+
+};
+
+
+
+
+// PART 3 CONTINUES IN PART 4
+
+
+// ===============================
+// PART 4 / 8
+// COMMUNICATION SYSTEM
+// ===============================
+
+
+
+
+
+
+
+
+// Communication menu handler
+
+
+
+
+document.querySelectorAll(".item")
+.forEach(item=>{
+
+
+item.addEventListener(
+"click",
+
+()=>{
+
+
+let name =
+item.innerText.trim();
+
+
+
+
+if(name==="💬 Team Chat"){
+
+chatPage();
+
+}
+
+
+
+
+if(name==="📢 Announcements"){
+
+announcementPage();
+
+}
+
+
+
+
+if(name==="📝 Shared Notes"){
+
+notesPage();
+
+}
+
+
+
+
+if(name==="✅ Tasks"){
+
+tasksPage();
+
+}
+
+
+
+
+if(name==="🔔 Employee Alerts"){
+
+alertsPage();
+
+}
+
+
+
+
+if(name==="🟢 Online Employees"){
+
+employeesOnlinePage();
+
+}
+
+
+
+if(name==="🗨️message employees separate"){
+
+employeeMessagePage();
+
+}
+
+
+
+}
+
+
+);
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// TEAM CHAT
+// ===============================
+
+
+
+
+function chatPage(){
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
 💬 Team Chat
+
 </h1>
 
 
 
-<div class="chatBox"
-id="chatMessages">
+<div id="chatBox"
+
+style="
+height:350px;
+overflow:auto;
+background:#080808;
+padding:15px;
+border-radius:15px;
+">
+
+
+Loading messages...
 
 </div>
 
 
 
-<input id="chatInput"
-placeholder="Type message">
+
+<input id="chatMessage"
+
+placeholder="Type message...">
 
 
-<button onclick="sendChat()">
+
+<button onclick="sendMessage()">
 
 Send
 
@@ -2807,52 +3779,156 @@ loadChat();
 
 
 
-if(type==="notes"){
+
+
+window.sendMessage=async function(){
 
 
 
-main.innerHTML=`
+let text =
+chatMessage.value;
+
+
+
+if(!text)return;
+
+
+
+
+
+let id =
+push(
+userPath("messages")
+).key;
+
+
+
+
+
+await set(
+
+userPath(
+"messages/"+id
+),
+
+{
+
+
+text:text,
+
+
+sender:
+currentUser.email,
+
+
+time:
+Date.now()
+
+
+}
+
+
+
+);
+
+
+
+chatMessage.value="";
+
+
+
+loadChat();
+
+
+
+};
+
+
+
+
+
+
+
+
+
+async function loadChat(){
+
+
+
+let box =
+document.getElementById("chatBox");
+
+
+
+if(!box)return;
+
+
+
+
+onValue(
+
+userPath("messages"),
+
+snap=>{
+
+
+box.innerHTML="";
+
+
+
+if(snap.exists()){
+
+
+
+Object.values(
+snap.val()
+
+)
+.sort(
+(a,b)=>a.time-b.time
+)
+
+.forEach(m=>{
+
+
+box.innerHTML+=`
 
 
 <div class="card">
 
 
-<h1>
-📝 Shared Notes
-</h1>
+<b>
+
+${m.sender}
+
+</b>
 
 
-
-<textarea
-id="noteText"
-style="width:100%;height:200px;background:#222;color:white">
-
-</textarea>
+<br>
 
 
-
-<button onclick="saveNote()">
-
-Save Note
-
-</button>
-
-
-<div id="notesList">
-
-</div>
-
+${m.text}
 
 
 </div>
-
 
 
 `;
 
 
 
-loadNotes();
+});
+
+
+
+}
+
+
+
+}
+
+
+);
 
 
 
@@ -2865,29 +3941,430 @@ loadNotes();
 
 
 
-if(type==="tasks"){
 
 
-main.innerHTML=`
+
+// ===============================
+// ANNOUNCEMENTS
+// ===============================
+
+
+
+
+function announcementPage(){
+
+
+
+content.innerHTML=`
 
 
 <div class="card">
 
 
 <h1>
+
+📢 Announcements
+
+</h1>
+
+
+
+<input id="announcementText"
+
+placeholder="Announcement">
+
+
+
+<button onclick="addAnnouncement()">
+
+Post
+
+</button>
+
+
+
+<div id="announcementList">
+
+</div>
+
+
+
+</div>
+
+
+`;
+
+
+
+loadAnnouncements();
+
+
+
+}
+
+
+
+
+
+
+
+
+window.addAnnouncement=async function(){
+
+
+
+let id =
+push(
+userPath("announcements")
+).key;
+
+
+
+
+await set(
+
+userPath(
+"announcements/"+id
+),
+
+{
+
+
+text:
+announcementText.value,
+
+
+time:
+Date.now()
+
+
+}
+
+
+
+);
+
+
+
+announcementText.value="";
+
+
+
+loadAnnouncements();
+
+
+};
+
+
+
+
+
+
+
+
+
+async function loadAnnouncements(){
+
+
+let box =
+document.getElementById("announcementList");
+
+
+
+if(!box)return;
+
+
+
+let snap =
+await get(
+userPath("announcements")
+);
+
+
+
+box.innerHTML="";
+
+
+
+if(snap.exists()){
+
+
+
+Object.values(
+snap.val()
+
+)
+.forEach(a=>{
+
+
+box.innerHTML+=`
+
+
+<div class="card">
+
+
+📢 ${a.text}
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// NOTES
+// ===============================
+
+
+
+
+
+function notesPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+📝 Shared Notes
+
+</h1>
+
+
+
+<textarea id="noteText"
+
+style="
+width:100%;
+height:150px;
+background:#222;
+color:white;
+border-radius:12px;
+">
+
+</textarea>
+
+
+
+<button onclick="saveNote()">
+
+Save Note
+
+</button>
+
+
+
+<div id="noteList">
+
+</div>
+
+
+
+</div>
+
+
+`;
+
+
+
+loadNotes();
+
+
+}
+
+
+
+
+
+
+
+
+
+
+window.saveNote=async function(){
+
+
+
+let id =
+push(
+userPath("notes")
+).key;
+
+
+
+
+await set(
+
+userPath(
+"notes/"+id
+),
+
+{
+
+
+text:
+noteText.value,
+
+
+time:
+Date.now()
+
+
+}
+
+
+
+);
+
+
+
+noteText.value="";
+
+loadNotes();
+
+
+
+};
+
+
+
+
+
+
+
+
+
+async function loadNotes(){
+
+
+let box =
+document.getElementById("noteList");
+
+
+
+if(!box)return;
+
+
+
+
+let snap =
+await get(
+userPath("notes")
+);
+
+
+
+box.innerHTML="";
+
+
+
+if(snap.exists()){
+
+
+
+Object.values(
+snap.val()
+
+)
+.forEach(n=>{
+
+
+box.innerHTML+=`
+
+
+<div class="card">
+
+
+📝 ${n.text}
+
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// TASKS
+// ===============================
+
+
+
+
+
+function tasksPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
 ✅ Tasks
+
 </h1>
 
 
 
 <input id="taskText"
-placeholder="New Task">
 
+placeholder="New Task">
 
 
 <button onclick="addTask()">
 
-Add Task
+Add
 
 </button>
 
@@ -2919,358 +4396,37 @@ loadTasks();
 
 
 
-if(type==="notifications"){
-
-
-
-main.innerHTML=`
-
-
-<div class="card">
-
-
-<h1>
-🔔 Notifications
-</h1>
-
-
-
-<div id="notificationList">
-
-</div>
-
-
-</div>
-
-
-`;
-
-
-
-loadNotifications();
-
-
-}
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// CHAT
-
-
-
-
-
-window.sendChat=async function(){
-
-
-
-let text =
-document.getElementById("chatInput").value;
-
-
-
-if(!text)return;
-
-
-
-
-let id =
-push(userRef("messages")).key;
-
-
-
-
-
-await set(
-
-userRef("messages/"+id),
-
-{
-
-
-text:text,
-
-
-sender:
-currentUser.email,
-
-
-time:
-Date.now()
-
-
-}
-
-);
-
-
-
-
-
-document.getElementById("chatInput").value="";
-
-
-
-};
-
-
-
-
-
-
-
-
-
-
-function loadChat(){
-
-
-
-let box =
-document.getElementById("chatMessages");
-
-
-
-if(!box)return;
-
-
-
-
-onValue(
-
-userRef("messages"),
-
-snap=>{
-
-
-
-box.innerHTML="";
-
-
-
-if(snap.exists()){
-
-
-
-Object.values(snap.val())
-
-.sort((a,b)=>a.time-b.time)
-
-.forEach(m=>{
-
-
-box.innerHTML+=`
-
-
-<div class="message">
-
-
-<div class="messageName">
-
-${m.sender}
-
-</div>
-
-
-
-${m.text}
-
-
-</div>
-
-
-`;
-
-
-
-});
-
-
-
-}
-
-
-
-}
-
-
-
-);
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// NOTES
-
-
-
-
-
-window.saveNote=async function(){
-
-
-
-let text =
-document.getElementById("noteText").value;
-
-
-
-let id =
-push(userRef("notes")).key;
-
-
-
-
-await set(
-
-userRef("notes/"+id),
-
-{
-
-
-text:text,
-
-
-created:Date.now()
-
-
-}
-
-);
-
-
-
-loadNotes();
-
-
-};
-
-
-
-
-
-
-
-
-async function loadNotes(){
-
-
-
-let snap =
-await get(userRef("notes"));
-
-
-
-let box =
-document.getElementById("notesList");
-
-
-
-if(!box)return;
-
-
-
-box.innerHTML="";
-
-
-
-if(snap.exists()){
-
-
-
-Object.values(snap.val())
-
-.forEach(n=>{
-
-
-
-box.innerHTML+=`
-
-
-<div class="notice">
-
-${n.text}
-
-</div>
-
-
-`;
-
-
-
-});
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// TASKS
-
-
-
-
 
 
 window.addTask=async function(){
 
 
 
-let text =
-document.getElementById("taskText").value;
-
-
-
 let id =
-push(userRef("tasks")).key;
+push(
+userPath("tasks")
+).key;
 
 
 
 
 await set(
 
-userRef("tasks/"+id),
+userPath(
+"tasks/"+id
+),
 
 {
 
 
-text:text,
+task:
+taskText.value,
 
 
 done:false,
 
 
-created:Date.now()
+time:Date.now()
 
 
 }
@@ -3280,8 +4436,7 @@ created:Date.now()
 
 
 
-document.getElementById("taskText").value="";
-
+taskText.value="";
 
 
 loadTasks();
@@ -3297,11 +4452,8 @@ loadTasks();
 
 
 
+
 async function loadTasks(){
-
-
-let snap =
-await get(userRef("tasks"));
 
 
 
@@ -3314,6 +4466,14 @@ if(!box)return;
 
 
 
+
+let snap =
+await get(
+userPath("tasks")
+);
+
+
+
 box.innerHTML="";
 
 
@@ -3322,23 +4482,23 @@ if(snap.exists()){
 
 
 
-Object.values(snap.val())
+Object.values(
+snap.val()
 
+)
 .forEach(t=>{
 
 
-
 box.innerHTML+=`
 
 
-<div class="notice">
+<div class="card">
 
 
-☐ ${t.text}
+☐ ${t.task}
 
 
 </div>
-
 
 
 `;
@@ -3348,7 +4508,6 @@ box.innerHTML+=`
 });
 
 
-
 }
 
 
@@ -3365,76 +4524,53 @@ box.innerHTML+=`
 
 
 
-// NOTIFICATIONS
+
+// ===============================
+// EMPLOYEE ALERTS
+// ===============================
 
 
 
 
 
-async function loadNotifications(){
-
-
-let box =
-document.getElementById("notificationList");
+function alertsPage(){
 
 
 
-if(!box)return;
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+🔔 Employee Alerts
+
+</h1>
 
 
 
+<input id="alertText"
 
-let snap =
-await get(userRef("notifications"));
-
-
-
-box.innerHTML="";
+placeholder="Alert">
 
 
 
+<button onclick="sendAlert()">
 
-if(snap.exists()){
+Send Alert
 
+</button>
 
-
-Object.values(snap.val())
-
-.forEach(n=>{
-
-
-box.innerHTML+=`
-
-
-<div class="notice">
-
-
-🔔 ${n.text}
 
 
 </div>
 
 
-
 `;
 
 
-});
-
-
-
-}
-
-else{
-
-
-box.innerHTML=
-"No notifications yet";
-
-
-}
-
-
 
 }
 
@@ -3445,36 +4581,23 @@ box.innerHTML=
 
 
 
+window.sendAlert=async function(){
 
 
 
+await push(
 
-// CREATE ACTIVITY
-
-
-
-
-
-window.addNotification=async function(text){
-
-
-
-let id =
-push(userRef("notifications")).key;
-
-
-
-await set(
-
-userRef("notifications/"+id),
+userPath("alerts"),
 
 {
 
 
-text:text,
+text:
+alertText.value,
 
 
-time:Date.now()
+time:
+Date.now()
 
 
 }
@@ -3482,6 +4605,9 @@ time:Date.now()
 
 );
 
+
+
+alert("Alert sent");
 
 
 };
@@ -3492,156 +4618,347 @@ time:Date.now()
 
 
 
-</script>
 
-<!-- =========================
-PART 6 / 10
-INVENTORY SYSTEM
-========================= -->
 
 
-<style>
 
+// ===============================
+// ONLINE EMPLOYEES
+// ===============================
 
-.inventoryCard{
 
-background:var(--panel);
 
-padding:20px;
 
-border-radius:18px;
 
-margin:15px 0;
+function employeesOnlinePage(){
 
-}
 
 
-
-.badge{
-
-padding:6px 12px;
-
-border-radius:20px;
-
-background:#222;
-
-}
-
-
-
-.low{
-
-color:#ff5555;
-
-}
-
-
-
-.good{
-
-color:#00ff88;
-
-}
-
-
-
-</style>
-
-
-
-
-
-
-
-<script type="module">
-
-
-import {
-
-ref,
-push,
-set,
-get,
-update,
-remove
-
-}
-
-from
-
-"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
-
-
-
-
-
-
-function invRef(path){
-
-
-return ref(
-
-db,
-
-"users/"+currentUser.uid+"/inventory/"+path
-
-);
-
-
-}
-
-
-
-
-
-
-
-window.inventoryPage=function(){
-
-
-
-let main =
-document.querySelector(".main");
-
-
-
-main.innerHTML=`
+content.innerHTML=`
 
 
 <div class="card">
 
 
 <h1>
-📦 Inventory
+
+🟢 Online Employees
+
+</h1>
+
+
+<p>
+
+Online system active
+
+</p>
+
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+// ===============================
+// SEPARATE EMPLOYEE MESSAGE
+// ===============================
+
+
+
+
+
+function employeeMessagePage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+🗨️ Employee Messages
+
 </h1>
 
 
 
-<div class="inventoryCard">
+<input id="employeeEmail"
+
+placeholder="Employee Email">
+
+
+
+<input id="employeeMessage"
+
+placeholder="Message">
+
+
+
+<button onclick="sendEmployeeMessage()">
+
+Send Message
+
+</button>
+
+
+
+</div>
+
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+window.sendEmployeeMessage=async function(){
+
+
+
+let id =
+push(
+userPath("employeeMessages")
+).key;
+
+
+
+
+await set(
+
+userPath(
+"employeeMessages/"+id
+),
+
+{
+
+
+to:
+employeeEmail.value,
+
+
+message:
+employeeMessage.value,
+
+
+time:
+Date.now()
+
+
+}
+
+
+);
+
+
+
+alert("Message sent");
+
+
+};
+
+
+
+
+
+// PART 4 CONTINUES IN PART 5
+
+
+// ===============================
+// PART 5 / 8
+// INVENTORY + FINANCES
+// ===============================
+
+
+
+
+
+
+
+document.querySelectorAll(".item")
+.forEach(item=>{
+
+
+item.addEventListener(
+"click",
+
+()=>{
+
+
+let name =
+item.innerText.trim();
+
+
+
+
+if(name==="📦 Inventory"){
+
+inventoryPage();
+
+}
+
+
+
+
+if(name==="⚠ Low Stock"){
+
+lowStockPage();
+
+}
+
+
+
+
+if(name==="🚚 Supplier Orders"){
+
+supplierPage();
+
+}
+
+
+
+
+if(name==="🔩 Parts Used"){
+
+usedPartsPage();
+
+}
+
+
+
+
+if(name==="💲 Parts Pricing"){
+
+pricingPage();
+
+}
+
+
+
+
+if(name==="💵 Repair Income"){
+
+incomePage();
+
+}
+
+
+
+
+if(name==="💳 Expenses"){
+
+expensePage();
+
+}
+
+
+
+
+if(name==="🧾 Invoices"){
+
+invoicePage();
+
+}
+
+
+
+
+if(name==="💸 Taxes"){
+
+taxPage();
+
+}
+
+
+
+
+}
+
+
+);
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// INVENTORY
+// ===============================
+
+
+
+
+
+function inventoryPage(){
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+📦 Inventory
+
+</h1>
+
+
 
 
 <input id="partName"
+
 placeholder="Part Name">
 
 
 
 <input id="partNumber"
+
 placeholder="Part Number">
 
 
 
+<input id="partQty"
+
+placeholder="Quantity">
+
+
+
 <input id="partPrice"
+
 placeholder="Price">
-
-
-
-<input id="partStock"
-placeholder="Stock Amount">
-
-
-
-<input id="partLocation"
-placeholder="Storage Location">
 
 
 
@@ -3653,16 +4970,6 @@ Add Part
 
 
 
-</div>
-
-
-
-
-<h2>
-Parts
-</h2>
-
-
 
 <div id="inventoryList">
 
@@ -3670,7 +4977,9 @@ Parts
 
 
 
+
 </div>
+
 
 
 `;
@@ -3681,7 +4990,8 @@ loadInventory();
 
 
 
-};
+}
+
 
 
 
@@ -3695,13 +5005,18 @@ window.addPart=async function(){
 
 
 let id =
-push(invRef("items")).key;
+push(
+userPath("inventory")
+).key;
+
 
 
 
 await set(
 
-invRef("items/"+id),
+userPath(
+"inventory/"+id
+),
 
 {
 
@@ -3714,20 +5029,17 @@ number:
 partNumber.value,
 
 
+quantity:
+Number(partQty.value),
+
+
 price:
-partPrice.value,
-
-
-stock:
-Number(partStock.value),
-
-
-location:
-partLocation.value,
+Number(partPrice.value),
 
 
 created:
 Date.now()
+
 
 
 }
@@ -3742,11 +5054,9 @@ partName.value="";
 
 partNumber.value="";
 
+partQty.value="";
+
 partPrice.value="";
-
-partStock.value="";
-
-partLocation.value="";
 
 
 
@@ -3755,6 +5065,7 @@ loadInventory();
 
 
 };
+
 
 
 
@@ -3767,17 +5078,19 @@ async function loadInventory(){
 
 
 
-let snap =
-await get(invRef("items"));
-
-
-
 let box =
 document.getElementById("inventoryList");
 
 
 
 if(!box)return;
+
+
+
+let snap =
+await get(
+userPath("inventory")
+);
 
 
 
@@ -3789,84 +5102,38 @@ if(snap.exists()){
 
 
 
-Object.entries(snap.val())
+Object.values(
+snap.val()
 
-.forEach(([id,p])=>{
-
-
-
-let status =
-p.stock < 5
-?
-"<span class='low'>LOW STOCK</span>"
-:
-"<span class='good'>IN STOCK</span>";
-
-
-
+)
+.forEach(p=>{
 
 
 box.innerHTML+=`
 
 
-<div class="inventoryCard">
+<div class="card">
 
 
 <h3>
 
-${p.name}
+📦 ${p.name}
 
 </h3>
 
 
-
-<p>
-
 Part:
 ${p.number}
 
-</p>
+<br>
 
+Qty:
+${p.quantity}
 
-<p>
+<br>
 
 Price:
 $${p.price}
-
-</p>
-
-
-<p>
-
-Stock:
-${p.stock}
-
-</p>
-
-
-<p>
-
-Location:
-${p.location}
-
-</p>
-
-
-
-<p>
-
-${status}
-
-</p>
-
-
-
-<button onclick="deletePart('${id}')">
-
-Delete
-
-</button>
-
 
 
 </div>
@@ -3893,71 +5160,111 @@ Delete
 
 
 
-window.deletePart=async function(id){
 
 
 
-await remove(
-
-invRef("items/"+id)
-
-);
-
-
-
-loadInventory();
-
-
-};
+// ===============================
+// LOW STOCK
+// ===============================
 
 
 
 
+async function lowStockPage(){
 
 
 
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+⚠ Low Stock
+
+</h1>
+
+
+<div id="lowStock">
+
+Checking...
+
+</div>
+
+
+</div>
 
 
 
+`;
 
-// USED PARTS
-
-
-
-window.usePart=async function(id){
 
 
 
 let snap =
-await get(invRef("items/"+id));
-
-
-
-if(!snap.exists())return;
-
-
-
-let data=snap.val();
-
-
-
-await update(
-
-invRef("items/"+id),
-
-{
-
-
-stock:data.stock-1
-
-}
-
-
+await get(
+userPath("inventory")
 );
 
 
 
-};
+
+let box =
+document.getElementById("lowStock");
+
+
+
+box.innerHTML="";
+
+
+
+if(snap.exists()){
+
+
+
+Object.values(
+snap.val()
+
+)
+.forEach(p=>{
+
+
+
+if(p.quantity < 5){
+
+
+box.innerHTML+=`
+
+
+<div class="card">
+
+
+⚠ ${p.name}
+
+Only ${p.quantity} left
+
+
+</div>
+
+
+`;
+
+
+}
+
+
+
+});
+
+
+
+}
+
+
+
+}
 
 
 
@@ -3967,20 +5274,20 @@ stock:data.stock-1
 
 
 
-
-
-// SUPPLIER ORDERS
-
-
-
-
-
-window.supplierPage=function(){
+// ===============================
+// SUPPLIERS
+// ===============================
 
 
 
-document.querySelector(".main")
-.innerHTML=`
+
+
+function supplierPage(){
+
+
+
+content.innerHTML=`
+
 
 <div class="card">
 
@@ -3992,24 +5299,29 @@ document.querySelector(".main")
 </h1>
 
 
+
+
 <input id="supplierName"
+
 placeholder="Supplier">
 
 
-<input id="orderPart"
-placeholder="Part Needed">
+
+<input id="supplierPart"
+
+placeholder="Part">
 
 
 
-<button onclick="addOrder()">
+<button onclick="addSupplier()">
 
-Create Order
+Save Order
 
 </button>
 
 
 
-<div id="orders">
+<div id="supplierList">
 
 </div>
 
@@ -4022,43 +5334,36 @@ Create Order
 
 
 
-loadOrders();
-
-
-};
+loadSuppliers();
 
 
 
-
+}
 
 
 
 
 
 
-window.addOrder=async function(){
+
+
+
+
+window.addSupplier=async function(){
 
 
 
 let id =
 push(
-
-ref(
-db,
-"users/"+currentUser.uid+"/suppliers"
-
-)
-
+userPath("suppliers")
 ).key;
-
 
 
 
 await set(
 
-ref(
-db,
-"users/"+currentUser.uid+"/suppliers/"+id
+userPath(
+"suppliers/"+id
 ),
 
 {
@@ -4069,24 +5374,22 @@ supplierName.value,
 
 
 part:
-orderPart.value,
+supplierPart.value,
 
 
-status:
-"Pending",
-
-
-created:
+time:
 Date.now()
 
 
 }
 
+
 );
 
 
 
-loadOrders();
+loadSuppliers();
+
 
 
 };
@@ -4098,12 +5401,12 @@ loadOrders();
 
 
 
-async function loadOrders(){
+async function loadSuppliers(){
 
 
 
 let box =
-document.getElementById("orders");
+document.getElementById("supplierList");
 
 
 
@@ -4113,13 +5416,7 @@ if(!box)return;
 
 let snap =
 await get(
-
-ref(
-db,
-"users/"+currentUser.uid+"/suppliers"
-
-)
-
+userPath("suppliers")
 );
 
 
@@ -4132,38 +5429,24 @@ if(snap.exists()){
 
 
 
-Object.values(snap.val())
+Object.values(
+snap.val()
 
-.forEach(o=>{
-
+)
+.forEach(s=>{
 
 
 box.innerHTML+=`
 
 
-<div class="inventoryCard">
+<div class="card">
 
 
-<h3>
+🚚 ${s.supplier}
 
-${o.supplier}
+<br>
 
-</h3>
-
-
-<p>
-
-${o.part}
-
-</p>
-
-
-<p>
-
-${o.status}
-
-</p>
-
+${s.part}
 
 
 </div>
@@ -4172,10 +5455,10 @@ ${o.status}
 `;
 
 
+
 });
 
 
-
 }
 
 
@@ -4188,261 +5471,301 @@ ${o.status}
 
 
 
-</script>
 
-<!-- =========================
-PART 7 / 10
-FINANCES + ANALYTICS
-========================= -->
 
 
-<style>
 
+// ===============================
+// USED PARTS
+// ===============================
 
-.moneyCard{
 
-background:var(--panel);
 
-padding:25px;
 
-border-radius:20px;
 
-margin:15px 0;
+function usedPartsPage(){
 
-}
 
 
-
-.money{
-
-font-size:30px;
-
-color:var(--blue);
-
-font-weight:bold;
-
-}
-
-
-
-.row{
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(220px,1fr));
-
-gap:20px;
-
-}
-
-
-
-</style>
-
-
-
-
-
-
-
-
-<script type="module">
-
-
-import {
-
-ref,
-push,
-set,
-get,
-remove
-
-}
-
-from
-
-"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
-
-
-
-
-
-
-
-function financeRef(path){
-
-
-return ref(
-
-db,
-
-"users/"+currentUser.uid+"/finances/"+path
-
-);
-
-
-}
-
-
-
-
-
-
-
-window.financePage=function(){
-
-
-let main =
-document.querySelector(".main");
-
-
-
-main.innerHTML=`
+content.innerHTML=`
 
 
 <div class="card">
 
 
 <h1>
-💰 Finances
+
+🔩 Used Parts
+
 </h1>
 
 
 
-<div class="row">
+<input id="usedPart"
+
+placeholder="Used Part">
 
 
 
-<div class="moneyCard">
+<button onclick="saveUsedPart()">
 
-<div class="money"
-id="incomeDisplay">
-
-$0
-
-</div>
-
-<p>
-Income
-</p>
-
-</div>
-
-
-
-
-<div class="moneyCard">
-
-<div class="money"
-id="expenseDisplay">
-
-$0
-
-</div>
-
-<p>
-Expenses
-</p>
-
-</div>
-
-
-
-
-<div class="moneyCard">
-
-<div class="money"
-id="profitDisplay">
-
-$0
-
-</div>
-
-<p>
-Profit
-</p>
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-<div class="moneyCard">
-
-
-<h2>
-Add Income
-</h2>
-
-
-
-<input id="incomeName"
-placeholder="Job Name">
-
-
-<input id="incomeAmount"
-placeholder="Amount">
-
-
-
-<button onclick="addIncome()">
-
-Add Income
+Save
 
 </button>
 
 
+
 </div>
 
 
+`;
+
+
+
+}
 
 
 
 
 
-<div class="moneyCard">
 
 
-<h2>
-Add Expense
-</h2>
-
-
-<input id="expenseName"
-placeholder="Expense">
-
-
-<input id="expenseAmount"
-placeholder="Amount">
+window.saveUsedPart=async function(){
 
 
 
-<button onclick="addExpense()">
+await push(
 
-Add Expense
+userPath("usedParts"),
+
+{
+
+
+name:
+usedPart.value,
+
+
+time:
+Date.now()
+
+
+}
+
+
+);
+
+
+
+alert("Saved");
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// PART PRICING
+// ===============================
+
+
+
+
+
+function pricingPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+💲 Parts Pricing
+
+</h1>
+
+
+
+<input id="pricePart"
+
+placeholder="Part">
+
+
+<input id="priceValue"
+
+placeholder="Price">
+
+
+
+<button onclick="savePrice()">
+
+Save
 
 </button>
 
 
-</div>
-
-
-
-
-
-
-<div id="financeList">
-
 
 </div>
 
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+window.savePrice=async function(){
+
+
+let id =
+push(
+userPath("prices")
+).key;
+
+
+
+
+await set(
+
+userPath(
+"prices/"+id
+),
+
+{
+
+
+part:
+pricePart.value,
+
+
+price:
+priceValue.value
+
+
+}
+
+
+);
+
+
+
+alert("Saved");
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// FINANCES
+// ===============================
+
+
+
+
+
+function incomePage(){
+
+
+moneyPage(
+"💵 Repair Income",
+"income"
+
+);
+
+
+}
+
+
+
+
+
+function expensePage(){
+
+
+moneyPage(
+"💳 Expenses",
+"expenses"
+
+);
+
+
+}
+
+
+
+
+
+
+
+function moneyPage(title,pathName){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+${title}
+
+</h1>
+
+
+
+<input id="moneyText"
+
+placeholder="Description">
+
+
+
+<input id="moneyAmount"
+
+placeholder="Amount">
+
+
+
+<button onclick="saveMoney('${pathName}')">
+
+Save
+
+</button>
+
+
+
+<div id="moneyList">
+
+</div>
 
 
 
@@ -4454,69 +5777,8 @@ Add Expense
 
 
 
-loadFinance();
-
-
-
-};
-
-
-
-
-
-
-
-
-
-// INCOME
-
-
-
-window.addIncome=async function(){
-
-
-
-let id =
-push(financeRef("income")).key;
-
-
-
-
-await set(
-
-financeRef("income/"+id),
-
-{
-
-
-name:
-incomeName.value,
-
-
-amount:
-Number(incomeAmount.value),
-
-
-created:
-Date.now()
-
-
 }
 
-);
-
-
-
-incomeName.value="";
-
-incomeAmount.value="";
-
-
-
-loadFinance();
-
-
-};
 
 
 
@@ -4525,39 +5787,36 @@ loadFinance();
 
 
 
-
-
-// EXPENSE
-
-
-
-
-
-window.addExpense=async function(){
+window.saveMoney=async function(pathName){
 
 
 
 let id =
-push(financeRef("expenses")).key;
+push(
+userPath(pathName)
+).key;
+
 
 
 
 await set(
 
-financeRef("expenses/"+id),
+userPath(
+pathName+"/"+id
+),
 
 {
 
 
-name:
-expenseName.value,
+text:
+moneyText.value,
 
 
 amount:
-Number(expenseAmount.value),
+moneyAmount.value,
 
 
-created:
+time:
 Date.now()
 
 
@@ -4568,13 +5827,7 @@ Date.now()
 
 
 
-expenseName.value="";
-
-expenseAmount.value="";
-
-
-
-loadFinance();
+alert("Saved");
 
 
 };
@@ -4587,160 +5840,64 @@ loadFinance();
 
 
 
-async function loadFinance(){
 
 
 
-let income=0;
-
-let expenses=0;
-
-
-
-let incomeSnap =
-await get(financeRef("income"));
-
-
-
-let expenseSnap =
-await get(financeRef("expenses"));
-
-
-
-
-
-
-if(incomeSnap.exists()){
-
-
-Object.values(incomeSnap.val())
-
-.forEach(x=>{
-
-
-income+=Number(x.amount);
-
-
-});
-
-
-}
-
-
-
-
-
-if(expenseSnap.exists()){
-
-
-Object.values(expenseSnap.val())
-
-.forEach(x=>{
-
-
-expenses+=Number(x.amount);
-
-
-});
-
-
-}
-
-
-
-
-
-
-document
-.getElementById("incomeDisplay")
-.innerHTML="$"+income;
-
-
-
-document
-.getElementById("expenseDisplay")
-.innerHTML="$"+expenses;
-
-
-
-document
-.getElementById("profitDisplay")
-.innerHTML="$"+(income-expenses);
-
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
+// ===============================
 // INVOICES
+// ===============================
 
 
 
 
 
-window.invoicePage=function(){
+function invoicePage(){
 
 
 
-document.querySelector(".main")
-.innerHTML=`
+content.innerHTML=`
+
 
 <div class="card">
 
 
 <h1>
+
 🧾 Invoices
+
 </h1>
 
 
 
-<input id="invoiceCustomer"
+<input id="invoiceName"
+
 placeholder="Customer">
 
 
 
-<input id="invoiceTotal"
-placeholder="Total">
+<input id="invoiceAmount"
+
+placeholder="Amount">
 
 
 
 <button onclick="createInvoice()">
 
-Create Invoice
+Create
 
 </button>
 
 
 
-<div id="invoiceList">
-
 </div>
 
 
-
-</div>
 
 `;
 
 
 
-loadInvoices();
-
-
-};
-
+}
 
 
 
@@ -4756,52 +5913,42 @@ window.createInvoice=async function(){
 
 let id =
 push(
-
-ref(
-db,
-"users/"+currentUser.uid+"/invoices"
-
-)
-
+userPath("invoices")
 ).key;
-
 
 
 
 
 await set(
 
-ref(
-db,
-"users/"+currentUser.uid+"/invoices/"+id
+userPath(
+"invoices/"+id
 ),
 
 {
 
 
 customer:
-invoiceCustomer.value,
+invoiceName.value,
 
 
-total:
-invoiceTotal.value,
+amount:
+invoiceAmount.value,
 
 
-status:
-"Unpaid",
-
-
-created:
+time:
 Date.now()
 
 
 }
 
+
+
 );
 
 
 
-loadInvoices();
+alert("Invoice created");
 
 
 };
@@ -4815,88 +5962,270 @@ loadInvoices();
 
 
 
-async function loadInvoices(){
+
+// ===============================
+// TAXES
+// ===============================
 
 
 
-let box =
-document.getElementById("invoiceList");
+
+function taxPage(){
 
 
 
-if(!box)return;
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+💸 Tax Calculator
+
+</h1>
 
 
 
-let snap =
-await get(
+<input id="taxIncome"
 
-ref(
-db,
-"users/"+currentUser.uid+"/invoices"
-
-)
-
-);
+placeholder="Income">
 
 
 
-box.innerHTML="";
+<button onclick="calcTax()">
+
+Calculate
+
+</button>
 
 
 
-if(snap.exists()){
+<div id="taxResult">
 
-
-
-Object.values(snap.val())
-
-.forEach(i=>{
-
-
-box.innerHTML+=`
-
-
-<div class="moneyCard">
-
-
-<h3>
-
-${i.customer}
-
-</h3>
-
-
-<p>
-
-$${i.total}
-
-</p>
-
-
-<p>
-
-${i.status}
-
-</p>
+</div>
 
 
 
 </div>
 
 
+
 `;
 
+
+
+}
+
+
+
+
+
+
+window.calcTax=function(){
+
+
+
+let value =
+Number(taxIncome.value);
+
+
+
+taxResult.innerHTML=
+
+"Estimated tax: $"+
+(value*0.15).toFixed(2);
+
+
+
+};
+
+
+
+
+
+
+
+// PART 5 CONTINUES IN PART 6
+
+
+// ===============================
+// PART 6 / 8
+// ANALYTICS + EMPLOYEES
+// ===============================
+
+
+
+
+
+
+
+document.querySelectorAll(".item")
+.forEach(item=>{
+
+
+item.addEventListener(
+"click",
+
+()=>{
+
+
+let name =
+item.innerText.trim();
+
+
+
+
+
+if(name==="📈 Revenue"){
+
+analyticsPage("Revenue");
+
+}
+
+
+
+if(name==="📊 Charts"){
+
+chartsPage();
+
+}
+
+
+
+if(name==="📉 Profit"){
+
+analyticsPage("Profit");
+
+}
+
+
+
+if(name==="🏆 Top Repairs"){
+
+topRepairsPage();
+
+}
+
+
+
+if(name==="📋 Reports"){
+
+reportsPage();
+
+}
+
+
+
+if(name==="👥 Customer Growth"){
+
+customerGrowthPage();
+
+}
+
+
+
+if(name==="📦 Inventory Value"){
+
+inventoryValuePage();
+
+}
+
+
+
+if(name==="🔥 Popular Devices"){
+
+popularDevicesPage();
+
+}
+
+
+
+
+
+
+if(name==="👤 Employees"){
+
+employeePage();
+
+}
+
+
+
+if(name==="🔑 Permissions"){
+
+permissionsPage();
+
+}
+
+
+
+if(name==="🕒 Schedule"){
+
+schedulePage();
+
+}
+
+
+
+if(name==="⭐ Performance"){
+
+performancePage();
+
+}
+
+
+
+if(name==="💰 Payroll"){
+
+payrollPage();
+
+}
+
+
+
+if(name==="🟢 Attendance"){
+
+attendancePage();
+
+}
+
+
+
+if(name==="🏆 Employee Leaderboard"){
+
+leaderboardPage();
+
+}
+
+
+
+if(name==="📚 Training"){
+
+trainingPage();
+
+}
+
+
+
+if(name==="⭐ Skill Levels"){
+
+skillsPage();
+
+}
+
+
+
+}
+
+
+);
 
 
 });
 
 
-}
-
-
-
-}
 
 
 
@@ -4907,61 +6236,71 @@ ${i.status}
 
 
 
-
-
+// ===============================
 // ANALYTICS
+// ===============================
 
 
 
 
 
-window.analyticsPage=function(){
+
+function analyticsPage(title){
 
 
 
-document.querySelector(".main")
-.innerHTML=`
+content.innerHTML=`
+
 
 <div class="card">
 
 
 <h1>
 
-📈 Analytics
+📈 ${title}
 
 </h1>
 
 
 
-<div class="moneyCard">
-
-<h2>
-
-Business Overview
-
-</h2>
+<div class="statGrid">
 
 
 
-<p>
+<div class="stat">
 
-Revenue tracking connected
+Revenue
 
-</p>
+<br>
 
+$0
 
-<p>
-
-Repair performance connected
-
-</p>
+</div>
 
 
-<p>
 
-Inventory values connected
+<div class="stat">
 
-</p>
+Repairs
+
+<br>
+
+0
+
+</div>
+
+
+
+<div class="stat">
+
+Customers
+
+<br>
+
+0
+
+</div>
+
 
 
 
@@ -4969,99 +6308,15 @@ Inventory values connected
 
 
 
+
 </div>
+
+
 
 `;
 
 
 
-};
-
-
-
-
-
-
-</script>
-
-<!-- =========================
-PART 8 / 10
-EMPLOYEES + AI + CUSTOMER PORTAL
-========================= -->
-
-
-<style>
-
-
-.employeeCard{
-
-background:var(--panel);
-
-padding:20px;
-
-border-radius:18px;
-
-margin:15px 0;
-
-}
-
-
-
-.aiBox{
-
-background:#0b0b0b;
-
-border-radius:18px;
-
-padding:20px;
-
-}
-
-
-
-</style>
-
-
-
-
-
-
-
-<script type="module">
-
-
-import {
-
-ref,
-push,
-set,
-get,
-update
-
-}
-
-from
-
-"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
-
-
-
-
-
-
-
-function employeeRef(path){
-
-
-return ref(
-
-db,
-
-"users/"+currentUser.uid+"/employees/"+path
-
-);
-
-
 }
 
 
@@ -5072,43 +6327,347 @@ db,
 
 
 
-// EMPLOYEES
+function chartsPage(){
 
 
+content.innerHTML=`
 
-
-
-
-window.employeePage=function(){
-
-
-
-document.querySelector(".main")
-.innerHTML=`
 
 <div class="card">
 
 
 <h1>
-👨‍🔧 Employees
+
+📊 Charts
+
 </h1>
 
 
 
+<div class="statGrid">
 
-<div class="employeeCard">
+
+<div class="stat">
+
+Monthly Repairs
+
+<br>
+
+📈
+
+</div>
+
+
+<div class="stat">
+
+Income
+
+<br>
+
+📈
+
+</div>
+
+
+
+<div class="stat">
+
+Inventory
+
+<br>
+
+📈
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function topRepairsPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+🏆 Top Repairs
+
+</h1>
+
+
+
+<p>
+
+iPhone Screen Repairs
+
+</p>
+
+
+<p>
+
+Battery Replacements
+
+</p>
+
+
+<p>
+
+Charging Ports
+
+</p>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function reportsPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+📋 Reports
+
+</h1>
+
+
+<button>
+
+Export Report
+
+</button>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+function customerGrowthPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+👥 Customer Growth
+
+</h1>
+
+
+<div class="stat">
+
+Customers increasing
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function inventoryValuePage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+📦 Inventory Value
+
+</h1>
+
+
+
+<p>
+
+Calculating inventory value...
+
+</p>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+function popularDevicesPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+🔥 Popular Devices
+
+</h1>
+
+
+<p>
+
+No data yet
+
+</p>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// EMPLOYEES
+// ===============================
+
+
+
+
+
+
+
+function employeePage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+👤 Employees
+
+</h1>
+
 
 
 <input id="employeeName"
+
 placeholder="Employee Name">
 
 
+
 <input id="employeeRole"
+
 placeholder="Role">
-
-
-<input id="employeeEmail"
-placeholder="Email">
 
 
 
@@ -5120,16 +6679,14 @@ Add Employee
 
 
 
-</div>
-
-
-
 <div id="employeeList">
 
 </div>
 
 
+
 </div>
+
 
 
 `;
@@ -5139,8 +6696,8 @@ Add Employee
 loadEmployees();
 
 
-};
 
+}
 
 
 
@@ -5155,13 +6712,18 @@ window.addEmployee=async function(){
 
 
 let id =
-push(employeeRef("list")).key;
+push(
+userPath("employees")
+).key;
+
 
 
 
 await set(
 
-employeeRef("list/"+id),
+userPath(
+"employees/"+id
+),
 
 {
 
@@ -5174,37 +6736,26 @@ role:
 employeeRole.value,
 
 
-email:
-employeeEmail.value,
+active:true,
 
 
-status:
-"Active",
-
-
-created:
+time:
 Date.now()
 
 
 }
 
+
+
 );
-
-
-
-employeeName.value="";
-
-employeeRole.value="";
-
-employeeEmail.value="";
 
 
 
 loadEmployees();
 
 
-};
 
+};
 
 
 
@@ -5227,243 +6778,10 @@ if(!box)return;
 
 
 
-let snap =
-await get(employeeRef("list"));
-
-
-
-box.innerHTML="";
-
-
-
-if(snap.exists()){
-
-
-
-Object.values(snap.val())
-
-.forEach(e=>{
-
-
-box.innerHTML+=`
-
-
-<div class="employeeCard">
-
-
-<h3>
-
-${e.name}
-
-</h3>
-
-
-<p>
-
-Role:
-${e.role}
-
-</p>
-
-
-<p>
-
-${e.email}
-
-</p>
-
-
-<p>
-
-${e.status}
-
-</p>
-
-
-
-</div>
-
-
-`;
-
-
-
-});
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-// ATTENDANCE
-
-
-
-
-
-window.attendancePage=function(){
-
-
-
-document.querySelector(".main")
-.innerHTML=`
-
-<div class="card">
-
-
-<h1>
-🟢 Attendance
-</h1>
-
-
-
-<div class="employeeCard">
-
-
-<button onclick="clockIn()">
-
-Clock In
-
-</button>
-
-
-<button onclick="clockOut()">
-
-Clock Out
-
-</button>
-
-
-</div>
-
-
-
-<div id="attendanceList">
-
-</div>
-
-
-
-</div>
-
-
-`;
-
-
-
-loadAttendance();
-
-
-};
-
-
-
-
-
-
-
-
-
-window.clockIn=async function(){
-
-
-
-await push(
-
-ref(
-db,
-"users/"+currentUser.uid+"/attendance"
-
-)
-
-)
-.set({
-
-type:"Clock In",
-
-time:Date.now()
-
-});
-
-
-
-};
-
-
-
-
-
-
-
-window.clockOut=async function(){
-
-
-
-await push(
-
-ref(
-db,
-"users/"+currentUser.uid+"/attendance"
-
-)
-
-)
-.set({
-
-type:"Clock Out",
-
-time:Date.now()
-
-});
-
-
-
-};
-
-
-
-
-
-
-
-
-
-
-
-async function loadAttendance(){
-
-
-let box =
-document.getElementById("attendanceList");
-
-
-
-if(!box)return;
-
-
 
 let snap =
 await get(
-
-ref(
-db,
-"users/"+currentUser.uid+"/attendance"
-
-)
-
+userPath("employees")
 );
 
 
@@ -5476,16 +6794,25 @@ if(snap.exists()){
 
 
 
-Object.values(snap.val())
+Object.values(
+snap.val()
 
-.forEach(a=>{
+)
+.forEach(e=>{
 
 
 box.innerHTML+=`
 
-<div class="employeeCard">
 
-${a.type}
+<div class="card">
+
+
+👤 ${e.name}
+
+<br>
+
+${e.role}
+
 
 </div>
 
@@ -5497,82 +6824,52 @@ ${a.type}
 });
 
 
-}
-
-
 
 }
 
 
 
+}
 
 
 
 
 
 
-// AI ASSISTANT
 
 
 
 
 
 
+// ===============================
+// PERMISSIONS
+// ===============================
 
-window.aiPage=function(){
 
 
 
-document.querySelector(".main")
-.innerHTML=`
+function permissionsPage(){
+
+
+
+content.innerHTML=`
+
 
 <div class="card">
 
 
 <h1>
 
-🤖 AI Assistant
+🔑 Permissions
 
 </h1>
 
 
 
-
-<div class="aiBox">
-
-
-<h3>
-Repair Suggestions
-</h3>
-
-
 <p>
 
-AI repair helper ready.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-<div class="aiBox">
-
-
-<h3>
-
-💲 Pricing Help
-
-</h3>
-
-
-<p>
-
-Estimate repair pricing.
+Manage employee access
 
 </p>
 
@@ -5581,27 +6878,186 @@ Estimate repair pricing.
 
 
 
+`;
 
 
 
-<div class="aiBox">
+}
 
 
-<h3>
-
-🔍 AI Diagnostics
-
-</h3>
 
 
-<p>
 
-Device troubleshooting assistant.
 
-</p>
+
+
+
+
+
+// ===============================
+// SCHEDULE
+// ===============================
+
+
+
+
+
+function schedulePage(){
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+🕒 Schedule
+
+</h1>
+
+
+
+<input placeholder="Employee">
+
+
+<input placeholder="Shift">
+
+
+<button>
+
+Save Schedule
+
+</button>
+
 
 
 </div>
+
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// PERFORMANCE
+// ===============================
+
+
+
+
+
+function performancePage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+⭐ Performance
+
+</h1>
+
+
+<div class="statGrid">
+
+
+<div class="stat">
+
+Repairs Done
+
+</div>
+
+
+
+<div class="stat">
+
+Reviews
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// PAYROLL
+// ===============================
+
+
+
+
+function payrollPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+💰 Payroll
+
+</h1>
+
+
+
+<input placeholder="Employee">
+
+
+<input placeholder="Amount">
+
+
+<button>
+
+Save Payroll
+
+</button>
 
 
 
@@ -5612,7 +7068,7 @@ Device troubleshooting assistant.
 
 
 
-};
+}
 
 
 
@@ -5620,6 +7076,264 @@ Device troubleshooting assistant.
 
 
 
+
+
+// ===============================
+// ATTENDANCE
+// ===============================
+
+
+
+
+function attendancePage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+🟢 Attendance
+
+</h1>
+
+
+<p>
+
+Attendance tracking active
+
+</p>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// LEADERBOARD
+// ===============================
+
+
+
+
+function leaderboardPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+🏆 Employee Leaderboard
+
+</h1>
+
+
+<div class="stat">
+
+#1 Employee
+
+</div>
+
+
+</div>
+
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// TRAINING
+// ===============================
+
+
+
+
+function trainingPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+📚 Training
+
+</h1>
+
+
+
+<p>
+
+Repair training modules
+
+</p>
+
+
+
+</div>
+
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// SKILLS
+// ===============================
+
+
+
+
+
+function skillsPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+⭐ Skill Levels
+
+</h1>
+
+
+<p>
+
+Employee repair skills
+
+</p>
+
+
+</div>
+
+
+
+`;
+
+
+
+}
+
+
+
+
+
+// PART 6 CONTINUES IN PART 7
+
+
+// ===============================
+// PART 7 / 8
+// AI + CUSTOMER + ADMIN SYSTEMS
+// ===============================
+
+
+
+
+
+
+
+document.querySelectorAll(".item")
+.forEach(item=>{
+
+
+item.addEventListener(
+"click",
+
+()=>{
+
+
+let name =
+item.innerText.trim();
+
+
+
+
+
+// AI
+
+
+if(name==="🤖 Repair Suggestions"){
+
+aiRepairPage();
+
+}
+
+
+
+if(name==="💲 Pricing Help"){
+
+aiPricingPage();
+
+}
+
+
+
+if(name==="🔍 AI Diagnostics"){
+
+aiDiagnosticsPage();
+
+}
 
 
 
@@ -5628,260 +7342,49 @@ Device troubleshooting assistant.
 // CUSTOMER PORTAL
 
 
+if(name==="🔎 Track Repair"){
 
-
-
-
-window.customerPortal=function(){
-
-
-
-document.querySelector(".main")
-.innerHTML=`
-
-<div class="card">
-
-
-<h1>
-
-📞 Customer Portal
-
-</h1>
-
-
-
-<div class="employeeCard">
-
-
-<h3>
-
-🔎 Track Repair
-
-</h3>
-
-
-<p>
-
-Customers can view repair status.
-
-</p>
-
-
-</div>
-
-
-
-
-<div class="employeeCard">
-
-
-<h3>
-
-📷 Upload Photos
-
-</h3>
-
-
-<p>
-
-Photo uploads will connect to storage.
-
-</p>
-
-
-</div>
-
-
-
-
-<div class="employeeCard">
-
-
-<h3>
-
-⭐ Reviews
-
-</h3>
-
-
-<p>
-
-Customer reviews system.
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-`;
-
-
-
-};
-
-
-
-
-
-
-
-
-
-
-
-// BUSINESS MANAGEMENT
-
-
-
-
-
-window.businessPage=function(){
-
-
-
-document.querySelector(".main")
-.innerHTML=`
-
-<div class="card">
-
-
-<h1>
-
-🏪 Business Management
-
-</h1>
-
-
-
-<div class="employeeCard">
-
-🏬 Locations
-
-</div>
-
-
-<div class="employeeCard">
-
-🧑‍💼 Managers
-
-</div>
-
-
-<div class="employeeCard">
-
-📜 Policies
-
-</div>
-
-
-<div class="employeeCard">
-
-📝 Forms
-
-</div>
-
-
-<div class="employeeCard">
-
-📅 Business Calendar
-
-</div>
-
-
-
-</div>
-
-`;
-
-
-
-};
-
-
-
-
-
-
-
-</script>
-
-<!-- =========================
-PART 9 / 10
-SETTINGS + ADMIN + SECURITY
-========================= -->
-
-<style>
-
-
-.settingsCard{
-
-background:var(--panel);
-
-padding:25px;
-
-border-radius:20px;
-
-margin:15px 0;
+trackRepairPage();
 
 }
 
 
 
-.colorInput{
+if(name==="📷 Upload Photos"){
 
-height:45px;
-
-padding:5px;
+uploadPhotosPage();
 
 }
 
 
 
-</style>
+if(name==="✅ Approve Quote"){
 
-
-
-
-
-
-
-<script type="module">
-
-
-import {
-
-ref,
-get,
-set
+approveQuotePage();
 
 }
 
-from
-
-"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
 
 
+if(name==="💬 Messages"){
+
+customerMessagesPage();
+
+}
 
 
 
+if(name==="⭐ Leave Review"){
+
+reviewPage();
+
+}
 
 
-function settingsRef(){
 
+if(name==="📅 Book Appointment"){
 
-return ref(
-
-db,
-
-"users/"+currentUser.uid+"/settings"
-
-);
-
+appointmentPage();
 
 }
 
@@ -5890,325 +7393,36 @@ db,
 
 
 
+// BUSINESS
 
 
+if(name==="🏬 Locations"){
 
-// SETTINGS PAGE
-
-
-
-
-
-window.settingsPage=function(){
-
-
-
-document.querySelector(".main")
-.innerHTML=`
-
-<div class="card">
-
-
-<h1>
-
-⚙ Settings
-
-</h1>
-
-
-
-
-
-<div class="settingsCard">
-
-
-<h2>
-
-🎨 Custom Colors
-
-</h2>
-
-
-
-
-<label>
-
-Background Color
-
-</label>
-
-
-<input 
-class="colorInput"
-type="color"
-id="bgColor">
-
-
-
-
-
-<label>
-
-Main Blue Color
-
-</label>
-
-
-<input
-class="colorInput"
-type="color"
-id="blueColor">
-
-
-
-
-
-<label>
-
-Text Color
-
-</label>
-
-
-<input
-class="colorInput"
-type="color"
-id="textColor">
-
-
-
-
-
-<button onclick="saveTheme()">
-
-Save Theme
-
-</button>
-
-
-
-</div>
-
-
-
-
-
-
-<div class="settingsCard">
-
-🌙 Dark Mode
-
-<br>
-
-<button onclick="darkMode()">
-
-Enable Dark Mode
-
-</button>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="settingsCard">
-
-💾 Backup & Storage
-
-<br>
-
-Firebase backup connected
-
-</div>
-
-
-
-
-
-
-<div class="settingsCard">
-
-🌎 Language & Region
-
-<br>
-
-English
-
-</div>
-
-
-
-
-
-
-</div>
-
-
-`;
-
-
-
-loadTheme();
-
-
-
-};
-
-
-
-
-
-
-
-
-
-
-
-// SAVE COLORS
-
-
-
-
-
-window.saveTheme=async function(){
-
-
-
-let bg =
-bgColor.value;
-
-
-let blue =
-blueColor.value;
-
-
-let text =
-textColor.value;
-
-
-
-
-
-document.documentElement
-.style.setProperty(
-"--black",
-bg
-);
-
-
-
-document.documentElement
-.style.setProperty(
-"--blue",
-blue
-);
-
-
-
-document.documentElement
-.style.setProperty(
-"--text",
-text
-);
-
-
-
-
-
-await set(
-
-settingsRef(),
-
-{
-
-
-background:bg,
-
-accent:blue,
-
-text:text,
-
-
-updated:Date.now()
-
+locationsPage();
 
 }
 
 
-);
 
+if(name==="🧑‍💼 Managers"){
 
-
-};
-
-
-
-
-
-
-
-
-
-
-
-async function loadTheme(){
-
-
-
-let snap =
-await get(settingsRef());
-
-
-
-if(snap.exists()){
-
-
-
-let t =
-snap.val();
-
-
-
-
-document.documentElement
-.style.setProperty(
-"--black",
-t.background
-);
-
-
-
-document.documentElement
-.style.setProperty(
-"--blue",
-t.accent
-);
-
-
-
-document.documentElement
-.style.setProperty(
-"--text",
-t.text
-);
-
-
-
-bgColor.value=t.background;
-
-blueColor.value=t.accent;
-
-textColor.value=t.text;
-
-
+managerPage();
 
 }
 
 
+
+if(name==="📜 Policies"){
+
+policyPage();
+
+}
+
+
+
+if(name==="📝 Forms"){
+
+formsPage();
 
 }
 
@@ -6216,137 +7430,75 @@ textColor.value=t.text;
 
 
 
+// IDEAS
 
 
+if(name==="💡 Feature Requests"){
 
-window.darkMode=function(){
+ideasPage();
 
+}
 
 
-document.documentElement
-.style.setProperty(
-"--black",
-"#050505"
-);
 
+if(name==="🗒 Ideas Board"){
 
+ideasBoardPage();
 
-document.documentElement
-.style.setProperty(
-"--blue",
-"#007bff"
-);
+}
 
 
 
-document.documentElement
-.style.setProperty(
-"--text",
-"#ffffff"
-);
+if(name==="🧪 Experiments"){
 
+experimentsPage();
 
+}
 
-};
 
 
+if(name==="🚀 Roadmap"){
 
+roadmapPage();
 
+}
 
 
 
 
 
+// SECURITY
 
 
+if(name==="🔐 Login History"){
 
+loginHistoryPage();
 
-// SECURITY CENTER
+}
 
 
 
+if(name==="🖥 Active Sessions"){
 
+sessionsPage();
 
+}
 
-window.securityPage=function(){
 
 
+if(name==="📱 Device Access"){
 
-document.querySelector(".main")
-.innerHTML=`
+deviceAccessPage();
 
-<div class="card">
+}
 
 
-<h1>
 
-🚨 Security Center
+if(name==="📜 Audit Logs"){
 
-</h1>
+auditPage();
 
-
-
-<div class="settingsCard">
-
-🔐 Login History
-
-</div>
-
-
-
-<div class="settingsCard">
-
-🖥 Active Sessions
-
-</div>
-
-
-
-<div class="settingsCard">
-
-📱 Device Access
-
-</div>
-
-
-
-<div class="settingsCard">
-
-📜 Audit Logs
-
-</div>
-
-
-
-<div class="settingsCard">
-
-⚠ Security Alerts
-
-</div>
-
-
-
-<div class="settingsCard">
-
-🔑 Backup Codes
-
-</div>
-
-
-
-</div>
-
-`;
-
-
-
-};
-
-
-
-
-
-
+}
 
 
 
@@ -6355,305 +7507,88 @@ document.querySelector(".main")
 // ADMIN
 
 
+if(name==="👑 Owner Panel"){
 
+ownerPage();
 
+}
 
 
-window.adminPage=function(){
 
+if(name==="🛂 Access Control"){
 
+accessPage();
 
-document.querySelector(".main")
-.innerHTML=`
+}
 
-<div class="card">
 
 
-<h1>
+if(name==="📜 Change History"){
 
-👑 Admin Panel
+historyPage();
 
-</h1>
+}
 
 
 
+if(name==="🗑 Deleted Items"){
 
-<div class="settingsCard">
+deletedPage();
 
-👑 Owner Panel
+}
 
-</div>
 
 
 
-<div class="settingsCard">
 
-🛂 Access Control
+// FIREBASE
 
-</div>
 
+if(name==="👥 User Management"){
 
+usersPage();
 
-<div class="settingsCard">
+}
 
-📜 Change History
 
-</div>
 
+if(name==="🗄 Database Status"){
 
+databasePage();
 
-<div class="settingsCard">
+}
 
-🗑 Deleted Items
 
-</div>
 
+if(name==="📦 Storage Usage"){
 
+storagePage();
 
-<div class="settingsCard">
+}
 
-💾 Data Management
 
-</div>
 
+if(name==="📊 App Analytics"){
 
+appAnalyticsPage();
 
-</div>
+}
 
 
-`;
 
+if(name==="🛠 Developer Tools"){
 
+developerPage();
 
-};
+}
 
-
-
-
-
-
-
-
-
-
-
-
-// FIREBASE ADMIN
-
-
-
-
-
-
-window.firebaseAdmin=function(){
-
-
-
-document.querySelector(".main")
-.innerHTML=`
-
-<div class="card">
-
-
-<h1>
-
-🔥 Firebase Admin
-
-</h1>
-
-
-
-<div class="settingsCard">
-
-👥 User Management
-
-</div>
-
-
-
-<div class="settingsCard">
-
-🗄 Database Status
-
-</div>
-
-
-
-<div class="settingsCard">
-
-📦 Storage Usage
-
-</div>
-
-
-
-<div class="settingsCard">
-
-📊 App Analytics
-
-</div>
-
-
-
-<div class="settingsCard">
-
-🛠 Developer Tools
-
-</div>
-
-
-
-
-</div>
-
-
-`;
-
-
-
-};
-
-
-
-
-
-
-
-
-
-</script>
-
-<!-- =========================
-PART 10 / 10
-FINAL CONNECTIONS
-========================= -->
-
-<script>
-
-
-// SIDEBAR ITEM CLICK SYSTEM
-
-
-document.addEventListener(
-"click",
-function(e){
-
-
-
-if(e.target.classList.contains("item")){
-
-
-let name =
-e.target.innerText;
-
-
-
-if(name.includes("Dashboard"))
-openPage("Dashboard");
-
-
-
-else if(name.includes("Repair Tickets"))
-openPage("Repair Tickets");
-
-
-
-else if(name.includes("Customers"))
-openPage("Customers");
-
-
-
-else if(name.includes("iPhones"))
-openPage("iPhones");
-
-
-
-else if(name.includes("Samsung"))
-openPage("Samsung");
-
-
-
-else if(name.includes("iPads"))
-openPage("iPads");
-
-
-
-else if(name.includes("Inventory"))
-inventoryPage();
-
-
-
-else if(name.includes("Supplier"))
-supplierPage();
-
-
-
-else if(name.includes("Team Chat"))
-communicationPage("chat");
-
-
-
-else if(name.includes("Shared Notes"))
-communicationPage("notes");
-
-
-
-else if(name.includes("Tasks"))
-communicationPage("tasks");
-
-
-
-else if(name.includes("Notifications"))
-communicationPage("notifications");
-
-
-
-else if(name.includes("Finances"))
-financePage();
-
-
-
-else if(name.includes("Invoices"))
-invoicePage();
-
-
-
-else if(name.includes("Analytics"))
-analyticsPage();
-
-
-
-else if(name.includes("Employees"))
-employeePage();
-
-
-
-else if(name.includes("Attendance"))
-attendancePage();
-
-
-
-else if(name.includes("AI"))
-aiPage();
-
-
-
-else if(name.includes("CUSTOMER"))
-customerPortal();
-
-
-
-else if(name.includes("BUSINESS"))
-businessPage();
-
-
-
-else if(name.includes("SETTINGS"))
-settingsPage();
 
 
 
 }
+
+
+);
 
 
 });
@@ -6666,22 +7601,844 @@ settingsPage();
 
 
 
-// ACCOUNT MENU
+// ===============================
+// AI ASSISTANT
+// ===============================
 
 
 
 
 
-function accountMenu(){
+function aiRepairPage(){
 
 
-let menu =
-document.getElementById("accountMenu");
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+🤖 Repair Suggestions
+
+</h1>
+
+
+<input id="aiDevice"
+
+placeholder="Device">
+
+
+<input id="aiProblem"
+
+placeholder="Problem">
+
+
+<button onclick="aiSuggest()">
+
+Generate
+
+</button>
 
 
 
-menu.style.display =
-menu.style.display==="block"
+<div id="aiResult">
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+window.aiSuggest=function(){
+
+
+aiResult.innerHTML=
+
+"Possible repair: inspect device, test components, and check common failure points.";
+
+};
+
+
+
+
+
+
+
+
+
+function aiPricingPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+💲 Pricing Help
+
+</h1>
+
+
+
+<p>
+
+AI pricing assistant ready
+
+</p>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+function aiDiagnosticsPage(){
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+🔍 AI Diagnostics
+
+</h1>
+
+
+<p>
+
+Diagnostics system ready
+
+</p>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// CUSTOMER PORTAL
+// ===============================
+
+
+
+
+
+
+function trackRepairPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+🔎 Track Repair
+
+</h1>
+
+
+<input placeholder="Repair ID">
+
+
+<button>
+
+Search
+
+</button>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+function uploadPhotosPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+📷 Upload Photos
+
+</h1>
+
+
+<input type="file">
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+function approveQuotePage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+✅ Approve Quote
+
+</h1>
+
+
+<button>
+
+Approve
+
+</button>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+function customerMessagesPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+💬 Customer Messages
+
+</h1>
+
+
+<input placeholder="Message">
+
+
+<button>
+
+Send
+
+</button>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+function reviewPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+⭐ Reviews
+
+</h1>
+
+
+<textarea placeholder="Review"></textarea>
+
+
+<button>
+
+Submit
+
+</button>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+function appointmentPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+📅 Book Appointment
+
+</h1>
+
+
+<input placeholder="Date">
+
+
+<button>
+
+Book
+
+</button>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// BUSINESS
+// ===============================
+
+
+
+
+
+
+function locationsPage(){
+
+
+
+simplePage(
+"🏬 Locations"
+
+);
+
+
+
+}
+
+
+
+function managerPage(){
+
+
+simplePage(
+"🧑‍💼 Managers"
+
+);
+
+
+}
+
+
+
+function policyPage(){
+
+
+
+simplePage(
+"📜 Policies"
+
+);
+
+
+}
+
+
+
+function formsPage(){
+
+
+
+simplePage(
+"📝 Forms"
+
+);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// IDEAS
+// ===============================
+
+
+
+
+
+function ideasPage(){
+
+
+simplePage(
+"💡 Feature Requests"
+
+);
+
+
+}
+
+
+function ideasBoardPage(){
+
+
+simplePage(
+"🗒 Ideas Board"
+
+);
+
+
+}
+
+
+function experimentsPage(){
+
+
+simplePage(
+"🧪 Experiments"
+
+);
+
+
+}
+
+
+
+function roadmapPage(){
+
+
+simplePage(
+"🚀 Roadmap"
+
+);
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// SECURITY
+// ===============================
+
+
+
+
+function loginHistoryPage(){
+
+
+simplePage(
+"🔐 Login History"
+
+);
+
+
+}
+
+
+
+function sessionsPage(){
+
+
+simplePage(
+"🖥 Active Sessions"
+
+);
+
+
+}
+
+
+
+function deviceAccessPage(){
+
+
+simplePage(
+"📱 Device Access"
+
+);
+
+
+}
+
+
+
+
+function auditPage(){
+
+
+simplePage(
+"📜 Audit Logs"
+
+);
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// ADMIN
+// ===============================
+
+
+
+
+
+function ownerPage(){
+
+
+simplePage(
+"👑 Owner Panel"
+
+);
+
+
+}
+
+
+
+
+function accessPage(){
+
+
+simplePage(
+"🛂 Access Control"
+
+);
+
+
+}
+
+
+
+
+function historyPage(){
+
+
+simplePage(
+"📜 Change History"
+
+);
+
+
+}
+
+
+
+
+function deletedPage(){
+
+
+simplePage(
+"🗑 Deleted Items"
+
+);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// FIREBASE ADMIN
+// ===============================
+
+
+
+
+
+
+function usersPage(){
+
+
+simplePage(
+"👥 User Management"
+
+);
+
+
+}
+
+
+
+function databasePage(){
+
+
+simplePage(
+"🗄 Database Status"
+
+);
+
+
+}
+
+
+
+function storagePage(){
+
+
+simplePage(
+"📦 Storage Usage"
+
+);
+
+
+}
+
+
+
+function appAnalyticsPage(){
+
+
+simplePage(
+"📊 App Analytics"
+
+);
+
+
+}
+
+
+
+
+function developerPage(){
+
+
+simplePage(
+"🛠 Developer Tools"
+
+);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// SIMPLE PAGE BUILDER
+
+
+
+
+function simplePage(title){
+
+
+content.innerHTML=`
+
+<div class="card">
+
+
+<h1>
+
+${title}
+
+</h1>
+
+
+<p>
+
+${title} loaded.
+
+</p>
+
+
+</div>
+
+`;
+
+
+}
+
+
+
+
+// PART 7 CONTINUES IN PART 8
+
+
+// ===============================
+// PART 8 / 8
+// SETTINGS + ACCOUNT + FINISH
+// ===============================
+
+
+
+
+
+
+
+document.querySelectorAll(".category")
+.forEach(category=>{
+
+
+category.onclick=function(){
+
+
+let drop =
+this.nextElementSibling;
+
+
+
+if(drop){
+
+
+drop.style.display =
+drop.style.display==="block"
 ?
 "none"
 :
@@ -6692,97 +8449,377 @@ menu.style.display==="block"
 
 
 
-
-
-// SWITCH ACCOUNT SYSTEM
-
+}
 
 
 
-let accounts=[];
+});
 
 
 
-async function loadAccounts(){
 
 
 
-let snap =
-await get(
 
-ref(
-db,
-"users/"+currentUser.uid+"/accounts"
 
-)
+
+
+
+// ===============================
+// SETTINGS SYSTEM
+// ===============================
+
+
+
+
+
+
+document.querySelectorAll(".item")
+.forEach(item=>{
+
+
+item.addEventListener(
+"click",
+
+()=>{
+
+
+let name =
+item.innerText.trim();
+
+
+
+
+
+if(name==="🎨 Theme"){
+
+themePage();
+
+}
+
+
+
+if(name==="🌙 Dark Mode"){
+
+darkModePage();
+
+}
+
+
+
+if(name==="🎨 Custom Colors"){
+
+colorsPage();
+
+}
+
+
+
+if(name==="🖥 Layout Settings"){
+
+layoutPage();
+
+}
+
+
+
+if(name==="🏢 Business Settings"){
+
+businessSettingsPage();
+
+}
+
+
+
+if(name==="👤 Account Settings"){
+
+accountSettingsPage();
+
+}
+
+
+
+if(name==="🔐 Security Settings"){
+
+securitySettingsPage();
+
+}
+
+
+
+if(name==="🔔 Notification Settings"){
+
+notificationSettingsPage();
+
+}
+
+
+
+if(name==="💾 Backup & Storage"){
+
+backupPage();
+
+}
+
+
+
+if(name==="📥 Export Data"){
+
+exportPage();
+
+}
+
+
+
+if(name==="📤 Import Data"){
+
+importPage();
+
+}
+
+
+
+
+}
+
+
+);
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// SETTINGS PAGES
+// ===============================
+
+
+
+
+
+
+function themePage(){
+
+
+simplePage("🎨 Theme Settings");
+
+
+}
+
+
+
+
+
+function darkModePage(){
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+🌙 Dark Mode
+
+</h1>
+
+
+<button onclick="toggleDark()">
+
+Toggle Mode
+
+</button>
+
+
+</div>
+
+
+`;
+
+
+}
+
+
+
+
+
+
+
+window.toggleDark=function(){
+
+
+document.documentElement.style
+.setProperty(
+"--bg",
+"#000000"
+);
+
+
+};
+
+
+
+
+
+
+
+
+
+function colorsPage(){
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+🎨 Custom Colors
+
+</h1>
+
+
+
+
+<label>
+
+Background
+
+</label>
+
+
+<input type="color"
+id="bgColor">
+
+
+
+
+
+<label>
+
+Blue
+
+</label>
+
+
+<input type="color"
+id="blueColor">
+
+
+
+
+
+
+<label>
+
+Text
+
+</label>
+
+
+<input type="color"
+id="textColor">
+
+
+
+
+
+<button onclick="saveColors()">
+
+Save Colors
+
+</button>
+
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+window.saveColors=async function(){
+
+
+
+document.documentElement.style
+.setProperty(
+"--bg",
+bgColor.value
+);
+
+
+
+document.documentElement.style
+.setProperty(
+"--blue",
+blueColor.value
+);
+
+
+
+document.documentElement.style
+.setProperty(
+"--text",
+textColor.value
+);
+
+
+
+
+
+if(currentUser){
+
+
+
+await update(
+
+userPath("settings"),
+
+{
+
+
+background:bgColor.value,
+
+blue:blueColor.value,
+
+text:textColor.value
+
+
+}
+
 
 );
 
 
 
-if(snap.exists()){
-
-
-accounts =
-Object.keys(
-snap.val()
-);
-
-
 }
 
 
-
-}
-
-
-
-
-
-
-
-
-window.switchAccount=function(){
-
-
-
-loadAccounts();
-
-
-
-if(accounts.length < 5){
-
-
-let create =
-confirm(
-"No other accounts found.\nCreate another account?"
-);
-
-
-
-if(create){
-
-
-
-openCreate();
-
-
-
-}
-
-
-
-}
-
-else{
-
-
-alert(
-"Maximum 5 accounts reached"
-);
-
-
-}
 
 
 
@@ -6795,36 +8832,470 @@ alert(
 
 
 
-// DEFAULT DASHBOARD
+
+function layoutPage(){
 
 
+simplePage(
+"🖥 Layout Settings"
+);
 
-
-setTimeout(()=>{
-
-
-if(currentUser){
-
-openPage("Dashboard");
 
 }
 
 
-},1000);
+
+
+function businessSettingsPage(){
+
+
+simplePage(
+"🏢 Business Settings"
+);
+
+
+}
+
+
+
+
+
+function accountSettingsPage(){
+
+
+simplePage(
+"👤 Account Settings"
+);
+
+
+}
+
+
+
+
+
+function securitySettingsPage(){
+
+
+simplePage(
+"🔐 Security Settings"
+);
+
+
+}
+
+
+
+
+
+function notificationSettingsPage(){
+
+
+simplePage(
+"🔔 Notification Settings"
+);
+
+
+}
+
+
+
+
+
+function backupPage(){
+
+
+simplePage(
+"💾 Backup & Storage"
+);
+
+
+}
+
+
+
+
+
+function exportPage(){
+
+
+
+content.innerHTML=`
+
+
+<div class="card">
+
+
+<h1>
+
+📥 Export Data
+
+</h1>
+
+
+
+<button onclick="exportData()">
+
+Export
+
+</button>
+
+
+</div>
+
+
+`;
+
+
+
+}
 
 
 
 
 
 
+
+window.exportData=async function(){
+
+
+
+let snap =
+await get(
+
+userPath("")
+
+);
+
+
+
+let blob =
+new Blob(
+
+[
+JSON.stringify(
+snap.val(),
+null,
+2
+)
+],
+
+{
+type:"application/json"
+}
+
+);
+
+
+
+let a =
+document.createElement("a");
+
+
+
+a.href =
+URL.createObjectURL(blob);
+
+
+
+a.download =
+"truefix-backup.json";
+
+
+
+a.click();
+
+
+
+};
+
+
+
+
+
+
+
+
+
+function importPage(){
+
+
+simplePage(
+"📤 Import Data"
+);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// ACCOUNT BUTTON
+// ===============================
+
+
+
+
+
+document.querySelector(".accountBox")
+.onclick=function(){
+
+
+let menu =
+document.createElement("div");
+
+
+menu.className="card";
+
+
+menu.style.position="fixed";
+
+menu.style.bottom="80px";
+
+menu.style.left="20px";
+
+menu.style.width="250px";
+
+
+
+menu.innerHTML=`
+
+
+<button onclick="logoutUser()">
+
+Logout
+
+</button>
+
+
+
+<button onclick="switchAccount()">
+
+Switch Account
+
+</button>
+
+
+
+`;
+
+
+
+document.body.appendChild(menu);
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// LOGOUT
+// ===============================
+
+
+
+
+
+
+window.logoutUser=function(){
+
+
+signOut(auth);
+
+
+
+location.reload();
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// SWITCH / CREATE ACCOUNT
+// ===============================
+
+
+
+
+window.switchAccount=function(){
+
+
+
+let accounts =
+JSON.parse(
+localStorage.getItem("truefixAccounts")
+||
+"[]"
+
+);
+
+
+
+
+
+if(accounts.length>=5){
+
+
+alert(
+"Maximum of 5 accounts reached"
+);
+
+
+return;
+
+
+}
+
+
+
+
+showCreate();
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// SAVE LOGIN ACCOUNT
+// ===============================
+
+
+
+auth.onAuthStateChanged(async user=>{
+
+
+if(user){
+
+
+let accounts =
+JSON.parse(
+
+localStorage.getItem("truefixAccounts")
+||
+"[]"
+
+);
+
+
+
+
+if(!accounts.includes(user.email)){
+
+
+
+accounts.push(user.email);
+
+
+
+localStorage.setItem(
+
+"truefixAccounts",
+
+JSON.stringify(accounts)
+
+);
+
+
+}
+
+
+
+}
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+// ===============================
+// FINAL STARTUP
+// ===============================
+
+
+
+
+
+window.addEventListener(
+"load",
+
+()=>{
+
+
+document
+.querySelectorAll(".dropdown")
+.forEach(d=>{
+
+d.style.display="none";
+
+});
+
+
+}
+
+);
+
+
+
+
+
+
+
+
+// ===============================
+// CLOSE FILE
+// ===============================
 
 
 </script>
 
 
-
-
-
 </body>
+
 
 </html>
